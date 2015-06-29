@@ -1,0 +1,15 @@
+# Site settings
+title: Be a Better Developer
+email: 
+description: "Practical notes on development by Sergey Barinov"
+baseurl: "/BeBetterDeveloper"
+url: "http://jelenabarinova.github.io" # the base hostname & protocol for your site
+twitter_username: username
+github_username: username
+
+# Build settings
+markdown: kramdown
+highlighter: pygments
+permalink: none
+paginate: 10
+exclude: ["less","node_modules","package.json","README.md"]
