@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Data Structure: Stack</title>
+  <meta name="description" content="In this post I will implement very popular abstract data type – Stack. Stack is a collection where the last element added to the structure must be the first ...">
+
+  <link rel="stylesheet" href="/BeBetterDeveloper/css/main.css">
+  <link rel="canonical" href="http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-stack.html">
+  <link rel="alternate" type="application/rss+xml" title="Be a Better Developer" href="http://jelenabarinova.github.io/BeBetterDeveloper/feed.xml" />
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700' rel='stylesheet' type='text/css'>
+</head>
+
+
+  <body>
+
+    <div class="site-header">
+
+    <nav class="site-nav">
+        <a class="page-link" href="/BeBetterDeveloper/" >Home</a>
+        
+          
+          <a class="page-link" href="/BeBetterDeveloper/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+    </nav>
+
+    <h1>
+     <span>
+      <a class="site-title" href="/BeBetterDeveloper/">Be a Better Developer</a>
+     </span>
+    </h1>
+
+
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+     <h1 class="post-title">Data Structure: Stack</h1>
+     <p class="post-meta">Posted on Jun 16, 2013</p>
+  </header>
+
+  <article class="post-content">
+    <p>In this post I will implement very popular abstract data type – <a href="http://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Stack</a>. Stack is a collection where the last element added to the structure must be the first one to be removed (or <a href="http://en.wikipedia.org/wiki/LIFO_(computing)">LIFO, Last-In First-Out</a>, for short). It is widely used in hardware including CPU registers. In software it is used for memory allocation, to track active sub-routines (<a href="http://en.wikipedia.org/wiki/Call_stack">call stack</a>) or to implement parsers and various higher-level algorithms. Typically stack is implemented using <a href="http://www.bebetterdeveloper.com/data-structure-linked-list/">linked list</a> or in some cases using dynamic arrays.</p>
+
+<p>Usually stack has following functions:</p>
+
+<ul>
+  <li>push() – to add new element</li>
+  <li>pop() – to remove first element and return its value</li>
+  <li>peek() – to return value of the first element without removing it</li>
+  <li>isEmpty() - to check whether the stack is empty or not</li>
+  <li>length() - to get the number of items in the stack</li>
+</ul>
+
+<p>Based on the previously <a href="http://www.bebetterdeveloper.com/data-structure-linked-list/">described</a> linked list, implementation of the stack is rather trivial:</p>
+
+<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/stack.js?footer=minimal">
+</script>
+
+
+  </article>
+
+  <div align="center">
+  	<a href="#">
+  	<i class="fa fa-arrow-circle-up fa-2x"></i>
+  	</a>
+  </div>
+
+</div>
+      </div>
+    </div>
+
+    <div class="footer" align="center">
+
+  Designed by <a href=http://diezcami.github.io target="_blank">Camille Diez</a><BR />
+  Powered by <a href=http://jekyllrb.com target="_blank">Jekyll</a>
+
+</div>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Data Structure: Linked List</title>
+  <meta name="description" content="In this post I will implement one of the most fundamental data structure in computer science – linked list. Linked list – is a dynamic sequence of linked nod...">
+
+  <link rel="stylesheet" href="/BeBetterDeveloper/css/main.css">
+  <link rel="canonical" href="http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-linked-list.html">
+  <link rel="alternate" type="application/rss+xml" title="Be a Better Developer" href="http://jelenabarinova.github.io/BeBetterDeveloper/feed.xml" />
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700' rel='stylesheet' type='text/css'>
+</head>
+
+
+  <body>
+
+    <div class="site-header">
+
+    <nav class="site-nav">
+        <a class="page-link" href="/BeBetterDeveloper/" >Home</a>
+        
+          
+          <a class="page-link" href="/BeBetterDeveloper/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+    </nav>
+
+    <h1>
+     <span>
+      <a class="site-title" href="/BeBetterDeveloper/">Be a Better Developer</a>
+     </span>
+    </h1>
+
+
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+     <h1 class="post-title">Data Structure: Linked List</h1>
+     <p class="post-meta">Posted on Jun 13, 2013</p>
+  </header>
+
+  <article class="post-content">
+    <p>In this post I will implement one of the most fundamental data structure in computer science – <a href="https://en.wikipedia.org/wiki/Linked_list">linked list</a>. Linked list – is a dynamic sequence of linked nodes where each node composed of a datum and a reference to the next node. Lists, stacks, queues and many other data types can be implemented using linked list. There are several types of linked lists:</p>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Linked_list#Singly_linked_list">singly linked list</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Linked_list#Doubly_linked_list">doubly linked list</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Linked_list#Circular_list">circular linked list</a></li>
+</ul>
+
+<p>In this post I will implement the most frequent type – singly linked list. Let’s start with the definition of node:</p>
+
+<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/node.js?footer=minimal">
+</script>
+
+<p>Usually linked list has following functions:</p>
+
+<ul>
+  <li>isEmpty() – to check whether the list is empty or not</li>
+  <li>length() – to get the number of nodes in the list</li>
+  <li>find() – to find existing node by value</li>
+  <li>addAfter(), addBefore() – to add new node after / before the specified node</li>
+  <li>
+    <p>remove() – to remove existing node
+In more advance cases linked list can also have functions:</p>
+  </li>
+  <li>addFirst(), addLast() - to add new node at given position</li>
+  <li>removeFirst(), removeLast() - to remove existing node at given position</li>
+  <li>reverse() – to reverse existing nodes</li>
+  <li>copy() – to create deep copy of the existing list</li>
+  <li>merge() – to merge given list with the current one</li>
+</ul>
+
+<p>Instead of the specific functions addFirst(), addLast(), removeFirst() and removeLast() I will implement more generic addFromStart(), addFromEnd(), removeFromStart() and removeFromEnd(), where one can specify the exact position a node has to be added or removed. Also it’s worth mentioning, that my implementation heavily relies on a notion of a <a href="https://en.wikipedia.org/wiki/Linked_list#Sentinel_nodes">dummy (or sentinel) node</a>.</p>
+
+<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/linkedList.js?footer=minimal">
+</script>
+
+
+  </article>
+
+  <div align="center">
+  	<a href="#">
+  	<i class="fa fa-arrow-circle-up fa-2x"></i>
+  	</a>
+  </div>
+
+</div>
+      </div>
+    </div>
+
+    <div class="footer" align="center">
+
+  Designed by <a href=http://diezcami.github.io target="_blank">Camille Diez</a><BR />
+  Powered by <a href=http://jekyllrb.com target="_blank">Jekyll</a>
+
+</div>
+
+
+  </body>
+
+</html>

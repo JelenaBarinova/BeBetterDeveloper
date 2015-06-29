@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Be a Better Developer</title>
+    <description>Practical notes on development by Sergey Barinov</description>
+    <link>http://jelenabarinova.github.io/BeBetterDeveloper/</link>
+    <atom:link href="http://jelenabarinova.github.io/BeBetterDeveloper/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 29 Jun 2015 16:13:34 -0700</pubDate>
+    <lastBuildDate>Mon, 29 Jun 2015 16:13:34 -0700</lastBuildDate>
+    <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Data Structure: Max Priority Queue</title>
+        <description>&lt;p&gt;Today I will implement another important abstract data type – &lt;a href=&quot;http://en.wikipedia.org/wiki/Priority_queue&quot;&gt;priority queue&lt;/a&gt;. Priority queues are used:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;in heap sort&lt;/li&gt;
+  &lt;li&gt;to track top N elements in a very long sequence&lt;/li&gt;
+  &lt;li&gt;to merge K ordered sequences and produce single ordered sequence&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Usually priority queues have following functions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;insert() – to add new item with a priority&lt;/li&gt;
+  &lt;li&gt;deleteMin() or deleteMax() – to remove an item with min/max priority&lt;/li&gt;
+  &lt;li&gt;findMin() or findMax() – to get an item with min/max priority&lt;/li&gt;
+  &lt;li&gt;length() – to get the number of items in the priority queue&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As a foundation I’ll use in the &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-binary-heap/&quot;&gt;last post&lt;/a&gt; described efficient data structure – binary heap (in fact, max-heap). Overall, priority queue can be seen as a generalization of &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-stack-array/&quot;&gt;stack&lt;/a&gt; and &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-queue/&quot;&gt;queue&lt;/a&gt; data structures. Stack can be implemented as a max priority queue where priority of each inserted element is monotonically increasing and queue – where priority of each inserted element is monotonically decreasing. &lt;/p&gt;
+
+&lt;p&gt;The implementation of max priority queue (&lt;a href=&quot;https://github.com/sergejusb/algorithms/blob/master/data-structures/maxPriorityQueue_tests.js&quot;&gt;tests&lt;/a&gt;) is almost identical to the max-heap implementation:&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/maxPriorityQueue.js?
+footer=minimal&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;Complexity&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;insert - O(logn)&lt;/li&gt;
+  &lt;li&gt;deleteMin/deleteMax - O(logn)&lt;/li&gt;
+  &lt;li&gt;findMin/findMax - O(1)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 15 Feb 2014 00:00:00 -0800</pubDate>
+        <link>http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-max-priority-queue.html</link>
+        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-max-priority-queue.html</guid>
+        
+        <category>Binary Heap</category>
+        
+        <category>Priority Queue</category>
+        
+        
+        <category>data structure</category>
+        
+      </item>
+    
+      <item>
+        <title>Data Structure: Binary Heap</title>
+        <description>&lt;p&gt;Today I will implement very efficient data structure – &lt;a href=&quot;http://en.wikipedia.org/wiki/Binary_heap&quot;&gt;binary heap&lt;/a&gt;. Binary heap – is an array-based &lt;a href=&quot;http://en.wikipedia.org/wiki/Binary_tree#Types_of_binary_trees&quot;&gt;complete binary tree&lt;/a&gt; (&lt;em&gt;binary tree in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible&lt;/em&gt;) which satisfies one of the following ordering properties:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;min-heap – the value of each node is not smaller than value of its parent with smallest element at the root;&lt;/li&gt;
+  &lt;li&gt;max-heap – the value of each node is not bigger than value of its parent with biggest element at the root
+Binary heap is a foundation for an abstract data type - &lt;a href=&quot;http://en.wikipedia.org/wiki/Priority_queue&quot;&gt;priority queue&lt;/a&gt;, wich I will cover in next post.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Due to the nature of binary heap (complete binary tree) it can be very efficiently implemented using &lt;a href=&quot;https://en.wikipedia.org/wiki/Dynamic_array&quot;&gt;dynamic array&lt;/a&gt;. Items in the array are usually stored starting from index 1, thus allowing very easy navigation through binary heap:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;for the item with index k its parent index is &lt;strong&gt;k &amp;gt;&amp;gt; 1&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;for the item with index k children indexes are &lt;strong&gt;k &amp;lt;&amp;lt; 1&lt;/strong&gt; and &lt;strong&gt;k &amp;lt;&amp;lt; 1 + 1&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Usually binary heaps have following functions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;insert() – to add new item&lt;/li&gt;
+  &lt;li&gt;delete() – to remove min or max item (depending on the ordering)&lt;/li&gt;
+  &lt;li&gt;length() – to get the number of items in binary heap&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To add new item:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;add the item to the bottom level of the binary heap (as the last possible item)&lt;/li&gt;
+  &lt;li&gt;compare added item with its parent&lt;/li&gt;
+  &lt;li&gt;if they are in correct order – break&lt;/li&gt;
+  &lt;li&gt;else – exchange items and repeat with the parent
+&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Heap_add_step1.svg/300px-Heap_add_step1.svg.png&quot; alt=&quot;&quot; /&gt;&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Heap_add_step2.svg/300px-Heap_add_step2.svg.png&quot; alt=&quot;&quot; /&gt;&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Heap_add_step3.svg/300px-Heap_add_step3.svg.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To delete maximum item (for max-heap) or minimum item (for min-heap):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;replace the root of the binary heap with the last item on the bottom level&lt;/li&gt;
+  &lt;li&gt;compare new root with the biggest (for max-heap) or  smallest (for min-heap) of children&lt;/li&gt;
+  &lt;li&gt;if they are in correct order – break&lt;/li&gt;
+  &lt;li&gt;else – exchange items and repeat with the selected child
+&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Heap_delete_step0.svg/300px-Heap_delete_step0.svg.png&quot; alt=&quot;&quot; /&gt;&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Heap_remove_step1.svg/300px-Heap_remove_step1.svg.png&quot; alt=&quot;&quot; /&gt;&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Heap_remove_step2.svg/300px-Heap_remove_step2.svg.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Bellow you can find possible implementation of the binary heap (&lt;a href=&quot;https://github.com/sergejusb/algorithms/blob/master/data-structures/binaryHeap_tests.js&quot;&gt;tests&lt;/a&gt;):&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/binaryHeap.js?
+footer=minimal&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;Complexity&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;insert - O(logn)&lt;/li&gt;
+  &lt;li&gt;delete - O(logn)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 06 Jan 2014 00:00:00 -0800</pubDate>
+        <link>http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-binary-heap.html</link>
+        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-binary-heap.html</guid>
+        
+        <category>Binary Heap</category>
+        
+        <category>Dynamic Array</category>
+        
+        
+        <category>data structure</category>
+        
+      </item>
+    
+      <item>
+        <title>Data Structure: Stack (dynamic array based)</title>
+        <description>&lt;p&gt;Previously I have already &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-stack&quot;&gt;implemented&lt;/a&gt; linked list based abstract data type Stack. As demanded by a friend of mine &lt;a href=&quot;https://twitter.com/rstonkus&quot;&gt;Romualdas&lt;/a&gt;, in this post I will implement dynamic array based Stack. According to Wikipedia, &lt;a href=&quot;https://en.wikipedia.org/wiki/Dynamic_array&quot;&gt;dynamic array&lt;/a&gt; is a random access, variable-size list data structure that allows elements to be added or removed. It is based on the idea of fixed array that can be extended (usually doubled) when the capacity is reached while storing the logical size or number of items in the array.&lt;/p&gt;
+
+&lt;p&gt;Dynamic array based implementation of stack has several advantages over linked list based:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;there is no need to store reference to the next element so memory usage is smaller&lt;/li&gt;
+  &lt;li&gt;memory is allocated / deallocated in chunks so memory pressure is lower&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On the other hand, the cost of adding new items is higher for dynamic array based implementation due to array resizing. The good news is – it’s still constant time.&lt;/p&gt;
+
+&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/stack_array.js?footer=minimal&quot;&gt;
+&lt;/script&gt;
+
+&lt;p&gt;As you can see, when pushing we create new double size array if the original one is full. The really interesting part here is function pop: we are halving the size of array only when it’s ¼ full. Why not ½ full? Imagine sequence of actions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;create new stack (array capacity – 1, items – 0)&lt;/li&gt;
+  &lt;li&gt;push item (array capacity – 1, items – 1)&lt;/li&gt;
+  &lt;li&gt;push item (array capacity – 2, items – 2) ← doubled&lt;/li&gt;
+  &lt;li&gt;pop item (array capacity – 1, items – 1) ← halved&lt;/li&gt;
+  &lt;li&gt;push item (array capacity – 2, items – 2) ← doubled&lt;/li&gt;
+  &lt;li&gt;pop item (array capacity – 1, items – 1) ← halved&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;By triggering shrinking when an array is ¼ full we amortize the cost of working at the boundaries.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 27 Jun 2013 06:14:36 -0700</pubDate>
+        <link>http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-stack-array.html</link>
+        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-stack-array.html</guid>
+        
+        <category>Dynamic Array</category>
+        
+        <category>Stack</category>
+        
+        
+        <category>data structure</category>
+        
+      </item>
+    
+      <item>
+        <title>Data Structure: Queue</title>
+        <description>&lt;p&gt;In this post I will implement another very popular abstract data type – &lt;a href=&quot;http://en.wikipedia.org/wiki/Queue_(abstract_data_type)&quot;&gt;Queue&lt;/a&gt;. Queue is a collection where the first element added to the structure must be the first one to be removed (or &lt;a href=&quot;https://en.wikipedia.org/wiki/FIFO&quot;&gt;FIFO, First-In First-Out&lt;/a&gt;, for short). It is widely used in hardware and software for buffering and &lt;a href=&quot;http://en.wikipedia.org/wiki/Priority_queue&quot;&gt;prioritization&lt;/a&gt;. Typically queue is implemented using (doubly) &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-linked-list/&quot;&gt;linked list&lt;/a&gt; or in some cases using dynamic arrays.&lt;/p&gt;
+
+&lt;p&gt;Usually linked lists have following functions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;enqueue() – to add new element&lt;/li&gt;
+  &lt;li&gt;dequeue() – to remove last element and return its value&lt;/li&gt;
+  &lt;li&gt;peak() – to return value of the last element without removing it&lt;/li&gt;
+  &lt;li&gt;isEmpty() - to check whether the queue is empty or not&lt;/li&gt;
+  &lt;li&gt;length() – to get the number of items in the queue&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Based on the previously &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-linked-list/&quot;&gt;described&lt;/a&gt; linked list, implementation of the queue is rather trivial:&lt;/p&gt;
+
+&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/queue.js?footer=minimal&quot;&gt;
+&lt;/script&gt;
+
+</description>
+        <pubDate>Thu, 20 Jun 2013 00:00:00 -0700</pubDate>
+        <link>http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-queue.html</link>
+        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-queue.html</guid>
+        
+        <category>Linked List</category>
+        
+        <category>Queue</category>
+        
+        
+        <category>data structure</category>
+        
+      </item>
+    
+      <item>
+        <title>Data Structure: Stack</title>
+        <description>&lt;p&gt;In this post I will implement very popular abstract data type – &lt;a href=&quot;http://en.wikipedia.org/wiki/Stack_(abstract_data_type)&quot;&gt;Stack&lt;/a&gt;. Stack is a collection where the last element added to the structure must be the first one to be removed (or &lt;a href=&quot;http://en.wikipedia.org/wiki/LIFO_(computing)&quot;&gt;LIFO, Last-In First-Out&lt;/a&gt;, for short). It is widely used in hardware including CPU registers. In software it is used for memory allocation, to track active sub-routines (&lt;a href=&quot;http://en.wikipedia.org/wiki/Call_stack&quot;&gt;call stack&lt;/a&gt;) or to implement parsers and various higher-level algorithms. Typically stack is implemented using &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-linked-list/&quot;&gt;linked list&lt;/a&gt; or in some cases using dynamic arrays.&lt;/p&gt;
+
+&lt;p&gt;Usually stack has following functions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;push() – to add new element&lt;/li&gt;
+  &lt;li&gt;pop() – to remove first element and return its value&lt;/li&gt;
+  &lt;li&gt;peek() – to return value of the first element without removing it&lt;/li&gt;
+  &lt;li&gt;isEmpty() - to check whether the stack is empty or not&lt;/li&gt;
+  &lt;li&gt;length() - to get the number of items in the stack&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Based on the previously &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-linked-list/&quot;&gt;described&lt;/a&gt; linked list, implementation of the stack is rather trivial:&lt;/p&gt;
+
+&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/stack.js?footer=minimal&quot;&gt;
+&lt;/script&gt;
+
+</description>
+        <pubDate>Sun, 16 Jun 2013 01:00:09 -0700</pubDate>
+        <link>http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-stack.html</link>
+        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-stack.html</guid>
+        
+        <category>Linked List</category>
+        
+        <category>Stack</category>
+        
+        
+        <category>data structure</category>
+        
+      </item>
+    
+      <item>
+        <title>Data Structure: Linked List</title>
+        <description>&lt;p&gt;In this post I will implement one of the most fundamental data structure in computer science – &lt;a href=&quot;https://en.wikipedia.org/wiki/Linked_list&quot;&gt;linked list&lt;/a&gt;. Linked list – is a dynamic sequence of linked nodes where each node composed of a datum and a reference to the next node. Lists, stacks, queues and many other data types can be implemented using linked list. There are several types of linked lists:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Linked_list#Singly_linked_list&quot;&gt;singly linked list&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Linked_list#Doubly_linked_list&quot;&gt;doubly linked list&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Linked_list#Circular_list&quot;&gt;circular linked list&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this post I will implement the most frequent type – singly linked list. Let’s start with the definition of node:&lt;/p&gt;
+
+&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/node.js?footer=minimal&quot;&gt;
+&lt;/script&gt;
+
+&lt;p&gt;Usually linked list has following functions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;isEmpty() – to check whether the list is empty or not&lt;/li&gt;
+  &lt;li&gt;length() – to get the number of nodes in the list&lt;/li&gt;
+  &lt;li&gt;find() – to find existing node by value&lt;/li&gt;
+  &lt;li&gt;addAfter(), addBefore() – to add new node after / before the specified node&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;remove() – to remove existing node
+In more advance cases linked list can also have functions:&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;addFirst(), addLast() - to add new node at given position&lt;/li&gt;
+  &lt;li&gt;removeFirst(), removeLast() - to remove existing node at given position&lt;/li&gt;
+  &lt;li&gt;reverse() – to reverse existing nodes&lt;/li&gt;
+  &lt;li&gt;copy() – to create deep copy of the existing list&lt;/li&gt;
+  &lt;li&gt;merge() – to merge given list with the current one&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Instead of the specific functions addFirst(), addLast(), removeFirst() and removeLast() I will implement more generic addFromStart(), addFromEnd(), removeFromStart() and removeFromEnd(), where one can specify the exact position a node has to be added or removed. Also it’s worth mentioning, that my implementation heavily relies on a notion of a &lt;a href=&quot;https://en.wikipedia.org/wiki/Linked_list#Sentinel_nodes&quot;&gt;dummy (or sentinel) node&lt;/a&gt;.&lt;/p&gt;
+
+&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/linkedList.js?footer=minimal&quot;&gt;
+&lt;/script&gt;
+
+</description>
+        <pubDate>Thu, 13 Jun 2013 00:00:00 -0700</pubDate>
+        <link>http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-linked-list.html</link>
+        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-linked-list.html</guid>
+        
+        <category>Linked List</category>
+        
+        
+        <category>data structure</category>
+        
+      </item>
+    
+      <item>
+        <title>Algorithm: Pow(n, exp)</title>
+        <description>&lt;p&gt;In this post I will implement basic algorithm to raise floating point number (also known as base) to integer power (also known as exponent). In academic world this process usually referred as &lt;a href=&quot;http://en.wikipedia.org/wiki/Exponentiation&quot;&gt;Exponentiation&lt;/a&gt;. The most naïve implementation is based on the definition of x&lt;sup&gt;y&lt;/sup&gt;, i.e. repetitive y-time multiplication of x.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Complexity&lt;/strong&gt;: O(n).&lt;/p&gt;
+
+&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/math/pow_naive.js?footer=minimal&quot;&gt;
+&lt;/script&gt;
+
+&lt;p&gt;This implementation can be optimized by using following exponentiation properties:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;b&lt;sup&gt;m&lt;/sup&gt; = b · b&lt;sup&gt;m-1&lt;/sup&gt;&lt;/li&gt;
+  &lt;li&gt;b&lt;sup&gt;m+n&lt;/sup&gt; = b&lt;sup&gt;m&lt;/sup&gt; · b&lt;sup&gt;n&lt;/sup&gt;&lt;/li&gt;
+  &lt;li&gt;b&lt;sup&gt;m·n&lt;/sup&gt; = (b&lt;sup&gt;m&lt;/sup&gt;)&lt;sup&gt;n&lt;/sup&gt;
+In other words, given 2&lt;sup&gt;7&lt;/sup&gt; we can calculate the result as follows:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;2&lt;sup&gt;7&lt;/sup&gt; = 2 · 2&lt;sup&gt;6&lt;/sup&gt; = 2 · 2&lt;sup&gt;2+4&lt;/sup&gt; = 2 · 2&lt;sup&gt;2&lt;/sup&gt; · 2&lt;sup&gt;4&lt;/sup&gt; = 2 · 2&lt;sup&gt;2&lt;/sup&gt; · 2&lt;sup&gt;2·2&lt;/sup&gt; = 2 · 2&lt;sup&gt;2&lt;/sup&gt; · (2&lt;sup&gt;2&lt;/sup&gt;)&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can see, instead of 7 iterations now we have only 3.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(log n).&lt;/p&gt;
+
+&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/math/pow.js?footer=minimal&quot;&gt;
+&lt;/script&gt;
+
+</description>
+        <pubDate>Sun, 24 Mar 2013 00:00:00 -0700</pubDate>
+        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/math/algorithm-pow.html</link>
+        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/math/algorithm-pow.html</guid>
+        
+        <category>Exponent</category>
+        
+        <category>Pow</category>
+        
+        
+        <category>algorithms</category>
+        
+        <category>math</category>
+        
+      </item>
+    
+      <item>
+        <title>Algorithm: isPrimeNumber(n)</title>
+        <description>&lt;p&gt;In this post I will implement basic algorithm to detect whether a given number is a prime. In more academic terms – check a number for primality. According to &lt;a href=&quot;http://en.wikipedia.org/wiki/Prime_number&quot;&gt;Wikipedia&lt;/a&gt; - &lt;em&gt;a prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Naïve implementation will test whether n is a multiple of any number between 2 and n-1. Slightly more optimized version will minimize the test range up-to √n (i.e. between 2 and √n). In this post I’ll use test range between 2 and ⌊n/2⌋ due to the fact calculation of √n itself is more complex than single right shift operation.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n/2) or just O(n).&lt;/p&gt;
+
+&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/math/isPrimeNumber.js?footer=minimal&quot;&gt;
+&lt;/script&gt;
+
+</description>
+        <pubDate>Sun, 24 Mar 2013 00:00:00 -0700</pubDate>
+        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/math/algorithm-isprimenumber.html</link>
+        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/math/algorithm-isprimenumber.html</guid>
+        
+        <category>Prime Number</category>
+        
+        
+        <category>algorithms</category>
+        
+        <category>math</category>
+        
+      </item>
+    
+  </channel>
+</rss>

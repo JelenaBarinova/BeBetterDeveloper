@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Data Structure: Binary Heap</title>
+  <meta name="description" content="Today I will implement very efficient data structure – binary heap. Binary heap – is an array-based complete binary tree (binary tree in which every level, e...">
+
+  <link rel="stylesheet" href="/BeBetterDeveloper/css/main.css">
+  <link rel="canonical" href="http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-binary-heap.html">
+  <link rel="alternate" type="application/rss+xml" title="Be a Better Developer" href="http://jelenabarinova.github.io/BeBetterDeveloper/feed.xml" />
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700' rel='stylesheet' type='text/css'>
+</head>
+
+
+  <body>
+
+    <div class="site-header">
+
+    <nav class="site-nav">
+        <a class="page-link" href="/BeBetterDeveloper/" >Home</a>
+        
+          
+          <a class="page-link" href="/BeBetterDeveloper/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+    </nav>
+
+    <h1>
+     <span>
+      <a class="site-title" href="/BeBetterDeveloper/">Be a Better Developer</a>
+     </span>
+    </h1>
+
+
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+     <h1 class="post-title">Data Structure: Binary Heap</h1>
+     <p class="post-meta">Posted on Jan 6, 2014</p>
+  </header>
+
+  <article class="post-content">
+    <p>Today I will implement very efficient data structure – <a href="http://en.wikipedia.org/wiki/Binary_heap">binary heap</a>. Binary heap – is an array-based <a href="http://en.wikipedia.org/wiki/Binary_tree#Types_of_binary_trees">complete binary tree</a> (<em>binary tree in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible</em>) which satisfies one of the following ordering properties:</p>
+
+<ul>
+  <li>min-heap – the value of each node is not smaller than value of its parent with smallest element at the root;</li>
+  <li>max-heap – the value of each node is not bigger than value of its parent with biggest element at the root
+Binary heap is a foundation for an abstract data type - <a href="http://en.wikipedia.org/wiki/Priority_queue">priority queue</a>, wich I will cover in next post.</li>
+</ul>
+
+<p>Due to the nature of binary heap (complete binary tree) it can be very efficiently implemented using <a href="https://en.wikipedia.org/wiki/Dynamic_array">dynamic array</a>. Items in the array are usually stored starting from index 1, thus allowing very easy navigation through binary heap:</p>
+
+<ul>
+  <li>for the item with index k its parent index is <strong>k &gt;&gt; 1</strong></li>
+  <li>for the item with index k children indexes are <strong>k &lt;&lt; 1</strong> and <strong>k &lt;&lt; 1 + 1</strong></li>
+</ul>
+
+<p>Usually binary heaps have following functions:</p>
+
+<ul>
+  <li>insert() – to add new item</li>
+  <li>delete() – to remove min or max item (depending on the ordering)</li>
+  <li>length() – to get the number of items in binary heap</li>
+</ul>
+
+<p>To add new item:</p>
+
+<ul>
+  <li>add the item to the bottom level of the binary heap (as the last possible item)</li>
+  <li>compare added item with its parent</li>
+  <li>if they are in correct order – break</li>
+  <li>else – exchange items and repeat with the parent
+<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Heap_add_step1.svg/300px-Heap_add_step1.svg.png" alt="" /><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Heap_add_step2.svg/300px-Heap_add_step2.svg.png" alt="" /><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Heap_add_step3.svg/300px-Heap_add_step3.svg.png" alt="" /></li>
+</ul>
+
+<p>To delete maximum item (for max-heap) or minimum item (for min-heap):</p>
+
+<ul>
+  <li>replace the root of the binary heap with the last item on the bottom level</li>
+  <li>compare new root with the biggest (for max-heap) or  smallest (for min-heap) of children</li>
+  <li>if they are in correct order – break</li>
+  <li>else – exchange items and repeat with the selected child
+<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Heap_delete_step0.svg/300px-Heap_delete_step0.svg.png" alt="" /><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Heap_remove_step1.svg/300px-Heap_remove_step1.svg.png" alt="" /><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Heap_remove_step2.svg/300px-Heap_remove_step2.svg.png" alt="" /></li>
+</ul>
+
+<p>Bellow you can find possible implementation of the binary heap (<a href="https://github.com/sergejusb/algorithms/blob/master/data-structures/binaryHeap_tests.js">tests</a>):</p>
+
+<script type="text/javascript" src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/binaryHeap.js?
+footer=minimal"></script>
+
+<p><strong>Complexity</strong>:</p>
+
+<ul>
+  <li>insert - O(logn)</li>
+  <li>delete - O(logn)</li>
+</ul>
+
+  </article>
+
+  <div align="center">
+  	<a href="#">
+  	<i class="fa fa-arrow-circle-up fa-2x"></i>
+  	</a>
+  </div>
+
+</div>
+      </div>
+    </div>
+
+    <div class="footer" align="center">
+
+  Designed by <a href=http://diezcami.github.io target="_blank">Camille Diez</a><BR />
+  Powered by <a href=http://jekyllrb.com target="_blank">Jekyll</a>
+
+</div>
+
+
+  </body>
+
+</html>

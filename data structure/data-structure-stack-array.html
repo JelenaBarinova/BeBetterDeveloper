@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Data Structure: Stack (dynamic array based)</title>
+  <meta name="description" content="Previously I have already implemented linked list based abstract data type Stack. As demanded by a friend of mine Romualdas, in this post I will implement dy...">
+
+  <link rel="stylesheet" href="/BeBetterDeveloper/css/main.css">
+  <link rel="canonical" href="http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-stack-array.html">
+  <link rel="alternate" type="application/rss+xml" title="Be a Better Developer" href="http://jelenabarinova.github.io/BeBetterDeveloper/feed.xml" />
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700' rel='stylesheet' type='text/css'>
+</head>
+
+
+  <body>
+
+    <div class="site-header">
+
+    <nav class="site-nav">
+        <a class="page-link" href="/BeBetterDeveloper/" >Home</a>
+        
+          
+          <a class="page-link" href="/BeBetterDeveloper/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+    </nav>
+
+    <h1>
+     <span>
+      <a class="site-title" href="/BeBetterDeveloper/">Be a Better Developer</a>
+     </span>
+    </h1>
+
+
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+     <h1 class="post-title">Data Structure: Stack (dynamic array based)</h1>
+     <p class="post-meta">Posted on Jun 27, 2013</p>
+  </header>
+
+  <article class="post-content">
+    <p>Previously I have already <a href="http://www.bebetterdeveloper.com/data-structure-stack">implemented</a> linked list based abstract data type Stack. As demanded by a friend of mine <a href="https://twitter.com/rstonkus">Romualdas</a>, in this post I will implement dynamic array based Stack. According to Wikipedia, <a href="https://en.wikipedia.org/wiki/Dynamic_array">dynamic array</a> is a random access, variable-size list data structure that allows elements to be added or removed. It is based on the idea of fixed array that can be extended (usually doubled) when the capacity is reached while storing the logical size or number of items in the array.</p>
+
+<p>Dynamic array based implementation of stack has several advantages over linked list based:</p>
+
+<ul>
+  <li>there is no need to store reference to the next element so memory usage is smaller</li>
+  <li>memory is allocated / deallocated in chunks so memory pressure is lower</li>
+</ul>
+
+<p>On the other hand, the cost of adding new items is higher for dynamic array based implementation due to array resizing. The good news is – it’s still constant time.</p>
+
+<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/stack_array.js?footer=minimal">
+</script>
+
+<p>As you can see, when pushing we create new double size array if the original one is full. The really interesting part here is function pop: we are halving the size of array only when it’s ¼ full. Why not ½ full? Imagine sequence of actions:</p>
+
+<ul>
+  <li>create new stack (array capacity – 1, items – 0)</li>
+  <li>push item (array capacity – 1, items – 1)</li>
+  <li>push item (array capacity – 2, items – 2) ← doubled</li>
+  <li>pop item (array capacity – 1, items – 1) ← halved</li>
+  <li>push item (array capacity – 2, items – 2) ← doubled</li>
+  <li>pop item (array capacity – 1, items – 1) ← halved</li>
+</ul>
+
+<p>By triggering shrinking when an array is ¼ full we amortize the cost of working at the boundaries.</p>
+
+  </article>
+
+  <div align="center">
+  	<a href="#">
+  	<i class="fa fa-arrow-circle-up fa-2x"></i>
+  	</a>
+  </div>
+
+</div>
+      </div>
+    </div>
+
+    <div class="footer" align="center">
+
+  Designed by <a href=http://diezcami.github.io target="_blank">Camille Diez</a><BR />
+  Powered by <a href=http://jekyllrb.com target="_blank">Jekyll</a>
+
+</div>
+
+
+  </body>
+
+</html>

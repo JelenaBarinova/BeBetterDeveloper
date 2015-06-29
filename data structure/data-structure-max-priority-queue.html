@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Data Structure: Max Priority Queue</title>
+  <meta name="description" content="Today I will implement another important abstract data type – priority queue. Priority queues are used:">
+
+  <link rel="stylesheet" href="/BeBetterDeveloper/css/main.css">
+  <link rel="canonical" href="http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-max-priority-queue.html">
+  <link rel="alternate" type="application/rss+xml" title="Be a Better Developer" href="http://jelenabarinova.github.io/BeBetterDeveloper/feed.xml" />
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700' rel='stylesheet' type='text/css'>
+</head>
+
+
+  <body>
+
+    <div class="site-header">
+
+    <nav class="site-nav">
+        <a class="page-link" href="/BeBetterDeveloper/" >Home</a>
+        
+          
+          <a class="page-link" href="/BeBetterDeveloper/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+    </nav>
+
+    <h1>
+     <span>
+      <a class="site-title" href="/BeBetterDeveloper/">Be a Better Developer</a>
+     </span>
+    </h1>
+
+
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+     <h1 class="post-title">Data Structure: Max Priority Queue</h1>
+     <p class="post-meta">Posted on Feb 15, 2014</p>
+  </header>
+
+  <article class="post-content">
+    <p>Today I will implement another important abstract data type – <a href="http://en.wikipedia.org/wiki/Priority_queue">priority queue</a>. Priority queues are used:</p>
+
+<ul>
+  <li>in heap sort</li>
+  <li>to track top N elements in a very long sequence</li>
+  <li>to merge K ordered sequences and produce single ordered sequence</li>
+</ul>
+
+<p>Usually priority queues have following functions:</p>
+
+<ul>
+  <li>insert() – to add new item with a priority</li>
+  <li>deleteMin() or deleteMax() – to remove an item with min/max priority</li>
+  <li>findMin() or findMax() – to get an item with min/max priority</li>
+  <li>length() – to get the number of items in the priority queue</li>
+</ul>
+
+<p>As a foundation I’ll use in the <a href="http://www.bebetterdeveloper.com/data-structure-binary-heap/">last post</a> described efficient data structure – binary heap (in fact, max-heap). Overall, priority queue can be seen as a generalization of <a href="http://www.bebetterdeveloper.com/data-structure-stack-array/">stack</a> and <a href="http://www.bebetterdeveloper.com/data-structure-queue/">queue</a> data structures. Stack can be implemented as a max priority queue where priority of each inserted element is monotonically increasing and queue – where priority of each inserted element is monotonically decreasing. </p>
+
+<p>The implementation of max priority queue (<a href="https://github.com/sergejusb/algorithms/blob/master/data-structures/maxPriorityQueue_tests.js">tests</a>) is almost identical to the max-heap implementation:</p>
+
+<script type="text/javascript" src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/maxPriorityQueue.js?
+footer=minimal"></script>
+
+<p><strong>Complexity</strong>:</p>
+
+<ul>
+  <li>insert - O(logn)</li>
+  <li>deleteMin/deleteMax - O(logn)</li>
+  <li>findMin/findMax - O(1)</li>
+</ul>
+
+  </article>
+
+  <div align="center">
+  	<a href="#">
+  	<i class="fa fa-arrow-circle-up fa-2x"></i>
+  	</a>
+  </div>
+
+</div>
+      </div>
+    </div>
+
+    <div class="footer" align="center">
+
+  Designed by <a href=http://diezcami.github.io target="_blank">Camille Diez</a><BR />
+  Powered by <a href=http://jekyllrb.com target="_blank">Jekyll</a>
+
+</div>
+
+
+  </body>
+
+</html>
