@@ -4,8 +4,9 @@ email:
 description: "Practical notes on development by Sergey Barinov"
 baseurl: "/BeBetterDeveloper"
 url: "http://jelenabarinova.github.io" # the base hostname & protocol for your site
-twitter_username: username
-github_username: username
+destination: ../gh-pages/
+twitter_username: sergejusb
+github_username: sergejusb
 
 # Build settings
 markdown: kramdown

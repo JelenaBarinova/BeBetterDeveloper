@@ -1,3 +1,5 @@
+---
+layout: post
 title: "Sorting: Bubble Sort"
 date: 2013-08-04 18:25:31
 tags:

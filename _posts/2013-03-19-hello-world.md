@@ -1,5 +1,7 @@
+---
+layout: post
 title: "Hello world"
-date: 2013-03-19 21:42:11
+date: 2013-03-19
 tags:
 id: 16
 categories:

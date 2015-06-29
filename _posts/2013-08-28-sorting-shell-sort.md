@@ -1,3 +1,5 @@
+---
+layout: post
 title: "Sorting: Shell Sort"
 date: 2013-08-28 22:09:55
 tags: 

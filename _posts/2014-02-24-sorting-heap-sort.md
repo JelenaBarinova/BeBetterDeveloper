@@ -1,3 +1,5 @@
+---
+layout: post
 title: "Sorting: Heap Sort"
 date: 2014-02-24 08:00:26
 tags:

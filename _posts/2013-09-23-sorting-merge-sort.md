@@ -1,3 +1,5 @@
+---
+layout: post
 title: "Sorting: Merge Sort"
 date: 2013-09-23 22:03:20
 tags:

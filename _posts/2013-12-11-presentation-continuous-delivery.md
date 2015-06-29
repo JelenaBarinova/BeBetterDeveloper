@@ -1,3 +1,5 @@
+---
+layout: post
 title: "Presentation: Continuous Happiness by Continuous Delivery"
 date: 2013-12-11 21:58:42
 tags:

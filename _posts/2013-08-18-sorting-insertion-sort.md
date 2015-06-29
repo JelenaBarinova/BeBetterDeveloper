@@ -1,3 +1,5 @@
+---
+layout: post
 title: "Sorting: Insertion Sort"
 date: 2013-08-18 20:00:36
 tags:

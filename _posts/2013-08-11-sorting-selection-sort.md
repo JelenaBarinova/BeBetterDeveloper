@@ -1,3 +1,5 @@
+---
+layout: post
 title: "Sorting: Selection Sort"
 date: 2013-08-11 17:14:51
 tags:

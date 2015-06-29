@@ -1,3 +1,5 @@
+---
+layout: post
 title: "Sorting: Quick Sort"
 date: 2013-10-13 20:16:55
 tags:
