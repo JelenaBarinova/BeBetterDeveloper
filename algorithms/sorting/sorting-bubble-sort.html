@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Sorting: Bubble Sort</title>
+  <meta name="description" content="In this post I will implement very basic sorting algorithm – Bubble Sort. The idea of the algorithm is very trivial:">
+
+  <link rel="stylesheet" href="/BeBetterDeveloper/css/main.css">
+  <link rel="canonical" href="http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-bubble-sort.html">
+  <link rel="alternate" type="application/rss+xml" title="Be a Better Developer" href="http://jelenabarinova.github.io/BeBetterDeveloper/feed.xml" />
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700' rel='stylesheet' type='text/css'>
+</head>
+
+
+  <body>
+
+    <div class="site-header">
+
+    <nav class="site-nav">
+        <a class="page-link" href="/BeBetterDeveloper/" >Home</a>
+        
+          
+          <a class="page-link" href="/BeBetterDeveloper/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+    </nav>
+
+    <h1>
+     <span>
+      <a class="site-title" href="/BeBetterDeveloper/">Be a Better Developer</a>
+     </span>
+    </h1>
+
+
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+     <h1 class="post-title">Sorting: Bubble Sort</h1>
+     <p class="post-meta">Posted by <em>Sergey Barinov</em> on Aug 4, 2013</p>
+  </header>
+
+  <article class="post-content">
+    <p>In this post I will implement very basic sorting algorithm – <a href="http://en.wikipedia.org/wiki/Bubble_sort">Bubble Sort</a>. The idea of the algorithm is very trivial:</p>
+
+<ul>
+  <li>starting from the beginning of the list compare every adjacent pair</li>
+  <li>swap their position if they are not in the right order</li>
+  <li>after each iteration the last element is the biggest in the list</li>
+  <li>after each iteration one less element is needed to be compared</li>
+  <li>continue until there are no more elements left to be compared</li>
+</ul>
+
+<p>We can visualize bubble sort algorithm by sorting following list [5 1 4 2 8]. I’ll use colors to specify <span style="color: #ff0000;">current adjacent pair</span> and <span style="color: #99cc00;">already sorted elements</span>.</p>
+
+<p>Iteration #1 : [5 1 4 2 8<span style="color: #99cc00;">]</span>
+[<span style="color: #ff0000;">5 1</span> 4 2 8] → [<span style="color: #ff0000;">1 5</span> 4 2 8<span style="color: #99cc00;">]</span>
+[1 <span style="color: #ff0000;">5 4</span> 2 8] → [1 <span style="color: #ff0000;">4 5</span> 2 8<span style="color: #99cc00;">]</span>
+[1 4 <span style="color: #ff0000;">5 2</span> 8] → [1 4 <span style="color: #ff0000;">2 5</span> 8<span style="color: #99cc00;">]</span>
+[1 4 2 <span style="color: #ff0000;">5 8</span>] → [1 4 2 <span style="color: #ff0000;">5 8</span><span style="color: #99cc00;">]</span></p>
+
+<p>Iteration #2 : [1 4 2 5 <span style="color: #99cc00;">8</span>]
+[<span style="color: #ff0000;">1 4</span> 2 5 <span style="color: #99cc00;">8</span>] → [<span style="color: #ff0000;">1 4</span> 2 5 <span style="color: #99cc00;">8</span>]
+[1 <span style="color: #ff0000;">4 2</span> 5 <span style="color: #99cc00;">8</span>] → [1 <span style="color: #ff0000;">2 4</span> 5 <span style="color: #99cc00;">8</span>]
+[1 2 <span style="color: #ff0000;">4 5</span> <span style="color: #99cc00;">8</span>] → [1 2 <span style="color: #ff0000;">4 5</span> <span style="color: #99cc00;">8</span>]</p>
+
+<p>Iteration #3 : [1 2 4 <span style="color: #99cc00;">5 8</span>]
+[<span style="color: #ff0000;">1 2</span> 4 <span style="color: #99cc00;">5 8</span>] → [<span style="color: #ff0000;">1 2</span> 4 <span style="color: #99cc00;">5 8</span>]
+[1 <span style="color: #ff0000;">2 4</span> <span style="color: #99cc00;">5 8</span>] → [1 <span style="color: #ff0000;">2 4</span> <span style="color: #99cc00;">5 8</span>]</p>
+
+<p>Iteration #4 : [1 2 <span style="color: #99cc00;">4 5 8</span>]
+[<span style="color: #ff0000;">1 2</span> 4 5 8] → [<span style="color: #ff0000;">1 2</span> 4 5 8]</p>
+
+<p>Iteration #5 : [1 <span style="color: #99cc00;">2 4 5 8</span>]</p>
+
+<p>Implementation of the bubble sort is quit simple:</p>
+
+<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/sorting/bubbleSort.js?footer=minimal">
+</script>
+
+<p>As you can see we have two loops: outer and inner. Outer loop is executed for each element (n times) and inner loop is executed for n/2 elements on average. As a result we have O(n<sup>2</sup>/2) or just O(n<sup>2</sup>) complexity.</p>
+
+<p><strong>Complexity:</strong> O(n<sup>2</sup>).</p>
+
+  </article>
+
+  <div align="center">
+  	<a href="#">
+  	<i class="fa fa-arrow-circle-up fa-2x"></i>
+  	</a>
+  </div>
+
+</div>
+      </div>
+    </div>
+
+    <div class="footer" align="center">
+<div class="container">
+                          <a href="/BeBetterDeveloper/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                                       
+                    
+                        <a href="https://github.com/sergejusb">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    
+                    
+                        <a href="https://twitter.com/sergejusb">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    
+                <p class="copyright text-muted">Copyright &copy; Be a Better Developer 2015</p>
+            </div>
+        </div>
+    </div>
+  
+</div>
+<!-- jQuery -->
+<script src="/BeBetterDeveloper/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/BeBetterDeveloper/js/bootstrap.min.js "></script>
+
+
+
+  </body>
+
+</html>

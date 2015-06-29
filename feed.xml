@@ -5,9 +5,241 @@
     <description>Practical notes on development by Sergey Barinov</description>
     <link>http://jelenabarinova.github.io/BeBetterDeveloper/</link>
     <atom:link href="http://jelenabarinova.github.io/BeBetterDeveloper/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 29 Jun 2015 16:13:34 -0700</pubDate>
-    <lastBuildDate>Mon, 29 Jun 2015 16:13:34 -0700</lastBuildDate>
+    <pubDate>Mon, 29 Jun 2015 16:41:30 -0700</pubDate>
+    <lastBuildDate>Mon, 29 Jun 2015 16:41:30 -0700</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Sorting: Heap Sort</title>
+        <description>&lt;p&gt;I have already &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-max-priority-queue/&quot;&gt;demonstrated&lt;/a&gt; one of the binary heap usage scenarios – priority queue. Today I want to show another binary heap usage example – heap sort. The algorithm consist of two steps:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;on the given set of numbers ensure max-heap invariant (&lt;em&gt;the value of each node is not bigger than value of its parent with biggest element at the root&lt;/em&gt;)&lt;/li&gt;
+  &lt;li&gt;while heap is not empty remove first (max) item from the max-heap&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The first part is almost identical to the way we &lt;a href=&quot;https://github.com/sergejusb/algorithms/blob/master/data-structures/binaryHeap.js#L20&quot;&gt;ensured&lt;/a&gt; binary heap invariant during delete operation. In order to make second step space efficient, we need do following things:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;swap first (max) item with the last one in the max-heap&lt;/li&gt;
+  &lt;li&gt;decrease size of the max-heap by 1&lt;/li&gt;
+  &lt;li&gt;ensure max-heap invariant starting from the first item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s sort items [3 4 1 3 5 1 2]. As always I’ll use collors to specify &lt;span style=&quot;color: #99cc00;&quot;&gt;parent&lt;/span&gt;, &lt;span style=&quot;color: #0000ff;&quot;&gt;child&lt;/span&gt; or items to be &lt;span style=&quot;color: #ff0000;&quot;&gt;swapped&lt;/span&gt;:&lt;/p&gt;
+
+&lt;p&gt;Step #1&lt;/p&gt;
+
+&lt;p&gt;The binary tree constructed from the given items does not conform max-heap invariant:&lt;/p&gt;
+
+&lt;pre&gt;     3
+   4   1
+  3 5 1 2&lt;/pre&gt;
+
+&lt;p&gt;To ensure max-heap invariant for the given set we need to take each node in the tree (except leafs) and recursively ensure it is bigger than any of the child nodes. As a reminder, our binary heap stores items starting from index 1, so we need to temporarily add null item at the begining: [null 3 4 1 3 5 1 2]&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null 3 4 &lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; &lt;/td&gt;
+      &lt;td&gt;3 5 &lt;span style=&quot;color: #0000ff;&quot;&gt;1 2&lt;/span&gt;]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null 3 4 &lt;span style=&quot;color: #99cc00;&quot;&gt;2&lt;/span&gt; &lt;/td&gt;
+      &lt;td&gt;3 5 &lt;span style=&quot;color: #0000ff;&quot;&gt;1 1&lt;/span&gt;]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null 3 &lt;span style=&quot;color: #99cc00;&quot;&gt;4&lt;/span&gt; 2&lt;/td&gt;
+      &lt;td&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;3 5&lt;/span&gt; 1 1]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null 3 &lt;span style=&quot;color: #99cc00;&quot;&gt;5&lt;/span&gt; 2&lt;/td&gt;
+      &lt;td&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;3 4&lt;/span&gt; 1 1]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #99cc00;&quot;&gt;3&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;5 2&lt;/span&gt; &lt;/td&gt;
+      &lt;td&gt;3 4 1 1]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #99cc00;&quot;&gt;5&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;3 2&lt;/span&gt; &lt;/td&gt;
+      &lt;td&gt;3 4 1 1]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null 5 &lt;span style=&quot;color: #99cc00;&quot;&gt;3&lt;/span&gt; 2&lt;/td&gt;
+      &lt;td&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;3 4&lt;/span&gt; 1 1]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null 5 &lt;span style=&quot;color: #99cc00;&quot;&gt;4&lt;/span&gt; 2&lt;/td&gt;
+      &lt;td&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;3 3&lt;/span&gt; 1 1]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;At this point we have binary max-heap:&lt;/p&gt;
+
+&lt;pre&gt;     5
+   4   2
+  3 3 1 1&lt;/pre&gt;
+&lt;p&gt;Step #2&lt;/p&gt;
+
+&lt;p&gt;Swap first (max) item with the last one and ensure max-heap invariant:&lt;/p&gt;
+
+&lt;p&gt;[null &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt; 4 2 3 3 1 &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;]
+[null &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; 4 2 3 3 1 | &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;]
+[null &lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;4 2&lt;/span&gt; 3 3 1 | 5]
+[null &lt;span style=&quot;color: #99cc00;&quot;&gt;4&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;1 2&lt;/span&gt; 3 3 1 | 5]
+[null 4 &lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; 2 &lt;span style=&quot;color: #0000ff;&quot;&gt;3 3&lt;/span&gt; 1 | 5]
+[null 4 &lt;span style=&quot;color: #99cc00;&quot;&gt;3&lt;/span&gt; 2 &lt;span style=&quot;color: #0000ff;&quot;&gt;3 1&lt;/span&gt; 1 | 5]&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; 3 2 3 1 &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; 3 2 3 1&lt;/td&gt;
+      &lt;td&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; 5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;3 2&lt;/span&gt; 3 1&lt;/td&gt;
+      &lt;td&gt;4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #99cc00;&quot;&gt;3&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;1 2&lt;/span&gt; 3 1&lt;/td&gt;
+      &lt;td&gt;4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null 3 &lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; 2 &lt;span style=&quot;color: #0000ff;&quot;&gt;3 1&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null 3 &lt;span style=&quot;color: #99cc00;&quot;&gt;3&lt;/span&gt; 2 &lt;span style=&quot;color: #0000ff;&quot;&gt;1 1&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt; 3 2 1 &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; 3 2 1&lt;/td&gt;
+      &lt;td&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt; 4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;3 2&lt;/span&gt; 1&lt;/td&gt;
+      &lt;td&gt;3 4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #99cc00;&quot;&gt;3&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;1 2&lt;/span&gt; 1&lt;/td&gt;
+      &lt;td&gt;3 4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null 3 &lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; 2 &lt;span style=&quot;color: #0000ff;&quot;&gt;1&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;3 4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt; 1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;3 4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; 1 2&lt;/td&gt;
+      &lt;td&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt; 3 4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;1 2&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;3 3 4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #99cc00;&quot;&gt;2&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;1 1&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;3 3 4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; 1 &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;3 3 4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; 1&lt;/td&gt;
+      &lt;td&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; 3 3 4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;1&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;2 3 3 4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;2 3 3 4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; 2 3 3 4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;1 2 3 3 4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null&lt;/td&gt;
+      &lt;td&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; 1 2 3 3 4 5]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Finally we remove leading null item and we have sorted items! Implementation (&lt;a href=&quot;https://github.com/sergejusb/algorithms/blob/master/sorting/sort_tests.js&quot;&gt;tests&lt;/a&gt;) of the heap sort is heavily based on the binary heap implementation:&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/sorting/heapSort.js?
+footer=minimal&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;Complexity&lt;/strong&gt;: O(n·logn)&lt;/p&gt;
+</description>
+        <pubDate>Mon, 24 Feb 2014 00:00:26 -0800</pubDate>
+        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-heap-sort.html</link>
+        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-heap-sort.html</guid>
+        
+        <category>Binary Heap</category>
+        
+        <category>Heap Sort</category>
+        
+        
+        <category>algorithms</category>
+        
+        <category>sorting</category>
+        
+      </item>
     
       <item>
         <title>Data Structure: Max Priority Queue</title>
@@ -127,228 +359,381 @@ footer=minimal&quot;&gt;&lt;/script&gt;
       </item>
     
       <item>
-        <title>Data Structure: Stack (dynamic array based)</title>
-        <description>&lt;p&gt;Previously I have already &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-stack&quot;&gt;implemented&lt;/a&gt; linked list based abstract data type Stack. As demanded by a friend of mine &lt;a href=&quot;https://twitter.com/rstonkus&quot;&gt;Romualdas&lt;/a&gt;, in this post I will implement dynamic array based Stack. According to Wikipedia, &lt;a href=&quot;https://en.wikipedia.org/wiki/Dynamic_array&quot;&gt;dynamic array&lt;/a&gt; is a random access, variable-size list data structure that allows elements to be added or removed. It is based on the idea of fixed array that can be extended (usually doubled) when the capacity is reached while storing the logical size or number of items in the array.&lt;/p&gt;
+        <title>Presentation: Continuous Happiness by Continuous Delivery</title>
+        <description>&lt;p&gt;Recently at &lt;a href=&quot;http://buildstuff.lt/&quot;&gt;Build Stuff&lt;/a&gt; conference I gave a practical talk on Continuous Delivery. Enjoy and tell what you think!&lt;/p&gt;
 
-&lt;p&gt;Dynamic array based implementation of stack has several advantages over linked list based:&lt;/p&gt;
+&lt;script async=&quot;&quot; class=&quot;speakerdeck-embed&quot; data-id=&quot;c5ba45908bd90130e24f22000a8c4314&quot; data-ratio=&quot;1.33333333333333&quot; src=&quot;//speakerdeck.com/assets/embed.js&quot;&gt;&lt;/script&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;there is no need to store reference to the next element so memory usage is smaller&lt;/li&gt;
-  &lt;li&gt;memory is allocated / deallocated in chunks so memory pressure is lower&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;On the other hand, the cost of adding new items is higher for dynamic array based implementation due to array resizing. The good news is – it’s still constant time.&lt;/p&gt;
-
-&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/stack_array.js?footer=minimal&quot;&gt;
-&lt;/script&gt;
-
-&lt;p&gt;As you can see, when pushing we create new double size array if the original one is full. The really interesting part here is function pop: we are halving the size of array only when it’s ¼ full. Why not ½ full? Imagine sequence of actions:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;create new stack (array capacity – 1, items – 0)&lt;/li&gt;
-  &lt;li&gt;push item (array capacity – 1, items – 1)&lt;/li&gt;
-  &lt;li&gt;push item (array capacity – 2, items – 2) ← doubled&lt;/li&gt;
-  &lt;li&gt;pop item (array capacity – 1, items – 1) ← halved&lt;/li&gt;
-  &lt;li&gt;push item (array capacity – 2, items – 2) ← doubled&lt;/li&gt;
-  &lt;li&gt;pop item (array capacity – 1, items – 1) ← halved&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;By triggering shrinking when an array is ¼ full we amortize the cost of working at the boundaries.&lt;/p&gt;
 </description>
-        <pubDate>Thu, 27 Jun 2013 06:14:36 -0700</pubDate>
-        <link>http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-stack-array.html</link>
-        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-stack-array.html</guid>
+        <pubDate>Wed, 11 Dec 2013 13:58:42 -0800</pubDate>
+        <link>http://jelenabarinova.github.io/BeBetterDeveloper/presentation/presentation-continuous-delivery.html</link>
+        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/presentation/presentation-continuous-delivery.html</guid>
         
-        <category>Dynamic Array</category>
+        <category>Continuous Delivery</category>
         
-        <category>Stack</category>
+        <category>DevOps</category>
         
         
-        <category>data structure</category>
+        <category>presentation</category>
         
       </item>
     
       <item>
-        <title>Data Structure: Queue</title>
-        <description>&lt;p&gt;In this post I will implement another very popular abstract data type – &lt;a href=&quot;http://en.wikipedia.org/wiki/Queue_(abstract_data_type)&quot;&gt;Queue&lt;/a&gt;. Queue is a collection where the first element added to the structure must be the first one to be removed (or &lt;a href=&quot;https://en.wikipedia.org/wiki/FIFO&quot;&gt;FIFO, First-In First-Out&lt;/a&gt;, for short). It is widely used in hardware and software for buffering and &lt;a href=&quot;http://en.wikipedia.org/wiki/Priority_queue&quot;&gt;prioritization&lt;/a&gt;. Typically queue is implemented using (doubly) &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-linked-list/&quot;&gt;linked list&lt;/a&gt; or in some cases using dynamic arrays.&lt;/p&gt;
-
-&lt;p&gt;Usually linked lists have following functions:&lt;/p&gt;
+        <title>Sorting: Quick Sort</title>
+        <description>&lt;p&gt;In this, &lt;a href=&quot;http://www.bebetterdeveloper.com/category/algorithms/sorting/&quot;&gt;last&lt;/a&gt; in the series, post I will implement probably on of the best known sorting algorithm - &lt;a href=&quot;http://en.wikipedia.org/wiki/Quicksort&quot;&gt;Quick Sort&lt;/a&gt;. The idea of the in-place algorithm is as follows:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;enqueue() – to add new element&lt;/li&gt;
-  &lt;li&gt;dequeue() – to remove last element and return its value&lt;/li&gt;
-  &lt;li&gt;peak() – to return value of the last element without removing it&lt;/li&gt;
-  &lt;li&gt;isEmpty() - to check whether the queue is empty or not&lt;/li&gt;
-  &lt;li&gt;length() – to get the number of items in the queue&lt;/li&gt;
+  &lt;li&gt;randomize initial list&lt;/li&gt;
+  &lt;li&gt;select first element as partition value&lt;/li&gt;
+  &lt;li&gt;scan i from left to right so long as current element is less than partition value&lt;/li&gt;
+  &lt;li&gt;scan j from right to left so long as current element is more than partition value&lt;/li&gt;
+  &lt;li&gt;exchange i-indexed element with j-indexed element&lt;/li&gt;
+  &lt;li&gt;repeat until i and j cross&lt;/li&gt;
+  &lt;li&gt;exchange first element with j-indexed element&lt;/li&gt;
+  &lt;li&gt;split list into two sub-lists bounded by j-indexed partition&lt;/li&gt;
+  &lt;li&gt;recursively repeat until list contains one or zero elements&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Based on the previously &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-linked-list/&quot;&gt;described&lt;/a&gt; linked list, implementation of the queue is rather trivial:&lt;/p&gt;
+&lt;p&gt;After each iteration when first element is exchanged with j-indexed element following invariant should be valid: elements to left are smaller or equal than partition value and elements to the right are bigger or equal. We can visualize quick sort algorithm by sorting following list [3 5 4 7 2 1]. I’ll use colors to specify &lt;span style=&quot;color: #0000ff;&quot;&gt;partition value&lt;/span&gt;, &lt;span style=&quot;color: #99cc00;&quot;&gt;current i-indexed element&lt;/span&gt; and &lt;span style=&quot;color: #ff0000;&quot;&gt;current j-indexed element&lt;/span&gt;.&lt;/p&gt;
 
-&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/queue.js?footer=minimal&quot;&gt;
+&lt;p&gt;Iteration #1
+[&lt;span style=&quot;color: #0000ff;&quot;&gt;3&lt;/span&gt; 5 4 7 2 1] → [&lt;span style=&quot;color: #0000ff;&quot;&gt;3&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;5&lt;/span&gt; 4 7 2 1] → [&lt;span style=&quot;color: #0000ff;&quot;&gt;3&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;5&lt;/span&gt; 4 7 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;] → [&lt;span style=&quot;color: #0000ff;&quot;&gt;3&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/span&gt; 4 7 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;&lt;strong&gt;5&lt;/strong&gt;&lt;/span&gt;]
+[&lt;span style=&quot;color: #0000ff;&quot;&gt;3&lt;/span&gt; 1 &lt;span style=&quot;color: #99cc00;&quot;&gt;4&lt;/span&gt; 7 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;] → [&lt;span style=&quot;color: #0000ff;&quot;&gt;3&lt;/span&gt; 1 &lt;span style=&quot;color: #99cc00;&quot;&gt;4&lt;/span&gt; 7 &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; 5] → [&lt;span style=&quot;color: #3366ff;&quot;&gt;3&lt;/span&gt; 1 &lt;strong&gt;&lt;span style=&quot;color: #99cc00;&quot;&gt;2&lt;/span&gt;&lt;/strong&gt; 7 &lt;span style=&quot;color: #ff0000;&quot;&gt;&lt;strong&gt;4&lt;/strong&gt;&lt;/span&gt; 5]
+[&lt;span style=&quot;color: #3366ff;&quot;&gt;3&lt;/span&gt; 1 2 &lt;span style=&quot;color: #99cc00;&quot;&gt;7&lt;/span&gt; &lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; 5] → [&lt;span style=&quot;color: #3366ff;&quot;&gt;3&lt;/span&gt; 1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;7 &lt;/span&gt;4 5] → [&lt;span style=&quot;color: #3366ff;&quot;&gt;3&lt;/span&gt; 1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;7&lt;/span&gt; 4 5] → [&lt;strong&gt;2&lt;/strong&gt; 1 &lt;strong&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;3&lt;/span&gt;&lt;/strong&gt; 7 4 5]&lt;/p&gt;
+
+&lt;p&gt;Iteration #2
+[ [&lt;span style=&quot;color: #0000ff;&quot;&gt;2&lt;/span&gt; 1] 3 [7 4 5] ] → [ [&lt;span style=&quot;color: #0000ff;&quot;&gt;2&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt;] 3 [7 4 5] ] → [ [&lt;span style=&quot;color: #0000ff;&quot;&gt;2&lt;/span&gt; &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;] 3 [7 4 5] ] → [ [&lt;strong&gt;1&lt;/strong&gt; &lt;strong&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;2&lt;/span&gt;&lt;/strong&gt;] 3 [7 4 5] ]&lt;/p&gt;
+
+&lt;p&gt;Iteration #3
+[ [&lt;span style=&quot;color: #0000ff;&quot;&gt;1&lt;/span&gt;] [2] 3 [7 4 5] ] → [&lt;span style=&quot;color: #0000ff;&quot;&gt;1&lt;/span&gt; [2] 3 [4 7 5] ]&lt;/p&gt;
+
+&lt;p&gt;Iteration #4
+[1 [&lt;span style=&quot;color: #0000ff;&quot;&gt;2&lt;/span&gt;] 3 [7 4 5] ] → [1 &lt;span style=&quot;color: #0000ff;&quot;&gt;2&lt;/span&gt; 3 [7 4 5] ]&lt;/p&gt;
+
+&lt;p&gt;Iteration #5
+[1 2 3 [&lt;span style=&quot;color: #0000ff;&quot;&gt;7&lt;/span&gt; 4 5] ] → [1 2 3 [&lt;span style=&quot;color: #0000ff;&quot;&gt;7&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;4&lt;/span&gt; 5] ] → [1 2 3 [&lt;span style=&quot;color: #0000ff;&quot;&gt;7&lt;/span&gt; 4 &lt;span style=&quot;color: #99cc00;&quot;&gt;5&lt;/span&gt;] ] → [ 1 2 3 [&lt;span style=&quot;color: #0000ff;&quot;&gt;7&lt;/span&gt; 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;] ] → [1 2 3 [&lt;strong&gt;5&lt;/strong&gt; 4 &lt;strong&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;7&lt;/span&gt;&lt;/strong&gt;] ]&lt;/p&gt;
+
+&lt;p&gt;Iteration #6
+[1 2 3 [&lt;span style=&quot;color: #0000ff;&quot;&gt;5&lt;/span&gt; 4] 7] → [1 2 3 [&lt;span style=&quot;color: #0000ff;&quot;&gt;5&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;4&lt;/span&gt;] 7] → [1 2 3 [&lt;span style=&quot;color: #0000ff;&quot;&gt;5&lt;/span&gt; &lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt;] 7]  → [1 2 3 [&lt;strong&gt;4&lt;/strong&gt; &lt;strong&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;5&lt;/span&gt;&lt;/strong&gt;] 7]&lt;/p&gt;
+
+&lt;p&gt;Iteration #7
+[1 2 3 [&lt;span style=&quot;color: #0000ff;&quot;&gt;4&lt;/span&gt;] [5] 7] → [1 2 3 &lt;span style=&quot;color: #0000ff;&quot;&gt;4&lt;/span&gt; [5] 7]&lt;/p&gt;
+
+&lt;p&gt;Iteration #8
+[1 2 3 4 [&lt;span style=&quot;color: #0000ff;&quot;&gt;5&lt;/span&gt;] 7] → [1 2 3 4 &lt;span style=&quot;color: #0000ff;&quot;&gt;5&lt;/span&gt; 7]&lt;/p&gt;
+
+&lt;p&gt;For the sake of easiness I’ll skip list randomization step. Implementation of the quick sort heavily rely on sort and partition functions:&lt;/p&gt;
+
+&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/sorting/quickSort.js?footer=minimal&quot;&gt;
 &lt;/script&gt;
 
+&lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n·logn).&lt;/p&gt;
 </description>
-        <pubDate>Thu, 20 Jun 2013 00:00:00 -0700</pubDate>
-        <link>http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-queue.html</link>
-        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-queue.html</guid>
+        <pubDate>Sun, 13 Oct 2013 13:16:55 -0700</pubDate>
+        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-quick-sort.html</link>
+        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-quick-sort.html</guid>
         
-        <category>Linked List</category>
-        
-        <category>Queue</category>
-        
-        
-        <category>data structure</category>
-        
-      </item>
-    
-      <item>
-        <title>Data Structure: Stack</title>
-        <description>&lt;p&gt;In this post I will implement very popular abstract data type – &lt;a href=&quot;http://en.wikipedia.org/wiki/Stack_(abstract_data_type)&quot;&gt;Stack&lt;/a&gt;. Stack is a collection where the last element added to the structure must be the first one to be removed (or &lt;a href=&quot;http://en.wikipedia.org/wiki/LIFO_(computing)&quot;&gt;LIFO, Last-In First-Out&lt;/a&gt;, for short). It is widely used in hardware including CPU registers. In software it is used for memory allocation, to track active sub-routines (&lt;a href=&quot;http://en.wikipedia.org/wiki/Call_stack&quot;&gt;call stack&lt;/a&gt;) or to implement parsers and various higher-level algorithms. Typically stack is implemented using &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-linked-list/&quot;&gt;linked list&lt;/a&gt; or in some cases using dynamic arrays.&lt;/p&gt;
-
-&lt;p&gt;Usually stack has following functions:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;push() – to add new element&lt;/li&gt;
-  &lt;li&gt;pop() – to remove first element and return its value&lt;/li&gt;
-  &lt;li&gt;peek() – to return value of the first element without removing it&lt;/li&gt;
-  &lt;li&gt;isEmpty() - to check whether the stack is empty or not&lt;/li&gt;
-  &lt;li&gt;length() - to get the number of items in the stack&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Based on the previously &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-linked-list/&quot;&gt;described&lt;/a&gt; linked list, implementation of the stack is rather trivial:&lt;/p&gt;
-
-&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/stack.js?footer=minimal&quot;&gt;
-&lt;/script&gt;
-
-</description>
-        <pubDate>Sun, 16 Jun 2013 01:00:09 -0700</pubDate>
-        <link>http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-stack.html</link>
-        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-stack.html</guid>
-        
-        <category>Linked List</category>
-        
-        <category>Stack</category>
-        
-        
-        <category>data structure</category>
-        
-      </item>
-    
-      <item>
-        <title>Data Structure: Linked List</title>
-        <description>&lt;p&gt;In this post I will implement one of the most fundamental data structure in computer science – &lt;a href=&quot;https://en.wikipedia.org/wiki/Linked_list&quot;&gt;linked list&lt;/a&gt;. Linked list – is a dynamic sequence of linked nodes where each node composed of a datum and a reference to the next node. Lists, stacks, queues and many other data types can be implemented using linked list. There are several types of linked lists:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Linked_list#Singly_linked_list&quot;&gt;singly linked list&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Linked_list#Doubly_linked_list&quot;&gt;doubly linked list&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Linked_list#Circular_list&quot;&gt;circular linked list&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In this post I will implement the most frequent type – singly linked list. Let’s start with the definition of node:&lt;/p&gt;
-
-&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/node.js?footer=minimal&quot;&gt;
-&lt;/script&gt;
-
-&lt;p&gt;Usually linked list has following functions:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;isEmpty() – to check whether the list is empty or not&lt;/li&gt;
-  &lt;li&gt;length() – to get the number of nodes in the list&lt;/li&gt;
-  &lt;li&gt;find() – to find existing node by value&lt;/li&gt;
-  &lt;li&gt;addAfter(), addBefore() – to add new node after / before the specified node&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;remove() – to remove existing node
-In more advance cases linked list can also have functions:&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;addFirst(), addLast() - to add new node at given position&lt;/li&gt;
-  &lt;li&gt;removeFirst(), removeLast() - to remove existing node at given position&lt;/li&gt;
-  &lt;li&gt;reverse() – to reverse existing nodes&lt;/li&gt;
-  &lt;li&gt;copy() – to create deep copy of the existing list&lt;/li&gt;
-  &lt;li&gt;merge() – to merge given list with the current one&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Instead of the specific functions addFirst(), addLast(), removeFirst() and removeLast() I will implement more generic addFromStart(), addFromEnd(), removeFromStart() and removeFromEnd(), where one can specify the exact position a node has to be added or removed. Also it’s worth mentioning, that my implementation heavily relies on a notion of a &lt;a href=&quot;https://en.wikipedia.org/wiki/Linked_list#Sentinel_nodes&quot;&gt;dummy (or sentinel) node&lt;/a&gt;.&lt;/p&gt;
-
-&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/linkedList.js?footer=minimal&quot;&gt;
-&lt;/script&gt;
-
-</description>
-        <pubDate>Thu, 13 Jun 2013 00:00:00 -0700</pubDate>
-        <link>http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-linked-list.html</link>
-        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-linked-list.html</guid>
-        
-        <category>Linked List</category>
-        
-        
-        <category>data structure</category>
-        
-      </item>
-    
-      <item>
-        <title>Algorithm: Pow(n, exp)</title>
-        <description>&lt;p&gt;In this post I will implement basic algorithm to raise floating point number (also known as base) to integer power (also known as exponent). In academic world this process usually referred as &lt;a href=&quot;http://en.wikipedia.org/wiki/Exponentiation&quot;&gt;Exponentiation&lt;/a&gt;. The most naïve implementation is based on the definition of x&lt;sup&gt;y&lt;/sup&gt;, i.e. repetitive y-time multiplication of x.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Complexity&lt;/strong&gt;: O(n).&lt;/p&gt;
-
-&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/math/pow_naive.js?footer=minimal&quot;&gt;
-&lt;/script&gt;
-
-&lt;p&gt;This implementation can be optimized by using following exponentiation properties:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;b&lt;sup&gt;m&lt;/sup&gt; = b · b&lt;sup&gt;m-1&lt;/sup&gt;&lt;/li&gt;
-  &lt;li&gt;b&lt;sup&gt;m+n&lt;/sup&gt; = b&lt;sup&gt;m&lt;/sup&gt; · b&lt;sup&gt;n&lt;/sup&gt;&lt;/li&gt;
-  &lt;li&gt;b&lt;sup&gt;m·n&lt;/sup&gt; = (b&lt;sup&gt;m&lt;/sup&gt;)&lt;sup&gt;n&lt;/sup&gt;
-In other words, given 2&lt;sup&gt;7&lt;/sup&gt; we can calculate the result as follows:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;2&lt;sup&gt;7&lt;/sup&gt; = 2 · 2&lt;sup&gt;6&lt;/sup&gt; = 2 · 2&lt;sup&gt;2+4&lt;/sup&gt; = 2 · 2&lt;sup&gt;2&lt;/sup&gt; · 2&lt;sup&gt;4&lt;/sup&gt; = 2 · 2&lt;sup&gt;2&lt;/sup&gt; · 2&lt;sup&gt;2·2&lt;/sup&gt; = 2 · 2&lt;sup&gt;2&lt;/sup&gt; · (2&lt;sup&gt;2&lt;/sup&gt;)&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
-
-&lt;p&gt;As you can see, instead of 7 iterations now we have only 3.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(log n).&lt;/p&gt;
-
-&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/math/pow.js?footer=minimal&quot;&gt;
-&lt;/script&gt;
-
-</description>
-        <pubDate>Sun, 24 Mar 2013 00:00:00 -0700</pubDate>
-        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/math/algorithm-pow.html</link>
-        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/math/algorithm-pow.html</guid>
-        
-        <category>Exponent</category>
-        
-        <category>Pow</category>
+        <category>Quick Sort</category>
         
         
         <category>algorithms</category>
         
-        <category>math</category>
+        <category>sorting</category>
         
       </item>
     
       <item>
-        <title>Algorithm: isPrimeNumber(n)</title>
-        <description>&lt;p&gt;In this post I will implement basic algorithm to detect whether a given number is a prime. In more academic terms – check a number for primality. According to &lt;a href=&quot;http://en.wikipedia.org/wiki/Prime_number&quot;&gt;Wikipedia&lt;/a&gt; - &lt;em&gt;a prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself&lt;/em&gt;.&lt;/p&gt;
+        <title>Sorting: Merge Sort</title>
+        <description>&lt;p&gt;In this post I will implement well known &lt;a href=&quot;http://en.wikipedia.org/wiki/Divide_and_conquer_algorithm&quot;&gt;divide and conquer&lt;/a&gt; sorting algorithm – &lt;a href=&quot;http://en.wikipedia.org/wiki/Merge_sort&quot;&gt;Merge Sort&lt;/a&gt;. The idea of the algorithm is as follows:&lt;/p&gt;
 
-&lt;p&gt;Naïve implementation will test whether n is a multiple of any number between 2 and n-1. Slightly more optimized version will minimize the test range up-to √n (i.e. between 2 and √n). In this post I’ll use test range between 2 and ⌊n/2⌋ due to the fact calculation of √n itself is more complex than single right shift operation.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;recursively divide unsorted list into two sub-lists&lt;/li&gt;
+  &lt;li&gt;continue until each sub-list contains 1 element&lt;/li&gt;
+  &lt;li&gt;recursively merge them back in the right order&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n/2) or just O(n).&lt;/p&gt;
+&lt;p&gt;We can visualize merge sort algorithm by sorting following list [3 5 4 7 2 1]. I’ll use colors to specify &lt;span style=&quot;color: #0000ff;&quot;&gt;current split list&lt;/span&gt; and &lt;span style=&quot;color: #ff0000;&quot;&gt;current merge elements&lt;/span&gt;.&lt;/p&gt;
 
-&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/math/isPrimeNumber.js?footer=minimal&quot;&gt;
+&lt;p&gt;Split Iteration #1
+&lt;span style=&quot;color: #0000ff;&quot;&gt;[3 5 4 7 2 1]&lt;/span&gt; → &lt;span style=&quot;color: #0000ff;&quot;&gt;[3 5 4]&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;[7 2 1]
+&lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;[3 5 4]&lt;/span&gt; [7 2 1] → &lt;span style=&quot;color: #0000ff;&quot;&gt;[3]&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;[5 4]&lt;/span&gt; [7 2 1]
+&lt;span style=&quot;color: #0000ff;&quot;&gt;[3]&lt;/span&gt; [5 4] [7 2 1] → &lt;span style=&quot;color: #0000ff;&quot;&gt;[3]&lt;/span&gt; [5 4] [7 2 1]&lt;/p&gt;
+
+&lt;p&gt;Merge Iteration #1
+[&lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt;] [5 4] [7 2 1] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt;] [5 4] [7 2 1]&lt;/p&gt;
+
+&lt;p&gt;Split Iteration #2
+[3] &lt;span style=&quot;color: #0000ff;&quot;&gt;[5 4]&lt;/span&gt; [7 2 1] → [3] &lt;span style=&quot;color: #0000ff;&quot;&gt;[5]&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;[4]&lt;/span&gt; [7 2 1]&lt;/p&gt;
+
+&lt;p&gt;Merge Interation #2
+[3] [&lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;] [&lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt;] [7 2 1] → [3] [&lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; …
+[3] [&lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;] [4] [7 2 1] → [3] [4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;] [7 2 1]&lt;/p&gt;
+
+&lt;p&gt;Merge Iteration #3
+[&lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt;] [&lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; 5] [7 2 1] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;3 &lt;/span&gt;…
+[3] [&lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; 5] [7 2 1] → [3 &lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; …
+[3] [4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;] [7 2 1] → [3 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;] [7 2 1]&lt;/p&gt;
+
+&lt;p&gt;Split Iteration #3
+[3 4 5] &lt;span style=&quot;color: #0000ff;&quot;&gt;[7 2 1]&lt;/span&gt; → [3 4 5] &lt;span style=&quot;color: #0000ff;&quot;&gt;[7]&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;[2 1]
+&lt;/span&gt;[3 4 5] &lt;span style=&quot;color: #0000ff;&quot;&gt;[7]&lt;/span&gt; [2 1] → [3 4 5] &lt;span style=&quot;color: #0000ff;&quot;&gt;[7]&lt;/span&gt; [2 1]&lt;/p&gt;
+
+&lt;p&gt;Merge Iteration #4
+[3 4 5] [&lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] [2 1] → [3 4 5] [&lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] [2 1]&lt;/p&gt;
+
+&lt;p&gt;Split Iteration #4
+[3 4 5] [7] &lt;span style=&quot;color: #0000ff;&quot;&gt;[2 1]&lt;/span&gt; → [3 4 5] [7] &lt;span style=&quot;color: #0000ff;&quot;&gt;[2] [1]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Merge Iteration #5
+[3 4 5] [7] [&lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt;] [&lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;] → [3 4 5] [7] [&lt;span style=&quot;color: #ff0000;&quot;&gt;1 &lt;/span&gt;…
+[3 4 5] [7] [&lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt;] [1] → [3 4 5] [7] [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt;]&lt;/p&gt;
+
+&lt;p&gt;Merge Iteration #6
+[3 4 5] [&lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] [&lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; 2] → [3 4 5] [&lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; …
+[3 4 5] [&lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt;] → [3 4 5] [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; …
+[3 4 5] [&lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] [1 2] → [3 4 5] [1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;]&lt;/p&gt;
+
+&lt;p&gt;Merge Iteration #7
+[&lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt; 4 5] [&lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; 2 7] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; …]
+[&lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt; 4 5] [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; 7] → [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; …]
+[&lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt; 4 5] [1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] → [1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt; …]
+[3 &lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; 5] [1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] → [1 2 3 &lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; …]
+[3 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;] [1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] → [1 2 3 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt; …]
+[3 4 5] [1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] → [1 2 3 4 5 &lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;]&lt;/p&gt;
+
+&lt;p&gt;Implementation of the merge sort heavily rely on sort and merge functions:&lt;/p&gt;
+
+&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/sorting/mergeSort.js?footer=minimal&quot;&gt;
 &lt;/script&gt;
 
+&lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n·logn).&lt;/p&gt;
 </description>
-        <pubDate>Sun, 24 Mar 2013 00:00:00 -0700</pubDate>
-        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/math/algorithm-isprimenumber.html</link>
-        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/math/algorithm-isprimenumber.html</guid>
+        <pubDate>Mon, 23 Sep 2013 15:03:20 -0700</pubDate>
+        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-merge-sort.html</link>
+        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-merge-sort.html</guid>
         
-        <category>Prime Number</category>
+        <category>Merge Sort</category>
         
         
         <category>algorithms</category>
         
-        <category>math</category>
+        <category>sorting</category>
+        
+      </item>
+    
+      <item>
+        <title>Sorting: Shell Sort</title>
+        <description>&lt;p&gt;In this post I will implement more advanced sorting algorithm – &lt;a href=&quot;https://en.wikipedia.org/wiki/Shellsort&quot;&gt;Shell Sort&lt;/a&gt;. Shell sort is also known as n-gap insertion sort. Instead of comparing only adjacent pair, shell sort makes several passes and uses various gaps between adjacent elements (ending with the gap of 1 or classical insertion sort). The idea of the algorithm is as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;calculate gaps by using one of the existing sequences, eg.: Shell’s (⌊n/2&lt;sup&gt;k&lt;/sup&gt;⌋), Pratt’s (2&lt;sup&gt;p&lt;/sup&gt;3&lt;sup&gt;q&lt;/sup&gt;) or in our case – Knuth’s ((3&lt;sup&gt;k&lt;/sup&gt; - 1) / 2) as being one of the most popular and due to sequence generation easiness&lt;/li&gt;
+  &lt;li&gt;starting from the beginning of the list compare value with every n·gap elements on the left (if any)&lt;/li&gt;
+  &lt;li&gt;swap their positions if they are not in the right order&lt;/li&gt;
+  &lt;li&gt;continue until element on the left is smaller than current element&lt;/li&gt;
+  &lt;li&gt;repeat with the smaller gap&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We can visualize shell sort algorithm by sorting following list [3 5 4 7 2 1] using gaps 4 and 1. I’ll use colors to specify &lt;span style=&quot;color: #ff0000;&quot;&gt;current adjacent pair&lt;/span&gt;.&lt;/p&gt;
+
+&lt;p&gt;Iteration #1, &lt;strong&gt;gap 4&lt;/strong&gt; : [3 5 4 7 2 1]
+[&lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt; 5 4 7 &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; 1] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; 5 4 7 &lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt; 1]&lt;/p&gt;
+
+&lt;p&gt;Iteration #2, &lt;strong&gt;gap 4&lt;/strong&gt; : [2 5 4 7 3 1]
+[2 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt; 4 7 3 &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;] → [2 &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; 4 7 3 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;]&lt;/p&gt;
+
+&lt;p&gt;Iteration #3, &lt;strong&gt;gap 1&lt;/strong&gt; : [2 1 4 7 3 5]
+[&lt;span style=&quot;color: #ff0000;&quot;&gt;2 1&lt;/span&gt; 4 7 3 5] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;1 2&lt;/span&gt; 4 7 3 5]&lt;/p&gt;
+
+&lt;p&gt;Iteration #4, &lt;strong&gt;gap 1&lt;/strong&gt; : [1 2 4 7 3 5]
+[1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2 4&lt;/span&gt; 7 3 5] → [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2 4&lt;/span&gt; 7 3 5]&lt;/p&gt;
+
+&lt;p&gt;Iteration #5, &lt;strong&gt;gap 1&lt;/strong&gt; : [1 2 4 7 3 5]
+[1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 7&lt;/span&gt; 3 5] → [1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 7&lt;/span&gt; 3 5]&lt;/p&gt;
+
+&lt;p&gt;Iteration #6, &lt;strong&gt;gap 1&lt;/strong&gt; : [1 2 4 7 3 5]
+[1 2 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;7 3&lt;/span&gt; 5] → [1 2 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;3 7&lt;/span&gt; 5]
+[1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 3&lt;/span&gt; 7 5] → [1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;3 4&lt;/span&gt; 7 5]
+[1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2 3&lt;/span&gt; 4 7 5] → [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2 3&lt;/span&gt; 4 7 5]&lt;/p&gt;
+
+&lt;p&gt;Iteration #7, &lt;strong&gt;gap 1&lt;/strong&gt; : [1 2 3 4 7 5]
+[1 2 3 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;7 5&lt;/span&gt;] → [1 2 3 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5 7&lt;/span&gt;]
+[1 2 3 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 5&lt;/span&gt; 7] → [1 2 3 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 5&lt;/span&gt; 7]&lt;/p&gt;
+
+&lt;p&gt;Implementation of the shell sort is heavily based on the insertion sort:&lt;/p&gt;
+
+&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/sorting/shellSort.js?footer=minimal&quot;&gt;
+&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n&lt;sup&gt;3/2&lt;/sup&gt;) using Knuth’s sequence.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 28 Aug 2013 15:09:55 -0700</pubDate>
+        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-shell-sort.html</link>
+        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-shell-sort.html</guid>
+        
+        <category>Shell Sort</category>
+        
+        
+        <category>algorithms</category>
+        
+        <category>sorting</category>
+        
+      </item>
+    
+      <item>
+        <title>Sorting: Insertion Sort</title>
+        <description>&lt;p&gt;In this post I will implement another basic sorting algorithm – &lt;a href=&quot;https://en.wikipedia.org/wiki/Insertion_sort&quot;&gt;Insertion Sort&lt;/a&gt;. The idea of the algorithm is as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;starting from the beginning of the list compare value with the elements on the left (if any)&lt;/li&gt;
+  &lt;li&gt;swap their position if they are not in the right order&lt;/li&gt;
+  &lt;li&gt;continue until element on the left is smaller than current element&lt;/li&gt;
+  &lt;li&gt;after each iteration elements on the left from the current element are sorted&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We can visualize insertion sort algorithm by sorting following list [5 1 4 2 8]. I’ll use colors to specify &lt;span style=&quot;color: #ff0000;&quot;&gt;current adjacent pair&lt;/span&gt; and &lt;span style=&quot;color: #99cc00;&quot;&gt;already sorted elements&lt;/span&gt;.&lt;/p&gt;
+
+&lt;p&gt;Iteration #1 : &lt;span style=&quot;color: #ff0000;&quot;&gt;[5&lt;/span&gt; 1 4 2 8]&lt;/p&gt;
+
+&lt;p&gt;Iteration #2 : [&lt;span style=&quot;color: #99cc00;&quot;&gt;5&lt;/span&gt; 1 4 2 8]
+[&lt;span style=&quot;color: #ff0000;&quot;&gt;5 1&lt;/span&gt; 4 2 8] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;1 5&lt;/span&gt; 4 2 8]&lt;/p&gt;
+
+&lt;p&gt;Iteration #3 : [&lt;span style=&quot;color: #99cc00;&quot;&gt;1 5&lt;/span&gt; 4 2 8]
+[1 &lt;span style=&quot;color: #ff0000;&quot;&gt;5 4&lt;/span&gt; 2 8] → [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 5&lt;/span&gt; 2 8]
+[&lt;span style=&quot;color: #ff0000;&quot;&gt;1 4&lt;/span&gt; 5 2 8] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;1 4&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;5&lt;/span&gt; 2 8]&lt;/p&gt;
+
+&lt;p&gt;Iteration #4 : [&lt;span style=&quot;color: #99cc00;&quot;&gt;1 4 5&lt;/span&gt; 2 8]
+[1 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5 2&lt;/span&gt; 8] → [1 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;2 5&lt;/span&gt; 8]
+[1 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 2&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;5&lt;/span&gt; 8] → [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2 4&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;5&lt;/span&gt; 8]
+[&lt;span style=&quot;color: #ff0000;&quot;&gt;1 2&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;4 5&lt;/span&gt; 8] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;1 2&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;4 5&lt;/span&gt; 8]&lt;/p&gt;
+
+&lt;p&gt;Iteration #5 : [&lt;span style=&quot;color: #99cc00;&quot;&gt;1 2 4 5&lt;/span&gt; 8]
+[1 2 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5 8&lt;/span&gt;] → [1 2 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5 8&lt;/span&gt;]&lt;/p&gt;
+
+&lt;p&gt;Implementation of the insertion sort is very simple:&lt;/p&gt;
+
+&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/sorting/insertionSort.js?footer=minimal&quot;&gt;
+&lt;/script&gt;
+
+&lt;p&gt;Similarly to bubble and selection sorts we have two loops: outer and inner, so the average complexity is similar as well – O(n&lt;sup&gt;2&lt;/sup&gt;). For best-case scenario (already sorted elements) insertion sort has better complexity – O(n).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n&lt;sup&gt;2&lt;/sup&gt;).&lt;/p&gt;
+</description>
+        <pubDate>Sun, 18 Aug 2013 13:00:36 -0700</pubDate>
+        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-insertion-sort.html</link>
+        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-insertion-sort.html</guid>
+        
+        <category>Insertion Sort</category>
+        
+        
+        <category>algorithms</category>
+        
+        <category>sorting</category>
+        
+      </item>
+    
+      <item>
+        <title>Sorting: Selection Sort</title>
+        <description>&lt;p&gt;In this post I will implement another well know sorting algorithm – &lt;a href=&quot;https://en.wikipedia.org/wiki/Selection_sort&quot;&gt;Selection Sort&lt;/a&gt;. The idea of the algorithm is quite simple:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;divide input list into two parts: sorted (built up from left to right) and unsorted (remaining items to be sorted)&lt;/li&gt;
+  &lt;li&gt;initially sorted part is empty and unsorted part contains input list&lt;/li&gt;
+  &lt;li&gt;starting from the beginning of the unsorted part find the smallest element in the list&lt;/li&gt;
+  &lt;li&gt;swap its position with the left most element in the unsorted part&lt;/li&gt;
+  &lt;li&gt;after each iteration move sorted / unsorted boundary by one element to the right&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We can visualize selection sort algorithm by sorting following list [5 1 4 2 8]. I’ll use colors to specify &lt;span style=&quot;color: #3366ff;&quot;&gt;currently smallest unsorted element&lt;/span&gt;, &lt;span style=&quot;color: #ff0000;&quot;&gt;current unsorted element&lt;/span&gt; and &lt;span style=&quot;color: #99cc00;&quot;&gt;already sorted elements&lt;/span&gt;.&lt;/p&gt;
+
+&lt;p&gt;Iteration #1 : &lt;span style=&quot;color: #99cc00;&quot;&gt;[&lt;/span&gt;5 1 4 2 8]
+&lt;span style=&quot;color: #99cc00;&quot;&gt;[&lt;/span&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt; 1 4 2 8] → &lt;span style=&quot;color: #99cc00;&quot;&gt;[&lt;/span&gt;&lt;span style=&quot;color: #3366ff;&quot;&gt;5&lt;/span&gt; &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; 4 2 8] → &lt;span style=&quot;color: #99cc00;&quot;&gt;[&lt;/span&gt;5 &lt;span style=&quot;color: #3366ff;&quot;&gt;1&lt;/span&gt; &lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; 2 8] → &lt;span style=&quot;color: #99cc00;&quot;&gt;[&lt;/span&gt;5 &lt;span style=&quot;color: #3366ff;&quot;&gt;1&lt;/span&gt; 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; 8] → &lt;span style=&quot;color: #99cc00;&quot;&gt;[&lt;/span&gt;5 &lt;span style=&quot;color: #3366ff;&quot;&gt;1&lt;/span&gt; 4 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;8&lt;/span&gt;] → &lt;span style=&quot;color: #99cc00;&quot;&gt;[&lt;/span&gt;&lt;strong&gt;5&lt;/strong&gt; &lt;span style=&quot;color: #3366ff;&quot;&gt;1&lt;/span&gt; 4 2 8] → &lt;span style=&quot;color: #99cc00;&quot;&gt;[&lt;/span&gt;&lt;span style=&quot;color: #3366ff;&quot;&gt;1&lt;/span&gt; &lt;strong&gt;5&lt;/strong&gt; 4 2 8]&lt;/p&gt;
+
+&lt;p&gt;Iteration #2 : [&lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; 5 4 2 8]
+[&lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt; 4 2 8] → [&lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; &lt;span style=&quot;color: #3366ff;&quot;&gt;5&lt;/span&gt; &lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; 2 8] → [&lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; 5 &lt;span style=&quot;color: #3366ff;&quot;&gt;4&lt;/span&gt; &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; 8] → [&lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; 5 4 &lt;span style=&quot;color: #3366ff;&quot;&gt;2&lt;/span&gt; &lt;span style=&quot;color: #ff0000;&quot;&gt;8&lt;/span&gt;] → [&lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; &lt;strong&gt;5&lt;/strong&gt; 4 &lt;span style=&quot;color: #3366ff;&quot;&gt;2&lt;/span&gt; 8] → [&lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; &lt;span style=&quot;color: #3366ff;&quot;&gt;2&lt;/span&gt; 4 &lt;strong&gt;5&lt;/strong&gt; 8]&lt;/p&gt;
+
+&lt;p&gt;Iteration #3 : [&lt;span style=&quot;color: #99cc00;&quot;&gt;1 2&lt;/span&gt; 4 5 8]
+[&lt;span style=&quot;color: #99cc00;&quot;&gt;1 2&lt;/span&gt; &lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; 5 8] → [&lt;span style=&quot;color: #99cc00;&quot;&gt;1 2&lt;/span&gt; &lt;span style=&quot;color: #3366ff;&quot;&gt;4&lt;/span&gt; &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt; 8] → [&lt;span style=&quot;color: #99cc00;&quot;&gt;1 2&lt;/span&gt; &lt;span style=&quot;color: #3366ff;&quot;&gt;4&lt;/span&gt; 5 &lt;span style=&quot;color: #ff0000;&quot;&gt;8&lt;/span&gt;] → [&lt;span style=&quot;color: #99cc00;&quot;&gt;1 2&lt;/span&gt; &lt;span style=&quot;color: #3366ff;&quot;&gt;4&lt;/span&gt; 5 8]&lt;/p&gt;
+
+&lt;p&gt;Iteration #4 : [&lt;span style=&quot;color: #99cc00;&quot;&gt;1 2 4&lt;/span&gt; 5 8]
+[&lt;span style=&quot;color: #99cc00;&quot;&gt;1 2 4&lt;/span&gt; &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt; 8] → [&lt;span style=&quot;color: #99cc00;&quot;&gt;1 2 4&lt;/span&gt; &lt;span style=&quot;color: #3366ff;&quot;&gt;5&lt;/span&gt; &lt;span style=&quot;color: #ff0000;&quot;&gt;8&lt;/span&gt;] → [&lt;span style=&quot;color: #99cc00;&quot;&gt;1 2 4&lt;/span&gt; &lt;span style=&quot;color: #3366ff;&quot;&gt;5&lt;/span&gt; 8]&lt;/p&gt;
+
+&lt;p&gt;Iteration #5 : [&lt;span style=&quot;color: #99cc00;&quot;&gt;1 2 4 5&lt;/span&gt; 8]&lt;/p&gt;
+
+&lt;p&gt;Implementation of the selection sort is quit simple:&lt;/p&gt;
+
+&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/sorting/selectionSort.js?footer=minimal&quot;&gt;
+&lt;/script&gt;
+
+&lt;p&gt;As with bubble sort we have two loops: outer and inner. Outer loop is executed for each element (n times) and inner loop is executed for n/2 elements on average. As a result we have O(n&lt;sup&gt;2&lt;/sup&gt;/2) or just O(n&lt;sup&gt;2&lt;/sup&gt;) complexity.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n&lt;sup&gt;2&lt;/sup&gt;).&lt;/p&gt;
+</description>
+        <pubDate>Sun, 11 Aug 2013 10:14:51 -0700</pubDate>
+        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-selection-sort.html</link>
+        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-selection-sort.html</guid>
+        
+        <category>Selection Sort</category>
+        
+        
+        <category>algorithms</category>
+        
+        <category>sorting</category>
+        
+      </item>
+    
+      <item>
+        <title>Sorting: Bubble Sort</title>
+        <description>&lt;p&gt;In this post I will implement very basic sorting algorithm – &lt;a href=&quot;http://en.wikipedia.org/wiki/Bubble_sort&quot;&gt;Bubble Sort&lt;/a&gt;. The idea of the algorithm is very trivial:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;starting from the beginning of the list compare every adjacent pair&lt;/li&gt;
+  &lt;li&gt;swap their position if they are not in the right order&lt;/li&gt;
+  &lt;li&gt;after each iteration the last element is the biggest in the list&lt;/li&gt;
+  &lt;li&gt;after each iteration one less element is needed to be compared&lt;/li&gt;
+  &lt;li&gt;continue until there are no more elements left to be compared&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We can visualize bubble sort algorithm by sorting following list [5 1 4 2 8]. I’ll use colors to specify &lt;span style=&quot;color: #ff0000;&quot;&gt;current adjacent pair&lt;/span&gt; and &lt;span style=&quot;color: #99cc00;&quot;&gt;already sorted elements&lt;/span&gt;.&lt;/p&gt;
+
+&lt;p&gt;Iteration #1 : [5 1 4 2 8&lt;span style=&quot;color: #99cc00;&quot;&gt;]&lt;/span&gt;
+[&lt;span style=&quot;color: #ff0000;&quot;&gt;5 1&lt;/span&gt; 4 2 8] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;1 5&lt;/span&gt; 4 2 8&lt;span style=&quot;color: #99cc00;&quot;&gt;]&lt;/span&gt;
+[1 &lt;span style=&quot;color: #ff0000;&quot;&gt;5 4&lt;/span&gt; 2 8] → [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 5&lt;/span&gt; 2 8&lt;span style=&quot;color: #99cc00;&quot;&gt;]&lt;/span&gt;
+[1 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5 2&lt;/span&gt; 8] → [1 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;2 5&lt;/span&gt; 8&lt;span style=&quot;color: #99cc00;&quot;&gt;]&lt;/span&gt;
+[1 4 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;5 8&lt;/span&gt;] → [1 4 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;5 8&lt;/span&gt;&lt;span style=&quot;color: #99cc00;&quot;&gt;]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Iteration #2 : [1 4 2 5 &lt;span style=&quot;color: #99cc00;&quot;&gt;8&lt;/span&gt;]
+[&lt;span style=&quot;color: #ff0000;&quot;&gt;1 4&lt;/span&gt; 2 5 &lt;span style=&quot;color: #99cc00;&quot;&gt;8&lt;/span&gt;] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;1 4&lt;/span&gt; 2 5 &lt;span style=&quot;color: #99cc00;&quot;&gt;8&lt;/span&gt;]
+[1 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 2&lt;/span&gt; 5 &lt;span style=&quot;color: #99cc00;&quot;&gt;8&lt;/span&gt;] → [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2 4&lt;/span&gt; 5 &lt;span style=&quot;color: #99cc00;&quot;&gt;8&lt;/span&gt;]
+[1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 5&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;8&lt;/span&gt;] → [1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 5&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;8&lt;/span&gt;]&lt;/p&gt;
+
+&lt;p&gt;Iteration #3 : [1 2 4 &lt;span style=&quot;color: #99cc00;&quot;&gt;5 8&lt;/span&gt;]
+[&lt;span style=&quot;color: #ff0000;&quot;&gt;1 2&lt;/span&gt; 4 &lt;span style=&quot;color: #99cc00;&quot;&gt;5 8&lt;/span&gt;] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;1 2&lt;/span&gt; 4 &lt;span style=&quot;color: #99cc00;&quot;&gt;5 8&lt;/span&gt;]
+[1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2 4&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;5 8&lt;/span&gt;] → [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2 4&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;5 8&lt;/span&gt;]&lt;/p&gt;
+
+&lt;p&gt;Iteration #4 : [1 2 &lt;span style=&quot;color: #99cc00;&quot;&gt;4 5 8&lt;/span&gt;]
+[&lt;span style=&quot;color: #ff0000;&quot;&gt;1 2&lt;/span&gt; 4 5 8] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;1 2&lt;/span&gt; 4 5 8]&lt;/p&gt;
+
+&lt;p&gt;Iteration #5 : [1 &lt;span style=&quot;color: #99cc00;&quot;&gt;2 4 5 8&lt;/span&gt;]&lt;/p&gt;
+
+&lt;p&gt;Implementation of the bubble sort is quit simple:&lt;/p&gt;
+
+&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/sorting/bubbleSort.js?footer=minimal&quot;&gt;
+&lt;/script&gt;
+
+&lt;p&gt;As you can see we have two loops: outer and inner. Outer loop is executed for each element (n times) and inner loop is executed for n/2 elements on average. As a result we have O(n&lt;sup&gt;2&lt;/sup&gt;/2) or just O(n&lt;sup&gt;2&lt;/sup&gt;) complexity.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n&lt;sup&gt;2&lt;/sup&gt;).&lt;/p&gt;
+</description>
+        <pubDate>Sun, 04 Aug 2013 11:25:31 -0700</pubDate>
+        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-bubble-sort.html</link>
+        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-bubble-sort.html</guid>
+        
+        <category>Bubble Sort</category>
+        
+        
+        <category>algorithms</category>
+        
+        <category>sorting</category>
         
       </item>
     
