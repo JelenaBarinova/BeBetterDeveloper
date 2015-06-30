@@ -171,7 +171,7 @@ table {
   background-attachment: fixed; }
   @media screen and (max-width: 700px) {
     .site-header {
-      min-height: 250px;
+      min-height: 300px;
       background-position: center -250px; } }
 
 .site-header a, a h1:hover {
@@ -180,7 +180,8 @@ table {
 .site-header h1 {
   display: block;
   font-size: 60px !important;
-  line-height: 80px;
+  font-weight: 200;
+  line-height: 60px;
   letter-spacing: 3px;
   text-align: center;
   padding-top: 20px;
@@ -189,11 +190,12 @@ table {
   font-family: 'Open Sans'; }
   @media screen and (max-width: 700px) {
     .site-header h1 {
-      font-size: 60px !important;
+      font-size: 40px !important;
+      font-weight: 200;
       letter-spacing: 0px; } }
 
 .site-header span {
-  border: 10px solid #FFF;
+  border: 6px solid #FFF;
   padding: 0.3em 0.5em;
   margin: 10px 20px;
   display: inline-block; }
@@ -234,7 +236,8 @@ table {
   text-align: justify; }
 
 .page-heading {
-  font-size: 20px;
+  font-size: 40px;
+  font-weight: 300;
   padding-top: 2px; }
 
 /* Archive
@@ -261,7 +264,6 @@ table {
 .post-meta {
   font-size: 14.32px;
   color: #cecece;
-  text-transform: uppercase;
   display: inline-block; }
 
 /* Post Format
@@ -270,7 +272,8 @@ table {
   margin-bottom: 30px; }
 
 .post-title {
-  font-size: 42px;
+  font-size: 50px;
+  font-weight: 300;
   letter-spacing: -1px;
   line-height: 1; }
   @media screen and (max-width: 700px) {
