@@ -5,8 +5,8 @@
     <description>Practical notes on development by Sergey Barinov</description>
     <link>http://jelenabarinova.github.io/BeBetterDeveloper/</link>
     <atom:link href="http://jelenabarinova.github.io/BeBetterDeveloper/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 29 Jun 2015 17:10:09 -0700</pubDate>
-    <lastBuildDate>Mon, 29 Jun 2015 17:10:09 -0700</lastBuildDate>
+    <pubDate>Wed, 01 Jul 2015 16:14:13 -0700</pubDate>
+    <lastBuildDate>Wed, 01 Jul 2015 16:14:13 -0700</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -94,12 +94,34 @@
 
 &lt;p&gt;Swap first (max) item with the last one and ensure max-heap invariant:&lt;/p&gt;
 
-&lt;p&gt;[null &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt; 4 2 3 3 1 &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;]
-[null &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; 4 2 3 3 1 | &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;]
-[null &lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;4 2&lt;/span&gt; 3 3 1 | 5]
-[null &lt;span style=&quot;color: #99cc00;&quot;&gt;4&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;1 2&lt;/span&gt; 3 3 1 | 5]
-[null 4 &lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; 2 &lt;span style=&quot;color: #0000ff;&quot;&gt;3 3&lt;/span&gt; 1 | 5]
-[null 4 &lt;span style=&quot;color: #99cc00;&quot;&gt;3&lt;/span&gt; 2 &lt;span style=&quot;color: #0000ff;&quot;&gt;3 1&lt;/span&gt; 1 | 5]&lt;/p&gt;
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt; 4 2 3 3 1 &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; 4 2 3 3 1&lt;/td&gt;
+      &lt;td&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;4 2&lt;/span&gt; 3 3 1&lt;/td&gt;
+      &lt;td&gt;5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null &lt;span style=&quot;color: #99cc00;&quot;&gt;4&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;1 2&lt;/span&gt; 3 3 1&lt;/td&gt;
+      &lt;td&gt;5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null 4 &lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt; 2 &lt;span style=&quot;color: #0000ff;&quot;&gt;3 3&lt;/span&gt; 1&lt;/td&gt;
+      &lt;td&gt;5]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[null 4 &lt;span style=&quot;color: #99cc00;&quot;&gt;3&lt;/span&gt; 2 &lt;span style=&quot;color: #0000ff;&quot;&gt;3 1&lt;/span&gt; 1&lt;/td&gt;
+      &lt;td&gt;5]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;table&gt;
   &lt;tbody&gt;
