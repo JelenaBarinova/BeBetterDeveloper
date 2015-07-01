@@ -5,7 +5,7 @@ layout: default
 <div class="home">
 
   <ul class="post-list">
-    {% for post in site.posts %}
+    {% for post in paginator.posts %}
       <li>
         <!-- <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span> -->
         <h1 style="text-align: left"><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
@@ -14,10 +14,32 @@ layout: default
             <article class="post-content">
             {{ post.content }}
             </article>
+
             </p>
             <hr>
             <br>
       </li>
     {% endfor %}
   </ul>
+
+{% if paginator.total_pages > 1 %}
+<div>
+  <div style="float: left; margin-right: 10px;">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">
+        <i class="fa fa-arrow-circle-left fa-2x"></i>
+        <!--<span class="fa-stack fa-lg">
+          <i class="fa fa-square fa-stack-2x"></i>
+           <i class="fa fa-arrow-left fa-stack-1x fa-inverse"></i>
+        </span>-->
+      </a>
+    {% endif %}
+  </div>
+  <div style="float: right; margin-left: 10px;">
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"><i class="fa fa-arrow-circle-right fa-2x"></i></a>
+    {% endif %}
+    </div>
+    </div>
+{% endif %}
 </div>

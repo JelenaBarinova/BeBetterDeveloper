@@ -54,7 +54,7 @@ Step #2
 
 Swap first (max) item with the last one and ensure max-heap invariant:
 
-[null <span style="color: #ff0000;">5</span> 4 2 3 3 1 <span style="color: #ff0000;">1</span>]
+[null <span style="color: #ff0000;">5</span> 4 2 3 3 1 <span style="color: #ff0000;">1</span>|]
 [null <span style="color: #ff0000;">1</span> 4 2 3 3 1 | <span style="color: #ff0000;">5</span>]
 [null <span style="color: #99cc00;">1</span> <span style="color: #0000ff;">4 2</span> 3 3 1 | 5]
 [null <span style="color: #99cc00;">4</span> <span style="color: #0000ff;">1 2</span> 3 3 1 | 5]

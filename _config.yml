@@ -7,10 +7,12 @@ url: "http://jelenabarinova.github.io" # the base hostname & protocol for your s
 destination: ../gh-pages/
 twitter_username: sergejusb
 github_username: sergejusb
+linkedin_username: sergejus
+disqus_shortname: beabetterdeveloper
 
 # Build settings
 markdown: kramdown
 highlighter: pygments
 permalink: none
-paginate: 10
+paginate: 3
 exclude: ["less","node_modules","package.json","README.md"]

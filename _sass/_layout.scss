@@ -1,7 +1,7 @@
 /* Site Header
  * ============================================== */
     .site-header {
-        min-height: 300px;
+        min-height: 235px;
         background-color: $brand-color;
         background-image: url('');
         background-size: cover;
@@ -9,7 +9,7 @@
         background-attachment: fixed;
 
         @include media-query($on-palm) {
-            min-height: 250px;
+            min-height: 220px;
             background-position: center -250px;
         }
     }
@@ -18,30 +18,32 @@
 
     .site-header h1 {
         display: block;
-        font-size: 60px !important;
-        line-height: 80px;
+        font-size: 50px !important;
+        font-weight: 200;
+        line-height: 60px;
         letter-spacing: 3px;
         text-align: center;
-        padding-top: 20px;
+        padding-top: 0px;
         clear: both;
         text-transform: uppercase;
         font-family: 'Open Sans';
 
         @include media-query($on-palm) {
-            font-size:60px !important;
+            font-size:40px !important;
+            font-weight: 200;
             letter-spacing: 0px;
         }
     }
 
     .site-header span {
-        border: 10px solid #FFF;
+        border: 5px solid #FFF;
         padding: 0.3em 0.5em;
         margin: 10px 20px;
         display: inline-block;
 
         @include media-query($on-palm) {
             margin: 10px 10px;
-            padding: 0.15em 0.4em;
+            padding: 0.15em 0.3em;
         }
     }
 
@@ -65,7 +67,7 @@
         }
 
         @include media-query($on-palm) {
-            padding-bottom: 10px;
+            padding-bottom: 0px;
         }
     }
 
@@ -87,8 +89,12 @@
     }
 
     .page-heading {
-        font-size: 20px;
-        padding-top: 2px;
+        font-family: 'Open Sans';
+        font-weight: 300;
+        font-size: 2em;
+        letter-spacing: -1px;
+        display: block;
+        width: 100%;
     }
 
 /* Archive
@@ -107,9 +113,9 @@
     .post-link {
         font-family: 'Open Sans';
         font-weight: 300;
-        font-size: 1.5em;
+        
         letter-spacing: -1px;
-        color: #454545;
+        color: darken($brand-color, 10%);
         display: block;
         width: 100%;
 
@@ -121,7 +127,6 @@
     .post-meta {
         font-size: $small-font-size;
         color: $grey-color-light;
-        text-transform: uppercase;
         display: inline-block;
     }
 
@@ -132,12 +137,16 @@
     }
 
     .post-title {
-        font-size: 42px;
+        font-family: 'Open Sans';
+        font-weight: 300;
+        font-size: 2em;
         letter-spacing: -1px;
-        line-height: 1;
+        display: block;
+        width: 100%;
 
         @include media-query($on-laptop) {
             font-size: 36px;
+            font-weight: 300;
         }
     }
 
