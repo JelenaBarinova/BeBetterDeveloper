@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Be a Better Developer</title>
-  <meta name="description" content="Practical notes on development by Sergey Barinov">
+  <meta name="description" content="Practical notes on development">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://bebetterdeveloper/page6/">
@@ -29,7 +29,7 @@
 <meta property="og:url" content="http://bebetterdeveloper/page6/">
 <meta property="og:image" content="http://bebetterdeveloper">
 
-<meta property="og:description" content="Practical notes on development by Sergey Barinov">
+<meta property="og:description" content="Practical notes on development">
 <meta property="og:site_name" content="Be a Better Developer">
 
 
@@ -73,6 +73,8 @@
         
           
         
+          
+        
     </nav>
 
     <h1>
@@ -90,6 +92,95 @@
         <div class="home">
 
   <ul class="post-list">
+    
+      <li>
+        <!-- <span class="post-meta">Jun 13, 2013</span> -->
+        <h1 style="text-align: left"><a class="post-link" href="/data%20structure/data-structure-linked-list.html">Data Structure: Linked List</a>
+          </h1>
+          <p>
+            <article class="post-content">
+            <p>In this post I will implement one of the most fundamental data structure in computer science – <a href="https://en.wikipedia.org/wiki/Linked_list">linked list</a>. Linked list – is a dynamic sequence of linked nodes where each node composed of a datum and a reference to the next node. Lists, stacks, queues and many other data types can be implemented using linked list. There are several types of linked lists:</p>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Linked_list#Singly_linked_list">singly linked list</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Linked_list#Doubly_linked_list">doubly linked list</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Linked_list#Circular_list">circular linked list</a></li>
+</ul>
+
+<p>In this post I will implement the most frequent type – singly linked list. Let’s start with the definition of node:</p>
+
+<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/node.js?footer=minimal">
+</script>
+
+<p>Usually linked list has following functions:</p>
+
+<ul>
+  <li>isEmpty() – to check whether the list is empty or not</li>
+  <li>length() – to get the number of nodes in the list</li>
+  <li>find() – to find existing node by value</li>
+  <li>addAfter(), addBefore() – to add new node after / before the specified node</li>
+  <li>
+    <p>remove() – to remove existing node
+In more advance cases linked list can also have functions:</p>
+  </li>
+  <li>addFirst(), addLast() - to add new node at given position</li>
+  <li>removeFirst(), removeLast() - to remove existing node at given position</li>
+  <li>reverse() – to reverse existing nodes</li>
+  <li>copy() – to create deep copy of the existing list</li>
+  <li>merge() – to merge given list with the current one</li>
+</ul>
+
+<p>Instead of the specific functions addFirst(), addLast(), removeFirst() and removeLast() I will implement more generic addFromStart(), addFromEnd(), removeFromStart() and removeFromEnd(), where one can specify the exact position a node has to be added or removed. Also it’s worth mentioning, that my implementation heavily relies on a notion of a <a href="https://en.wikipedia.org/wiki/Linked_list#Sentinel_nodes">dummy (or sentinel) node</a>.</p>
+
+<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/linkedList.js?footer=minimal">
+</script>
+
+
+            </article>
+
+            </p>
+            <hr>
+            <br>
+      </li>
+    
+      <li>
+        <!-- <span class="post-meta">Mar 24, 2013</span> -->
+        <h1 style="text-align: left"><a class="post-link" href="/algorithms/math/algorithm-pow.html">Algorithm: Pow(n, exp)</a>
+          </h1>
+          <p>
+            <article class="post-content">
+            <p>In this post I will implement basic algorithm to raise floating point number (also known as base) to integer power (also known as exponent). In academic world this process usually referred as <a href="http://en.wikipedia.org/wiki/Exponentiation">Exponentiation</a>. The most naïve implementation is based on the definition of x<sup>y</sup>, i.e. repetitive y-time multiplication of x.</p>
+
+<p><strong>Complexity</strong>: O(n).</p>
+
+<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/math/pow_naive.js?footer=minimal">
+</script>
+
+<p>This implementation can be optimized by using following exponentiation properties:</p>
+
+<ul>
+  <li>b<sup>m</sup> = b · b<sup>m-1</sup></li>
+  <li>b<sup>m+n</sup> = b<sup>m</sup> · b<sup>n</sup></li>
+  <li>b<sup>m·n</sup> = (b<sup>m</sup>)<sup>n</sup>
+In other words, given 2<sup>7</sup> we can calculate the result as follows:</li>
+</ul>
+
+<p>2<sup>7</sup> = 2 · 2<sup>6</sup> = 2 · 2<sup>2+4</sup> = 2 · 2<sup>2</sup> · 2<sup>4</sup> = 2 · 2<sup>2</sup> · 2<sup>2·2</sup> = 2 · 2<sup>2</sup> · (2<sup>2</sup>)<sup>2</sup></p>
+
+<p>As you can see, instead of 7 iterations now we have only 3.</p>
+
+<p><strong>Complexity:</strong> O(log n).</p>
+
+<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/math/pow.js?footer=minimal">
+</script>
+
+
+            </article>
+
+            </p>
+            <hr>
+            <br>
+      </li>
     
       <li>
         <!-- <span class="post-meta">Mar 24, 2013</span> -->
@@ -114,28 +205,6 @@
             <br>
       </li>
     
-      <li>
-        <!-- <span class="post-meta">Mar 19, 2013</span> -->
-        <h1 style="text-align: left"><a class="post-link" href="/other/hello-world.html">Hello world</a>
-          </h1>
-          <p>
-            <article class="post-content">
-            <p>Hello dear reader, my name is <strong>Sergejus</strong> and I am DEVELOPER. It’s no brainier  good developers are good at learning. I decided to put my learning, challenges and thoughts into this blog that will help me (and hopefully others) to <a href="http://www.bebetterdeveloper.com">be a better developer</a>.</p>
-
-<p>Despite my background in .net, cloud and recent interest in node.js, I believe there is more than java developer, ruby developer or .net developer. Developer is the mindset that’s why this blog will be language agnostic.</p>
-
-<p>As I’ve mentioned, this blog is about my path on becoming a better developer and I decided to start with the most “uncomfortable” for me topic - algorithms. Next post will be the first in series so stay tuned!</p>
-
-<p>P.S.
-Your ideas, comments, suggestions are very welcomed.</p>
-
-            </article>
-
-            </p>
-            <hr>
-            <br>
-      </li>
-    
   </ul>
 
 
@@ -152,6 +221,8 @@ Your ideas, comments, suggestions are very welcomed.</p>
     
   </div>
   <div style="float: right; margin-left: 10px;">
+    
+      <a href="/page7"><i class="fa fa-arrow-circle-right fa-2x"></i></a>
     
     </div>
     </div>

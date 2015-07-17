@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Sorting: Bubble Sort</title>
-  <meta name="description" content="In this post I will implement very basic sorting algorithm – Bubble Sort. The idea of the algorithm is very trivial:">
+  <title>ES2015 + React using Gulp</title>
+  <meta name="description" content="Recently I started exploring new features of ECMAScript 2015 while using React. So here is how I set-up my dev environment with gulp.I have 2 simple steps  (...">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://bebetterdeveloper/algorithms/sorting/sorting-bubble-sort.html">
+  <link rel="canonical" href="http://bebetterdeveloper/coding/es6-react-babel.html">
   <link rel="alternate" type="application/rss+xml" title="Be a Better Developer" href="http://bebetterdeveloper/feed.xml" />
 
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -30,37 +30,45 @@
             
             
 <!-- Open graph tags -->
-<meta property="og:title" content="Sorting: Bubble Sort">
+<meta property="og:title" content="ES2015 + React using Gulp">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://bebetterdeveloper/algorithms/sorting/sorting-bubble-sort.html">
-<meta property="og:image" content="http://bebetterdevelopercolor:#ff0000;">
+<meta property="og:url" content="http://bebetterdeveloper/coding/es6-react-babel.html">
+<meta property="og:image" content="http://bebetterdeveloperhttps://gist.github.com/JelenaBarinova/b7b58c270e3e560056b3.js">
 
-<meta property="og:description" content="In this post I will implement very basic sorting algorithm – Bubble Sort. The idea of the algorithm is very trivial:">
+<meta property="og:description" content="Recently I started exploring new features of ECMAScript 2015 while using React. So here is how I set-up my dev environment with gulp.I have 2 simple steps  (...">
 <meta property="og:site_name" content="Be a Better Developer">
 
 
 
 
-<meta property="article:published_time" content="2013-08-04T11:25:31-07:00">
+<meta property="article:published_time" content="2015-07-14T00:00:00-07:00">
 <meta property="article:author" content="https://www.facebook.com/">
   
 <meta property="og:see_also" content="http://bebetterdeveloper/coding/getting-started-react-mocha.html">
   
-<meta property="og:see_also" content="http://bebetterdeveloper/coding/es6-react-babel.html">
-  
 <meta property="og:see_also" content="http://bebetterdeveloper/algorithms/sorting/sorting-heap-sort.html">
   
-
-
-
-  
-<meta property="article:section" content="algorithms">
+<meta property="og:see_also" content="http://bebetterdeveloper/data%20structure/data-structure-max-priority-queue.html">
   
 
 
 
   
-<meta property="article:tag" content="Bubble Sort">
+<meta property="article:section" content="coding">
+  
+
+
+
+  
+<meta property="article:tag" content="JavaScript">
+  
+<meta property="article:tag" content="Gulp">
+  
+<meta property="article:tag" content="ES2015">
+  
+<meta property="article:tag" content="React">
+  
+<meta property="article:tag" content="dev environment">
   
 
 </head>
@@ -116,23 +124,23 @@
         <div class="post">
 
   <header class="post-header">
-     <h1 class="post-title">Sorting: Bubble Sort</h1>
-     <p class="post-meta">Posted by <em> Sergey Barinov </em> on Aug 4, 2013</p>
+     <h1 class="post-title">ES2015 + React using Gulp</h1>
+     <p class="post-meta">Posted by <em> Jelena Barinova</em> on Jul 14, 2015</p>
 <br>
   <span > 
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http://bebetterdeveloper/algorithms/sorting/sorting-bubble-sort.html" target="_blank">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http://bebetterdeveloper/coding/es6-react-babel.html" target="_blank">
         <span class="fa-stack fa-lg">
             <i class="fa fa-square-o fa-stack-2x"></i>
             <i class="fa fa-facebook fa-stack-1x"></i>
         </span>
     </a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://bebetterdeveloper/algorithms/sorting/sorting-bubble-sort.html&title=Sorting: Bubble Sort&summary=&source=http://bebetterdeveloper/" target="_blank">
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://bebetterdeveloper/coding/es6-react-babel.html&title=ES2015 + React using Gulp&summary=Instructions how to setup the environment&source=http://bebetterdeveloper/" target="_blank">
         <span class="fa-stack fa-lg">
             <i class="fa fa-square-o fa-stack-2x"></i>
             <i class="fa fa-linkedin fa-stack-1x"></i>
         </span>
     </a>
-    <a href="https://twitter.com/home?status=Reading %20%22Sorting: Bubble Sort%20%22 on http://bebetterdeveloper/algorithms/sorting/sorting-bubble-sort.html %20%23bebetterdeveloper%0A" target="_blank">
+    <a href="https://twitter.com/home?status=Reading %20%22ES2015 + React using Gulp%20%22 on http://bebetterdeveloper/coding/es6-react-babel.html %20%23bebetterdeveloper%0A" target="_blank">
         <span class="fa-stack fa-lg">
             <i class="fa fa-square-o fa-stack-2x"></i>
             <i class="fa fa-twitter fa-stack-1x"></i>
@@ -142,55 +150,36 @@
   <span>
     
       
-      <a class="category" href="http://bebetterdeveloper/categories.html#algorithms"> Algorithms</a>
-      
-      <a class="category" href="http://bebetterdeveloper/categories.html#sorting"> Sorting</a>
+      <a class="category" href="http://bebetterdeveloper/categories.html#coding"> Coding</a>
       
   </span>  
   </header>
   
   
   <article class="post-content">
-    <p>In this post I will implement very basic sorting algorithm – <a href="http://en.wikipedia.org/wiki/Bubble_sort">Bubble Sort</a>. The idea of the algorithm is very trivial:</p>
+    <p>Recently I started exploring new features of ECMAScript 2015 while using React. So here is how I set-up my dev environment with <a href="http://gulpjs.com/">gulp</a>.
+I have 2 simple steps  (running one after other in this sequence):</p>
 
-<ul>
-  <li>starting from the beginning of the list compare every adjacent pair</li>
-  <li>swap their position if they are not in the right order</li>
-  <li>after each iteration the last element is the biggest in the list</li>
-  <li>after each iteration one less element is needed to be compared</li>
-  <li>continue until there are no more elements left to be compared</li>
-</ul>
+<ol>
+  <li>
+    <p>Transform XLS files: I precompile React JSX template files into plain JavaScript using gulp-react: 
+  <script src="https://gist.github.com/JelenaBarinova/b7b58c270e3e560056b3.js"></script></p>
+  </li>
+  <li>
+    <p>Transform ES2015 files: I take JavaScript files, produced after first transformation and turn them into ES5 files using gulp-babel: 
+  <script src="https://gist.github.com/JelenaBarinova/7245b2c53e06eb8772ab.js"></script></p>
+  </li>
+</ol>
 
-<p>We can visualize bubble sort algorithm by sorting following list [5 1 4 2 8]. I’ll use colors to specify <span style="color: #ff0000;">current adjacent pair</span> and <span style="color: #99cc00;">already sorted elements</span>.</p>
+<p>Here it all gathered and chained together:
+<script src="https://gist.github.com/JelenaBarinova/95b2d933b6f75d6cc495.js"></script></p>
 
-<p>Iteration #1 : [5 1 4 2 8<span style="color: #99cc00;">]</span>
-[<span style="color: #ff0000;">5 1</span> 4 2 8] → [<span style="color: #ff0000;">1 5</span> 4 2 8<span style="color: #99cc00;">]</span>
-[1 <span style="color: #ff0000;">5 4</span> 2 8] → [1 <span style="color: #ff0000;">4 5</span> 2 8<span style="color: #99cc00;">]</span>
-[1 4 <span style="color: #ff0000;">5 2</span> 8] → [1 4 <span style="color: #ff0000;">2 5</span> 8<span style="color: #99cc00;">]</span>
-[1 4 2 <span style="color: #ff0000;">5 8</span>] → [1 4 2 <span style="color: #ff0000;">5 8</span><span style="color: #99cc00;">]</span></p>
+<p>In addition to two transformation tasks I like to open output in browser, for this I use gulp-open.</p>
 
-<p>Iteration #2 : [1 4 2 5 <span style="color: #99cc00;">8</span>]
-[<span style="color: #ff0000;">1 4</span> 2 5 <span style="color: #99cc00;">8</span>] → [<span style="color: #ff0000;">1 4</span> 2 5 <span style="color: #99cc00;">8</span>]
-[1 <span style="color: #ff0000;">4 2</span> 5 <span style="color: #99cc00;">8</span>] → [1 <span style="color: #ff0000;">2 4</span> 5 <span style="color: #99cc00;">8</span>]
-[1 2 <span style="color: #ff0000;">4 5</span> <span style="color: #99cc00;">8</span>] → [1 2 <span style="color: #ff0000;">4 5</span> <span style="color: #99cc00;">8</span>]</p>
+<p>I use <a href="https://code.visualstudio.com/">Visual Studio Code</a> as my IDE, so I have set this gulp task named “build” as a build task in VS Code settings.<br />
+<img src="/img/post_img/vs-code-settings.png" alt="Blog infrastructure" class="right" /></p>
 
-<p>Iteration #3 : [1 2 4 <span style="color: #99cc00;">5 8</span>]
-[<span style="color: #ff0000;">1 2</span> 4 <span style="color: #99cc00;">5 8</span>] → [<span style="color: #ff0000;">1 2</span> 4 <span style="color: #99cc00;">5 8</span>]
-[1 <span style="color: #ff0000;">2 4</span> <span style="color: #99cc00;">5 8</span>] → [1 <span style="color: #ff0000;">2 4</span> <span style="color: #99cc00;">5 8</span>]</p>
-
-<p>Iteration #4 : [1 2 <span style="color: #99cc00;">4 5 8</span>]
-[<span style="color: #ff0000;">1 2</span> 4 5 8] → [<span style="color: #ff0000;">1 2</span> 4 5 8]</p>
-
-<p>Iteration #5 : [1 <span style="color: #99cc00;">2 4 5 8</span>]</p>
-
-<p>Implementation of the bubble sort is quit simple:</p>
-
-<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/sorting/bubbleSort.js?footer=minimal">
-</script>
-
-<p>As you can see we have two loops: outer and inner. Outer loop is executed for each element (n times) and inner loop is executed for n/2 elements on average. As a result we have O(n<sup>2</sup>/2) or just O(n<sup>2</sup>) complexity.</p>
-
-<p><strong>Complexity:</strong> O(n<sup>2</sup>).</p>
+<p>And now once I change code and want to check it - I just press ⇧⌘B (on Mac) and the result is in front of me.</p>
 
   </article>
   
