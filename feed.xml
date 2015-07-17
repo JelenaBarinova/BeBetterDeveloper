@@ -3,10 +3,10 @@
   <channel>
     <title>Be a Better Developer</title>
     <description>Practical notes on development</description>
-    <link>http://www.bebetterdeveloper.com/</link>
-    <atom:link href="http://www.bebetterdeveloper.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 17 Jul 2015 09:35:44 -0700</pubDate>
-    <lastBuildDate>Fri, 17 Jul 2015 09:35:44 -0700</lastBuildDate>
+    <link>http://bebetterdeveloper.com/</link>
+    <atom:link href="http://bebetterdeveloper.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 17 Jul 2015 09:39:36 -0700</pubDate>
+    <lastBuildDate>Fri, 17 Jul 2015 09:39:36 -0700</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -161,8 +161,8 @@ I’ve created &lt;em&gt;dom-mock.js&lt;/em&gt; file.
 &lt;script src=&quot;https://gist.github.com/JelenaBarinova/8fd92aee1786dc774a9d.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 16 Jul 2015 00:00:00 -0700</pubDate>
-        <link>http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html</link>
-        <guid isPermaLink="true">http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html</guid>
+        <link>http://bebetterdeveloper.com/coding/getting-started-react-mocha.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper.com/coding/getting-started-react-mocha.html</guid>
         
         <category>JavaScript</category>
         
@@ -206,8 +206,8 @@ I have 2 simple steps  (running one after other in this sequence):&lt;/p&gt;
 &lt;p&gt;And now once I change code and want to check it - I just press ⇧⌘B (on Mac) and the result is in front of me.&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Jul 2015 00:00:00 -0700</pubDate>
-        <link>http://www.bebetterdeveloper.com/coding/es6-react-babel.html</link>
-        <guid isPermaLink="true">http://www.bebetterdeveloper.com/coding/es6-react-babel.html</guid>
+        <link>http://bebetterdeveloper.com/coding/es6-react-babel.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper.com/coding/es6-react-babel.html</guid>
         
         <category>JavaScript</category>
         
@@ -464,8 +464,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;strong&gt;Complexity&lt;/strong&gt;: O(n·logn)&lt;/p&gt;
 </description>
         <pubDate>Mon, 24 Feb 2014 00:00:26 -0800</pubDate>
-        <link>http://www.bebetterdeveloper.com/algorithms/sorting/sorting-heap-sort.html</link>
-        <guid isPermaLink="true">http://www.bebetterdeveloper.com/algorithms/sorting/sorting-heap-sort.html</guid>
+        <link>http://bebetterdeveloper.com/algorithms/sorting/sorting-heap-sort.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper.com/algorithms/sorting/sorting-heap-sort.html</guid>
         
         <category>Binary Heap</category>
         
@@ -513,8 +513,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 15 Feb 2014 00:00:00 -0800</pubDate>
-        <link>http://www.bebetterdeveloper.com/data%20structure/data-structure-max-priority-queue.html</link>
-        <guid isPermaLink="true">http://www.bebetterdeveloper.com/data%20structure/data-structure-max-priority-queue.html</guid>
+        <link>http://bebetterdeveloper.com/data%20structure/data-structure-max-priority-queue.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper.com/data%20structure/data-structure-max-priority-queue.html</guid>
         
         <category>Binary Heap</category>
         
@@ -583,8 +583,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 06 Jan 2014 00:00:00 -0800</pubDate>
-        <link>http://www.bebetterdeveloper.com/data%20structure/data-structure-binary-heap.html</link>
-        <guid isPermaLink="true">http://www.bebetterdeveloper.com/data%20structure/data-structure-binary-heap.html</guid>
+        <link>http://bebetterdeveloper.com/data%20structure/data-structure-binary-heap.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper.com/data%20structure/data-structure-binary-heap.html</guid>
         
         <category>Binary Heap</category>
         
@@ -603,8 +603,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 
 </description>
         <pubDate>Wed, 11 Dec 2013 13:58:42 -0800</pubDate>
-        <link>http://www.bebetterdeveloper.com/presentation/presentation-continuous-delivery.html</link>
-        <guid isPermaLink="true">http://www.bebetterdeveloper.com/presentation/presentation-continuous-delivery.html</guid>
+        <link>http://bebetterdeveloper.com/presentation/presentation-continuous-delivery.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper.com/presentation/presentation-continuous-delivery.html</guid>
         
         <category>Continuous Delivery</category>
         
@@ -667,8 +667,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n·logn).&lt;/p&gt;
 </description>
         <pubDate>Sun, 13 Oct 2013 13:16:55 -0700</pubDate>
-        <link>http://www.bebetterdeveloper.com/algorithms/sorting/sorting-quick-sort.html</link>
-        <guid isPermaLink="true">http://www.bebetterdeveloper.com/algorithms/sorting/sorting-quick-sort.html</guid>
+        <link>http://bebetterdeveloper.com/algorithms/sorting/sorting-quick-sort.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper.com/algorithms/sorting/sorting-quick-sort.html</guid>
         
         <category>Quick Sort</category>
         
@@ -746,8 +746,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n·logn).&lt;/p&gt;
 </description>
         <pubDate>Mon, 23 Sep 2013 15:03:20 -0700</pubDate>
-        <link>http://www.bebetterdeveloper.com/algorithms/sorting/sorting-merge-sort.html</link>
-        <guid isPermaLink="true">http://www.bebetterdeveloper.com/algorithms/sorting/sorting-merge-sort.html</guid>
+        <link>http://bebetterdeveloper.com/algorithms/sorting/sorting-merge-sort.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper.com/algorithms/sorting/sorting-merge-sort.html</guid>
         
         <category>Merge Sort</category>
         
@@ -804,8 +804,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n&lt;sup&gt;3/2&lt;/sup&gt;) using Knuth’s sequence.&lt;/p&gt;
 </description>
         <pubDate>Wed, 28 Aug 2013 15:09:55 -0700</pubDate>
-        <link>http://www.bebetterdeveloper.com/algorithms/sorting/sorting-shell-sort.html</link>
-        <guid isPermaLink="true">http://www.bebetterdeveloper.com/algorithms/sorting/sorting-shell-sort.html</guid>
+        <link>http://bebetterdeveloper.com/algorithms/sorting/sorting-shell-sort.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper.com/algorithms/sorting/sorting-shell-sort.html</guid>
         
         <category>Shell Sort</category>
         
@@ -856,8 +856,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n&lt;sup&gt;2&lt;/sup&gt;).&lt;/p&gt;
 </description>
         <pubDate>Sun, 18 Aug 2013 13:00:36 -0700</pubDate>
-        <link>http://www.bebetterdeveloper.com/algorithms/sorting/sorting-insertion-sort.html</link>
-        <guid isPermaLink="true">http://www.bebetterdeveloper.com/algorithms/sorting/sorting-insertion-sort.html</guid>
+        <link>http://bebetterdeveloper.com/algorithms/sorting/sorting-insertion-sort.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper.com/algorithms/sorting/sorting-insertion-sort.html</guid>
         
         <category>Insertion Sort</category>
         
