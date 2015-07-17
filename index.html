@@ -114,7 +114,7 @@ I decided to share my findings here so it would remain. </p>
 <p>For build scripts I prefer to use gulp.</p>
 
 <h2 id="tldr">tl;dr</h2>
-<p>You can find working code <a href="http://github.com">here</a>. Just download it and run </p>
+<p>You can find working code <a href="https://github.com/JelenaBarinova/VeryFirstDiv">here</a>. Just download it and run </p>
 
 <pre><code>$npm install
 </code></pre>
@@ -157,8 +157,9 @@ I’m using <a href="https://www.npmjs.com/package/gulp-load-plugins">gulp-load-
 <pre><code>$gulp build
 </code></pre>
 
-<p>And you should get Chrome opened with very first version of our app.
-<img src="/img/post_img/vfd-1.png" alt="First step result" class="right" /></p>
+<p>And you should get Chrome opened with very first version of our app.</p>
+
+<p><img src="/img/post_img/vfd-1.png" alt="First step result" class="right" /></p>
 
 <h2 id="step-2-create-first-react-component">Step 2. Create first React component</h2>
 <p>Create a <em>components</em> directory and <em>component.jsx</em> file in it:
@@ -170,8 +171,9 @@ I’m using <a href="https://www.npmjs.com/package/gulp-load-plugins">gulp-load-
 <p>Add aditional step ‘browserify’ in build process to have “require(‘modules’)” in browser. I use <a href="https://www.npmjs.com/package/gulp-browserify">gulp-browserify</a> module. This is our <em>gulpfile.js</em> with new ‘browserify’ step added:
 <script src="https://gist.github.com/JelenaBarinova/912880187a6b55b83b5d.js"></script></p>
 
-<p>Run build task and we can see our React component in a browser.
-<img src="/img/post_img/vfd-2.png" alt="Second step result" class="right" /></p>
+<p>Run build task and we can see our React component in a browser.</p>
+
+<p><img src="/img/post_img/vfd-2.png" alt="Second step result" class="right" /></p>
 
 <h2 id="step-3-adding-first-mocha-test">Step 3. Adding first Mocha test</h2>
 <p>This was the trickiest step for me. I found a couple of good articles on the topic. These are my favourite:</p>
@@ -203,8 +205,9 @@ First, we need to install <a href="http://mochajs.org/">Mocha</a>. There are two
 <pre><code>$mocha
 </code></pre>
 
-<p>You shoud get this output:
-<img src="/img/post_img/vfd-3.png" alt="Third step result" class="right" /></p>
+<p>You shoud get this output:</p>
+
+<p><img src="/img/post_img/vfd-3.png" alt="Third step result" class="right" /></p>
 
 <p>Now let’s add test running step in our gulp configuration.
 For this I used <a href="https://www.npmjs.com/package/gulp-shell">gulp-shell</a> - a command line interface for gulp.</p>
@@ -229,8 +232,9 @@ I’ve created <em>dom-mock.js</em> file.
 <p>And finally - the test! I’ve created <em>component-test.js</em> file in test directory:
 <script src="https://gist.github.com/JelenaBarinova/c4fd4c4cdad19b28fe0f.js"></script></p>
 
-<p>Run build. Hurray! The test is passing:
-<img src="/img/post_img/vfd-4.png" alt="Fourth step result" class="right" /></p>
+<p>Run build. Hurray! The test is passing:</p>
+
+<p><img src="/img/post_img/vfd-4.png" alt="Fourth step result" class="right" /></p>
 
 <p>You can also configure test running in your <em>package.json</em> - to run tests from command line using: </p>
 

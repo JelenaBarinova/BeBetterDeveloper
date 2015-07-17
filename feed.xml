@@ -5,8 +5,8 @@
     <description>Practical notes on development</description>
     <link>http://bebetterdeveloper/</link>
     <atom:link href="http://bebetterdeveloper/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 16 Jul 2015 21:16:35 -0700</pubDate>
-    <lastBuildDate>Thu, 16 Jul 2015 21:16:35 -0700</lastBuildDate>
+    <pubDate>Thu, 16 Jul 2015 21:23:58 -0700</pubDate>
+    <lastBuildDate>Thu, 16 Jul 2015 21:23:58 -0700</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -26,7 +26,7 @@ I decided to share my findings here so it would remain. &lt;/p&gt;
 &lt;p&gt;For build scripts I prefer to use gulp.&lt;/p&gt;
 
 &lt;h2 id=&quot;tldr&quot;&gt;tl;dr&lt;/h2&gt;
-&lt;p&gt;You can find working code &lt;a href=&quot;http://github.com&quot;&gt;here&lt;/a&gt;. Just download it and run &lt;/p&gt;
+&lt;p&gt;You can find working code &lt;a href=&quot;https://github.com/JelenaBarinova/VeryFirstDiv&quot;&gt;here&lt;/a&gt;. Just download it and run &lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$npm install
 &lt;/code&gt;&lt;/pre&gt;
@@ -69,8 +69,9 @@ I’m using &lt;a href=&quot;https://www.npmjs.com/package/gulp-load-plugins&quo
 &lt;pre&gt;&lt;code&gt;$gulp build
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;And you should get Chrome opened with very first version of our app.
-&lt;img src=&quot;/img/post_img/vfd-1.png&quot; alt=&quot;First step result&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;And you should get Chrome opened with very first version of our app.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/post_img/vfd-1.png&quot; alt=&quot;First step result&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;step-2-create-first-react-component&quot;&gt;Step 2. Create first React component&lt;/h2&gt;
 &lt;p&gt;Create a &lt;em&gt;components&lt;/em&gt; directory and &lt;em&gt;component.jsx&lt;/em&gt; file in it:
@@ -82,8 +83,9 @@ I’m using &lt;a href=&quot;https://www.npmjs.com/package/gulp-load-plugins&quo
 &lt;p&gt;Add aditional step ‘browserify’ in build process to have “require(‘modules’)” in browser. I use &lt;a href=&quot;https://www.npmjs.com/package/gulp-browserify&quot;&gt;gulp-browserify&lt;/a&gt; module. This is our &lt;em&gt;gulpfile.js&lt;/em&gt; with new ‘browserify’ step added:
 &lt;script src=&quot;https://gist.github.com/JelenaBarinova/912880187a6b55b83b5d.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
-&lt;p&gt;Run build task and we can see our React component in a browser.
-&lt;img src=&quot;/img/post_img/vfd-2.png&quot; alt=&quot;Second step result&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Run build task and we can see our React component in a browser.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/post_img/vfd-2.png&quot; alt=&quot;Second step result&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;step-3-adding-first-mocha-test&quot;&gt;Step 3. Adding first Mocha test&lt;/h2&gt;
 &lt;p&gt;This was the trickiest step for me. I found a couple of good articles on the topic. These are my favourite:&lt;/p&gt;
@@ -115,8 +117,9 @@ First, we need to install &lt;a href=&quot;http://mochajs.org/&quot;&gt;Mocha&lt
 &lt;pre&gt;&lt;code&gt;$mocha
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;You shoud get this output:
-&lt;img src=&quot;/img/post_img/vfd-3.png&quot; alt=&quot;Third step result&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;You shoud get this output:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/post_img/vfd-3.png&quot; alt=&quot;Third step result&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Now let’s add test running step in our gulp configuration.
 For this I used &lt;a href=&quot;https://www.npmjs.com/package/gulp-shell&quot;&gt;gulp-shell&lt;/a&gt; - a command line interface for gulp.&lt;/p&gt;
@@ -141,8 +144,9 @@ I’ve created &lt;em&gt;dom-mock.js&lt;/em&gt; file.
 &lt;p&gt;And finally - the test! I’ve created &lt;em&gt;component-test.js&lt;/em&gt; file in test directory:
 &lt;script src=&quot;https://gist.github.com/JelenaBarinova/c4fd4c4cdad19b28fe0f.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
-&lt;p&gt;Run build. Hurray! The test is passing:
-&lt;img src=&quot;/img/post_img/vfd-4.png&quot; alt=&quot;Fourth step result&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Run build. Hurray! The test is passing:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/post_img/vfd-4.png&quot; alt=&quot;Fourth step result&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;You can also configure test running in your &lt;em&gt;package.json&lt;/em&gt; - to run tests from command line using: &lt;/p&gt;
 
