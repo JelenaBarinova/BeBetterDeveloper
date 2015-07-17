@@ -5,13 +5,15 @@
     <description>Practical notes on development</description>
     <link>http://bebetterdeveloper.com/</link>
     <atom:link href="http://bebetterdeveloper.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 17 Jul 2015 09:39:36 -0700</pubDate>
-    <lastBuildDate>Fri, 17 Jul 2015 09:39:36 -0700</lastBuildDate>
+    <pubDate>Fri, 17 Jul 2015 10:22:30 -0700</pubDate>
+    <lastBuildDate>Fri, 17 Jul 2015 10:22:30 -0700</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
         <title>Getting started w/ React &amp; Mocha</title>
-        <description>&lt;p&gt;It took me half day to setup [almost] empty environment for React app development with testing done using Mocha. 
+        <description>&lt;p&gt;&lt;img src=&quot;/img/post_img/vfd-react-mocha.png&quot; alt=&quot;React and Mocha logo&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It took me half day to setup [almost] empty environment for React app development with testing done using Mocha. 
 I decided to share my findings here so it would remain. &lt;/p&gt;
 
 &lt;h2 id=&quot;my-target&quot;&gt;My target&lt;/h2&gt;
