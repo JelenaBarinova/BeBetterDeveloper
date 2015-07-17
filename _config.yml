@@ -2,8 +2,10 @@
 title: Be a Better Developer
 email: 
 description: "Practical notes on development by Sergey Barinov"
-baseurl: "/BeBetterDeveloper"
-url: "http://jelenabarinova.github.io" # the base hostname & protocol for your site
+#baseurl: "/BeBetterDeveloper"
+url: "http://bebetterdeveloper" 
+#url: "http://localhost:4000" 
+baseurl: ""
 destination: ../gh-pages/
 twitter_username: sergejusb
 github_username: sergejusb
@@ -16,3 +18,5 @@ highlighter: pygments
 permalink: none
 paginate: 3
 exclude: ["less","node_modules","package.json","README.md"]
+gems:
+  - jekyll-sitemap

@@ -177,3 +177,12 @@
             }
         } */
     }
+/* */
+
+.category {
+    border-radius: 5px;
+    border: 2px solid darken($brand-color, 10%);
+    padding: 3px; 
+    margin-left: 5px;
+    float: right;
+}

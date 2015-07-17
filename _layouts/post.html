@@ -8,26 +8,34 @@ layout: default
      <p class="post-meta">Posted by <em>Sergey Barinov</em> on {{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
 <br>
   <span > 
-                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}" target="_blank">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-square-o fa-stack-2x"></i>
-                                <i class="fa fa-facebook fa-stack-1x"></i>
-                            </span>
-                        </a>
-                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ site.baseurl }}{{ page.url }}&title={{ page.title }}&summary={{ page.subtitle }}&source={{ site.url }}/{{ site.baseurl }}" target="_blank">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-square-o fa-stack-2x"></i>
-                                <i class="fa fa-linkedin fa-stack-1x"></i>
-                            </span>
-                        </a>
-                        <a href="https://twitter.com/home?status=Reading %20%22{{ page.title }}%20%22 on {{ site.url }}{{ site.baseurl }}{{ page.url }} %20%23bebetterdeveloper%0A" target="_blank">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-square-o fa-stack-2x"></i>
-                                <i class="fa fa-twitter fa-stack-1x"></i>
-                            </span>
-                        </a>
-                    </span>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}" target="_blank">
+        <span class="fa-stack fa-lg">
+            <i class="fa fa-square-o fa-stack-2x"></i>
+            <i class="fa fa-facebook fa-stack-1x"></i>
+        </span>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ site.baseurl }}{{ page.url }}&title={{ page.title }}&summary={{ page.subtitle }}&source={{ site.url }}/{{ site.baseurl }}" target="_blank">
+        <span class="fa-stack fa-lg">
+            <i class="fa fa-square-o fa-stack-2x"></i>
+            <i class="fa fa-linkedin fa-stack-1x"></i>
+        </span>
+    </a>
+    <a href="https://twitter.com/home?status=Reading %20%22{{ page.title }}%20%22 on {{ site.url }}{{ site.baseurl }}{{ page.url }} %20%23bebetterdeveloper%0A" target="_blank">
+        <span class="fa-stack fa-lg">
+            <i class="fa fa-square-o fa-stack-2x"></i>
+            <i class="fa fa-twitter fa-stack-1x"></i>
+        </span>
+    </a>
+  </span>
+  <span>
+    
+      {% for category in page.categories %}
+      <a class="category" href="{{ site.url }}{{ site.baseurl }}/categories.html#{{category}}"> {{ category | capitalize }}</a>
+      {% endfor %}
+  </span>  
   </header>
+  
+  
   <article class="post-content">
     {{ content }}
   </article>
