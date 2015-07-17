@@ -5,7 +5,7 @@ layout: default
 
   <header class="post-header">
      <h1 class="post-title">{{ page.title }}</h1>
-     <p class="post-meta">Posted by <em>Sergey Barinov</em> on {{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+     <p class="post-meta">Posted by <em>{% if page.author %} {{ page.author }}{% else %} Sergey Barinov {% endif %}</em> on {{ page.date | date: "%b %-d, %Y" }}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
 <br>
   <span > 
     <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}" target="_blank">
