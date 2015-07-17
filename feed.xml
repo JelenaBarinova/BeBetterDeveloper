@@ -3,10 +3,10 @@
   <channel>
     <title>Be a Better Developer</title>
     <description>Practical notes on development by Sergey Barinov</description>
-    <link>http://jelenabarinova.github.io/BeBetterDeveloper/</link>
-    <atom:link href="http://jelenabarinova.github.io/BeBetterDeveloper/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 01 Jul 2015 17:34:43 -0700</pubDate>
-    <lastBuildDate>Wed, 01 Jul 2015 17:34:43 -0700</lastBuildDate>
+    <link>http://bebetterdeveloper/</link>
+    <atom:link href="http://bebetterdeveloper/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 16 Jul 2015 19:57:55 -0700</pubDate>
+    <lastBuildDate>Thu, 16 Jul 2015 19:57:55 -0700</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -249,8 +249,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;strong&gt;Complexity&lt;/strong&gt;: O(n·logn)&lt;/p&gt;
 </description>
         <pubDate>Mon, 24 Feb 2014 00:00:26 -0800</pubDate>
-        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-heap-sort.html</link>
-        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-heap-sort.html</guid>
+        <link>http://bebetterdeveloper/algorithms/sorting/sorting-heap-sort.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper/algorithms/sorting/sorting-heap-sort.html</guid>
         
         <category>Binary Heap</category>
         
@@ -298,8 +298,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 15 Feb 2014 00:00:00 -0800</pubDate>
-        <link>http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-max-priority-queue.html</link>
-        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-max-priority-queue.html</guid>
+        <link>http://bebetterdeveloper/data%20structure/data-structure-max-priority-queue.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper/data%20structure/data-structure-max-priority-queue.html</guid>
         
         <category>Binary Heap</category>
         
@@ -368,8 +368,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 06 Jan 2014 00:00:00 -0800</pubDate>
-        <link>http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-binary-heap.html</link>
-        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/data%20structure/data-structure-binary-heap.html</guid>
+        <link>http://bebetterdeveloper/data%20structure/data-structure-binary-heap.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper/data%20structure/data-structure-binary-heap.html</guid>
         
         <category>Binary Heap</category>
         
@@ -388,8 +388,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 
 </description>
         <pubDate>Wed, 11 Dec 2013 13:58:42 -0800</pubDate>
-        <link>http://jelenabarinova.github.io/BeBetterDeveloper/presentation/presentation-continuous-delivery.html</link>
-        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/presentation/presentation-continuous-delivery.html</guid>
+        <link>http://bebetterdeveloper/presentation/presentation-continuous-delivery.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper/presentation/presentation-continuous-delivery.html</guid>
         
         <category>Continuous Delivery</category>
         
@@ -452,8 +452,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n·logn).&lt;/p&gt;
 </description>
         <pubDate>Sun, 13 Oct 2013 13:16:55 -0700</pubDate>
-        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-quick-sort.html</link>
-        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-quick-sort.html</guid>
+        <link>http://bebetterdeveloper/algorithms/sorting/sorting-quick-sort.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper/algorithms/sorting/sorting-quick-sort.html</guid>
         
         <category>Quick Sort</category>
         
@@ -531,8 +531,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n·logn).&lt;/p&gt;
 </description>
         <pubDate>Mon, 23 Sep 2013 15:03:20 -0700</pubDate>
-        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-merge-sort.html</link>
-        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-merge-sort.html</guid>
+        <link>http://bebetterdeveloper/algorithms/sorting/sorting-merge-sort.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper/algorithms/sorting/sorting-merge-sort.html</guid>
         
         <category>Merge Sort</category>
         
@@ -589,8 +589,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n&lt;sup&gt;3/2&lt;/sup&gt;) using Knuth’s sequence.&lt;/p&gt;
 </description>
         <pubDate>Wed, 28 Aug 2013 15:09:55 -0700</pubDate>
-        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-shell-sort.html</link>
-        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-shell-sort.html</guid>
+        <link>http://bebetterdeveloper/algorithms/sorting/sorting-shell-sort.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper/algorithms/sorting/sorting-shell-sort.html</guid>
         
         <category>Shell Sort</category>
         
@@ -641,8 +641,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n&lt;sup&gt;2&lt;/sup&gt;).&lt;/p&gt;
 </description>
         <pubDate>Sun, 18 Aug 2013 13:00:36 -0700</pubDate>
-        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-insertion-sort.html</link>
-        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-insertion-sort.html</guid>
+        <link>http://bebetterdeveloper/algorithms/sorting/sorting-insertion-sort.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper/algorithms/sorting/sorting-insertion-sort.html</guid>
         
         <category>Insertion Sort</category>
         
@@ -691,8 +691,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n&lt;sup&gt;2&lt;/sup&gt;).&lt;/p&gt;
 </description>
         <pubDate>Sun, 11 Aug 2013 10:14:51 -0700</pubDate>
-        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-selection-sort.html</link>
-        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-selection-sort.html</guid>
+        <link>http://bebetterdeveloper/algorithms/sorting/sorting-selection-sort.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper/algorithms/sorting/sorting-selection-sort.html</guid>
         
         <category>Selection Sort</category>
         
@@ -747,8 +747,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n&lt;sup&gt;2&lt;/sup&gt;).&lt;/p&gt;
 </description>
         <pubDate>Sun, 04 Aug 2013 11:25:31 -0700</pubDate>
-        <link>http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-bubble-sort.html</link>
-        <guid isPermaLink="true">http://jelenabarinova.github.io/BeBetterDeveloper/algorithms/sorting/sorting-bubble-sort.html</guid>
+        <link>http://bebetterdeveloper/algorithms/sorting/sorting-bubble-sort.html</link>
+        <guid isPermaLink="true">http://bebetterdeveloper/algorithms/sorting/sorting-bubble-sort.html</guid>
         
         <category>Bubble Sort</category>
         
