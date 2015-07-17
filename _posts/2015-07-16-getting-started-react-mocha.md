@@ -14,9 +14,10 @@ id: 20002
 categories:
   - Coding
 ---
-
+  
 It took me half day to setup [almost] empty environment for React app development with testing done using Mocha. 
 I decided to share my findings here so it would remain. 
+<img src="{{ site.baseurl }}/img/post_img/vfd-react-mocha.png" alt="React and Mocha logo" class="right" />
 
 ## My target
 I wanted to create an environment for further React development. The things that I needed to have:
@@ -28,7 +29,7 @@ I wanted to create an environment for further React development. The things that
 For build scripts I prefer to use gulp.
 
 ## tl;dr
-You can find working code [here](http://github.com). Just download it and run 
+You can find working code [here](https://github.com/JelenaBarinova/VeryFirstDiv). Just download it and run 
 
 ~~~
 $npm install
@@ -74,6 +75,7 @@ $gulp build
 ~~~
 
 And you should get Chrome opened with very first version of our app.
+
 <img src="{{ site.baseurl }}/img/post_img/vfd-1.png" alt="First step result" class="right" />
   
 ## Step 2. Create first React component
@@ -87,6 +89,7 @@ Add aditional step 'browserify' in build process to have "require('modules')" in
 <script src="https://gist.github.com/JelenaBarinova/912880187a6b55b83b5d.js"></script>
 
 Run build task and we can see our React component in a browser.
+
 <img src="{{ site.baseurl }}/img/post_img/vfd-2.png" alt="Second step result" class="right" />
 
 ## Step 3. Adding first Mocha test
@@ -121,6 +124,7 @@ $mocha
 ~~~
 
 You shoud get this output:
+
 <img src="{{ site.baseurl }}/img/post_img/vfd-3.png" alt="Third step result" class="right" />
 
 Now let's add test running step in our gulp configuration.
@@ -148,6 +152,7 @@ And finally - the test! I've created _component-test.js_ file in test directory:
 <script src="https://gist.github.com/JelenaBarinova/c4fd4c4cdad19b28fe0f.js"></script>
 
 Run build. Hurray! The test is passing:
+
 <img src="{{ site.baseurl }}/img/post_img/vfd-4.png" alt="Fourth step result" class="right" />
   
 You can also configure test running in your _package.json_ - to run tests from command line using: 
