@@ -95,7 +95,7 @@ blockquote {
 pre,
 code {
   font-size: 13px;
-  border: 1px solid #cecece;
+  border: 1px solid #cfcfcf;
   font-family: Menlo, Monaco, "Andale Mono", serif; }
 
 code {
@@ -265,7 +265,7 @@ table {
 
 .post-meta {
   font-size: 14.32px;
-  color: #cecece;
+  color: #cfcfcf;
   display: inline-block; }
 
 /* Post Format
