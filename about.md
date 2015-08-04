@@ -17,7 +17,7 @@ More on [LinkedIn](http://www.linkedin.com/in/sergejus).
 <img src="{{ site.baseurl }}/img/lena.jpg" alt="Lena" style="float:left; margin-right: 20px; width:350px" />
 
 #### Lena
-Software engineer and engineering manager developing web products and services that are low latency, highly loaded, easily scalable. Interested in team development and effective developpment processes.
+Software engineer and engineering manager developing web products and services that are low latency, highly loaded, easily scalable. Interested in JavaScript, different JavaScript frameworks and libraries, team development and effective developpment processes.
 
 More on [LinkedIn](https://www.linkedin.com/in/jelenabarinova). 
 
