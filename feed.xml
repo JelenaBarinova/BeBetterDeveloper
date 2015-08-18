@@ -5,13 +5,13 @@
     <description>Practical notes on development</description>
     <link>http://www.bebetterdeveloper.com/</link>
     <atom:link href="http://www.bebetterdeveloper.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 18 Aug 2015 09:53:30 -0700</pubDate>
-    <lastBuildDate>Tue, 18 Aug 2015 09:53:30 -0700</lastBuildDate>
+    <pubDate>Tue, 18 Aug 2015 09:57:05 -0700</pubDate>
+    <lastBuildDate>Tue, 18 Aug 2015 09:57:05 -0700</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
         <title>Sharing a blog post hosted on GitHub Pages</title>
-        <description>&lt;p&gt;I am hosting all of my personal blogs on (GitHub Pages)[https://pages.github.com/] now (here are some reasons why: &lt;a href=&quot;http://bebetterleader.com/coding/why-did-i-go-static.html&quot;&gt;‘Static HTML is the new black’&lt;/a&gt;). With it comes a challenge when I try to share new posts on social media.&lt;/p&gt;
+        <description>&lt;p&gt;I am hosting all of my personal blogs on &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt; now (here are some reasons why: &lt;a href=&quot;http://bebetterleader.com/coding/why-did-i-go-static.html&quot;&gt;‘Static HTML is the new black’&lt;/a&gt;). With it comes a challenge when I try to share new posts on social media.&lt;/p&gt;
 
 &lt;p&gt;I want to have a nice share dialog with description and image of my blog post. Like so:&lt;/p&gt;
 
