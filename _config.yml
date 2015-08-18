@@ -3,7 +3,7 @@ title: Be a Better Developer
 email: 
 description: "Practical notes on development"
 #baseurl: "/BeBetterDeveloper"
-url: "http://bebetterdeveloper.com" 
+url: "http://www.bebetterdeveloper.com" 
 #url: "http://localhost:4000" 
 baseurl: ""
 destination: ../gh-pages/
