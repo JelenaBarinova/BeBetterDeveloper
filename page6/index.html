@@ -2,7 +2,7 @@
 <html>
 
   <head>
-  <link rel="icon" href="http://bebetterdeveloper.com/img/favicon.ico" />
+  <link rel="icon" href="http://www.bebetterdeveloper.com/img/favicon.ico" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,8 +11,8 @@
   <meta name="description" content="Practical notes on development">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://bebetterdeveloper.com/page6/">
-  <link rel="alternate" type="application/rss+xml" title="Be a Better Developer" href="http://bebetterdeveloper.com/feed.xml" />
+  <link rel="canonical" href="http://www.bebetterdeveloper.com/page6/">
+  <link rel="alternate" type="application/rss+xml" title="Be a Better Developer" href="http://www.bebetterdeveloper.com/feed.xml" />
 
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -27,8 +27,8 @@
 <!-- Open graph tags -->
 <meta property="og:title" content="Be a Better Developer">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://bebetterdeveloper.com/page6/">
-<meta property="og:image" content="http://bebetterdeveloper.com">
+<meta property="og:url" content="http://www.bebetterdeveloper.com/page6/">
+<meta property="og:image" content="http://www.bebetterdeveloper.com">
 
 <meta property="og:description" content="Practical notes on development">
 <meta property="og:site_name" content="Be a Better Developer">
@@ -93,6 +93,37 @@
         <div class="home">
 
   <ul class="post-list">
+    
+      <li>
+        <!-- <span class="post-meta">Jun 16, 2013</span> -->
+        <h1 style="text-align: left"><a class="post-link" href="/data%20structure/data-structure-stack.html">Data Structure: Stack</a>
+          </h1>
+          <p>
+            <article class="post-content">
+            <p>In this post I will implement very popular abstract data type – <a href="http://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Stack</a>. Stack is a collection where the last element added to the structure must be the first one to be removed (or <a href="http://en.wikipedia.org/wiki/LIFO_(computing)">LIFO, Last-In First-Out</a>, for short). It is widely used in hardware including CPU registers. In software it is used for memory allocation, to track active sub-routines (<a href="http://en.wikipedia.org/wiki/Call_stack">call stack</a>) or to implement parsers and various higher-level algorithms. Typically stack is implemented using <a href="http://www.bebetterdeveloper.com/data-structure-linked-list/">linked list</a> or in some cases using dynamic arrays.</p>
+
+<p>Usually stack has following functions:</p>
+
+<ul>
+  <li>push() – to add new element</li>
+  <li>pop() – to remove first element and return its value</li>
+  <li>peek() – to return value of the first element without removing it</li>
+  <li>isEmpty() - to check whether the stack is empty or not</li>
+  <li>length() - to get the number of items in the stack</li>
+</ul>
+
+<p>Based on the previously <a href="http://www.bebetterdeveloper.com/data-structure-linked-list/">described</a> linked list, implementation of the stack is rather trivial:</p>
+
+<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/stack.js?footer=minimal">
+</script>
+
+
+            </article>
+
+            </p>
+            <hr>
+            <br>
+      </li>
     
       <li>
         <!-- <span class="post-meta">Jun 13, 2013</span> -->
@@ -173,29 +204,6 @@ In other words, given 2<sup>7</sup> we can calculate the result as follows:</li>
 <p><strong>Complexity:</strong> O(log n).</p>
 
 <script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/math/pow.js?footer=minimal">
-</script>
-
-
-            </article>
-
-            </p>
-            <hr>
-            <br>
-      </li>
-    
-      <li>
-        <!-- <span class="post-meta">Mar 24, 2013</span> -->
-        <h1 style="text-align: left"><a class="post-link" href="/algorithms/math/algorithm-isprimenumber.html">Algorithm: isPrimeNumber(n)</a>
-          </h1>
-          <p>
-            <article class="post-content">
-            <p>In this post I will implement basic algorithm to detect whether a given number is a prime. In more academic terms – check a number for primality. According to <a href="http://en.wikipedia.org/wiki/Prime_number">Wikipedia</a> - <em>a prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself</em>.</p>
-
-<p>Naïve implementation will test whether n is a multiple of any number between 2 and n-1. Slightly more optimized version will minimize the test range up-to √n (i.e. between 2 and √n). In this post I’ll use test range between 2 and ⌊n/2⌋ due to the fact calculation of √n itself is more complex than single right shift operation.</p>
-
-<p><strong>Complexity:</strong> O(n/2) or just O(n).</p>
-
-<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/math/isPrimeNumber.js?footer=minimal">
 </script>
 
 

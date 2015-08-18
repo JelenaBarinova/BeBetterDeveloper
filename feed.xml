@@ -3,11 +3,65 @@
   <channel>
     <title>Be a Better Developer</title>
     <description>Practical notes on development</description>
-    <link>http://bebetterdeveloper.com/</link>
-    <atom:link href="http://bebetterdeveloper.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 04 Aug 2015 10:43:29 -0700</pubDate>
-    <lastBuildDate>Tue, 04 Aug 2015 10:43:29 -0700</lastBuildDate>
+    <link>http://www.bebetterdeveloper.com/</link>
+    <atom:link href="http://www.bebetterdeveloper.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 18 Aug 2015 09:53:30 -0700</pubDate>
+    <lastBuildDate>Tue, 18 Aug 2015 09:53:30 -0700</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Sharing a blog post hosted on GitHub Pages</title>
+        <description>&lt;p&gt;I am hosting all of my personal blogs on (GitHub Pages)[https://pages.github.com/] now (here are some reasons why: &lt;a href=&quot;http://bebetterleader.com/coding/why-did-i-go-static.html&quot;&gt;‘Static HTML is the new black’&lt;/a&gt;). With it comes a challenge when I try to share new posts on social media.&lt;/p&gt;
+
+&lt;p&gt;I want to have a nice share dialog with description and image of my blog post. Like so:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/post_img/fbog-share-dialog.png&quot; alt=&quot;Share dialog&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In order to achive this, I had to add some code to my Jekyll templates and implement some workarounds with urls and domain configuration. That’s how I did it.&lt;/p&gt;
+
+&lt;p&gt;First, I added meta tag generation to a head part of my post html:
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/c63a40854bcd0569a9a6.js&quot;&gt;&lt;/script&gt; &lt;/p&gt;
+
+&lt;p&gt;I get all the open graph meta tags being generated as FB and other social media systems expect it to: &lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/1ef9ae8a8322e3397051.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;But once I try to share my blog post or scrape url with &lt;a href=&quot;https://developers.facebook.com/tools/debug/og/object/&quot;&gt;Open Graph Object Debugger&lt;/a&gt; I get &lt;code&gt;Error parsing input URL, no data was cached, or no data was scraped.&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/post_img/fbog-error.png&quot; alt=&quot;Error parsing input URL, no data was cached, or no data was scraped.&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After spending some time searching for the reasons why this is happening, I found that, Github sometimes return a 302 (Redirect status code) instead of a 200 (OK) in order to avoid DDoS attacks. Same issue is described in this &lt;a href=&quot;http://www.rovrov.com/blog/2014/11/11/github-pages-302-redirect/&quot;&gt;blog post&lt;/a&gt;. &lt;/p&gt;
+
+&lt;p&gt;To fix it, in addition to GitHub’s IPs I’ve added &lt;code&gt;www&lt;/code&gt; subdomain through &lt;code&gt;CNAME&lt;/code&gt; pointing to my GitHub address &lt;code&gt;jelenabarinova.github.io&lt;/code&gt; in my domain configuration. &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/post_img/fbog-domain-config.png&quot; alt=&quot;Domain configuration&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now I use url with &lt;code&gt;www&lt;/code&gt; prefix when I want to share my blog post on social media and it works just fine - I get desirable share dialog: &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/post_img/fbog-fixed.png&quot; alt=&quot;Scraper works&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;With this workaround I can share my posts using nice summary and image in a share dialog.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 17 Aug 2015 00:00:00 -0700</pubDate>
+        <link>http://www.bebetterdeveloper.com/deployment/sharing-a-blog-post-hosted-on-github-pages.html</link>
+        <guid isPermaLink="true">http://www.bebetterdeveloper.com/deployment/sharing-a-blog-post-hosted-on-github-pages.html</guid>
+        
+        <category>gh-pages</category>
+        
+        <category>Jekyll</category>
+        
+        <category>open graph meta tags</category>
+        
+        <category>Error parsing input URL</category>
+        
+        <category>fb debugger</category>
+        
+        <category>social sharing</category>
+        
+        
+        <category>deployment</category>
+        
+      </item>
     
       <item>
         <title>Getting started w/ React &amp; Mocha</title>
@@ -162,8 +216,8 @@ I’ve created &lt;em&gt;dom-mock.js&lt;/em&gt; file.
 &lt;script src=&quot;https://gist.github.com/JelenaBarinova/8fd92aee1786dc774a9d.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 16 Jul 2015 00:00:00 -0700</pubDate>
-        <link>http://bebetterdeveloper.com/coding/getting-started-react-mocha.html</link>
-        <guid isPermaLink="true">http://bebetterdeveloper.com/coding/getting-started-react-mocha.html</guid>
+        <link>http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html</link>
+        <guid isPermaLink="true">http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html</guid>
         
         <category>JavaScript</category>
         
@@ -207,8 +261,8 @@ I have 2 simple steps  (running one after other in this sequence):&lt;/p&gt;
 &lt;p&gt;And now once I change code and want to check it - I just press ⇧⌘B (on Mac) and the result is in front of me.&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Jul 2015 00:00:00 -0700</pubDate>
-        <link>http://bebetterdeveloper.com/coding/es6-react-babel.html</link>
-        <guid isPermaLink="true">http://bebetterdeveloper.com/coding/es6-react-babel.html</guid>
+        <link>http://www.bebetterdeveloper.com/coding/es6-react-babel.html</link>
+        <guid isPermaLink="true">http://www.bebetterdeveloper.com/coding/es6-react-babel.html</guid>
         
         <category>JavaScript</category>
         
@@ -465,8 +519,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;strong&gt;Complexity&lt;/strong&gt;: O(n·logn)&lt;/p&gt;
 </description>
         <pubDate>Mon, 24 Feb 2014 00:00:26 -0800</pubDate>
-        <link>http://bebetterdeveloper.com/algorithms/sorting/sorting-heap-sort.html</link>
-        <guid isPermaLink="true">http://bebetterdeveloper.com/algorithms/sorting/sorting-heap-sort.html</guid>
+        <link>http://www.bebetterdeveloper.com/algorithms/sorting/sorting-heap-sort.html</link>
+        <guid isPermaLink="true">http://www.bebetterdeveloper.com/algorithms/sorting/sorting-heap-sort.html</guid>
         
         <category>Binary Heap</category>
         
@@ -514,8 +568,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 15 Feb 2014 00:00:00 -0800</pubDate>
-        <link>http://bebetterdeveloper.com/data%20structure/data-structure-max-priority-queue.html</link>
-        <guid isPermaLink="true">http://bebetterdeveloper.com/data%20structure/data-structure-max-priority-queue.html</guid>
+        <link>http://www.bebetterdeveloper.com/data%20structure/data-structure-max-priority-queue.html</link>
+        <guid isPermaLink="true">http://www.bebetterdeveloper.com/data%20structure/data-structure-max-priority-queue.html</guid>
         
         <category>Binary Heap</category>
         
@@ -584,8 +638,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 06 Jan 2014 00:00:00 -0800</pubDate>
-        <link>http://bebetterdeveloper.com/data%20structure/data-structure-binary-heap.html</link>
-        <guid isPermaLink="true">http://bebetterdeveloper.com/data%20structure/data-structure-binary-heap.html</guid>
+        <link>http://www.bebetterdeveloper.com/data%20structure/data-structure-binary-heap.html</link>
+        <guid isPermaLink="true">http://www.bebetterdeveloper.com/data%20structure/data-structure-binary-heap.html</guid>
         
         <category>Binary Heap</category>
         
@@ -604,8 +658,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 
 </description>
         <pubDate>Wed, 11 Dec 2013 13:58:42 -0800</pubDate>
-        <link>http://bebetterdeveloper.com/presentation/presentation-continuous-delivery.html</link>
-        <guid isPermaLink="true">http://bebetterdeveloper.com/presentation/presentation-continuous-delivery.html</guid>
+        <link>http://www.bebetterdeveloper.com/presentation/presentation-continuous-delivery.html</link>
+        <guid isPermaLink="true">http://www.bebetterdeveloper.com/presentation/presentation-continuous-delivery.html</guid>
         
         <category>Continuous Delivery</category>
         
@@ -668,8 +722,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n·logn).&lt;/p&gt;
 </description>
         <pubDate>Sun, 13 Oct 2013 13:16:55 -0700</pubDate>
-        <link>http://bebetterdeveloper.com/algorithms/sorting/sorting-quick-sort.html</link>
-        <guid isPermaLink="true">http://bebetterdeveloper.com/algorithms/sorting/sorting-quick-sort.html</guid>
+        <link>http://www.bebetterdeveloper.com/algorithms/sorting/sorting-quick-sort.html</link>
+        <guid isPermaLink="true">http://www.bebetterdeveloper.com/algorithms/sorting/sorting-quick-sort.html</guid>
         
         <category>Quick Sort</category>
         
@@ -747,8 +801,8 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n·logn).&lt;/p&gt;
 </description>
         <pubDate>Mon, 23 Sep 2013 15:03:20 -0700</pubDate>
-        <link>http://bebetterdeveloper.com/algorithms/sorting/sorting-merge-sort.html</link>
-        <guid isPermaLink="true">http://bebetterdeveloper.com/algorithms/sorting/sorting-merge-sort.html</guid>
+        <link>http://www.bebetterdeveloper.com/algorithms/sorting/sorting-merge-sort.html</link>
+        <guid isPermaLink="true">http://www.bebetterdeveloper.com/algorithms/sorting/sorting-merge-sort.html</guid>
         
         <category>Merge Sort</category>
         
@@ -805,62 +859,10 @@ footer=minimal&quot;&gt;&lt;/script&gt;
 &lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n&lt;sup&gt;3/2&lt;/sup&gt;) using Knuth’s sequence.&lt;/p&gt;
 </description>
         <pubDate>Wed, 28 Aug 2013 15:09:55 -0700</pubDate>
-        <link>http://bebetterdeveloper.com/algorithms/sorting/sorting-shell-sort.html</link>
-        <guid isPermaLink="true">http://bebetterdeveloper.com/algorithms/sorting/sorting-shell-sort.html</guid>
+        <link>http://www.bebetterdeveloper.com/algorithms/sorting/sorting-shell-sort.html</link>
+        <guid isPermaLink="true">http://www.bebetterdeveloper.com/algorithms/sorting/sorting-shell-sort.html</guid>
         
         <category>Shell Sort</category>
-        
-        
-        <category>algorithms</category>
-        
-        <category>sorting</category>
-        
-      </item>
-    
-      <item>
-        <title>Sorting: Insertion Sort</title>
-        <description>&lt;p&gt;In this post I will implement another basic sorting algorithm – &lt;a href=&quot;https://en.wikipedia.org/wiki/Insertion_sort&quot;&gt;Insertion Sort&lt;/a&gt;. The idea of the algorithm is as follows:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;starting from the beginning of the list compare value with the elements on the left (if any)&lt;/li&gt;
-  &lt;li&gt;swap their position if they are not in the right order&lt;/li&gt;
-  &lt;li&gt;continue until element on the left is smaller than current element&lt;/li&gt;
-  &lt;li&gt;after each iteration elements on the left from the current element are sorted&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We can visualize insertion sort algorithm by sorting following list [5 1 4 2 8]. I’ll use colors to specify &lt;span style=&quot;color: #ff0000;&quot;&gt;current adjacent pair&lt;/span&gt; and &lt;span style=&quot;color: #99cc00;&quot;&gt;already sorted elements&lt;/span&gt;.&lt;/p&gt;
-
-&lt;p&gt;Iteration #1 : &lt;span style=&quot;color: #ff0000;&quot;&gt;[5&lt;/span&gt; 1 4 2 8]&lt;/p&gt;
-
-&lt;p&gt;Iteration #2 : [&lt;span style=&quot;color: #99cc00;&quot;&gt;5&lt;/span&gt; 1 4 2 8]
-[&lt;span style=&quot;color: #ff0000;&quot;&gt;5 1&lt;/span&gt; 4 2 8] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;1 5&lt;/span&gt; 4 2 8]&lt;/p&gt;
-
-&lt;p&gt;Iteration #3 : [&lt;span style=&quot;color: #99cc00;&quot;&gt;1 5&lt;/span&gt; 4 2 8]
-[1 &lt;span style=&quot;color: #ff0000;&quot;&gt;5 4&lt;/span&gt; 2 8] → [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 5&lt;/span&gt; 2 8]
-[&lt;span style=&quot;color: #ff0000;&quot;&gt;1 4&lt;/span&gt; 5 2 8] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;1 4&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;5&lt;/span&gt; 2 8]&lt;/p&gt;
-
-&lt;p&gt;Iteration #4 : [&lt;span style=&quot;color: #99cc00;&quot;&gt;1 4 5&lt;/span&gt; 2 8]
-[1 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5 2&lt;/span&gt; 8] → [1 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;2 5&lt;/span&gt; 8]
-[1 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 2&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;5&lt;/span&gt; 8] → [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2 4&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;5&lt;/span&gt; 8]
-[&lt;span style=&quot;color: #ff0000;&quot;&gt;1 2&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;4 5&lt;/span&gt; 8] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;1 2&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;4 5&lt;/span&gt; 8]&lt;/p&gt;
-
-&lt;p&gt;Iteration #5 : [&lt;span style=&quot;color: #99cc00;&quot;&gt;1 2 4 5&lt;/span&gt; 8]
-[1 2 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5 8&lt;/span&gt;] → [1 2 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5 8&lt;/span&gt;]&lt;/p&gt;
-
-&lt;p&gt;Implementation of the insertion sort is very simple:&lt;/p&gt;
-
-&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/sorting/insertionSort.js?footer=minimal&quot;&gt;
-&lt;/script&gt;
-
-&lt;p&gt;Similarly to bubble and selection sorts we have two loops: outer and inner, so the average complexity is similar as well – O(n&lt;sup&gt;2&lt;/sup&gt;). For best-case scenario (already sorted elements) insertion sort has better complexity – O(n).&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n&lt;sup&gt;2&lt;/sup&gt;).&lt;/p&gt;
-</description>
-        <pubDate>Sun, 18 Aug 2013 13:00:36 -0700</pubDate>
-        <link>http://bebetterdeveloper.com/algorithms/sorting/sorting-insertion-sort.html</link>
-        <guid isPermaLink="true">http://bebetterdeveloper.com/algorithms/sorting/sorting-insertion-sort.html</guid>
-        
-        <category>Insertion Sort</category>
         
         
         <category>algorithms</category>

@@ -148,17 +148,17 @@ table {
 
 :not(.highlight) > table tr {
   background-color: #fff;
-  border-top: 1px solid #ccc; }
+  border-top: 0px solid #ccc; }
 
 :not(.highlight) > table tr th, :not(.highlight) > table tr td {
   padding: 6px 13px;
-  border: 1px solid #ddd; }
+  border: 0px solid #ddd; }
 
 :not(.highlight) > table tr th {
   font-weight: bold; }
 
 :not(.highlight) > table tr:nth-child(2n) {
-  background-color: #f8f8f8; }
+  background-color: #fff; }
 
 /* Site Header
  * ============================================== */
