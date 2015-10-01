@@ -16,13 +16,16 @@ categories:
   - Coding
 ---
 
+<img src="{{ site.baseurl }}/img/post_img/python-logo.png" alt="Python" class="right" />
+
 Today I started exploring Python. For those who know me - Yes, Python! Bear with me - I've got my solid reasons for that (will share it one day).
+
 
 In this short blog post I just want to share how I setup my IDE - [Visual Studio Code](https://code.visualstudio.com/) on MacOS to handle my Python adventure.
 
 First, I've installed [Python](https://www.python.org/downloads/).
 
-Then, created `app.py` file with "hello world" code in it and setup VSCode task to run this script: 
+Then, created `app.py` file with "hello world" code in it and setup VSCode task to run this script, as so: 
 
 1. From a Command pallete (`⇧⌘P`) hit "Configure Task Runner". 
 2. In a `task.json` file added this:
