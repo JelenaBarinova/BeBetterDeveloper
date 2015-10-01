@@ -95,6 +95,43 @@
   <ul class="post-list">
     
       <li>
+        <!-- <span class="post-meta">Jul 14, 2015</span> -->
+        <h1 style="text-align: left"><a class="post-link" href="/coding/es6-react-babel.html">ES2015 + React using Gulp</a>
+          </h1>
+          <p>
+            <article class="post-content">
+            <p>Recently I started exploring new features of ECMAScript 2015 while using React. So here is how I set-up my dev environment with <a href="http://gulpjs.com/">gulp</a>.
+I have 2 simple steps  (running one after other in this sequence):</p>
+
+<ol>
+  <li>
+    <p>Transform XLS files: I precompile React JSX template files into plain JavaScript using gulp-react: 
+  <script src="https://gist.github.com/JelenaBarinova/b7b58c270e3e560056b3.js"></script></p>
+  </li>
+  <li>
+    <p>Transform ES2015 files: I take JavaScript files, produced after first transformation and turn them into ES5 files using gulp-babel: 
+  <script src="https://gist.github.com/JelenaBarinova/7245b2c53e06eb8772ab.js"></script></p>
+  </li>
+</ol>
+
+<p>Here it all gathered and chained together:
+<script src="https://gist.github.com/JelenaBarinova/95b2d933b6f75d6cc495.js"></script></p>
+
+<p>In addition to two transformation tasks I like to open output in browser, for this I use gulp-open.</p>
+
+<p>I use <a href="https://code.visualstudio.com/">Visual Studio Code</a> as my IDE, so I have set this gulp task named “build” as a build task in VS Code settings.<br />
+<img src="/img/post_img/vs-code-settings.png" alt="Blog infrastructure" class="right" /></p>
+
+<p>And now once I change code and want to check it - I just press ⇧⌘B (on Mac) and the result is in front of me.</p>
+
+            </article>
+
+            </p>
+            <hr>
+            <br>
+      </li>
+    
+      <li>
         <!-- <span class="post-meta">Feb 24, 2014</span> -->
         <h1 style="text-align: left"><a class="post-link" href="/algorithms/sorting/sorting-heap-sort.html">Sorting: Heap Sort</a>
           </h1>
@@ -380,74 +417,6 @@ footer=minimal"></script>
   <li>insert - O(logn)</li>
   <li>deleteMin/deleteMax - O(logn)</li>
   <li>findMin/findMax - O(1)</li>
-</ul>
-
-            </article>
-
-            </p>
-            <hr>
-            <br>
-      </li>
-    
-      <li>
-        <!-- <span class="post-meta">Jan 6, 2014</span> -->
-        <h1 style="text-align: left"><a class="post-link" href="/data%20structure/data-structure-binary-heap.html">Data Structure: Binary Heap</a>
-          </h1>
-          <p>
-            <article class="post-content">
-            <p>Today I will implement very efficient data structure – <a href="http://en.wikipedia.org/wiki/Binary_heap">binary heap</a>. Binary heap – is an array-based <a href="http://en.wikipedia.org/wiki/Binary_tree#Types_of_binary_trees">complete binary tree</a> (<em>binary tree in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible</em>) which satisfies one of the following ordering properties:</p>
-
-<ul>
-  <li>min-heap – the value of each node is not smaller than value of its parent with smallest element at the root;</li>
-  <li>max-heap – the value of each node is not bigger than value of its parent with biggest element at the root
-Binary heap is a foundation for an abstract data type - <a href="http://en.wikipedia.org/wiki/Priority_queue">priority queue</a>, wich I will cover in next post.</li>
-</ul>
-
-<p>Due to the nature of binary heap (complete binary tree) it can be very efficiently implemented using <a href="https://en.wikipedia.org/wiki/Dynamic_array">dynamic array</a>. Items in the array are usually stored starting from index 1, thus allowing very easy navigation through binary heap:</p>
-
-<ul>
-  <li>for the item with index k its parent index is <strong>k &gt;&gt; 1</strong></li>
-  <li>for the item with index k children indexes are <strong>k &lt;&lt; 1</strong> and <strong>k &lt;&lt; 1 + 1</strong></li>
-</ul>
-
-<p>Usually binary heaps have following functions:</p>
-
-<ul>
-  <li>insert() – to add new item</li>
-  <li>delete() – to remove min or max item (depending on the ordering)</li>
-  <li>length() – to get the number of items in binary heap</li>
-</ul>
-
-<p>To add new item:</p>
-
-<ul>
-  <li>add the item to the bottom level of the binary heap (as the last possible item)</li>
-  <li>compare added item with its parent</li>
-  <li>if they are in correct order – break</li>
-  <li>else – exchange items and repeat with the parent
-<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Heap_add_step1.svg/300px-Heap_add_step1.svg.png" alt="" /><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Heap_add_step2.svg/300px-Heap_add_step2.svg.png" alt="" /><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Heap_add_step3.svg/300px-Heap_add_step3.svg.png" alt="" /></li>
-</ul>
-
-<p>To delete maximum item (for max-heap) or minimum item (for min-heap):</p>
-
-<ul>
-  <li>replace the root of the binary heap with the last item on the bottom level</li>
-  <li>compare new root with the biggest (for max-heap) or  smallest (for min-heap) of children</li>
-  <li>if they are in correct order – break</li>
-  <li>else – exchange items and repeat with the selected child
-<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Heap_delete_step0.svg/300px-Heap_delete_step0.svg.png" alt="" /><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Heap_remove_step1.svg/300px-Heap_remove_step1.svg.png" alt="" /><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Heap_remove_step2.svg/300px-Heap_remove_step2.svg.png" alt="" /></li>
-</ul>
-
-<p>Bellow you can find possible implementation of the binary heap (<a href="https://github.com/sergejusb/algorithms/blob/master/data-structures/binaryHeap_tests.js">tests</a>):</p>
-
-<script type="text/javascript" src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/binaryHeap.js?
-footer=minimal"></script>
-
-<p><strong>Complexity</strong>:</p>
-
-<ul>
-  <li>insert - O(logn)</li>
-  <li>delete - O(logn)</li>
 </ul>
 
             </article>

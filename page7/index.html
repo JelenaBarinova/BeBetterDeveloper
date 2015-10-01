@@ -96,6 +96,45 @@
     
       <li>
         <!-- <span class="post-meta">Mar 24, 2013</span> -->
+        <h1 style="text-align: left"><a class="post-link" href="/algorithms/math/algorithm-pow.html">Algorithm: Pow(n, exp)</a>
+          </h1>
+          <p>
+            <article class="post-content">
+            <p>In this post I will implement basic algorithm to raise floating point number (also known as base) to integer power (also known as exponent). In academic world this process usually referred as <a href="http://en.wikipedia.org/wiki/Exponentiation">Exponentiation</a>. The most naïve implementation is based on the definition of x<sup>y</sup>, i.e. repetitive y-time multiplication of x.</p>
+
+<p><strong>Complexity</strong>: O(n).</p>
+
+<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/math/pow_naive.js?footer=minimal">
+</script>
+
+<p>This implementation can be optimized by using following exponentiation properties:</p>
+
+<ul>
+  <li>b<sup>m</sup> = b · b<sup>m-1</sup></li>
+  <li>b<sup>m+n</sup> = b<sup>m</sup> · b<sup>n</sup></li>
+  <li>b<sup>m·n</sup> = (b<sup>m</sup>)<sup>n</sup>
+In other words, given 2<sup>7</sup> we can calculate the result as follows:</li>
+</ul>
+
+<p>2<sup>7</sup> = 2 · 2<sup>6</sup> = 2 · 2<sup>2+4</sup> = 2 · 2<sup>2</sup> · 2<sup>4</sup> = 2 · 2<sup>2</sup> · 2<sup>2·2</sup> = 2 · 2<sup>2</sup> · (2<sup>2</sup>)<sup>2</sup></p>
+
+<p>As you can see, instead of 7 iterations now we have only 3.</p>
+
+<p><strong>Complexity:</strong> O(log n).</p>
+
+<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/math/pow.js?footer=minimal">
+</script>
+
+
+            </article>
+
+            </p>
+            <hr>
+            <br>
+      </li>
+    
+      <li>
+        <!-- <span class="post-meta">Mar 24, 2013</span> -->
         <h1 style="text-align: left"><a class="post-link" href="/algorithms/math/algorithm-isprimenumber.html">Algorithm: isPrimeNumber(n)</a>
           </h1>
           <p>

@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Algorithm: Pow(n, exp)</title>
-  <meta name="description" content="In this post I will implement basic algorithm to raise floating point number (also known as base) to integer power (also known as exponent). In academic worl...">
+  <title>Hello world, Python</title>
+  <meta name="description" content="Today I started exploring Python. For those who know me - Yes, Python! Bear with me - I’ve got my solid reasons for that (will share it one day).">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://www.bebetterdeveloper.com/algorithms/math/algorithm-pow.html">
+  <link rel="canonical" href="http://www.bebetterdeveloper.com/coding/hello-world-python.html">
   <link rel="alternate" type="application/rss+xml" title="Be a Better Developer" href="http://www.bebetterdeveloper.com/feed.xml" />
 
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -31,39 +31,47 @@
             
             
 <!-- Open graph tags -->
-<meta property="og:title" content="Algorithm: Pow(n, exp)">
+<meta property="og:title" content="Hello world, Python">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://www.bebetterdeveloper.com/algorithms/math/algorithm-pow.html">
-<meta property="og:image" content="http://www.bebetterdeveloper.comhttp://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/math/pow_naive.js?footer=minimal">
+<meta property="og:url" content="http://www.bebetterdeveloper.com/coding/hello-world-python.html">
+<meta property="og:image" content="http://www.bebetterdeveloper.comhelloworld">
 
-<meta property="og:description" content="In this post I will implement basic algorithm to raise floating point number (also known as base) to integer power (also known as exponent). In academic worl...">
+<meta property="og:description" content="Today I started exploring Python. For those who know me - Yes, Python! Bear with me - I’ve got my solid reasons for that (will share it one day).">
 <meta property="og:site_name" content="Be a Better Developer">
 
 
 
 
-<meta property="article:published_time" content="2013-03-24T00:00:00-07:00">
+<meta property="article:published_time" content="2015-10-01T00:00:00-07:00">
 <meta property="article:author" content="https://www.facebook.com/jelena.fiodorova">
-  
-<meta property="og:see_also" content="http://www.bebetterdeveloper.com/coding/hello-world-python.html">
   
 <meta property="og:see_also" content="http://www.bebetterdeveloper.com/deployment/sharing-a-blog-post-hosted-on-github-pages.html">
   
 <meta property="og:see_also" content="http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html">
   
-
-
-
-  
-<meta property="article:section" content="algorithms">
+<meta property="og:see_also" content="http://www.bebetterdeveloper.com/coding/es6-react-babel.html">
   
 
 
 
   
-<meta property="article:tag" content="Exponent">
+<meta property="article:section" content="coding">
   
-<meta property="article:tag" content="Pow">
+
+
+
+  
+<meta property="article:tag" content="Python">
+  
+<meta property="article:tag" content="VSCode">
+  
+<meta property="article:tag" content="Visual Studio Code">
+  
+<meta property="article:tag" content="IDE">
+  
+<meta property="article:tag" content="Mac OS">
+  
+<meta property="article:tag" content="dev environment">
   
 
 </head>
@@ -119,23 +127,23 @@
         <div class="post">
 
   <header class="post-header">
-     <h1 class="post-title">Algorithm: Pow(n, exp)</h1>
-     <p class="post-meta">Posted by <em> Sergey Barinov </em> on Mar 24, 2013</p>
+     <h1 class="post-title">Hello world, Python</h1>
+     <p class="post-meta">Posted by <em> Jelena Barinova</em> on Oct 1, 2015</p>
 <br>
   <span > 
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.bebetterdeveloper.com/algorithms/math/algorithm-pow.html" target="_blank">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.bebetterdeveloper.com/coding/hello-world-python.html" target="_blank">
         <span class="fa-stack fa-lg">
             <i class="fa fa-square-o fa-stack-2x"></i>
             <i class="fa fa-facebook fa-stack-1x"></i>
         </span>
     </a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.bebetterdeveloper.com/algorithms/math/algorithm-pow.html&title=Algorithm: Pow(n, exp)&summary=&source=http://www.bebetterdeveloper.com/" target="_blank">
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.bebetterdeveloper.com/coding/hello-world-python.html&title=Hello world, Python&summary=How to setup a run task on VS Code for Python&source=http://www.bebetterdeveloper.com/" target="_blank">
         <span class="fa-stack fa-lg">
             <i class="fa fa-square-o fa-stack-2x"></i>
             <i class="fa fa-linkedin fa-stack-1x"></i>
         </span>
     </a>
-    <a href="https://twitter.com/home?status=Reading %20%22Algorithm: Pow(n, exp)%20%22 on http://www.bebetterdeveloper.com/algorithms/math/algorithm-pow.html %20%23bebetterdeveloper%0A" target="_blank">
+    <a href="https://twitter.com/home?status=Reading %20%22Hello world, Python%20%22 on http://www.bebetterdeveloper.com/coding/hello-world-python.html %20%23bebetterdeveloper%0A" target="_blank">
         <span class="fa-stack fa-lg">
             <i class="fa fa-square-o fa-stack-2x"></i>
             <i class="fa fa-twitter fa-stack-1x"></i>
@@ -145,40 +153,33 @@
   <span>
     
       
-      <a class="category" href="http://www.bebetterdeveloper.com/categories.html#algorithms"> Algorithms</a>
-      
-      <a class="category" href="http://www.bebetterdeveloper.com/categories.html#math"> Math</a>
+      <a class="category" href="http://www.bebetterdeveloper.com/categories.html#coding"> Coding</a>
       
   </span>  
   </header>
   
   
   <article class="post-content">
-    <p>In this post I will implement basic algorithm to raise floating point number (also known as base) to integer power (also known as exponent). In academic world this process usually referred as <a href="http://en.wikipedia.org/wiki/Exponentiation">Exponentiation</a>. The most naïve implementation is based on the definition of x<sup>y</sup>, i.e. repetitive y-time multiplication of x.</p>
+    <p>Today I started exploring Python. For those who know me - Yes, Python! Bear with me - I’ve got my solid reasons for that (will share it one day).</p>
 
-<p><strong>Complexity</strong>: O(n).</p>
+<p>In this short blog post I just want to share how I setup my IDE - <a href="https://code.visualstudio.com/">Visual Studio Code</a> on MacOS to handle my Python adventure.</p>
 
-<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/math/pow_naive.js?footer=minimal">
-</script>
+<p>First, I’ve installed <a href="https://www.python.org/downloads/">Python</a>.</p>
 
-<p>This implementation can be optimized by using following exponentiation properties:</p>
+<p>Then, created <code>app.py</code> file with “hello world” code in it and setup VSCode task to run this script: </p>
 
-<ul>
-  <li>b<sup>m</sup> = b · b<sup>m-1</sup></li>
-  <li>b<sup>m+n</sup> = b<sup>m</sup> · b<sup>n</sup></li>
-  <li>b<sup>m·n</sup> = (b<sup>m</sup>)<sup>n</sup>
-In other words, given 2<sup>7</sup> we can calculate the result as follows:</li>
-</ul>
+<ol>
+  <li>From a Command pallete (<code>⇧⌘P</code>) hit “Configure Task Runner”. </li>
+  <li>In a <code>task.json</code> file added this:</li>
+</ol>
 
-<p>2<sup>7</sup> = 2 · 2<sup>6</sup> = 2 · 2<sup>2+4</sup> = 2 · 2<sup>2</sup> · 2<sup>4</sup> = 2 · 2<sup>2</sup> · 2<sup>2·2</sup> = 2 · 2<sup>2</sup> · (2<sup>2</sup>)<sup>2</sup></p>
+<script src="https://gist.github.com/JelenaBarinova/1afd44a8470a511bc5ad.js"></script>
 
-<p>As you can see, instead of 7 iterations now we have only 3.</p>
+<p>You should change python command path (if not default as mine) as well as <code>args</code> according to your setup, I just simply have my whole script in <code>app.py</code> file.</p>
 
-<p><strong>Complexity:</strong> O(log n).</p>
+<p>Finally, as this is the only task in my VSCode tasks list - it runs on <code>⇧⌘B</code>. </p>
 
-<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/math/pow.js?footer=minimal">
-</script>
-
+<p>Simple as that!</p>
 
   </article>
   

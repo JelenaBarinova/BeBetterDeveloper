@@ -5,9 +5,53 @@
     <description>Practical notes on development</description>
     <link>http://www.bebetterdeveloper.com/</link>
     <atom:link href="http://www.bebetterdeveloper.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 18 Aug 2015 09:57:05 -0700</pubDate>
-    <lastBuildDate>Tue, 18 Aug 2015 09:57:05 -0700</lastBuildDate>
+    <pubDate>Thu, 01 Oct 2015 14:43:39 -0700</pubDate>
+    <lastBuildDate>Thu, 01 Oct 2015 14:43:39 -0700</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Hello world, Python</title>
+        <description>&lt;p&gt;Today I started exploring Python. For those who know me - Yes, Python! Bear with me - I’ve got my solid reasons for that (will share it one day).&lt;/p&gt;
+
+&lt;p&gt;In this short blog post I just want to share how I setup my IDE - &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt; on MacOS to handle my Python adventure.&lt;/p&gt;
+
+&lt;p&gt;First, I’ve installed &lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;Python&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Then, created &lt;code&gt;app.py&lt;/code&gt; file with “hello world” code in it and setup VSCode task to run this script: &lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;From a Command pallete (&lt;code&gt;⇧⌘P&lt;/code&gt;) hit “Configure Task Runner”. &lt;/li&gt;
+  &lt;li&gt;In a &lt;code&gt;task.json&lt;/code&gt; file added this:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/1afd44a8470a511bc5ad.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;You should change python command path (if not default as mine) as well as &lt;code&gt;args&lt;/code&gt; according to your setup, I just simply have my whole script in &lt;code&gt;app.py&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;Finally, as this is the only task in my VSCode tasks list - it runs on &lt;code&gt;⇧⌘B&lt;/code&gt;. &lt;/p&gt;
+
+&lt;p&gt;Simple as that!&lt;/p&gt;
+</description>
+        <pubDate>Thu, 01 Oct 2015 00:00:00 -0700</pubDate>
+        <link>http://www.bebetterdeveloper.com/coding/hello-world-python.html</link>
+        <guid isPermaLink="true">http://www.bebetterdeveloper.com/coding/hello-world-python.html</guid>
+        
+        <category>Python</category>
+        
+        <category>VSCode</category>
+        
+        <category>Visual Studio Code</category>
+        
+        <category>IDE</category>
+        
+        <category>Mac OS</category>
+        
+        <category>dev environment</category>
+        
+        
+        <category>coding</category>
+        
+      </item>
     
       <item>
         <title>Sharing a blog post hosted on GitHub Pages</title>
@@ -805,64 +849,6 @@ footer=minimal&quot;&gt;&lt;/script&gt;
         <guid isPermaLink="true">http://www.bebetterdeveloper.com/algorithms/sorting/sorting-merge-sort.html</guid>
         
         <category>Merge Sort</category>
-        
-        
-        <category>algorithms</category>
-        
-        <category>sorting</category>
-        
-      </item>
-    
-      <item>
-        <title>Sorting: Shell Sort</title>
-        <description>&lt;p&gt;In this post I will implement more advanced sorting algorithm – &lt;a href=&quot;https://en.wikipedia.org/wiki/Shellsort&quot;&gt;Shell Sort&lt;/a&gt;. Shell sort is also known as n-gap insertion sort. Instead of comparing only adjacent pair, shell sort makes several passes and uses various gaps between adjacent elements (ending with the gap of 1 or classical insertion sort). The idea of the algorithm is as follows:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;calculate gaps by using one of the existing sequences, eg.: Shell’s (⌊n/2&lt;sup&gt;k&lt;/sup&gt;⌋), Pratt’s (2&lt;sup&gt;p&lt;/sup&gt;3&lt;sup&gt;q&lt;/sup&gt;) or in our case – Knuth’s ((3&lt;sup&gt;k&lt;/sup&gt; - 1) / 2) as being one of the most popular and due to sequence generation easiness&lt;/li&gt;
-  &lt;li&gt;starting from the beginning of the list compare value with every n·gap elements on the left (if any)&lt;/li&gt;
-  &lt;li&gt;swap their positions if they are not in the right order&lt;/li&gt;
-  &lt;li&gt;continue until element on the left is smaller than current element&lt;/li&gt;
-  &lt;li&gt;repeat with the smaller gap&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We can visualize shell sort algorithm by sorting following list [3 5 4 7 2 1] using gaps 4 and 1. I’ll use colors to specify &lt;span style=&quot;color: #ff0000;&quot;&gt;current adjacent pair&lt;/span&gt;.&lt;/p&gt;
-
-&lt;p&gt;Iteration #1, &lt;strong&gt;gap 4&lt;/strong&gt; : [3 5 4 7 2 1]
-[&lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt; 5 4 7 &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; 1] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; 5 4 7 &lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt; 1]&lt;/p&gt;
-
-&lt;p&gt;Iteration #2, &lt;strong&gt;gap 4&lt;/strong&gt; : [2 5 4 7 3 1]
-[2 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt; 4 7 3 &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;] → [2 &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; 4 7 3 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;]&lt;/p&gt;
-
-&lt;p&gt;Iteration #3, &lt;strong&gt;gap 1&lt;/strong&gt; : [2 1 4 7 3 5]
-[&lt;span style=&quot;color: #ff0000;&quot;&gt;2 1&lt;/span&gt; 4 7 3 5] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;1 2&lt;/span&gt; 4 7 3 5]&lt;/p&gt;
-
-&lt;p&gt;Iteration #4, &lt;strong&gt;gap 1&lt;/strong&gt; : [1 2 4 7 3 5]
-[1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2 4&lt;/span&gt; 7 3 5] → [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2 4&lt;/span&gt; 7 3 5]&lt;/p&gt;
-
-&lt;p&gt;Iteration #5, &lt;strong&gt;gap 1&lt;/strong&gt; : [1 2 4 7 3 5]
-[1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 7&lt;/span&gt; 3 5] → [1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 7&lt;/span&gt; 3 5]&lt;/p&gt;
-
-&lt;p&gt;Iteration #6, &lt;strong&gt;gap 1&lt;/strong&gt; : [1 2 4 7 3 5]
-[1 2 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;7 3&lt;/span&gt; 5] → [1 2 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;3 7&lt;/span&gt; 5]
-[1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 3&lt;/span&gt; 7 5] → [1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;3 4&lt;/span&gt; 7 5]
-[1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2 3&lt;/span&gt; 4 7 5] → [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2 3&lt;/span&gt; 4 7 5]&lt;/p&gt;
-
-&lt;p&gt;Iteration #7, &lt;strong&gt;gap 1&lt;/strong&gt; : [1 2 3 4 7 5]
-[1 2 3 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;7 5&lt;/span&gt;] → [1 2 3 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5 7&lt;/span&gt;]
-[1 2 3 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 5&lt;/span&gt; 7] → [1 2 3 &lt;span style=&quot;color: #ff0000;&quot;&gt;4 5&lt;/span&gt; 7]&lt;/p&gt;
-
-&lt;p&gt;Implementation of the shell sort is heavily based on the insertion sort:&lt;/p&gt;
-
-&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/sorting/shellSort.js?footer=minimal&quot;&gt;
-&lt;/script&gt;
-
-&lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n&lt;sup&gt;3/2&lt;/sup&gt;) using Knuth’s sequence.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 28 Aug 2013 15:09:55 -0700</pubDate>
-        <link>http://www.bebetterdeveloper.com/algorithms/sorting/sorting-shell-sort.html</link>
-        <guid isPermaLink="true">http://www.bebetterdeveloper.com/algorithms/sorting/sorting-shell-sort.html</guid>
-        
-        <category>Shell Sort</category>
         
         
         <category>algorithms</category>
