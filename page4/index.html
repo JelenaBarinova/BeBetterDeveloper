@@ -76,6 +76,8 @@
         
           
         
+          
+        
     </nav>
 
     <h1>
@@ -93,6 +95,68 @@
         <div class="home">
 
   <ul class="post-list">
+    
+      <li>
+        <!-- <span class="post-meta">Oct 13, 2013</span> -->
+        <h1 style="text-align: left"><a class="post-link" href="/algorithms/sorting/sorting-quick-sort.html">Sorting: Quick Sort</a>
+          </h1>
+          <p>
+            <article class="post-content">
+            <p>In this, <a href="http://www.bebetterdeveloper.com/category/algorithms/sorting/">last</a> in the series, post I will implement probably on of the best known sorting algorithm - <a href="http://en.wikipedia.org/wiki/Quicksort">Quick Sort</a>. The idea of the in-place algorithm is as follows:</p>
+
+<ul>
+  <li>randomize initial list</li>
+  <li>select first element as partition value</li>
+  <li>scan i from left to right so long as current element is less than partition value</li>
+  <li>scan j from right to left so long as current element is more than partition value</li>
+  <li>exchange i-indexed element with j-indexed element</li>
+  <li>repeat until i and j cross</li>
+  <li>exchange first element with j-indexed element</li>
+  <li>split list into two sub-lists bounded by j-indexed partition</li>
+  <li>recursively repeat until list contains one or zero elements</li>
+</ul>
+
+<p>After each iteration when first element is exchanged with j-indexed element following invariant should be valid: elements to left are smaller or equal than partition value and elements to the right are bigger or equal. We can visualize quick sort algorithm by sorting following list [3 5 4 7 2 1]. I’ll use colors to specify <span style="color: #0000ff;">partition value</span>, <span style="color: #99cc00;">current i-indexed element</span> and <span style="color: #ff0000;">current j-indexed element</span>.</p>
+
+<p>Iteration #1
+[<span style="color: #0000ff;">3</span> 5 4 7 2 1] → [<span style="color: #0000ff;">3</span> <span style="color: #99cc00;">5</span> 4 7 2 1] → [<span style="color: #0000ff;">3</span> <span style="color: #99cc00;">5</span> 4 7 2 <span style="color: #ff0000;">1</span>] → [<span style="color: #0000ff;">3</span> <span style="color: #99cc00;"><strong>1</strong></span> 4 7 2 <span style="color: #ff0000;"><strong>5</strong></span>]
+[<span style="color: #0000ff;">3</span> 1 <span style="color: #99cc00;">4</span> 7 2 <span style="color: #ff0000;">5</span>] → [<span style="color: #0000ff;">3</span> 1 <span style="color: #99cc00;">4</span> 7 <span style="color: #ff0000;">2</span> 5] → [<span style="color: #3366ff;">3</span> 1 <strong><span style="color: #99cc00;">2</span></strong> 7 <span style="color: #ff0000;"><strong>4</strong></span> 5]
+[<span style="color: #3366ff;">3</span> 1 2 <span style="color: #99cc00;">7</span> <span style="color: #ff0000;">4</span> 5] → [<span style="color: #3366ff;">3</span> 1 2 <span style="color: #ff0000;">7 </span>4 5] → [<span style="color: #3366ff;">3</span> 1 <span style="color: #ff0000;">2</span> <span style="color: #99cc00;">7</span> 4 5] → [<strong>2</strong> 1 <strong><span style="color: #0000ff;">3</span></strong> 7 4 5]</p>
+
+<p>Iteration #2
+[ [<span style="color: #0000ff;">2</span> 1] 3 [7 4 5] ] → [ [<span style="color: #0000ff;">2</span> <span style="color: #99cc00;">1</span>] 3 [7 4 5] ] → [ [<span style="color: #0000ff;">2</span> <span style="color: #ff0000;">1</span>] 3 [7 4 5] ] → [ [<strong>1</strong> <strong><span style="color: #0000ff;">2</span></strong>] 3 [7 4 5] ]</p>
+
+<p>Iteration #3
+[ [<span style="color: #0000ff;">1</span>] [2] 3 [7 4 5] ] → [<span style="color: #0000ff;">1</span> [2] 3 [4 7 5] ]</p>
+
+<p>Iteration #4
+[1 [<span style="color: #0000ff;">2</span>] 3 [7 4 5] ] → [1 <span style="color: #0000ff;">2</span> 3 [7 4 5] ]</p>
+
+<p>Iteration #5
+[1 2 3 [<span style="color: #0000ff;">7</span> 4 5] ] → [1 2 3 [<span style="color: #0000ff;">7</span> <span style="color: #99cc00;">4</span> 5] ] → [1 2 3 [<span style="color: #0000ff;">7</span> 4 <span style="color: #99cc00;">5</span>] ] → [ 1 2 3 [<span style="color: #0000ff;">7</span> 4 <span style="color: #ff0000;">5</span>] ] → [1 2 3 [<strong>5</strong> 4 <strong><span style="color: #0000ff;">7</span></strong>] ]</p>
+
+<p>Iteration #6
+[1 2 3 [<span style="color: #0000ff;">5</span> 4] 7] → [1 2 3 [<span style="color: #0000ff;">5</span> <span style="color: #99cc00;">4</span>] 7] → [1 2 3 [<span style="color: #0000ff;">5</span> <span style="color: #ff0000;">4</span>] 7]  → [1 2 3 [<strong>4</strong> <strong><span style="color: #0000ff;">5</span></strong>] 7]</p>
+
+<p>Iteration #7
+[1 2 3 [<span style="color: #0000ff;">4</span>] [5] 7] → [1 2 3 <span style="color: #0000ff;">4</span> [5] 7]</p>
+
+<p>Iteration #8
+[1 2 3 4 [<span style="color: #0000ff;">5</span>] 7] → [1 2 3 4 <span style="color: #0000ff;">5</span> 7]</p>
+
+<p>For the sake of easiness I’ll skip list randomization step. Implementation of the quick sort heavily rely on sort and partition functions:</p>
+
+<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/sorting/quickSort.js?footer=minimal">
+</script>
+
+<p><strong>Complexity:</strong> O(n·logn).</p>
+
+            </article>
+
+            </p>
+            <hr>
+            <br>
+      </li>
     
       <li>
         <!-- <span class="post-meta">Sep 23, 2013</span> -->
@@ -227,56 +291,6 @@
             <br>
       </li>
     
-      <li>
-        <!-- <span class="post-meta">Aug 18, 2013</span> -->
-        <h1 style="text-align: left"><a class="post-link" href="/algorithms/sorting/sorting-insertion-sort.html">Sorting: Insertion Sort</a>
-          </h1>
-          <p>
-            <article class="post-content">
-            <p>In this post I will implement another basic sorting algorithm – <a href="https://en.wikipedia.org/wiki/Insertion_sort">Insertion Sort</a>. The idea of the algorithm is as follows:</p>
-
-<ul>
-  <li>starting from the beginning of the list compare value with the elements on the left (if any)</li>
-  <li>swap their position if they are not in the right order</li>
-  <li>continue until element on the left is smaller than current element</li>
-  <li>after each iteration elements on the left from the current element are sorted</li>
-</ul>
-
-<p>We can visualize insertion sort algorithm by sorting following list [5 1 4 2 8]. I’ll use colors to specify <span style="color: #ff0000;">current adjacent pair</span> and <span style="color: #99cc00;">already sorted elements</span>.</p>
-
-<p>Iteration #1 : <span style="color: #ff0000;">[5</span> 1 4 2 8]</p>
-
-<p>Iteration #2 : [<span style="color: #99cc00;">5</span> 1 4 2 8]
-[<span style="color: #ff0000;">5 1</span> 4 2 8] → [<span style="color: #ff0000;">1 5</span> 4 2 8]</p>
-
-<p>Iteration #3 : [<span style="color: #99cc00;">1 5</span> 4 2 8]
-[1 <span style="color: #ff0000;">5 4</span> 2 8] → [1 <span style="color: #ff0000;">4 5</span> 2 8]
-[<span style="color: #ff0000;">1 4</span> 5 2 8] → [<span style="color: #ff0000;">1 4</span> <span style="color: #99cc00;">5</span> 2 8]</p>
-
-<p>Iteration #4 : [<span style="color: #99cc00;">1 4 5</span> 2 8]
-[1 4 <span style="color: #ff0000;">5 2</span> 8] → [1 4 <span style="color: #ff0000;">2 5</span> 8]
-[1 <span style="color: #ff0000;">4 2</span> <span style="color: #99cc00;">5</span> 8] → [1 <span style="color: #ff0000;">2 4</span> <span style="color: #99cc00;">5</span> 8]
-[<span style="color: #ff0000;">1 2</span> <span style="color: #99cc00;">4 5</span> 8] → [<span style="color: #ff0000;">1 2</span> <span style="color: #99cc00;">4 5</span> 8]</p>
-
-<p>Iteration #5 : [<span style="color: #99cc00;">1 2 4 5</span> 8]
-[1 2 4 <span style="color: #ff0000;">5 8</span>] → [1 2 4 <span style="color: #ff0000;">5 8</span>]</p>
-
-<p>Implementation of the insertion sort is very simple:</p>
-
-<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/sorting/insertionSort.js?footer=minimal">
-</script>
-
-<p>Similarly to bubble and selection sorts we have two loops: outer and inner, so the average complexity is similar as well – O(n<sup>2</sup>). For best-case scenario (already sorted elements) insertion sort has better complexity – O(n).</p>
-
-<p><strong>Complexity:</strong> O(n<sup>2</sup>).</p>
-
-            </article>
-
-            </p>
-            <hr>
-            <br>
-      </li>
-    
   </ul>
 
 
@@ -340,7 +354,7 @@
             </div>
         </div>
     </div>
-  
+
 </div>
 <!-- jQuery -->
 <script src="/js/jquery.min.js "></script>
@@ -348,7 +362,7 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="/js/bootstrap.min.js "></script>
 
-<!-- Google Analytics  -->
+<!-- Google Analytics -->
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -358,8 +372,7 @@
   ga('create', 'UA-39383708-2', 'auto');
   ga('send', 'pageview');
 
-</script> 
-
+</script>
 
   </body>
 

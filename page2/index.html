@@ -76,6 +76,8 @@
         
           
         
+          
+        
     </nav>
 
     <h1>
@@ -93,6 +95,169 @@
         <div class="home">
 
   <ul class="post-list">
+    
+      <li>
+        <!-- <span class="post-meta">Jul 16, 2015</span> -->
+        <h1 style="text-align: left"><a class="post-link" href="/coding/getting-started-react-mocha.html">Getting started w/ React & Mocha</a>
+          </h1>
+          <p>
+            <article class="post-content">
+            <p>It took me half day to setup [almost] empty environment for React app development with testing done using Mocha. 
+I decided to share my findings here so it would remain. 
+<img src="/img/post_img/vfd-react-mocha.png" alt="React and Mocha logo" class="right" /></p>
+
+<h2 id="my-target">My target</h2>
+<p>I wanted to create an environment for further React development. The things that I needed to have:</p>
+
+<ul>
+  <li>source structure, that would be suitable for medium-sized project</li>
+  <li>build scripts, that would do all needed transformations, run tests, show the output of my app</li>
+  <li>Mocha as a test framework of choice </li>
+</ul>
+
+<p>For build scripts I prefer to use gulp.</p>
+
+<h2 id="tldr">tl;dr</h2>
+<p>You can find working code <a href="https://github.com/JelenaBarinova/VeryFirstDiv">here</a>. Just download it and run </p>
+
+<pre><code>$npm install
+</code></pre>
+
+<p>followed by </p>
+
+<pre><code>$npm test
+</code></pre>
+
+<p>If you are using Visual Studio Code - you can build it using <code>⇧⌘B</code> (on Mac).  </p>
+
+<h2 id="how-i-did-it">How I did it</h2>
+<p>I started with these three stages:</p>
+
+<ol>
+  <li>Prepare the environment</li>
+  <li>Create first React component</li>
+  <li>Add Mocha tests</li>
+</ol>
+
+<h2 id="step-1-prepare-the-environment">Step 1. Prepare the environment</h2>
+<p>First install <a href="https://nodejs.org/">Node.js</a> (if you don’t have it yet).
+In your project directory (<em>VeryFirstDiv</em> in my case) create <em>package.json</em> file, containing these settings:
+<script src="https://gist.github.com/JelenaBarinova/31ce415a9beac855c75e.js"></script></p>
+
+<p>To download and install all needed dependences open a terminal and run: </p>
+
+<pre><code>$npm install
+</code></pre>
+
+<p>Create <em>index.html</em> file:
+<script src="https://gist.github.com/JelenaBarinova/65ee857afca288768cb6.js"></script></p>
+
+<p>Create <em>gulpfile.js</em> to configure build steps:
+<script src="https://gist.github.com/JelenaBarinova/143d0b90f977e60184fa.js"></script>
+I’m using <a href="https://www.npmjs.com/package/gulp-load-plugins">gulp-load-plugins</a> for easy and fast use of different gulp plugins. It enables me to access all the plugins I have listed in package.json file without ‘require’ each of them separately. </p>
+
+<p>Run buil command: either using <code>⇧⌘B</code> (from Visual Studio Code on Mac) or command line:</p>
+
+<pre><code>$gulp build
+</code></pre>
+
+<p>And you should get Chrome opened with very first version of our app.</p>
+
+<p><img src="/img/post_img/vfd-1.png" alt="First step result" class="right" /></p>
+
+<h2 id="step-2-create-first-react-component">Step 2. Create first React component</h2>
+<p>Create a <em>components</em> directory and <em>component.jsx</em> file in it:
+<script src="https://gist.github.com/JelenaBarinova/8a04f9f62934b4773b5d.js"></script></p>
+
+<p>Add this componenet to DOM (I did it in <em>app.jsx</em> file in my project root directroy <em>VeryFirstDiv</em>)
+<script src="https://gist.github.com/JelenaBarinova/2d3096930e0f739ab7e5.js"></script></p>
+
+<p>Add aditional step ‘browserify’ in build process to have “require(‘modules’)” in browser. I use <a href="https://www.npmjs.com/package/gulp-browserify">gulp-browserify</a> module. This is our <em>gulpfile.js</em> with new ‘browserify’ step added:
+<script src="https://gist.github.com/JelenaBarinova/912880187a6b55b83b5d.js"></script></p>
+
+<p>Run build task and we can see our React component in a browser.</p>
+
+<p><img src="/img/post_img/vfd-2.png" alt="Second step result" class="right" /></p>
+
+<h2 id="step-3-adding-first-mocha-test">Step 3. Adding first Mocha test</h2>
+<p>This was the trickiest step for me. I found a couple of good articles on the topic. These are my favourite:</p>
+
+<ul>
+  <li><a href="https://github.com/jesstelford/react-isomorphic-boilerplate">Isomorphic Server &amp; Browser Side Rendering with React (in 3 parts)</a></li>
+  <li><a href="http://www.hammerlab.org/2015/02/14/testing-react-web-apps-with-mocha/">Testing React Web Apps with Mocha (in 2 parts)</a></li>
+  <li><a href="http://www.asbjornenge.com/wwc/testing_react_components.html">Testing React Components</a></li>
+</ul>
+
+<p>Ok, let’s begin.
+First, we need to install <a href="http://mochajs.org/">Mocha</a>. There are two ways you can do it (apply same instructions to futher installations as well): you can either install needed module from command line, for example </p>
+
+<pre><code>$npm install mocha
+</code></pre>
+
+<p>or add it to <em>package.json</em> dependencies list and run </p>
+
+<pre><code>$npm install
+</code></pre>
+
+<p>I prefer the second option, this way you keep track of all used modules and if needed you can install all dependences from zero. </p>
+
+<p>Create test directory and a first <em>empty-test.js</em>, which just asserts true all the time.
+<script src="https://gist.github.com/JelenaBarinova/a5a34db9c6a9cf8ccb38.js"></script></p>
+
+<p>You can try whether it works just running Mocha from command line from you project root folder: </p>
+
+<pre><code>$mocha
+</code></pre>
+
+<p>You shoud get this output:</p>
+
+<p><img src="/img/post_img/vfd-3.png" alt="Third step result" class="right" /></p>
+
+<p>Now let’s add test running step in our gulp configuration.
+For this I used <a href="https://www.npmjs.com/package/gulp-shell">gulp-shell</a> - a command line interface for gulp.</p>
+
+<p>Now add a new ‘test’ step in <em>gulpfile.js</em> to run mocha:
+<script src="https://gist.github.com/JelenaBarinova/7d65aec1091f2ded3063.js"></script></p>
+
+<p>Before moving on to testing our React component, we need to take care of couple of things.</p>
+
+<p><strong>First</strong> - DOM mocking. You can find very good explanation about how to mock DOM in this <a href="http://www.asbjornenge.com/wwc/testing_react_components.html">blog post</a>.
+To follow this example we need to install <a href="https://github.com/tmpvar/jsdom">jsdom</a> and <a href="https://github.com/rstacruz/mocha-jsdom">mocha-jsdom</a>. 
+I’ve created <em>dom-mock.js</em> file.
+<script src="https://gist.github.com/JelenaBarinova/fab84f93dae04ca4123a.js"></script></p>
+
+<p><strong>Second</strong> - create a file named mocha.opts in test directroy, add this line to it: </p>
+
+<pre><code>--compilers js:babel/register --recursive
+</code></pre>
+
+<p>I found this reading this <a href="https://github.com/jesstelford/react-testing-mocha-jsdom">post</a> and install <a href="https://babeljs.io/">babel</a>.</p>
+
+<p>And finally - the test! I’ve created <em>component-test.js</em> file in test directory:
+<script src="https://gist.github.com/JelenaBarinova/c4fd4c4cdad19b28fe0f.js"></script></p>
+
+<p>Run build. Hurray! The test is passing:</p>
+
+<p><img src="/img/post_img/vfd-4.png" alt="Fourth step result" class="right" /></p>
+
+<p>You can also configure test running in your <em>package.json</em> - to run tests from command line using: </p>
+
+<pre><code>$npm test
+</code></pre>
+
+<p>After this addition our <em>package.json</em> looks like this:
+<script src="https://gist.github.com/JelenaBarinova/085b9e9c727f166df806.js"></script></p>
+
+<h2 id="ecmascript-2015">ECMAScript 2015</h2>
+<p>If you are plannig to use ECMAScript 2015, you might want to consider installing gulp-babel to tranform your ECMAScript 2015 code to ECMAScript 5 for your browser to understand it. Just add ‘es2015’ task in <em>gulpfile.js</em>:
+<script src="https://gist.github.com/JelenaBarinova/8fd92aee1786dc774a9d.js"></script></p>
+
+            </article>
+
+            </p>
+            <hr>
+            <br>
+      </li>
     
       <li>
         <!-- <span class="post-meta">Jul 14, 2015</span> -->
@@ -381,51 +546,6 @@ footer=minimal"></script>
             <br>
       </li>
     
-      <li>
-        <!-- <span class="post-meta">Feb 15, 2014</span> -->
-        <h1 style="text-align: left"><a class="post-link" href="/data%20structure/data-structure-max-priority-queue.html">Data Structure: Max Priority Queue</a>
-          </h1>
-          <p>
-            <article class="post-content">
-            <p>Today I will implement another important abstract data type – <a href="http://en.wikipedia.org/wiki/Priority_queue">priority queue</a>. Priority queues are used:</p>
-
-<ul>
-  <li>in heap sort</li>
-  <li>to track top N elements in a very long sequence</li>
-  <li>to merge K ordered sequences and produce single ordered sequence</li>
-</ul>
-
-<p>Usually priority queues have following functions:</p>
-
-<ul>
-  <li>insert() – to add new item with a priority</li>
-  <li>deleteMin() or deleteMax() – to remove an item with min/max priority</li>
-  <li>findMin() or findMax() – to get an item with min/max priority</li>
-  <li>length() – to get the number of items in the priority queue</li>
-</ul>
-
-<p>As a foundation I’ll use in the <a href="http://www.bebetterdeveloper.com/data-structure-binary-heap/">last post</a> described efficient data structure – binary heap (in fact, max-heap). Overall, priority queue can be seen as a generalization of <a href="http://www.bebetterdeveloper.com/data-structure-stack-array/">stack</a> and <a href="http://www.bebetterdeveloper.com/data-structure-queue/">queue</a> data structures. Stack can be implemented as a max priority queue where priority of each inserted element is monotonically increasing and queue – where priority of each inserted element is monotonically decreasing. </p>
-
-<p>The implementation of max priority queue (<a href="https://github.com/sergejusb/algorithms/blob/master/data-structures/maxPriorityQueue_tests.js">tests</a>) is almost identical to the max-heap implementation:</p>
-
-<script type="text/javascript" src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/maxPriorityQueue.js?
-footer=minimal"></script>
-
-<p><strong>Complexity</strong>:</p>
-
-<ul>
-  <li>insert - O(logn)</li>
-  <li>deleteMin/deleteMax - O(logn)</li>
-  <li>findMin/findMax - O(1)</li>
-</ul>
-
-            </article>
-
-            </p>
-            <hr>
-            <br>
-      </li>
-    
   </ul>
 
 
@@ -489,7 +609,7 @@ footer=minimal"></script>
             </div>
         </div>
     </div>
-  
+
 </div>
 <!-- jQuery -->
 <script src="/js/jquery.min.js "></script>
@@ -497,7 +617,7 @@ footer=minimal"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="/js/bootstrap.min.js "></script>
 
-<!-- Google Analytics  -->
+<!-- Google Analytics -->
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -507,8 +627,7 @@ footer=minimal"></script>
   ga('create', 'UA-39383708-2', 'auto');
   ga('send', 'pageview');
 
-</script> 
-
+</script>
 
   </body>
 

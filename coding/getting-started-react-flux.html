@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Be a Better Developer</title>
-  <meta name="description" content="Practical notes on development">
+  <title>Creating multilingual website w/ React & Flux</title>
+  <meta name="description" content="My post on Getting started w/ React &amp; Mocha just made it up to the Top 1 of all my blog posts, reaching 1000 uniqueue views, so I decided to continue the...">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://www.bebetterdeveloper.com/">
+  <link rel="canonical" href="http://www.bebetterdeveloper.com/coding/getting-started-react-flux.html">
   <link rel="alternate" type="application/rss+xml" title="Be a Better Developer" href="http://www.bebetterdeveloper.com/feed.xml" />
 
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -24,21 +24,57 @@
 
     
 
+    
+        
+            
+            
+            
+            
+            
+            
 <!-- Open graph tags -->
-<meta property="og:title" content="Be a Better Developer">
-<meta property="og:type" content="website">
-<meta property="og:url" content="http://www.bebetterdeveloper.com/">
-<meta property="og:image" content="http://www.bebetterdeveloper.com">
+<meta property="og:title" content="Creating multilingual website w/ React & Flux">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://www.bebetterdeveloper.com/coding/getting-started-react-flux.html">
+<meta property="og:image" content="http://www.bebetterdeveloper.com/img/post_img/rfe-1.png">
 
-<meta property="og:description" content="Practical notes on development">
+<meta property="og:description" content="My post on Getting started w/ React &amp; Mocha just made it up to the Top 1 of all my blog posts, reaching 1000 uniqueue views, so I decided to continue the...">
 <meta property="og:site_name" content="Be a Better Developer">
 
 
 
 
+<meta property="article:published_time" content="2015-11-20T00:00:00-08:00">
+<meta property="article:author" content="https://www.facebook.com/jelena.fiodorova">
+  
+<meta property="og:see_also" content="http://www.bebetterdeveloper.com/coding/hello-world-python.html">
+  
+<meta property="og:see_also" content="http://www.bebetterdeveloper.com/deployment/sharing-a-blog-post-hosted-on-github-pages.html">
+  
+<meta property="og:see_also" content="http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html">
+  
 
 
 
+  
+<meta property="article:section" content="coding">
+  
+
+
+
+  
+<meta property="article:tag" content="JavaScript">
+  
+<meta property="article:tag" content="React">
+  
+<meta property="article:tag" content="Gulp">
+  
+<meta property="article:tag" content="ES2015">
+  
+<meta property="article:tag" content="Flux">
+  
+<meta property="article:tag" content="multilingual">
+  
 
 </head>
 
@@ -92,17 +128,43 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <ul class="post-list">
+  <header class="post-header">
+     <h1 class="post-title">Creating multilingual website w/ React & Flux</h1>
+     <p class="post-meta">Posted by <em> Lena Barinova</em> on Nov 20, 2015</p>
+<br>
+  <span > 
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.bebetterdeveloper.com/coding/getting-started-react-flux.html" target="_blank">
+        <span class="fa-stack fa-lg">
+            <i class="fa fa-square-o fa-stack-2x"></i>
+            <i class="fa fa-facebook fa-stack-1x"></i>
+        </span>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.bebetterdeveloper.com/coding/getting-started-react-flux.html&title=Creating multilingual website w/ React & Flux&summary=Basic steps to build multilingual React website using Flux&source=http://www.bebetterdeveloper.com/" target="_blank">
+        <span class="fa-stack fa-lg">
+            <i class="fa fa-square-o fa-stack-2x"></i>
+            <i class="fa fa-linkedin fa-stack-1x"></i>
+        </span>
+    </a>
+    <a href="https://twitter.com/home?status=Reading %20%22Creating multilingual website w/ React & Flux%20%22 on http://www.bebetterdeveloper.com/coding/getting-started-react-flux.html %20%23bebetterdeveloper%0A" target="_blank">
+        <span class="fa-stack fa-lg">
+            <i class="fa fa-square-o fa-stack-2x"></i>
+            <i class="fa fa-twitter fa-stack-1x"></i>
+        </span>
+    </a>
+  </span>
+  <span>
     
-      <li>
-        <!-- <span class="post-meta">Nov 20, 2015</span> -->
-        <h1 style="text-align: left"><a class="post-link" href="/coding/getting-started-react-flux.html">Creating multilingual website w/ React & Flux</a>
-          </h1>
-          <p>
-            <article class="post-content">
-            <p>My post on <a href="http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html">Getting started w/ React &amp; Mocha</a> just made it up to the Top 1 of all my blog posts, reaching 1000 uniqueue views, so I decided to continue these series.
+      
+      <a class="category" href="http://www.bebetterdeveloper.com/categories.html#coding"> Coding</a>
+      
+  </span>  
+  </header>
+  
+  
+  <article class="post-content">
+    <p>My post on <a href="http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html">Getting started w/ React &amp; Mocha</a> just made it up to the Top 1 of all my blog posts, reaching 1000 uniqueue views, so I decided to continue these series.
 <img src="/img/post_img/rfe-1.png" alt="React and Flux logo" class="right" /></p>
 
 <h2 id="my-target">My target</h2>
@@ -287,117 +349,27 @@ Picture is taken from <a href="https://facebook.github.io/flux/docs/overview.htm
 
 <p>I just love how it works you can experience this smooth language change <a href="http://jelenabarinova.github.io/react-flux-example/">here</a>.</p>
 
-            </article>
-
-            </p>
-            <hr>
-            <br>
-      </li>
-    
-      <li>
-        <!-- <span class="post-meta">Oct 1, 2015</span> -->
-        <h1 style="text-align: left"><a class="post-link" href="/coding/hello-world-python.html">Hello world, Python</a>
-          </h1>
-          <p>
-            <article class="post-content">
-            <p><img src="/img/post_img/python-logo.png" alt="Python" class="right" /></p>
-
-<p>Today I started exploring Python. For those who know me - Yes, Python! Bear with me - I’ve got my solid reasons for that (will share it one day).</p>
-
-<p>In this short blog post I just want to share how I setup my IDE - <a href="https://code.visualstudio.com/">Visual Studio Code</a> on MacOS to handle my Python adventure.</p>
-
-<p>First, I’ve installed <a href="https://www.python.org/downloads/">Python</a>.</p>
-
-<p>Then, created <code>app.py</code> file with “hello world” code in it and setup VSCode task to run this script, as so: </p>
-
-<ol>
-  <li>From a Command pallete (<code>⇧⌘P</code>) hit “Configure Task Runner”. </li>
-  <li>In a <code>task.json</code> file added this:</li>
-</ol>
-
-<script src="https://gist.github.com/JelenaBarinova/1afd44a8470a511bc5ad.js"></script>
-
-<p>You should change python command path (if not default as mine) as well as <code>args</code> according to your setup, I just simply have my whole script in <code>app.py</code> file.</p>
-
-<p>Finally, as this is the only task in my VSCode tasks list - it runs on <code>⇧⌘B</code>. </p>
-
-<p>Simple as that!</p>
-
-            </article>
-
-            </p>
-            <hr>
-            <br>
-      </li>
-    
-      <li>
-        <!-- <span class="post-meta">Aug 17, 2015</span> -->
-        <h1 style="text-align: left"><a class="post-link" href="/deployment/sharing-a-blog-post-hosted-on-github-pages.html">Sharing a blog post hosted on GitHub Pages</a>
-          </h1>
-          <p>
-            <article class="post-content">
-            <p>I am hosting all of my personal blogs on <a href="https://pages.github.com/">GitHub Pages</a> now (here are some reasons why: <a href="http://bebetterleader.com/coding/why-did-i-go-static.html">‘Static HTML is the new black’</a>). With it comes a challenge when I try to share new posts on social media.</p>
-
-<p>I want to have a nice share dialog with description and image of my blog post. Like so:</p>
-
-<p><img src="/img/post_img/fbog-share-dialog.png" alt="Share dialog" class="right" /></p>
-
-<p>In order to achive this, I had to add some code to my Jekyll templates and implement some workarounds with urls and domain configuration. That’s how I did it.</p>
-
-<p>First, I added meta tag generation to a head part of my post html:
-<script src="https://gist.github.com/JelenaBarinova/c63a40854bcd0569a9a6.js"></script> </p>
-
-<p>I get all the open graph meta tags being generated as FB and other social media systems expect it to: </p>
-
-<script src="https://gist.github.com/JelenaBarinova/1ef9ae8a8322e3397051.js"></script>
-
-<p>But once I try to share my blog post or scrape url with <a href="https://developers.facebook.com/tools/debug/og/object/">Open Graph Object Debugger</a> I get <code>Error parsing input URL, no data was cached, or no data was scraped.</code>:</p>
-
-<p><img src="/img/post_img/fbog-error.png" alt="Error parsing input URL, no data was cached, or no data was scraped." class="right" /></p>
-
-<p>After spending some time searching for the reasons why this is happening, I found that, Github sometimes return a 302 (Redirect status code) instead of a 200 (OK) in order to avoid DDoS attacks. Same issue is described in this <a href="http://www.rovrov.com/blog/2014/11/11/github-pages-302-redirect/">blog post</a>. </p>
-
-<p>To fix it, in addition to GitHub’s IPs I’ve added <code>www</code> subdomain through <code>CNAME</code> pointing to my GitHub address <code>jelenabarinova.github.io</code> in my domain configuration. </p>
-
-<p><img src="/img/post_img/fbog-domain-config.png" alt="Domain configuration" class="right" /></p>
-
-<p>Now I use url with <code>www</code> prefix when I want to share my blog post on social media and it works just fine - I get desirable share dialog: </p>
-
-<p><img src="/img/post_img/fbog-fixed.png" alt="Scraper works" class="right" /></p>
-
-<p>With this workaround I can share my posts using nice summary and image in a share dialog.</p>
-
-<hr />
-
-<h4 id="update-10172015">Update 10/17/2015</h4>
-
-<p>By the way in my <code>gh-pages</code> branch on a GitHub I have <code>CNAME</code> configured using subdomain + domain, like this: <code>www.bebetterdeveloper.com</code></p>
-
-<p><img src="/img/post_img/fblog-cname.png" alt="CNAME" class="right" /></p>
-
-            </article>
-
-            </p>
-            <hr>
-            <br>
-      </li>
-    
-  </ul>
-
-
-<div>
-  <div style="float: left; margin-right: 10px;">
-    
-  </div>
-  <div style="float: right; margin-left: 10px;">
-    
-      <a href="/page2"><i class="fa fa-arrow-circle-right fa-2x"></i></a>
-    
-    </div>
-    </div>
+  </article>
+  
+  <div class="container" style="margin-top:1em;">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'beabetterdeveloper'; 
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
+        </div>
+      </div> 
+      <hr>
 
 </div>
-
       </div>
     </div>
 

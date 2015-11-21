@@ -5,9 +5,217 @@
     <description>Practical notes on development</description>
     <link>http://www.bebetterdeveloper.com/</link>
     <atom:link href="http://www.bebetterdeveloper.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 17 Oct 2015 12:57:47 -0700</pubDate>
-    <lastBuildDate>Sat, 17 Oct 2015 12:57:47 -0700</lastBuildDate>
+    <pubDate>Sat, 21 Nov 2015 12:13:26 -0800</pubDate>
+    <lastBuildDate>Sat, 21 Nov 2015 12:13:26 -0800</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Creating multilingual website w/ React &amp; Flux</title>
+        <description>&lt;p&gt;My post on &lt;a href=&quot;http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html&quot;&gt;Getting started w/ React &amp;amp; Mocha&lt;/a&gt; just made it up to the Top 1 of all my blog posts, reaching 1000 uniqueue views, so I decided to continue these series.
+&lt;img src=&quot;/img/post_img/rfe-1.png&quot; alt=&quot;React and Flux logo&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;my-target&quot;&gt;My target&lt;/h2&gt;
+
+&lt;p&gt;This time I want to create a simple multilingual website. I need to have:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;source structure and process suitable for mid-sized project&lt;/li&gt;
+  &lt;li&gt;fast update of UI on language change (desirably without page refresh)&lt;/li&gt;
+  &lt;li&gt;easy testable solution&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’ll use ES6 where it is suitable, I automate dev process using Gulp.&lt;/p&gt;
+
+&lt;h2 id=&quot;result&quot;&gt;Result&lt;/h2&gt;
+
+&lt;p&gt;This is how the final result looks like:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/post_img/out.gif&quot; alt=&quot;Switch language&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Working code in &lt;a href=&quot;https://github.com/JelenaBarinova/react-flux-example&quot;&gt;GitHub&lt;/a&gt;.
+To check the website, follow this &lt;a href=&quot;http://jelenabarinova.github.io/react-flux-example/&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;tldr&quot;&gt;tl;dr&lt;/h2&gt;
+
+&lt;p&gt;Just download the code and run&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$npm install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you are using Visual Studio Code - you can build it using &lt;code&gt;⇧⌘B&lt;/code&gt; (on Mac), otherwise use:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$gulp build
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To run a server locally I use &lt;a href=&quot;https://www.npmjs.com/package/http-server&quot;&gt;http-server&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$http-server -a localhost -p 8000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For those, who are in a hurry to get started with Flux you can skip all preparation steps and go straight to &lt;a href=&quot;/coding/getting-started-react-flux.html#step-4-flux&quot;&gt;Using Flux&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;my-actions&quot;&gt;My actions&lt;/h2&gt;
+
+&lt;p&gt;To create this multilingual website I followed these steps:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;/coding/getting-started-react-flux.html#step-1-simple-html&quot;&gt;Created simple HTML&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/coding/getting-started-react-flux.html#step-2-react-components&quot;&gt;Created React components with hardcoded content&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/coding/getting-started-react-flux.html#step-3-content-from-json&quot;&gt;Moved content to JSON&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/coding/getting-started-react-flux.html#step-4-flux&quot;&gt;Used Flux&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/coding/getting-started-react-flux.html#step-5-refactoring-and-tests&quot;&gt;Made some refactoring and add tetst&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;step-1-simple-html&quot;&gt;Step 1. Simple HTML&lt;/h2&gt;
+
+&lt;p&gt;So I started by creating my website as a simple HTML, using Bootstrap, to have the basic static page structure, which I could split to the React components later. That’s how my &lt;em&gt;index.html&lt;/em&gt; look like:
+&lt;style type=&quot;text/css&quot;&gt;
+  .gist {width:640px !important;}
+  .gist-file
+  .gist-data {max-height: 600px; max-width: 640px;}
+&lt;/style&gt;
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/82dbb2570f81395bc2f6.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;step-2-react-components&quot;&gt;Step 2. React components&lt;/h2&gt;
+
+&lt;p&gt;First I installed React and ReactDOM.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$npm install react react-dom --save
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then I prepared everything that is needed for jsx and ES2015 transformations:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$npm install babel gulp browserify vinyl-source-stream babelify babel-preset-es2015 babel-preset-react --save-dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For Babel to transform React files and ES2015 - created &lt;em&gt;.babelrc&lt;/em&gt; file with these settings:
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/1303d2f6a01a35ff01e9.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Created gulp file with a build task. Here it is:
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/7f6e5e6945a89a6f17a6.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Now moving to React. In my page I identify three components:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Menu&lt;/li&gt;
+  &lt;li&gt;Home section&lt;/li&gt;
+  &lt;li&gt;About section&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I created these three components, adding additional one to wrap these three. In this step I added everything in one file &lt;em&gt;app.jsx&lt;/em&gt; (will refactor it in further steps). So my &lt;em&gt;app.jsx&lt;/em&gt; file looks like this:
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/7244d61616f3427a8673.js&quot;&gt;&lt;/script&gt;
+Note: when using html in React don’t forget to rename class to className.&lt;/p&gt;
+
+&lt;p&gt;Added a placeholder for my react components instead of all the html tags in my &lt;em&gt;index.html&lt;/em&gt; and added refference to react and react-dom libraries as well as to my app.js file, which is being produced for me after running&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$gulp build
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or &lt;code&gt;⇧⌘B&lt;/code&gt; (in VSCode on Mac).&lt;/p&gt;
+
+&lt;p&gt;So my &lt;em&gt;index.html&lt;/em&gt; now is this:
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/e0a7a419f161aa7d8362.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;browse files in GitHub at &lt;a href=&quot;https://github.com/JelenaBarinova/react-flux-example/tree/b4f1d2557efaa593f4dd4558fae75ec3db884da5&quot;&gt;this point&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;step-3-content-from-json&quot;&gt;Step 3. Content from JSON&lt;/h2&gt;
+
+&lt;p&gt;What I decided to do now is to move all the content text to JSON file and load the text I have created helper API. The main idea behind this is that later this loading from JSON could be replaced by calling real API to retrieve needed data.&lt;/p&gt;
+
+&lt;p&gt;This is how my data &lt;em&gt;content.json&lt;/em&gt; file looks like:
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/8e0a8f5e3a09b2794ec5.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;This is my helper API, which load JSON into array and then returns it filtered by language.
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/aa9ed4e4afcaaa8b80ff.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;So now I update my React components to use text from my API. I decided to call API method from my wrapper component and then pass down needed parts to child components via &lt;em&gt;props&lt;/em&gt;. This is my app.jsx:
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/279de096b29d412f5b70.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;In addition I appended &lt;em&gt;gulpfile.js&lt;/em&gt; with new task to delete previously generated &lt;em&gt;app.js&lt;/em&gt; file. This is how gulpfile.js looks like now:
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/be4c3e8dbe599fe06996.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;For this I needed to install del library:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$npm install del --save-dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;step-4-flux&quot;&gt;Step 4. Flux&lt;/h2&gt;
+
+&lt;p&gt;So finaly, all preparation tasks are done and we can move forward and add Flux.
+First let’s start with installation.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$npm install flux --save
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I follow the flow that is being recommended by Flux:
+&lt;img src=&quot;https://facebook.github.io/flux/img/flux-simple-f8-diagram-with-client-action-1300w.png&quot; alt=&quot;Flux flow&quot; class=&quot;right&quot; /&gt;
+Picture is taken from &lt;a href=&quot;https://facebook.github.io/flux/docs/overview.html#content&quot;&gt;Flux manual&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let’s map this diagram items with my code. So starting from left to right, I’ve got two actions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;initApp - I call this in my app entry point to load content using default language ‘en’ (I say it’s an action on the left, very first box in the diagram)&lt;/li&gt;
+  &lt;li&gt;switchLanguage - I dispatch this action on click in language menu (I say it’s an action above the Store on the diagram)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;My &lt;em&gt;actions.js&lt;/em&gt; file:
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/cded3bd3a79e1466029b.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Then I have a dispatcher:
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/8c7a5114b7f5341077b8.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;In my store I hold the content and register some callbacks with dispatcher to be invoked on specific actions. My &lt;em&gt;store.js&lt;/em&gt; file:
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/f1c17fa8bad12f7bc5f7.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;And last, but not least - view. So here I have two components that are related to this flow:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Menu component - invokes SWITCH_LANGUAGE action on menu item click and passes selected language (this covers View -&amp;gt; Action -&amp;gt; Dispatcher -&amp;gt; Store loop on the diagram)&lt;/li&gt;
+  &lt;li&gt;Page component - listens to the store changes and when change is happening - gets updated content (this covers Upper Action -&amp;gt; Dispatcher -&amp;gt; Store -&amp;gt; View loop on the diagram).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is my updated Menu component:
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/51022402974b0f06b70e.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;And here it is my Page compoenent:
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/5cac4ff430e13622c42f.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;step-4-refactoring-and-tests&quot;&gt;Step 4. Refactoring and Tests&lt;/h2&gt;
+
+&lt;p&gt;I won’t be giving any detaled instruction here, but what I did - is refactored my code:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Changed source file structure&lt;/li&gt;
+  &lt;li&gt;Split react components to different files&lt;/li&gt;
+  &lt;li&gt;Added minification step to the gulp task&lt;/li&gt;
+  &lt;li&gt;Now working on tests, and I think, that they deserve a separate blog post.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The final version of this example may be found on &lt;a href=&quot;https://github.com/JelenaBarinova/react-flux-example&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I just love how it works you can experience this smooth language change &lt;a href=&quot;http://jelenabarinova.github.io/react-flux-example/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 20 Nov 2015 00:00:00 -0800</pubDate>
+        <link>http://www.bebetterdeveloper.com/coding/getting-started-react-flux.html</link>
+        <guid isPermaLink="true">http://www.bebetterdeveloper.com/coding/getting-started-react-flux.html</guid>
+        
+        <category>JavaScript</category>
+        
+        <category>React</category>
+        
+        <category>Gulp</category>
+        
+        <category>ES2015</category>
+        
+        <category>Flux</category>
+        
+        <category>multilingual</category>
+        
+        
+        <category>coding</category>
+        
+      </item>
     
       <item>
         <title>Hello world, Python</title>
@@ -780,85 +988,6 @@ footer=minimal&quot;&gt;&lt;/script&gt;
         <guid isPermaLink="true">http://www.bebetterdeveloper.com/algorithms/sorting/sorting-quick-sort.html</guid>
         
         <category>Quick Sort</category>
-        
-        
-        <category>algorithms</category>
-        
-        <category>sorting</category>
-        
-      </item>
-    
-      <item>
-        <title>Sorting: Merge Sort</title>
-        <description>&lt;p&gt;In this post I will implement well known &lt;a href=&quot;http://en.wikipedia.org/wiki/Divide_and_conquer_algorithm&quot;&gt;divide and conquer&lt;/a&gt; sorting algorithm – &lt;a href=&quot;http://en.wikipedia.org/wiki/Merge_sort&quot;&gt;Merge Sort&lt;/a&gt;. The idea of the algorithm is as follows:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;recursively divide unsorted list into two sub-lists&lt;/li&gt;
-  &lt;li&gt;continue until each sub-list contains 1 element&lt;/li&gt;
-  &lt;li&gt;recursively merge them back in the right order&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We can visualize merge sort algorithm by sorting following list [3 5 4 7 2 1]. I’ll use colors to specify &lt;span style=&quot;color: #0000ff;&quot;&gt;current split list&lt;/span&gt; and &lt;span style=&quot;color: #ff0000;&quot;&gt;current merge elements&lt;/span&gt;.&lt;/p&gt;
-
-&lt;p&gt;Split Iteration #1
-&lt;span style=&quot;color: #0000ff;&quot;&gt;[3 5 4 7 2 1]&lt;/span&gt; → &lt;span style=&quot;color: #0000ff;&quot;&gt;[3 5 4]&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;[7 2 1]
-&lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;[3 5 4]&lt;/span&gt; [7 2 1] → &lt;span style=&quot;color: #0000ff;&quot;&gt;[3]&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;[5 4]&lt;/span&gt; [7 2 1]
-&lt;span style=&quot;color: #0000ff;&quot;&gt;[3]&lt;/span&gt; [5 4] [7 2 1] → &lt;span style=&quot;color: #0000ff;&quot;&gt;[3]&lt;/span&gt; [5 4] [7 2 1]&lt;/p&gt;
-
-&lt;p&gt;Merge Iteration #1
-[&lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt;] [5 4] [7 2 1] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt;] [5 4] [7 2 1]&lt;/p&gt;
-
-&lt;p&gt;Split Iteration #2
-[3] &lt;span style=&quot;color: #0000ff;&quot;&gt;[5 4]&lt;/span&gt; [7 2 1] → [3] &lt;span style=&quot;color: #0000ff;&quot;&gt;[5]&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;[4]&lt;/span&gt; [7 2 1]&lt;/p&gt;
-
-&lt;p&gt;Merge Interation #2
-[3] [&lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;] [&lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt;] [7 2 1] → [3] [&lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; …
-[3] [&lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;] [4] [7 2 1] → [3] [4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;] [7 2 1]&lt;/p&gt;
-
-&lt;p&gt;Merge Iteration #3
-[&lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt;] [&lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; 5] [7 2 1] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;3 &lt;/span&gt;…
-[3] [&lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; 5] [7 2 1] → [3 &lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; …
-[3] [4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;] [7 2 1] → [3 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;] [7 2 1]&lt;/p&gt;
-
-&lt;p&gt;Split Iteration #3
-[3 4 5] &lt;span style=&quot;color: #0000ff;&quot;&gt;[7 2 1]&lt;/span&gt; → [3 4 5] &lt;span style=&quot;color: #0000ff;&quot;&gt;[7]&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;[2 1]
-&lt;/span&gt;[3 4 5] &lt;span style=&quot;color: #0000ff;&quot;&gt;[7]&lt;/span&gt; [2 1] → [3 4 5] &lt;span style=&quot;color: #0000ff;&quot;&gt;[7]&lt;/span&gt; [2 1]&lt;/p&gt;
-
-&lt;p&gt;Merge Iteration #4
-[3 4 5] [&lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] [2 1] → [3 4 5] [&lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] [2 1]&lt;/p&gt;
-
-&lt;p&gt;Split Iteration #4
-[3 4 5] [7] &lt;span style=&quot;color: #0000ff;&quot;&gt;[2 1]&lt;/span&gt; → [3 4 5] [7] &lt;span style=&quot;color: #0000ff;&quot;&gt;[2] [1]&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;Merge Iteration #5
-[3 4 5] [7] [&lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt;] [&lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;] → [3 4 5] [7] [&lt;span style=&quot;color: #ff0000;&quot;&gt;1 &lt;/span&gt;…
-[3 4 5] [7] [&lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt;] [1] → [3 4 5] [7] [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt;]&lt;/p&gt;
-
-&lt;p&gt;Merge Iteration #6
-[3 4 5] [&lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] [&lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; 2] → [3 4 5] [&lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; …
-[3 4 5] [&lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt;] → [3 4 5] [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; …
-[3 4 5] [&lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] [1 2] → [3 4 5] [1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;]&lt;/p&gt;
-
-&lt;p&gt;Merge Iteration #7
-[&lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt; 4 5] [&lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; 2 7] → [&lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt; …]
-[&lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt; 4 5] [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; 7] → [1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; …]
-[&lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt; 4 5] [1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] → [1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;3&lt;/span&gt; …]
-[3 &lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; 5] [1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] → [1 2 3 &lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; …]
-[3 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;] [1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] → [1 2 3 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt; …]
-[3 4 5] [1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;] → [1 2 3 4 5 &lt;span style=&quot;color: #ff0000;&quot;&gt;7&lt;/span&gt;]&lt;/p&gt;
-
-&lt;p&gt;Implementation of the merge sort heavily rely on sort and merge functions:&lt;/p&gt;
-
-&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/sorting/mergeSort.js?footer=minimal&quot;&gt;
-&lt;/script&gt;
-
-&lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n·logn).&lt;/p&gt;
-</description>
-        <pubDate>Mon, 23 Sep 2013 15:03:20 -0700</pubDate>
-        <link>http://www.bebetterdeveloper.com/algorithms/sorting/sorting-merge-sort.html</link>
-        <guid isPermaLink="true">http://www.bebetterdeveloper.com/algorithms/sorting/sorting-merge-sort.html</guid>
-        
-        <category>Merge Sort</category>
         
         
         <category>algorithms</category>
