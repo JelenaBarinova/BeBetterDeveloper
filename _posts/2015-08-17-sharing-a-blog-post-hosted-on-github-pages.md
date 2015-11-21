@@ -46,3 +46,12 @@ Now I use url with `www` prefix when I want to share my blog post on social medi
 <img src="{{ site.baseurl }}/img/post_img/fbog-fixed.png" alt="Scraper works" class="right" />
 
 With this workaround I can share my posts using nice summary and image in a share dialog.
+
+----
+
+ 
+#### Update 10/17/2015 
+
+By the way in my `gh-pages` branch on a GitHub I have `CNAME` configured using subdomain + domain, like this: `www.bebetterdeveloper.com`
+
+<img src="{{ site.baseurl }}/img/post_img/fblog-cname.png" alt="CNAME" class="right" />
