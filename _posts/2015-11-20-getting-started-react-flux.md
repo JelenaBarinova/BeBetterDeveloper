@@ -69,7 +69,7 @@ To create this multilingual website I followed these steps:
 2. [Created React components with hardcoded content]({% post_url 2015-11-20-getting-started-react-flux %}#step-2-react-components)
 3. [Moved content to JSON]({% post_url 2015-11-20-getting-started-react-flux %}#step-3-content-from-json)
 4. [Used Flux]({% post_url 2015-11-20-getting-started-react-flux %}#step-4-flux)
-5. [Made some refactoring and add tetst]({% post_url 2015-11-20-getting-started-react-flux %}#step-5-refactoring-and-tests)
+5. [Made some refactoring and add tests]({% post_url 2015-11-20-getting-started-react-flux %}#step-5-refactoring-and-tests)
 
 ## Step 1. Simple HTML
 
