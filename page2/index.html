@@ -102,8 +102,10 @@
           </h1>
           <p>
             <article class="post-content">
-            <p>It took me half day to setup [almost] empty environment for React app development with testing done using Mocha. 
-I decided to share my findings here so it would remain. 
+            <p><em>11/23/2015: I updated this blog post as well as the code to support the newest version of React, ReactDOM, ReactTestUtils, Mocha, JSDOM, Babel. The changed are really minor, but may be frustraiting for some. For those, who are interested in how should this code be written using older version of these libs (React 0.13.3, Mocha 2.0.1, JSDOM 3.1.2, Mocha-JSDOM 1.0.0, Babel 5.1.13) please clone this <a href="https://github.com/JelenaBarinova/react-mocha-example/tree/9b71d468a1b7af5b6366be71a3e0dee9b45e3f37">commit from GitHub</a>.</em></p>
+
+<p>It took me half day to setup [almost] empty environment for React app development with testing done using Mocha.
+I decided to share my findings here so it would remain.
 <img src="/img/post_img/vfd-react-mocha.png" alt="React and Mocha logo" class="right" /></p>
 
 <h2 id="my-target">My target</h2>
@@ -112,23 +114,23 @@ I decided to share my findings here so it would remain.
 <ul>
   <li>source structure, that would be suitable for medium-sized project</li>
   <li>build scripts, that would do all needed transformations, run tests, show the output of my app</li>
-  <li>Mocha as a test framework of choice </li>
+  <li>Mocha as a test framework of choice</li>
 </ul>
 
 <p>For build scripts I prefer to use gulp.</p>
 
 <h2 id="tldr">tl;dr</h2>
-<p>You can find working code <a href="https://github.com/JelenaBarinova/VeryFirstDiv">here</a>. Just download it and run </p>
+<p>You can find working code <a href="https://github.com/JelenaBarinova/react-mocha-example">here</a>. Just download it and run</p>
 
 <pre><code>$npm install
 </code></pre>
 
-<p>followed by </p>
+<p>followed by</p>
 
 <pre><code>$npm test
 </code></pre>
 
-<p>If you are using Visual Studio Code - you can build it using <code>⇧⌘B</code> (on Mac).  </p>
+<p>If you are using Visual Studio Code - you can build it using <code>⇧⌘B</code> (on Mac).</p>
 
 <h2 id="how-i-did-it">How I did it</h2>
 <p>I started with these three stages:</p>
@@ -141,22 +143,30 @@ I decided to share my findings here so it would remain.
 
 <h2 id="step-1-prepare-the-environment">Step 1. Prepare the environment</h2>
 <p>First install <a href="https://nodejs.org/">Node.js</a> (if you don’t have it yet).
-In your project directory (<em>VeryFirstDiv</em> in my case) create <em>package.json</em> file, containing these settings:
-<script src="https://gist.github.com/JelenaBarinova/31ce415a9beac855c75e.js"></script></p>
+In your project directory (<em>react-mocha-example</em> in my case) through Terminal do:</p>
 
-<p>To download and install all needed dependences open a terminal and run: </p>
-
-<pre><code>$npm install
+<pre><code>$npm init
 </code></pre>
 
-<p>Create <em>index.html</em> file:
-<script src="https://gist.github.com/JelenaBarinova/65ee857afca288768cb6.js"></script></p>
+<p>and follow the instruction. Then run this command to install libraries to setup the working environment:</p>
+
+<pre><code>$npm install react react-dom babel babel-preset-es2015 babel-preset-react gulp gulp-load-plugins browserify babelify babel-core vinyl-source-stream gulp-open --save-dev
+</code></pre>
+
+<p>Now your <em>package.json</em> should look like this:
+<script src="https://gist.github.com/JelenaBarinova/31ce415a9beac855c75e.js"></script></p>
+
+<p>Add <em>.babelrc</em> file to your project root with these settings:
+<script src="https://gist.github.com/JelenaBarinova/23f8af665b0a8b15c855.js"></script></p>
 
 <p>Create <em>gulpfile.js</em> to configure build steps:
 <script src="https://gist.github.com/JelenaBarinova/143d0b90f977e60184fa.js"></script>
-I’m using <a href="https://www.npmjs.com/package/gulp-load-plugins">gulp-load-plugins</a> for easy and fast use of different gulp plugins. It enables me to access all the plugins I have listed in package.json file without ‘require’ each of them separately. </p>
+I’m using <a href="https://www.npmjs.com/package/gulp-load-plugins">gulp-load-plugins</a> for easy and fast use of different gulp plugins. It enables me to access all the plugins I have listed in package.json file without ‘require’ each of them separately.</p>
 
-<p>Run buil command: either using <code>⇧⌘B</code> (from Visual Studio Code on Mac) or command line:</p>
+<p>So now everything is ready to start really writing a code. Create <em>index.html</em> file:
+<script src="https://gist.github.com/JelenaBarinova/65ee857afca288768cb6.js"></script></p>
+
+<p>Run build command: either using <code>⇧⌘B</code> (from Visual Studio Code on Mac) or command line:</p>
 
 <pre><code>$gulp build
 </code></pre>
@@ -169,11 +179,8 @@ I’m using <a href="https://www.npmjs.com/package/gulp-load-plugins">gulp-load-
 <p>Create a <em>components</em> directory and <em>component.jsx</em> file in it:
 <script src="https://gist.github.com/JelenaBarinova/8a04f9f62934b4773b5d.js"></script></p>
 
-<p>Add this componenet to DOM (I did it in <em>app.jsx</em> file in my project root directroy <em>VeryFirstDiv</em>)
+<p>Add this componenet to DOM (I did it in <em>app.jsx</em> file in my project root directroy <em>react-mocha-example</em>)
 <script src="https://gist.github.com/JelenaBarinova/2d3096930e0f739ab7e5.js"></script></p>
-
-<p>Add aditional step ‘browserify’ in build process to have “require(‘modules’)” in browser. I use <a href="https://www.npmjs.com/package/gulp-browserify">gulp-browserify</a> module. This is our <em>gulpfile.js</em> with new ‘browserify’ step added:
-<script src="https://gist.github.com/JelenaBarinova/912880187a6b55b83b5d.js"></script></p>
 
 <p>Run build task and we can see our React component in a browser.</p>
 
@@ -189,22 +196,15 @@ I’m using <a href="https://www.npmjs.com/package/gulp-load-plugins">gulp-load-
 </ul>
 
 <p>Ok, let’s begin.
-First, we need to install <a href="http://mochajs.org/">Mocha</a>. There are two ways you can do it (apply same instructions to futher installations as well): you can either install needed module from command line, for example </p>
+First, we need to install <a href="http://mochajs.org/">Mocha</a>. To do it, run npm install command with –save-dev, this way your <em>package.json</em> file will be kept updated with all the dependances you use:</p>
 
-<pre><code>$npm install mocha
+<pre><code>$npm install mocha --save-dev
 </code></pre>
-
-<p>or add it to <em>package.json</em> dependencies list and run </p>
-
-<pre><code>$npm install
-</code></pre>
-
-<p>I prefer the second option, this way you keep track of all used modules and if needed you can install all dependences from zero. </p>
 
 <p>Create test directory and a first <em>empty-test.js</em>, which just asserts true all the time.
 <script src="https://gist.github.com/JelenaBarinova/a5a34db9c6a9cf8ccb38.js"></script></p>
 
-<p>You can try whether it works just running Mocha from command line from you project root folder: </p>
+<p>You can try whether it works just running Mocha from command line from you project root folder:</p>
 
 <pre><code>$mocha
 </code></pre>
@@ -214,24 +214,22 @@ First, we need to install <a href="http://mochajs.org/">Mocha</a>. There are two
 <p><img src="/img/post_img/vfd-3.png" alt="Third step result" class="right" /></p>
 
 <p>Now let’s add test running step in our gulp configuration.
-For this I used <a href="https://www.npmjs.com/package/gulp-shell">gulp-shell</a> - a command line interface for gulp.</p>
+For this I used <a href="https://www.npmjs.com/package/gulp-mocha">gulp-mocha</a> - a gulp plugin wrapper around Mocha.</p>
 
 <p>Now add a new ‘test’ step in <em>gulpfile.js</em> to run mocha:
 <script src="https://gist.github.com/JelenaBarinova/7d65aec1091f2ded3063.js"></script></p>
 
-<p>Before moving on to testing our React component, we need to take care of couple of things.</p>
+<p>Before moving on to testing our React component, we need to take care of a couple of things.</p>
 
 <p><strong>First</strong> - DOM mocking. You can find very good explanation about how to mock DOM in this <a href="http://www.asbjornenge.com/wwc/testing_react_components.html">blog post</a>.
-To follow this example we need to install <a href="https://github.com/tmpvar/jsdom">jsdom</a> and <a href="https://github.com/rstacruz/mocha-jsdom">mocha-jsdom</a>. 
-I’ve created <em>dom-mock.js</em> file.
+To follow this example we need to install <a href="https://github.com/tmpvar/jsdom">jsdom</a> and <a href="https://github.com/rstacruz/mocha-jsdom">mocha-jsdom</a>.
+I’ve created <em>dom-mock.js</em> file (it’s a bit different from what is given in the article, I adopted it to be compatable with the newest JSDOM version).
 <script src="https://gist.github.com/JelenaBarinova/fab84f93dae04ca4123a.js"></script></p>
 
-<p><strong>Second</strong> - create a file named mocha.opts in test directroy, add this line to it: </p>
+<p><strong>Second</strong> - install <a href="https://www.npmjs.com/package/react-addons-test-utils">React TestUtils add-on</a>:</p>
 
-<pre><code>--compilers js:babel/register --recursive
+<pre><code>$npm install react-addons-test-utils --save-dev
 </code></pre>
-
-<p>I found this reading this <a href="https://github.com/jesstelford/react-testing-mocha-jsdom">post</a> and install <a href="https://babeljs.io/">babel</a>.</p>
 
 <p>And finally - the test! I’ve created <em>component-test.js</em> file in test directory:
 <script src="https://gist.github.com/JelenaBarinova/c4fd4c4cdad19b28fe0f.js"></script></p>
@@ -240,17 +238,17 @@ I’ve created <em>dom-mock.js</em> file.
 
 <p><img src="/img/post_img/vfd-4.png" alt="Fourth step result" class="right" /></p>
 
-<p>You can also configure test running in your <em>package.json</em> - to run tests from command line using: </p>
+<p>You can also configure your <em>package.json</em> - to run tests from command line using npm. For this add test section in your <em>package.json</em> like this:
+<script src="https://gist.github.com/JelenaBarinova/085b9e9c727f166df806.js"></script></p>
+
+<p>Now you can run:</p>
 
 <pre><code>$npm test
 </code></pre>
 
-<p>After this addition our <em>package.json</em> looks like this:
-<script src="https://gist.github.com/JelenaBarinova/085b9e9c727f166df806.js"></script></p>
+<p>That’s it! You can download the latest code for this example from <a href="https://github.com/JelenaBarinova/react-mocha-example">GitHub</a>.</p>
 
-<h2 id="ecmascript-2015">ECMAScript 2015</h2>
-<p>If you are plannig to use ECMAScript 2015, you might want to consider installing gulp-babel to tranform your ECMAScript 2015 code to ECMAScript 5 for your browser to understand it. Just add ‘es2015’ task in <em>gulpfile.js</em>:
-<script src="https://gist.github.com/JelenaBarinova/8fd92aee1786dc774a9d.js"></script></p>
+<p>Happy Testing!</p>
 
             </article>
 
