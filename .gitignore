@@ -11,3 +11,4 @@ node_modules/
 _site/
 Gemfile.lock
 .sass-cache/*
+_includes/google_tracking.html
