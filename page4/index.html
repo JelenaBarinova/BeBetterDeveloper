@@ -97,6 +97,24 @@
   <ul class="post-list">
     
       <li>
+        <!-- <span class="post-meta">Dec 11, 2013</span> -->
+        <h1 style="text-align: left"><a class="post-link" href="/presentation/presentation-continuous-delivery.html">Presentation: Continuous Happiness by Continuous Delivery</a>
+          </h1>
+          <p>
+            <article class="post-content">
+            <p>Recently at <a href="http://buildstuff.lt/">Build Stuff</a> conference I gave a practical talk on Continuous Delivery. Enjoy and tell what you think!</p>
+
+<script async="" class="speakerdeck-embed" data-id="c5ba45908bd90130e24f22000a8c4314" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+
+
+            </article>
+
+            </p>
+            <hr>
+            <br>
+      </li>
+    
+      <li>
         <!-- <span class="post-meta">Oct 13, 2013</span> -->
         <h1 style="text-align: left"><a class="post-link" href="/algorithms/sorting/sorting-quick-sort.html">Sorting: Quick Sort</a>
           </h1>
@@ -227,62 +245,6 @@
 </script>
 
 <p><strong>Complexity:</strong> O(n·logn).</p>
-
-            </article>
-
-            </p>
-            <hr>
-            <br>
-      </li>
-    
-      <li>
-        <!-- <span class="post-meta">Aug 28, 2013</span> -->
-        <h1 style="text-align: left"><a class="post-link" href="/algorithms/sorting/sorting-shell-sort.html">Sorting: Shell Sort</a>
-          </h1>
-          <p>
-            <article class="post-content">
-            <p>In this post I will implement more advanced sorting algorithm – <a href="https://en.wikipedia.org/wiki/Shellsort">Shell Sort</a>. Shell sort is also known as n-gap insertion sort. Instead of comparing only adjacent pair, shell sort makes several passes and uses various gaps between adjacent elements (ending with the gap of 1 or classical insertion sort). The idea of the algorithm is as follows:</p>
-
-<ul>
-  <li>calculate gaps by using one of the existing sequences, eg.: Shell’s (⌊n/2<sup>k</sup>⌋), Pratt’s (2<sup>p</sup>3<sup>q</sup>) or in our case – Knuth’s ((3<sup>k</sup> - 1) / 2) as being one of the most popular and due to sequence generation easiness</li>
-  <li>starting from the beginning of the list compare value with every n·gap elements on the left (if any)</li>
-  <li>swap their positions if they are not in the right order</li>
-  <li>continue until element on the left is smaller than current element</li>
-  <li>repeat with the smaller gap</li>
-</ul>
-
-<p>We can visualize shell sort algorithm by sorting following list [3 5 4 7 2 1] using gaps 4 and 1. I’ll use colors to specify <span style="color: #ff0000;">current adjacent pair</span>.</p>
-
-<p>Iteration #1, <strong>gap 4</strong> : [3 5 4 7 2 1]
-[<span style="color: #ff0000;">3</span> 5 4 7 <span style="color: #ff0000;">2</span> 1] → [<span style="color: #ff0000;">2</span> 5 4 7 <span style="color: #ff0000;">3</span> 1]</p>
-
-<p>Iteration #2, <strong>gap 4</strong> : [2 5 4 7 3 1]
-[2 <span style="color: #ff0000;">5</span> 4 7 3 <span style="color: #ff0000;">1</span>] → [2 <span style="color: #ff0000;">1</span> 4 7 3 <span style="color: #ff0000;">5</span>]</p>
-
-<p>Iteration #3, <strong>gap 1</strong> : [2 1 4 7 3 5]
-[<span style="color: #ff0000;">2 1</span> 4 7 3 5] → [<span style="color: #ff0000;">1 2</span> 4 7 3 5]</p>
-
-<p>Iteration #4, <strong>gap 1</strong> : [1 2 4 7 3 5]
-[1 <span style="color: #ff0000;">2 4</span> 7 3 5] → [1 <span style="color: #ff0000;">2 4</span> 7 3 5]</p>
-
-<p>Iteration #5, <strong>gap 1</strong> : [1 2 4 7 3 5]
-[1 2 <span style="color: #ff0000;">4 7</span> 3 5] → [1 2 <span style="color: #ff0000;">4 7</span> 3 5]</p>
-
-<p>Iteration #6, <strong>gap 1</strong> : [1 2 4 7 3 5]
-[1 2 4 <span style="color: #ff0000;">7 3</span> 5] → [1 2 4 <span style="color: #ff0000;">3 7</span> 5]
-[1 2 <span style="color: #ff0000;">4 3</span> 7 5] → [1 2 <span style="color: #ff0000;">3 4</span> 7 5]
-[1 <span style="color: #ff0000;">2 3</span> 4 7 5] → [1 <span style="color: #ff0000;">2 3</span> 4 7 5]</p>
-
-<p>Iteration #7, <strong>gap 1</strong> : [1 2 3 4 7 5]
-[1 2 3 4 <span style="color: #ff0000;">7 5</span>] → [1 2 3 4 <span style="color: #ff0000;">5 7</span>]
-[1 2 3 <span style="color: #ff0000;">4 5</span> 7] → [1 2 3 <span style="color: #ff0000;">4 5</span> 7]</p>
-
-<p>Implementation of the shell sort is heavily based on the insertion sort:</p>
-
-<script src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/sorting/shellSort.js?footer=minimal">
-</script>
-
-<p><strong>Complexity:</strong> O(n<sup>3/2</sup>) using Knuth’s sequence.</p>
 
             </article>
 

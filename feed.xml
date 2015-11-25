@@ -5,9 +5,95 @@
     <description>Practical notes on development</description>
     <link>http://www.bebetterdeveloper.com/</link>
     <atom:link href="http://www.bebetterdeveloper.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Nov 2015 10:27:10 -0800</pubDate>
-    <lastBuildDate>Tue, 24 Nov 2015 10:27:10 -0800</lastBuildDate>
+    <pubDate>Wed, 25 Nov 2015 11:12:27 -0800</pubDate>
+    <lastBuildDate>Wed, 25 Nov 2015 11:12:27 -0800</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Testing React components using Shallow Rendering</title>
+        <description>&lt;p&gt;This is a continuation of &lt;a href=&quot;http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html&quot;&gt;Getting started w/ React &amp;amp; Mocha&lt;/a&gt; blog post. Here I’ll shortly describe one more alternative how to test a React component.
+&lt;img src=&quot;/img/post_img/react-logo.png&quot; alt=&quot;React logo&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;set-up&quot;&gt;Set-up&lt;/h2&gt;
+
+&lt;p&gt;Code for this example can be found on &lt;a href=&quot;https://github.com/JelenaBarinova/react-mocha-example/tree/shallow-rendering&quot;&gt;GitHub&lt;/a&gt;. After downloading the code, run&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$npm install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;followed by&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$npm test
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or this gulp command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$gulp build
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you are using Visual Studio Code - you can build it using &lt;code&gt;⇧⌘B&lt;/code&gt; (on Mac).&lt;/p&gt;
+
+&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
+
+&lt;p&gt;So I have this react component, named &lt;em&gt;VeryFirstDiv&lt;/em&gt;:
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/04649597e425254ad5ae.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;In my previous post to test it I was creating fake DOM using JSDOM library and then rendering my testable component into this fake DOM (Read more about it &lt;a href=&quot;http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html#step-3-adding-first-mocha-test&quot;&gt;here&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;This time I’ll only use &lt;a href=&quot;https://www.npmjs.com/package/react-addons-test-utils&quot;&gt;React TestUtils add-on&lt;/a&gt; and rather new feature of it - &lt;a href=&quot;https://facebook.github.io/react/docs/test-utils.html#shallow-rendering&quot;&gt;Shallow Rendering&lt;/a&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Shallow rendering is an experimental feature that lets you render a component “one level deep” and assert facts about what its render method returns, without worrying about the behavior of child components, which are not instantiated or rendered. This does not require a DOM.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In my test I create an instance of Shallow Renderer:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;let renderer = ReactTestUtils.createRenderer();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then, render my &lt;em&gt;VeryFirstDiv&lt;/em&gt; component using this &lt;em&gt;renderer&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;renderer.render(&amp;lt;VeryFirstDiv /&amp;gt;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and get the output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;myDiv = renderer.getRenderOutput();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;At this point you can check anything you fancy. I’ll for example want to test whether it is of a type ‘div’ and does it have a class named “veryFirstDiv”
+Here’s my test:
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/ee83bdfc9330b14ee6d2.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;For a comparison, I’ve created same test as in using DOM version:
+&lt;script src=&quot;https://gist.github.com/JelenaBarinova/44b3a2a997865777a0b2.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Testing using Shallow Rendering is faster. You can even notice it on this small example: my test using fake DOM runs for &lt;em&gt;~50ms&lt;/em&gt;, while using Shallow Rendering test takes only &lt;em&gt;10ms&lt;/em&gt;. I believe the gain is even more significant on big projects. And as a pleasant side effect it doesn’t require additional libraries.&lt;/p&gt;
+
+&lt;p&gt;Happy Testing!&lt;/p&gt;
+</description>
+        <pubDate>Tue, 24 Nov 2015 00:00:00 -0800</pubDate>
+        <link>http://www.bebetterdeveloper.com/coding/shallow-rendering-react-mocha.html</link>
+        <guid isPermaLink="true">http://www.bebetterdeveloper.com/coding/shallow-rendering-react-mocha.html</guid>
+        
+        <category>JavaScript</category>
+        
+        <category>Mocha</category>
+        
+        <category>Gulp</category>
+        
+        <category>ES2015</category>
+        
+        <category>React</category>
+        
+        <category>Shallow rendering</category>
+        
+        
+        <category>coding</category>
+        
+      </item>
     
       <item>
         <title>Creating multilingual website w/ React &amp; Flux</title>
@@ -927,70 +1013,6 @@ footer=minimal&quot;&gt;&lt;/script&gt;
         
         
         <category>presentation</category>
-        
-      </item>
-    
-      <item>
-        <title>Sorting: Quick Sort</title>
-        <description>&lt;p&gt;In this, &lt;a href=&quot;http://www.bebetterdeveloper.com/category/algorithms/sorting/&quot;&gt;last&lt;/a&gt; in the series, post I will implement probably on of the best known sorting algorithm - &lt;a href=&quot;http://en.wikipedia.org/wiki/Quicksort&quot;&gt;Quick Sort&lt;/a&gt;. The idea of the in-place algorithm is as follows:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;randomize initial list&lt;/li&gt;
-  &lt;li&gt;select first element as partition value&lt;/li&gt;
-  &lt;li&gt;scan i from left to right so long as current element is less than partition value&lt;/li&gt;
-  &lt;li&gt;scan j from right to left so long as current element is more than partition value&lt;/li&gt;
-  &lt;li&gt;exchange i-indexed element with j-indexed element&lt;/li&gt;
-  &lt;li&gt;repeat until i and j cross&lt;/li&gt;
-  &lt;li&gt;exchange first element with j-indexed element&lt;/li&gt;
-  &lt;li&gt;split list into two sub-lists bounded by j-indexed partition&lt;/li&gt;
-  &lt;li&gt;recursively repeat until list contains one or zero elements&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;After each iteration when first element is exchanged with j-indexed element following invariant should be valid: elements to left are smaller or equal than partition value and elements to the right are bigger or equal. We can visualize quick sort algorithm by sorting following list [3 5 4 7 2 1]. I’ll use colors to specify &lt;span style=&quot;color: #0000ff;&quot;&gt;partition value&lt;/span&gt;, &lt;span style=&quot;color: #99cc00;&quot;&gt;current i-indexed element&lt;/span&gt; and &lt;span style=&quot;color: #ff0000;&quot;&gt;current j-indexed element&lt;/span&gt;.&lt;/p&gt;
-
-&lt;p&gt;Iteration #1
-[&lt;span style=&quot;color: #0000ff;&quot;&gt;3&lt;/span&gt; 5 4 7 2 1] → [&lt;span style=&quot;color: #0000ff;&quot;&gt;3&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;5&lt;/span&gt; 4 7 2 1] → [&lt;span style=&quot;color: #0000ff;&quot;&gt;3&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;5&lt;/span&gt; 4 7 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;] → [&lt;span style=&quot;color: #0000ff;&quot;&gt;3&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/span&gt; 4 7 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;&lt;strong&gt;5&lt;/strong&gt;&lt;/span&gt;]
-[&lt;span style=&quot;color: #0000ff;&quot;&gt;3&lt;/span&gt; 1 &lt;span style=&quot;color: #99cc00;&quot;&gt;4&lt;/span&gt; 7 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;] → [&lt;span style=&quot;color: #0000ff;&quot;&gt;3&lt;/span&gt; 1 &lt;span style=&quot;color: #99cc00;&quot;&gt;4&lt;/span&gt; 7 &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; 5] → [&lt;span style=&quot;color: #3366ff;&quot;&gt;3&lt;/span&gt; 1 &lt;strong&gt;&lt;span style=&quot;color: #99cc00;&quot;&gt;2&lt;/span&gt;&lt;/strong&gt; 7 &lt;span style=&quot;color: #ff0000;&quot;&gt;&lt;strong&gt;4&lt;/strong&gt;&lt;/span&gt; 5]
-[&lt;span style=&quot;color: #3366ff;&quot;&gt;3&lt;/span&gt; 1 2 &lt;span style=&quot;color: #99cc00;&quot;&gt;7&lt;/span&gt; &lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt; 5] → [&lt;span style=&quot;color: #3366ff;&quot;&gt;3&lt;/span&gt; 1 2 &lt;span style=&quot;color: #ff0000;&quot;&gt;7 &lt;/span&gt;4 5] → [&lt;span style=&quot;color: #3366ff;&quot;&gt;3&lt;/span&gt; 1 &lt;span style=&quot;color: #ff0000;&quot;&gt;2&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;7&lt;/span&gt; 4 5] → [&lt;strong&gt;2&lt;/strong&gt; 1 &lt;strong&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;3&lt;/span&gt;&lt;/strong&gt; 7 4 5]&lt;/p&gt;
-
-&lt;p&gt;Iteration #2
-[ [&lt;span style=&quot;color: #0000ff;&quot;&gt;2&lt;/span&gt; 1] 3 [7 4 5] ] → [ [&lt;span style=&quot;color: #0000ff;&quot;&gt;2&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;1&lt;/span&gt;] 3 [7 4 5] ] → [ [&lt;span style=&quot;color: #0000ff;&quot;&gt;2&lt;/span&gt; &lt;span style=&quot;color: #ff0000;&quot;&gt;1&lt;/span&gt;] 3 [7 4 5] ] → [ [&lt;strong&gt;1&lt;/strong&gt; &lt;strong&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;2&lt;/span&gt;&lt;/strong&gt;] 3 [7 4 5] ]&lt;/p&gt;
-
-&lt;p&gt;Iteration #3
-[ [&lt;span style=&quot;color: #0000ff;&quot;&gt;1&lt;/span&gt;] [2] 3 [7 4 5] ] → [&lt;span style=&quot;color: #0000ff;&quot;&gt;1&lt;/span&gt; [2] 3 [4 7 5] ]&lt;/p&gt;
-
-&lt;p&gt;Iteration #4
-[1 [&lt;span style=&quot;color: #0000ff;&quot;&gt;2&lt;/span&gt;] 3 [7 4 5] ] → [1 &lt;span style=&quot;color: #0000ff;&quot;&gt;2&lt;/span&gt; 3 [7 4 5] ]&lt;/p&gt;
-
-&lt;p&gt;Iteration #5
-[1 2 3 [&lt;span style=&quot;color: #0000ff;&quot;&gt;7&lt;/span&gt; 4 5] ] → [1 2 3 [&lt;span style=&quot;color: #0000ff;&quot;&gt;7&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;4&lt;/span&gt; 5] ] → [1 2 3 [&lt;span style=&quot;color: #0000ff;&quot;&gt;7&lt;/span&gt; 4 &lt;span style=&quot;color: #99cc00;&quot;&gt;5&lt;/span&gt;] ] → [ 1 2 3 [&lt;span style=&quot;color: #0000ff;&quot;&gt;7&lt;/span&gt; 4 &lt;span style=&quot;color: #ff0000;&quot;&gt;5&lt;/span&gt;] ] → [1 2 3 [&lt;strong&gt;5&lt;/strong&gt; 4 &lt;strong&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;7&lt;/span&gt;&lt;/strong&gt;] ]&lt;/p&gt;
-
-&lt;p&gt;Iteration #6
-[1 2 3 [&lt;span style=&quot;color: #0000ff;&quot;&gt;5&lt;/span&gt; 4] 7] → [1 2 3 [&lt;span style=&quot;color: #0000ff;&quot;&gt;5&lt;/span&gt; &lt;span style=&quot;color: #99cc00;&quot;&gt;4&lt;/span&gt;] 7] → [1 2 3 [&lt;span style=&quot;color: #0000ff;&quot;&gt;5&lt;/span&gt; &lt;span style=&quot;color: #ff0000;&quot;&gt;4&lt;/span&gt;] 7]  → [1 2 3 [&lt;strong&gt;4&lt;/strong&gt; &lt;strong&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;5&lt;/span&gt;&lt;/strong&gt;] 7]&lt;/p&gt;
-
-&lt;p&gt;Iteration #7
-[1 2 3 [&lt;span style=&quot;color: #0000ff;&quot;&gt;4&lt;/span&gt;] [5] 7] → [1 2 3 &lt;span style=&quot;color: #0000ff;&quot;&gt;4&lt;/span&gt; [5] 7]&lt;/p&gt;
-
-&lt;p&gt;Iteration #8
-[1 2 3 4 [&lt;span style=&quot;color: #0000ff;&quot;&gt;5&lt;/span&gt;] 7] → [1 2 3 4 &lt;span style=&quot;color: #0000ff;&quot;&gt;5&lt;/span&gt; 7]&lt;/p&gt;
-
-&lt;p&gt;For the sake of easiness I’ll skip list randomization step. Implementation of the quick sort heavily rely on sort and partition functions:&lt;/p&gt;
-
-&lt;script src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/sorting/quickSort.js?footer=minimal&quot;&gt;
-&lt;/script&gt;
-
-&lt;p&gt;&lt;strong&gt;Complexity:&lt;/strong&gt; O(n·logn).&lt;/p&gt;
-</description>
-        <pubDate>Sun, 13 Oct 2013 13:16:55 -0700</pubDate>
-        <link>http://www.bebetterdeveloper.com/algorithms/sorting/sorting-quick-sort.html</link>
-        <guid isPermaLink="true">http://www.bebetterdeveloper.com/algorithms/sorting/sorting-quick-sort.html</guid>
-        
-        <category>Quick Sort</category>
-        
-        
-        <category>algorithms</category>
-        
-        <category>sorting</category>
         
       </item>
     

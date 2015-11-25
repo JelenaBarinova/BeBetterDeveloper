@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>ES2015 + React using Gulp</title>
-  <meta name="description" content="Recently I started exploring new features of ECMAScript 2015 while using React. So here is how I set-up my dev environment with gulp.I have 2 simple steps  (...">
+  <title>Testing React components using Shallow Rendering</title>
+  <meta name="description" content="This is a continuation of Getting started w/ React &amp; Mocha blog post. Here I’ll shortly describe one more alternative how to test a React component.">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://www.bebetterdeveloper.com/coding/es6-react-babel.html">
+  <link rel="canonical" href="http://www.bebetterdeveloper.com/coding/shallow-rendering-react-mocha.html">
   <link rel="alternate" type="application/rss+xml" title="Be a Better Developer" href="http://www.bebetterdeveloper.com/feed.xml" />
 
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -23,6 +23,8 @@
 
 
     
+
+    
         
             
             
@@ -31,25 +33,25 @@
             
             
 <!-- Open graph tags -->
-<meta property="og:title" content="ES2015 + React using Gulp">
+<meta property="og:title" content="Testing React components using Shallow Rendering">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://www.bebetterdeveloper.com/coding/es6-react-babel.html">
-<meta property="og:image" content="http://www.bebetterdeveloper.comhttps://gist.github.com/JelenaBarinova/b7b58c270e3e560056b3.js">
+<meta property="og:url" content="http://www.bebetterdeveloper.com/coding/shallow-rendering-react-mocha.html">
+<meta property="og:image" content="http://www.bebetterdeveloper.com/img/post_img/react-logo.png">
 
-<meta property="og:description" content="Recently I started exploring new features of ECMAScript 2015 while using React. So here is how I set-up my dev environment with gulp.I have 2 simple steps  (...">
+<meta property="og:description" content="This is a continuation of Getting started w/ React &amp; Mocha blog post. Here I’ll shortly describe one more alternative how to test a React component.">
 <meta property="og:site_name" content="Be a Better Developer">
 
 
 
 
-<meta property="article:published_time" content="2015-07-14T00:00:00-07:00">
+<meta property="article:published_time" content="2015-11-24T00:00:00-08:00">
 <meta property="article:author" content="https://www.facebook.com/jelena.fiodorova">
-  
-<meta property="og:see_also" content="http://www.bebetterdeveloper.com/coding/shallow-rendering-react-mocha.html">
   
 <meta property="og:see_also" content="http://www.bebetterdeveloper.com/coding/getting-started-react-flux.html">
   
 <meta property="og:see_also" content="http://www.bebetterdeveloper.com/coding/hello-world-python.html">
+  
+<meta property="og:see_also" content="http://www.bebetterdeveloper.com/deployment/sharing-a-blog-post-hosted-on-github-pages.html">
   
 
 
@@ -63,13 +65,15 @@
   
 <meta property="article:tag" content="JavaScript">
   
+<meta property="article:tag" content="Mocha">
+  
 <meta property="article:tag" content="Gulp">
   
 <meta property="article:tag" content="ES2015">
   
 <meta property="article:tag" content="React">
   
-<meta property="article:tag" content="dev environment">
+<meta property="article:tag" content="Shallow rendering">
   
 
 </head>
@@ -127,23 +131,23 @@
         <div class="post">
 
   <header class="post-header">
-     <h1 class="post-title">ES2015 + React using Gulp</h1>
-     <p class="post-meta">Posted by <em> Jelena Barinova</em> on Jul 14, 2015</p>
+     <h1 class="post-title">Testing React components using Shallow Rendering</h1>
+     <p class="post-meta">Posted by <em> Jelena Barinova</em> on Nov 24, 2015</p>
 <br>
   <span > 
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.bebetterdeveloper.com/coding/es6-react-babel.html" target="_blank">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.bebetterdeveloper.com/coding/shallow-rendering-react-mocha.html" target="_blank">
         <span class="fa-stack fa-lg">
             <i class="fa fa-square-o fa-stack-2x"></i>
             <i class="fa fa-facebook fa-stack-1x"></i>
         </span>
     </a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.bebetterdeveloper.com/coding/es6-react-babel.html&title=ES2015 + React using Gulp&summary=Instructions how to setup the environment&source=http://www.bebetterdeveloper.com/" target="_blank">
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.bebetterdeveloper.com/coding/shallow-rendering-react-mocha.html&title=Testing React components using Shallow Rendering&summary=Instructions on how to setup your tests without using DOM&source=http://www.bebetterdeveloper.com/" target="_blank">
         <span class="fa-stack fa-lg">
             <i class="fa fa-square-o fa-stack-2x"></i>
             <i class="fa fa-linkedin fa-stack-1x"></i>
         </span>
     </a>
-    <a href="https://twitter.com/home?status=Reading %20%22ES2015 + React using Gulp%20%22 on http://www.bebetterdeveloper.com/coding/es6-react-babel.html %20%23bebetterdeveloper%0A" target="_blank">
+    <a href="https://twitter.com/home?status=Reading %20%22Testing React components using Shallow Rendering%20%22 on http://www.bebetterdeveloper.com/coding/shallow-rendering-react-mocha.html %20%23bebetterdeveloper%0A" target="_blank">
         <span class="fa-stack fa-lg">
             <i class="fa fa-square-o fa-stack-2x"></i>
             <i class="fa fa-twitter fa-stack-1x"></i>
@@ -160,29 +164,68 @@
   
   
   <article class="post-content">
-    <p>Recently I started exploring new features of ECMAScript 2015 while using React. So here is how I set-up my dev environment with <a href="http://gulpjs.com/">gulp</a>.
-I have 2 simple steps  (running one after other in this sequence):</p>
+    <p>This is a continuation of <a href="http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html">Getting started w/ React &amp; Mocha</a> blog post. Here I’ll shortly describe one more alternative how to test a React component.
+<img src="/img/post_img/react-logo.png" alt="React logo" class="right" /></p>
 
-<ol>
-  <li>
-    <p>Transform XLS files: I precompile React JSX template files into plain JavaScript using gulp-react: 
-  <script src="https://gist.github.com/JelenaBarinova/b7b58c270e3e560056b3.js"></script></p>
-  </li>
-  <li>
-    <p>Transform ES2015 files: I take JavaScript files, produced after first transformation and turn them into ES5 files using gulp-babel: 
-  <script src="https://gist.github.com/JelenaBarinova/7245b2c53e06eb8772ab.js"></script></p>
-  </li>
-</ol>
+<h2 id="set-up">Set-up</h2>
 
-<p>Here it all gathered and chained together:
-<script src="https://gist.github.com/JelenaBarinova/95b2d933b6f75d6cc495.js"></script></p>
+<p>Code for this example can be found on <a href="https://github.com/JelenaBarinova/react-mocha-example/tree/shallow-rendering">GitHub</a>. After downloading the code, run</p>
 
-<p>In addition to two transformation tasks I like to open output in browser, for this I use gulp-open.</p>
+<pre><code>$npm install
+</code></pre>
 
-<p>I use <a href="https://code.visualstudio.com/">Visual Studio Code</a> as my IDE, so I have set this gulp task named “build” as a build task in VS Code settings.<br />
-<img src="/img/post_img/vs-code-settings.png" alt="Blog infrastructure" class="right" /></p>
+<p>followed by</p>
 
-<p>And now once I change code and want to check it - I just press ⇧⌘B (on Mac) and the result is in front of me.</p>
+<pre><code>$npm test
+</code></pre>
+
+<p>or this gulp command:</p>
+
+<pre><code>$gulp build
+</code></pre>
+
+<p>If you are using Visual Studio Code - you can build it using <code>⇧⌘B</code> (on Mac).</p>
+
+<h2 id="testing">Testing</h2>
+
+<p>So I have this react component, named <em>VeryFirstDiv</em>:
+<script src="https://gist.github.com/JelenaBarinova/04649597e425254ad5ae.js"></script></p>
+
+<p>In my previous post to test it I was creating fake DOM using JSDOM library and then rendering my testable component into this fake DOM (Read more about it <a href="http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html#step-3-adding-first-mocha-test">here</a>).</p>
+
+<p>This time I’ll only use <a href="https://www.npmjs.com/package/react-addons-test-utils">React TestUtils add-on</a> and rather new feature of it - <a href="https://facebook.github.io/react/docs/test-utils.html#shallow-rendering">Shallow Rendering</a>.</p>
+
+<blockquote>
+  <p>Shallow rendering is an experimental feature that lets you render a component “one level deep” and assert facts about what its render method returns, without worrying about the behavior of child components, which are not instantiated or rendered. This does not require a DOM.</p>
+</blockquote>
+
+<p>In my test I create an instance of Shallow Renderer:</p>
+
+<pre><code class="language-javascript">let renderer = ReactTestUtils.createRenderer();
+</code></pre>
+
+<p>Then, render my <em>VeryFirstDiv</em> component using this <em>renderer</em></p>
+
+<pre><code class="language-javascript">renderer.render(&lt;VeryFirstDiv /&gt;);
+</code></pre>
+
+<p>and get the output:</p>
+
+<pre><code class="language-javascript">myDiv = renderer.getRenderOutput();
+</code></pre>
+
+<p>At this point you can check anything you fancy. I’ll for example want to test whether it is of a type ‘div’ and does it have a class named “veryFirstDiv”
+Here’s my test:
+<script src="https://gist.github.com/JelenaBarinova/ee83bdfc9330b14ee6d2.js"></script></p>
+
+<p>For a comparison, I’ve created same test as in using DOM version:
+<script src="https://gist.github.com/JelenaBarinova/44b3a2a997865777a0b2.js"></script></p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Testing using Shallow Rendering is faster. You can even notice it on this small example: my test using fake DOM runs for <em>~50ms</em>, while using Shallow Rendering test takes only <em>10ms</em>. I believe the gain is even more significant on big projects. And as a pleasant side effect it doesn’t require additional libraries.</p>
+
+<p>Happy Testing!</p>
 
   </article>
   

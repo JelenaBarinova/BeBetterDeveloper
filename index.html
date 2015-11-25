@@ -97,6 +97,82 @@
   <ul class="post-list">
     
       <li>
+        <!-- <span class="post-meta">Nov 24, 2015</span> -->
+        <h1 style="text-align: left"><a class="post-link" href="/coding/shallow-rendering-react-mocha.html">Testing React components using Shallow Rendering</a>
+          </h1>
+          <p>
+            <article class="post-content">
+            <p>This is a continuation of <a href="http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html">Getting started w/ React &amp; Mocha</a> blog post. Here I’ll shortly describe one more alternative how to test a React component.
+<img src="/img/post_img/react-logo.png" alt="React logo" class="right" /></p>
+
+<h2 id="set-up">Set-up</h2>
+
+<p>Code for this example can be found on <a href="https://github.com/JelenaBarinova/react-mocha-example/tree/shallow-rendering">GitHub</a>. After downloading the code, run</p>
+
+<pre><code>$npm install
+</code></pre>
+
+<p>followed by</p>
+
+<pre><code>$npm test
+</code></pre>
+
+<p>or this gulp command:</p>
+
+<pre><code>$gulp build
+</code></pre>
+
+<p>If you are using Visual Studio Code - you can build it using <code>⇧⌘B</code> (on Mac).</p>
+
+<h2 id="testing">Testing</h2>
+
+<p>So I have this react component, named <em>VeryFirstDiv</em>:
+<script src="https://gist.github.com/JelenaBarinova/04649597e425254ad5ae.js"></script></p>
+
+<p>In my previous post to test it I was creating fake DOM using JSDOM library and then rendering my testable component into this fake DOM (Read more about it <a href="http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html#step-3-adding-first-mocha-test">here</a>).</p>
+
+<p>This time I’ll only use <a href="https://www.npmjs.com/package/react-addons-test-utils">React TestUtils add-on</a> and rather new feature of it - <a href="https://facebook.github.io/react/docs/test-utils.html#shallow-rendering">Shallow Rendering</a>.</p>
+
+<blockquote>
+  <p>Shallow rendering is an experimental feature that lets you render a component “one level deep” and assert facts about what its render method returns, without worrying about the behavior of child components, which are not instantiated or rendered. This does not require a DOM.</p>
+</blockquote>
+
+<p>In my test I create an instance of Shallow Renderer:</p>
+
+<pre><code class="language-javascript">let renderer = ReactTestUtils.createRenderer();
+</code></pre>
+
+<p>Then, render my <em>VeryFirstDiv</em> component using this <em>renderer</em></p>
+
+<pre><code class="language-javascript">renderer.render(&lt;VeryFirstDiv /&gt;);
+</code></pre>
+
+<p>and get the output:</p>
+
+<pre><code class="language-javascript">myDiv = renderer.getRenderOutput();
+</code></pre>
+
+<p>At this point you can check anything you fancy. I’ll for example want to test whether it is of a type ‘div’ and does it have a class named “veryFirstDiv”
+Here’s my test:
+<script src="https://gist.github.com/JelenaBarinova/ee83bdfc9330b14ee6d2.js"></script></p>
+
+<p>For a comparison, I’ve created same test as in using DOM version:
+<script src="https://gist.github.com/JelenaBarinova/44b3a2a997865777a0b2.js"></script></p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Testing using Shallow Rendering is faster. You can even notice it on this small example: my test using fake DOM runs for <em>~50ms</em>, while using Shallow Rendering test takes only <em>10ms</em>. I believe the gain is even more significant on big projects. And as a pleasant side effect it doesn’t require additional libraries.</p>
+
+<p>Happy Testing!</p>
+
+            </article>
+
+            </p>
+            <hr>
+            <br>
+      </li>
+    
+      <li>
         <!-- <span class="post-meta">Nov 20, 2015</span> -->
         <h1 style="text-align: left"><a class="post-link" href="/coding/getting-started-react-flux.html">Creating multilingual website w/ React & Flux</a>
           </h1>
@@ -322,58 +398,6 @@ Picture is taken from <a href="https://facebook.github.io/flux/docs/overview.htm
 <p>Finally, as this is the only task in my VSCode tasks list - it runs on <code>⇧⌘B</code>. </p>
 
 <p>Simple as that!</p>
-
-            </article>
-
-            </p>
-            <hr>
-            <br>
-      </li>
-    
-      <li>
-        <!-- <span class="post-meta">Aug 17, 2015</span> -->
-        <h1 style="text-align: left"><a class="post-link" href="/deployment/sharing-a-blog-post-hosted-on-github-pages.html">Sharing a blog post hosted on GitHub Pages</a>
-          </h1>
-          <p>
-            <article class="post-content">
-            <p>I am hosting all of my personal blogs on <a href="https://pages.github.com/">GitHub Pages</a> now (here are some reasons why: <a href="http://bebetterleader.com/coding/why-did-i-go-static.html">‘Static HTML is the new black’</a>). With it comes a challenge when I try to share new posts on social media.</p>
-
-<p>I want to have a nice share dialog with description and image of my blog post. Like so:</p>
-
-<p><img src="/img/post_img/fbog-share-dialog.png" alt="Share dialog" class="right" /></p>
-
-<p>In order to achive this, I had to add some code to my Jekyll templates and implement some workarounds with urls and domain configuration. That’s how I did it.</p>
-
-<p>First, I added meta tag generation to a head part of my post html:
-<script src="https://gist.github.com/JelenaBarinova/c63a40854bcd0569a9a6.js"></script> </p>
-
-<p>I get all the open graph meta tags being generated as FB and other social media systems expect it to: </p>
-
-<script src="https://gist.github.com/JelenaBarinova/1ef9ae8a8322e3397051.js"></script>
-
-<p>But once I try to share my blog post or scrape url with <a href="https://developers.facebook.com/tools/debug/og/object/">Open Graph Object Debugger</a> I get <code>Error parsing input URL, no data was cached, or no data was scraped.</code>:</p>
-
-<p><img src="/img/post_img/fbog-error.png" alt="Error parsing input URL, no data was cached, or no data was scraped." class="right" /></p>
-
-<p>After spending some time searching for the reasons why this is happening, I found that, Github sometimes return a 302 (Redirect status code) instead of a 200 (OK) in order to avoid DDoS attacks. Same issue is described in this <a href="http://www.rovrov.com/blog/2014/11/11/github-pages-302-redirect/">blog post</a>. </p>
-
-<p>To fix it, in addition to GitHub’s IPs I’ve added <code>www</code> subdomain through <code>CNAME</code> pointing to my GitHub address <code>jelenabarinova.github.io</code> in my domain configuration. </p>
-
-<p><img src="/img/post_img/fbog-domain-config.png" alt="Domain configuration" class="right" /></p>
-
-<p>Now I use url with <code>www</code> prefix when I want to share my blog post on social media and it works just fine - I get desirable share dialog: </p>
-
-<p><img src="/img/post_img/fbog-fixed.png" alt="Scraper works" class="right" /></p>
-
-<p>With this workaround I can share my posts using nice summary and image in a share dialog.</p>
-
-<hr />
-
-<h4 id="update-10172015">Update 10/17/2015</h4>
-
-<p>By the way in my <code>gh-pages</code> branch on a GitHub I have <code>CNAME</code> configured using subdomain + domain, like this: <code>www.bebetterdeveloper.com</code></p>
-
-<p><img src="/img/post_img/fblog-cname.png" alt="CNAME" class="right" /></p>
 
             </article>
 
