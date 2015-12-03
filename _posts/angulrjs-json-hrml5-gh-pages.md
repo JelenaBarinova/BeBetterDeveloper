@@ -3,7 +3,7 @@ layout: post
 title: "My cooking blog done in AngularJS hosted on GitHub Pages"
 subtitle: ""
 date: 2015-09-25
-author: Jelena Barinova
+author: Lena Barinova
 tags:
   - gh-pages
   - AngularJS

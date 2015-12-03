@@ -3,7 +3,7 @@ layout: post
 title: "Testing React components using Shallow Rendering"
 subtitle: "Instructions on how to setup your tests without using DOM"
 date: 2015-11-24
-author: Jelena Barinova
+author: Lena Barinova
 tags:
   - JavaScript
   - Mocha
@@ -21,7 +21,7 @@ This is a continuation of [Getting started w/ React & Mocha](http://www.bebetter
 
 ## Set-up
 
-Code for this example can be found on [GitHub](https://github.com/JelenaBarinova/react-mocha-example/tree/shallow-rendering). After downloading the code, run
+Code for this example can be found on [GitHub](https://github.com/LenaBarinova/react-mocha-example/tree/shallow-rendering). After downloading the code, run
 
 ~~~
 $npm install
@@ -44,7 +44,7 @@ If you are using Visual Studio Code - you can build it using `⇧⌘B` (on Mac).
 ## Testing
 
 So I have this react component, named _VeryFirstDiv_:
-<script src="https://gist.github.com/JelenaBarinova/04649597e425254ad5ae.js"></script>
+<script src="https://gist.github.com/LenaBarinova/04649597e425254ad5ae.js"></script>
 
 In my previous post to test it I was creating fake DOM using JSDOM library and then rendering my testable component into this fake DOM (Read more about it [here](http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html#step-3-adding-first-mocha-test)).
 
@@ -72,10 +72,10 @@ myDiv = renderer.getRenderOutput();
 
 At this point you can check anything you fancy. I'll for example want to test whether it is of a type 'div' and does it have a class named "veryFirstDiv"
 Here's my test:
-<script src="https://gist.github.com/JelenaBarinova/ee83bdfc9330b14ee6d2.js"></script>
+<script src="https://gist.github.com/LenaBarinova/ee83bdfc9330b14ee6d2.js"></script>
 
 For a comparison, I've created same test as in using DOM version:
-<script src="https://gist.github.com/JelenaBarinova/44b3a2a997865777a0b2.js"></script>
+<script src="https://gist.github.com/LenaBarinova/44b3a2a997865777a0b2.js"></script>
 
 ## Summary
 
