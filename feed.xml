@@ -5,8 +5,8 @@
     <description>Practical notes on development</description>
     <link>http://www.bebetterdeveloper.com/</link>
     <atom:link href="http://www.bebetterdeveloper.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 25 Nov 2015 11:12:27 -0800</pubDate>
-    <lastBuildDate>Wed, 25 Nov 2015 11:12:27 -0800</lastBuildDate>
+    <pubDate>Thu, 03 Dec 2015 14:14:29 -0800</pubDate>
+    <lastBuildDate>Thu, 03 Dec 2015 14:14:29 -0800</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -16,7 +16,7 @@
 
 &lt;h2 id=&quot;set-up&quot;&gt;Set-up&lt;/h2&gt;
 
-&lt;p&gt;Code for this example can be found on &lt;a href=&quot;https://github.com/JelenaBarinova/react-mocha-example/tree/shallow-rendering&quot;&gt;GitHub&lt;/a&gt;. After downloading the code, run&lt;/p&gt;
+&lt;p&gt;Code for this example can be found on &lt;a href=&quot;https://github.com/LenaBarinova/react-mocha-example/tree/shallow-rendering&quot;&gt;GitHub&lt;/a&gt;. After downloading the code, run&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$npm install
 &lt;/code&gt;&lt;/pre&gt;
@@ -36,7 +36,7 @@
 &lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
 
 &lt;p&gt;So I have this react component, named &lt;em&gt;VeryFirstDiv&lt;/em&gt;:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/04649597e425254ad5ae.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/04649597e425254ad5ae.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;In my previous post to test it I was creating fake DOM using JSDOM library and then rendering my testable component into this fake DOM (Read more about it &lt;a href=&quot;http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html#step-3-adding-first-mocha-test&quot;&gt;here&lt;/a&gt;).&lt;/p&gt;
 
@@ -63,10 +63,10 @@
 
 &lt;p&gt;At this point you can check anything you fancy. I’ll for example want to test whether it is of a type ‘div’ and does it have a class named “veryFirstDiv”
 Here’s my test:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/ee83bdfc9330b14ee6d2.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/ee83bdfc9330b14ee6d2.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;For a comparison, I’ve created same test as in using DOM version:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/44b3a2a997865777a0b2.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/44b3a2a997865777a0b2.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 
@@ -118,8 +118,8 @@ Here’s my test:
 
 &lt;p&gt;&lt;img src=&quot;/img/post_img/out.gif&quot; alt=&quot;Switch language&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Working code in &lt;a href=&quot;https://github.com/JelenaBarinova/react-flux-example&quot;&gt;GitHub&lt;/a&gt;.
-To check the website, follow this &lt;a href=&quot;http://jelenabarinova.github.io/react-flux-example/&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Working code in &lt;a href=&quot;https://github.com/LenaBarinova/react-flux-example&quot;&gt;GitHub&lt;/a&gt;.
+To check the website, follow this &lt;a href=&quot;http://Lenabarinova.github.io/react-flux-example/&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;tldr&quot;&gt;tl;dr&lt;/h2&gt;
 
@@ -160,7 +160,7 @@ To check the website, follow this &lt;a href=&quot;http://jelenabarinova.github.
   .gist-file
   .gist-data {max-height: 600px; max-width: 640px;}
 &lt;/style&gt;
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/82dbb2570f81395bc2f6.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/82dbb2570f81395bc2f6.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;step-2-react-components&quot;&gt;Step 2. React components&lt;/h2&gt;
 
@@ -175,10 +175,10 @@ To check the website, follow this &lt;a href=&quot;http://jelenabarinova.github.
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;For Babel to transform React files and ES2015 - created &lt;em&gt;.babelrc&lt;/em&gt; file with these settings:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/1303d2f6a01a35ff01e9.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/1303d2f6a01a35ff01e9.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Created gulp file with a build task. Here it is:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/7f6e5e6945a89a6f17a6.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/7f6e5e6945a89a6f17a6.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Now moving to React. In my page I identify three components:&lt;/p&gt;
 
@@ -189,7 +189,7 @@ To check the website, follow this &lt;a href=&quot;http://jelenabarinova.github.
 &lt;/ol&gt;
 
 &lt;p&gt;I created these three components, adding additional one to wrap these three. In this step I added everything in one file &lt;em&gt;app.jsx&lt;/em&gt; (will refactor it in further steps). So my &lt;em&gt;app.jsx&lt;/em&gt; file looks like this:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/7244d61616f3427a8673.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/7244d61616f3427a8673.js&quot;&gt;&lt;/script&gt;
 Note: when using html in React don’t forget to rename class to className.&lt;/p&gt;
 
 &lt;p&gt;Added a placeholder for my react components instead of all the html tags in my &lt;em&gt;index.html&lt;/em&gt; and added refference to react and react-dom libraries as well as to my app.js file, which is being produced for me after running&lt;/p&gt;
@@ -200,10 +200,10 @@ Note: when using html in React don’t forget to rename class to className.&lt;/
 &lt;p&gt;or &lt;code&gt;⇧⌘B&lt;/code&gt; (in VSCode on Mac).&lt;/p&gt;
 
 &lt;p&gt;So my &lt;em&gt;index.html&lt;/em&gt; now is this:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/e0a7a419f161aa7d8362.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/e0a7a419f161aa7d8362.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;browse files in GitHub at &lt;a href=&quot;https://github.com/JelenaBarinova/react-flux-example/tree/b4f1d2557efaa593f4dd4558fae75ec3db884da5&quot;&gt;this point&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;browse files in GitHub at &lt;a href=&quot;https://github.com/LenaBarinova/react-flux-example/tree/b4f1d2557efaa593f4dd4558fae75ec3db884da5&quot;&gt;this point&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;step-3-content-from-json&quot;&gt;Step 3. Content from JSON&lt;/h2&gt;
@@ -211,16 +211,16 @@ Note: when using html in React don’t forget to rename class to className.&lt;/
 &lt;p&gt;What I decided to do now is to move all the content text to JSON file and load the text I have created helper API. The main idea behind this is that later this loading from JSON could be replaced by calling real API to retrieve needed data.&lt;/p&gt;
 
 &lt;p&gt;This is how my data &lt;em&gt;content.json&lt;/em&gt; file looks like:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/8e0a8f5e3a09b2794ec5.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/8e0a8f5e3a09b2794ec5.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;This is my helper API, which load JSON into array and then returns it filtered by language.
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/aa9ed4e4afcaaa8b80ff.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/aa9ed4e4afcaaa8b80ff.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;So now I update my React components to use text from my API. I decided to call API method from my wrapper component and then pass down needed parts to child components via &lt;em&gt;props&lt;/em&gt;. This is my app.jsx:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/279de096b29d412f5b70.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/279de096b29d412f5b70.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;In addition I appended &lt;em&gt;gulpfile.js&lt;/em&gt; with new task to delete previously generated &lt;em&gt;app.js&lt;/em&gt; file. This is how gulpfile.js looks like now:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/be4c3e8dbe599fe06996.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/be4c3e8dbe599fe06996.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;For this I needed to install del library:&lt;/p&gt;
 
@@ -246,13 +246,13 @@ Picture is taken from &lt;a href=&quot;https://facebook.github.io/flux/docs/over
 &lt;/ul&gt;
 
 &lt;p&gt;My &lt;em&gt;actions.js&lt;/em&gt; file:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/cded3bd3a79e1466029b.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/cded3bd3a79e1466029b.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Then I have a dispatcher:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/8c7a5114b7f5341077b8.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/8c7a5114b7f5341077b8.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;In my store I hold the content and register some callbacks with dispatcher to be invoked on specific actions. My &lt;em&gt;store.js&lt;/em&gt; file:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/f1c17fa8bad12f7bc5f7.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/f1c17fa8bad12f7bc5f7.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;And last, but not least - view. So here I have two components that are related to this flow:&lt;/p&gt;
 
@@ -262,10 +262,10 @@ Picture is taken from &lt;a href=&quot;https://facebook.github.io/flux/docs/over
 &lt;/ul&gt;
 
 &lt;p&gt;This is my updated Menu component:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/51022402974b0f06b70e.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/51022402974b0f06b70e.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;And here it is my Page compoenent:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/5cac4ff430e13622c42f.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/5cac4ff430e13622c42f.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;step-4-refactoring-and-tests&quot;&gt;Step 4. Refactoring and Tests&lt;/h2&gt;
 
@@ -278,9 +278,9 @@ Picture is taken from &lt;a href=&quot;https://facebook.github.io/flux/docs/over
   &lt;li&gt;Now working on tests, and I think, that they deserve a separate blog post.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;The final version of this example may be found on &lt;a href=&quot;https://github.com/JelenaBarinova/react-flux-example&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The final version of this example may be found on &lt;a href=&quot;https://github.com/LenaBarinova/react-flux-example&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;I just love how it works you can experience this smooth language change &lt;a href=&quot;http://jelenabarinova.github.io/react-flux-example/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I just love how it works you can experience this smooth language change &lt;a href=&quot;http://lenabarinova.github.io/react-flux-example/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Fri, 20 Nov 2015 00:00:00 -0800</pubDate>
         <link>http://www.bebetterdeveloper.com/coding/getting-started-react-flux.html</link>
@@ -313,18 +313,18 @@ Picture is taken from &lt;a href=&quot;https://facebook.github.io/flux/docs/over
 
 &lt;p&gt;First, I’ve installed &lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;Python&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Then, created &lt;code&gt;app.py&lt;/code&gt; file with “hello world” code in it and setup VSCode task to run this script, as so: &lt;/p&gt;
+&lt;p&gt;Then, created &lt;code&gt;app.py&lt;/code&gt; file with “hello world” code in it and setup VSCode task to run this script, as so:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;From a Command pallete (&lt;code&gt;⇧⌘P&lt;/code&gt;) hit “Configure Task Runner”. &lt;/li&gt;
+  &lt;li&gt;From a Command pallete (&lt;code&gt;⇧⌘P&lt;/code&gt;) hit “Configure Task Runner”.&lt;/li&gt;
   &lt;li&gt;In a &lt;code&gt;task.json&lt;/code&gt; file added this:&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/1afd44a8470a511bc5ad.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/1afd44a8470a511bc5ad.js&quot;&gt;&lt;/script&gt;
 
 &lt;p&gt;You should change python command path (if not default as mine) as well as &lt;code&gt;args&lt;/code&gt; according to your setup, I just simply have my whole script in &lt;code&gt;app.py&lt;/code&gt; file.&lt;/p&gt;
 
-&lt;p&gt;Finally, as this is the only task in my VSCode tasks list - it runs on &lt;code&gt;⇧⌘B&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;Finally, as this is the only task in my VSCode tasks list - it runs on &lt;code&gt;⇧⌘B&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Simple as that!&lt;/p&gt;
 </description>
@@ -360,23 +360,23 @@ Picture is taken from &lt;a href=&quot;https://facebook.github.io/flux/docs/over
 &lt;p&gt;In order to achive this, I had to add some code to my Jekyll templates and implement some workarounds with urls and domain configuration. That’s how I did it.&lt;/p&gt;
 
 &lt;p&gt;First, I added meta tag generation to a head part of my post html:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/c63a40854bcd0569a9a6.js&quot;&gt;&lt;/script&gt; &lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/c63a40854bcd0569a9a6.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
-&lt;p&gt;I get all the open graph meta tags being generated as FB and other social media systems expect it to: &lt;/p&gt;
+&lt;p&gt;I get all the open graph meta tags being generated as FB and other social media systems expect it to:&lt;/p&gt;
 
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/1ef9ae8a8322e3397051.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/1ef9ae8a8322e3397051.js&quot;&gt;&lt;/script&gt;
 
 &lt;p&gt;But once I try to share my blog post or scrape url with &lt;a href=&quot;https://developers.facebook.com/tools/debug/og/object/&quot;&gt;Open Graph Object Debugger&lt;/a&gt; I get &lt;code&gt;Error parsing input URL, no data was cached, or no data was scraped.&lt;/code&gt;:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/post_img/fbog-error.png&quot; alt=&quot;Error parsing input URL, no data was cached, or no data was scraped.&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;After spending some time searching for the reasons why this is happening, I found that, Github sometimes return a 302 (Redirect status code) instead of a 200 (OK) in order to avoid DDoS attacks. Same issue is described in this &lt;a href=&quot;http://www.rovrov.com/blog/2014/11/11/github-pages-302-redirect/&quot;&gt;blog post&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;After spending some time searching for the reasons why this is happening, I found that, Github sometimes return a 302 (Redirect status code) instead of a 200 (OK) in order to avoid DDoS attacks. Same issue is described in this &lt;a href=&quot;http://www.rovrov.com/blog/2014/11/11/github-pages-302-redirect/&quot;&gt;blog post&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;To fix it, in addition to GitHub’s IPs I’ve added &lt;code&gt;www&lt;/code&gt; subdomain through &lt;code&gt;CNAME&lt;/code&gt; pointing to my GitHub address &lt;code&gt;jelenabarinova.github.io&lt;/code&gt; in my domain configuration. &lt;/p&gt;
+&lt;p&gt;To fix it, in addition to GitHub’s IPs I’ve added &lt;code&gt;www&lt;/code&gt; subdomain through &lt;code&gt;CNAME&lt;/code&gt; pointing to my GitHub address &lt;code&gt;lenabarinova.github.io&lt;/code&gt; in my domain configuration.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/post_img/fbog-domain-config.png&quot; alt=&quot;Domain configuration&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Now I use url with &lt;code&gt;www&lt;/code&gt; prefix when I want to share my blog post on social media and it works just fine - I get desirable share dialog: &lt;/p&gt;
+&lt;p&gt;Now I use url with &lt;code&gt;www&lt;/code&gt; prefix when I want to share my blog post on social media and it works just fine - I get desirable share dialog:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/post_img/fbog-fixed.png&quot; alt=&quot;Scraper works&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
 
@@ -413,7 +413,7 @@ Picture is taken from &lt;a href=&quot;https://facebook.github.io/flux/docs/over
     
       <item>
         <title>Getting started w/ React &amp; Mocha</title>
-        <description>&lt;p&gt;&lt;em&gt;11/23/2015: I updated this blog post as well as the code to support the newest version of React, ReactDOM, ReactTestUtils, Mocha, JSDOM, Babel. The changed are really minor, but may be frustraiting for some. For those, who are interested in how should this code be written using older version of these libs (React 0.13.3, Mocha 2.0.1, JSDOM 3.1.2, Mocha-JSDOM 1.0.0, Babel 5.1.13) please clone this &lt;a href=&quot;https://github.com/JelenaBarinova/react-mocha-example/tree/9b71d468a1b7af5b6366be71a3e0dee9b45e3f37&quot;&gt;commit from GitHub&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;em&gt;11/23/2015: I updated this blog post as well as the code to support the newest version of React, ReactDOM, ReactTestUtils, Mocha, JSDOM, Babel. The changed are really minor, but may be frustraiting for some. For those, who are interested in how should this code be written using older version of these libs (React 0.13.3, Mocha 2.0.1, JSDOM 3.1.2, Mocha-JSDOM 1.0.0, Babel 5.1.13) please clone this &lt;a href=&quot;https://github.com/LenaBarinova/react-mocha-example/tree/9b71d468a1b7af5b6366be71a3e0dee9b45e3f37&quot;&gt;commit from GitHub&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;It took me half day to setup [almost] empty environment for React app development with testing done using Mocha.
 I decided to share my findings here so it would remain.
@@ -431,7 +431,7 @@ I decided to share my findings here so it would remain.
 &lt;p&gt;For build scripts I prefer to use gulp.&lt;/p&gt;
 
 &lt;h2 id=&quot;tldr&quot;&gt;tl;dr&lt;/h2&gt;
-&lt;p&gt;You can find working code &lt;a href=&quot;https://github.com/JelenaBarinova/react-mocha-example&quot;&gt;here&lt;/a&gt;. Just download it and run&lt;/p&gt;
+&lt;p&gt;You can find working code &lt;a href=&quot;https://github.com/LenaBarinova/react-mocha-example&quot;&gt;here&lt;/a&gt;. Just download it and run&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$npm install
 &lt;/code&gt;&lt;/pre&gt;
@@ -465,17 +465,17 @@ In your project directory (&lt;em&gt;react-mocha-example&lt;/em&gt; in my case) 
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Now your &lt;em&gt;package.json&lt;/em&gt; should look like this:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/31ce415a9beac855c75e.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/31ce415a9beac855c75e.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Add &lt;em&gt;.babelrc&lt;/em&gt; file to your project root with these settings:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/23f8af665b0a8b15c855.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/23f8af665b0a8b15c855.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Create &lt;em&gt;gulpfile.js&lt;/em&gt; to configure build steps:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/143d0b90f977e60184fa.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/143d0b90f977e60184fa.js&quot;&gt;&lt;/script&gt;
 I’m using &lt;a href=&quot;https://www.npmjs.com/package/gulp-load-plugins&quot;&gt;gulp-load-plugins&lt;/a&gt; for easy and fast use of different gulp plugins. It enables me to access all the plugins I have listed in package.json file without ‘require’ each of them separately.&lt;/p&gt;
 
 &lt;p&gt;So now everything is ready to start really writing a code. Create &lt;em&gt;index.html&lt;/em&gt; file:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/65ee857afca288768cb6.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/65ee857afca288768cb6.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Run build command: either using &lt;code&gt;⇧⌘B&lt;/code&gt; (from Visual Studio Code on Mac) or command line:&lt;/p&gt;
 
@@ -488,10 +488,10 @@ I’m using &lt;a href=&quot;https://www.npmjs.com/package/gulp-load-plugins&quo
 
 &lt;h2 id=&quot;step-2-create-first-react-component&quot;&gt;Step 2. Create first React component&lt;/h2&gt;
 &lt;p&gt;Create a &lt;em&gt;components&lt;/em&gt; directory and &lt;em&gt;component.jsx&lt;/em&gt; file in it:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/8a04f9f62934b4773b5d.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/8a04f9f62934b4773b5d.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Add this componenet to DOM (I did it in &lt;em&gt;app.jsx&lt;/em&gt; file in my project root directroy &lt;em&gt;react-mocha-example&lt;/em&gt;)
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/2d3096930e0f739ab7e5.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/2d3096930e0f739ab7e5.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Run build task and we can see our React component in a browser.&lt;/p&gt;
 
@@ -513,7 +513,7 @@ First, we need to install &lt;a href=&quot;http://mochajs.org/&quot;&gt;Mocha&lt
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Create test directory and a first &lt;em&gt;empty-test.js&lt;/em&gt;, which just asserts true all the time.
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/a5a34db9c6a9cf8ccb38.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/a5a34db9c6a9cf8ccb38.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;You can try whether it works just running Mocha from command line from you project root folder:&lt;/p&gt;
 
@@ -528,14 +528,14 @@ First, we need to install &lt;a href=&quot;http://mochajs.org/&quot;&gt;Mocha&lt
 For this I used &lt;a href=&quot;https://www.npmjs.com/package/gulp-mocha&quot;&gt;gulp-mocha&lt;/a&gt; - a gulp plugin wrapper around Mocha.&lt;/p&gt;
 
 &lt;p&gt;Now add a new ‘test’ step in &lt;em&gt;gulpfile.js&lt;/em&gt; to run mocha:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/7d65aec1091f2ded3063.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/7d65aec1091f2ded3063.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Before moving on to testing our React component, we need to take care of a couple of things.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;First&lt;/strong&gt; - DOM mocking. You can find very good explanation about how to mock DOM in this &lt;a href=&quot;http://www.asbjornenge.com/wwc/testing_react_components.html&quot;&gt;blog post&lt;/a&gt;.
 To follow this example we need to install &lt;a href=&quot;https://github.com/tmpvar/jsdom&quot;&gt;jsdom&lt;/a&gt; and &lt;a href=&quot;https://github.com/rstacruz/mocha-jsdom&quot;&gt;mocha-jsdom&lt;/a&gt;.
 I’ve created &lt;em&gt;dom-mock.js&lt;/em&gt; file (it’s a bit different from what is given in the article, I adopted it to be compatable with the newest JSDOM version).
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/fab84f93dae04ca4123a.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/fab84f93dae04ca4123a.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Second&lt;/strong&gt; - install &lt;a href=&quot;https://www.npmjs.com/package/react-addons-test-utils&quot;&gt;React TestUtils add-on&lt;/a&gt;:&lt;/p&gt;
 
@@ -543,21 +543,21 @@ I’ve created &lt;em&gt;dom-mock.js&lt;/em&gt; file (it’s a bit different fro
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;And finally - the test! I’ve created &lt;em&gt;component-test.js&lt;/em&gt; file in test directory:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/c4fd4c4cdad19b28fe0f.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/c4fd4c4cdad19b28fe0f.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Run build. Hurray! The test is passing:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/post_img/vfd-4.png&quot; alt=&quot;Fourth step result&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;You can also configure your &lt;em&gt;package.json&lt;/em&gt; - to run tests from command line using npm. For this add test section in your &lt;em&gt;package.json&lt;/em&gt; like this:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/085b9e9c727f166df806.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/085b9e9c727f166df806.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Now you can run:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$npm test
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;That’s it! You can download the latest code for this example from &lt;a href=&quot;https://github.com/JelenaBarinova/react-mocha-example&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;That’s it! You can download the latest code for this example from &lt;a href=&quot;https://github.com/LenaBarinova/react-mocha-example&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Happy Testing!&lt;/p&gt;
 </description>
@@ -587,21 +587,21 @@ I have 2 simple steps  (running one after other in this sequence):&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
-    &lt;p&gt;Transform XLS files: I precompile React JSX template files into plain JavaScript using gulp-react: 
-  &lt;script src=&quot;https://gist.github.com/JelenaBarinova/b7b58c270e3e560056b3.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+    &lt;p&gt;Transform XLS files: I precompile React JSX template files into plain JavaScript using gulp-react:
+  &lt;script src=&quot;https://gist.github.com/LenaBarinova/b7b58c270e3e560056b3.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Transform ES2015 files: I take JavaScript files, produced after first transformation and turn them into ES5 files using gulp-babel: 
-  &lt;script src=&quot;https://gist.github.com/JelenaBarinova/7245b2c53e06eb8772ab.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+    &lt;p&gt;Transform ES2015 files: I take JavaScript files, produced after first transformation and turn them into ES5 files using gulp-babel:
+  &lt;script src=&quot;https://gist.github.com/LenaBarinova/7245b2c53e06eb8772ab.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Here it all gathered and chained together:
-&lt;script src=&quot;https://gist.github.com/JelenaBarinova/95b2d933b6f75d6cc495.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/95b2d933b6f75d6cc495.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;In addition to two transformation tasks I like to open output in browser, for this I use gulp-open.&lt;/p&gt;
 
-&lt;p&gt;I use &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt; as my IDE, so I have set this gulp task named “build” as a build task in VS Code settings.&lt;br /&gt;
+&lt;p&gt;I use &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt; as my IDE, so I have set this gulp task named “build” as a build task in VS Code settings.
 &lt;img src=&quot;/img/post_img/vs-code-settings.png&quot; alt=&quot;Blog infrastructure&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And now once I change code and want to check it - I just press ⇧⌘B (on Mac) and the result is in front of me.&lt;/p&gt;

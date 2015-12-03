@@ -111,23 +111,23 @@
 <p>In order to achive this, I had to add some code to my Jekyll templates and implement some workarounds with urls and domain configuration. That’s how I did it.</p>
 
 <p>First, I added meta tag generation to a head part of my post html:
-<script src="https://gist.github.com/JelenaBarinova/c63a40854bcd0569a9a6.js"></script> </p>
+<script src="https://gist.github.com/LenaBarinova/c63a40854bcd0569a9a6.js"></script></p>
 
-<p>I get all the open graph meta tags being generated as FB and other social media systems expect it to: </p>
+<p>I get all the open graph meta tags being generated as FB and other social media systems expect it to:</p>
 
-<script src="https://gist.github.com/JelenaBarinova/1ef9ae8a8322e3397051.js"></script>
+<script src="https://gist.github.com/LenaBarinova/1ef9ae8a8322e3397051.js"></script>
 
 <p>But once I try to share my blog post or scrape url with <a href="https://developers.facebook.com/tools/debug/og/object/">Open Graph Object Debugger</a> I get <code>Error parsing input URL, no data was cached, or no data was scraped.</code>:</p>
 
 <p><img src="/img/post_img/fbog-error.png" alt="Error parsing input URL, no data was cached, or no data was scraped." class="right" /></p>
 
-<p>After spending some time searching for the reasons why this is happening, I found that, Github sometimes return a 302 (Redirect status code) instead of a 200 (OK) in order to avoid DDoS attacks. Same issue is described in this <a href="http://www.rovrov.com/blog/2014/11/11/github-pages-302-redirect/">blog post</a>. </p>
+<p>After spending some time searching for the reasons why this is happening, I found that, Github sometimes return a 302 (Redirect status code) instead of a 200 (OK) in order to avoid DDoS attacks. Same issue is described in this <a href="http://www.rovrov.com/blog/2014/11/11/github-pages-302-redirect/">blog post</a>.</p>
 
-<p>To fix it, in addition to GitHub’s IPs I’ve added <code>www</code> subdomain through <code>CNAME</code> pointing to my GitHub address <code>jelenabarinova.github.io</code> in my domain configuration. </p>
+<p>To fix it, in addition to GitHub’s IPs I’ve added <code>www</code> subdomain through <code>CNAME</code> pointing to my GitHub address <code>lenabarinova.github.io</code> in my domain configuration.</p>
 
 <p><img src="/img/post_img/fbog-domain-config.png" alt="Domain configuration" class="right" /></p>
 
-<p>Now I use url with <code>www</code> prefix when I want to share my blog post on social media and it works just fine - I get desirable share dialog: </p>
+<p>Now I use url with <code>www</code> prefix when I want to share my blog post on social media and it works just fine - I get desirable share dialog:</p>
 
 <p><img src="/img/post_img/fbog-fixed.png" alt="Scraper works" class="right" /></p>
 
@@ -154,7 +154,7 @@
           </h1>
           <p>
             <article class="post-content">
-            <p><em>11/23/2015: I updated this blog post as well as the code to support the newest version of React, ReactDOM, ReactTestUtils, Mocha, JSDOM, Babel. The changed are really minor, but may be frustraiting for some. For those, who are interested in how should this code be written using older version of these libs (React 0.13.3, Mocha 2.0.1, JSDOM 3.1.2, Mocha-JSDOM 1.0.0, Babel 5.1.13) please clone this <a href="https://github.com/JelenaBarinova/react-mocha-example/tree/9b71d468a1b7af5b6366be71a3e0dee9b45e3f37">commit from GitHub</a>.</em></p>
+            <p><em>11/23/2015: I updated this blog post as well as the code to support the newest version of React, ReactDOM, ReactTestUtils, Mocha, JSDOM, Babel. The changed are really minor, but may be frustraiting for some. For those, who are interested in how should this code be written using older version of these libs (React 0.13.3, Mocha 2.0.1, JSDOM 3.1.2, Mocha-JSDOM 1.0.0, Babel 5.1.13) please clone this <a href="https://github.com/LenaBarinova/react-mocha-example/tree/9b71d468a1b7af5b6366be71a3e0dee9b45e3f37">commit from GitHub</a>.</em></p>
 
 <p>It took me half day to setup [almost] empty environment for React app development with testing done using Mocha.
 I decided to share my findings here so it would remain.
@@ -172,7 +172,7 @@ I decided to share my findings here so it would remain.
 <p>For build scripts I prefer to use gulp.</p>
 
 <h2 id="tldr">tl;dr</h2>
-<p>You can find working code <a href="https://github.com/JelenaBarinova/react-mocha-example">here</a>. Just download it and run</p>
+<p>You can find working code <a href="https://github.com/LenaBarinova/react-mocha-example">here</a>. Just download it and run</p>
 
 <pre><code>$npm install
 </code></pre>
@@ -206,17 +206,17 @@ In your project directory (<em>react-mocha-example</em> in my case) through Term
 </code></pre>
 
 <p>Now your <em>package.json</em> should look like this:
-<script src="https://gist.github.com/JelenaBarinova/31ce415a9beac855c75e.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/31ce415a9beac855c75e.js"></script></p>
 
 <p>Add <em>.babelrc</em> file to your project root with these settings:
-<script src="https://gist.github.com/JelenaBarinova/23f8af665b0a8b15c855.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/23f8af665b0a8b15c855.js"></script></p>
 
 <p>Create <em>gulpfile.js</em> to configure build steps:
-<script src="https://gist.github.com/JelenaBarinova/143d0b90f977e60184fa.js"></script>
+<script src="https://gist.github.com/LenaBarinova/143d0b90f977e60184fa.js"></script>
 I’m using <a href="https://www.npmjs.com/package/gulp-load-plugins">gulp-load-plugins</a> for easy and fast use of different gulp plugins. It enables me to access all the plugins I have listed in package.json file without ‘require’ each of them separately.</p>
 
 <p>So now everything is ready to start really writing a code. Create <em>index.html</em> file:
-<script src="https://gist.github.com/JelenaBarinova/65ee857afca288768cb6.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/65ee857afca288768cb6.js"></script></p>
 
 <p>Run build command: either using <code>⇧⌘B</code> (from Visual Studio Code on Mac) or command line:</p>
 
@@ -229,10 +229,10 @@ I’m using <a href="https://www.npmjs.com/package/gulp-load-plugins">gulp-load-
 
 <h2 id="step-2-create-first-react-component">Step 2. Create first React component</h2>
 <p>Create a <em>components</em> directory and <em>component.jsx</em> file in it:
-<script src="https://gist.github.com/JelenaBarinova/8a04f9f62934b4773b5d.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/8a04f9f62934b4773b5d.js"></script></p>
 
 <p>Add this componenet to DOM (I did it in <em>app.jsx</em> file in my project root directroy <em>react-mocha-example</em>)
-<script src="https://gist.github.com/JelenaBarinova/2d3096930e0f739ab7e5.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/2d3096930e0f739ab7e5.js"></script></p>
 
 <p>Run build task and we can see our React component in a browser.</p>
 
@@ -254,7 +254,7 @@ First, we need to install <a href="http://mochajs.org/">Mocha</a>. To do it, run
 </code></pre>
 
 <p>Create test directory and a first <em>empty-test.js</em>, which just asserts true all the time.
-<script src="https://gist.github.com/JelenaBarinova/a5a34db9c6a9cf8ccb38.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/a5a34db9c6a9cf8ccb38.js"></script></p>
 
 <p>You can try whether it works just running Mocha from command line from you project root folder:</p>
 
@@ -269,14 +269,14 @@ First, we need to install <a href="http://mochajs.org/">Mocha</a>. To do it, run
 For this I used <a href="https://www.npmjs.com/package/gulp-mocha">gulp-mocha</a> - a gulp plugin wrapper around Mocha.</p>
 
 <p>Now add a new ‘test’ step in <em>gulpfile.js</em> to run mocha:
-<script src="https://gist.github.com/JelenaBarinova/7d65aec1091f2ded3063.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/7d65aec1091f2ded3063.js"></script></p>
 
 <p>Before moving on to testing our React component, we need to take care of a couple of things.</p>
 
 <p><strong>First</strong> - DOM mocking. You can find very good explanation about how to mock DOM in this <a href="http://www.asbjornenge.com/wwc/testing_react_components.html">blog post</a>.
 To follow this example we need to install <a href="https://github.com/tmpvar/jsdom">jsdom</a> and <a href="https://github.com/rstacruz/mocha-jsdom">mocha-jsdom</a>.
 I’ve created <em>dom-mock.js</em> file (it’s a bit different from what is given in the article, I adopted it to be compatable with the newest JSDOM version).
-<script src="https://gist.github.com/JelenaBarinova/fab84f93dae04ca4123a.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/fab84f93dae04ca4123a.js"></script></p>
 
 <p><strong>Second</strong> - install <a href="https://www.npmjs.com/package/react-addons-test-utils">React TestUtils add-on</a>:</p>
 
@@ -284,21 +284,21 @@ I’ve created <em>dom-mock.js</em> file (it’s a bit different from what is gi
 </code></pre>
 
 <p>And finally - the test! I’ve created <em>component-test.js</em> file in test directory:
-<script src="https://gist.github.com/JelenaBarinova/c4fd4c4cdad19b28fe0f.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/c4fd4c4cdad19b28fe0f.js"></script></p>
 
 <p>Run build. Hurray! The test is passing:</p>
 
 <p><img src="/img/post_img/vfd-4.png" alt="Fourth step result" class="right" /></p>
 
 <p>You can also configure your <em>package.json</em> - to run tests from command line using npm. For this add test section in your <em>package.json</em> like this:
-<script src="https://gist.github.com/JelenaBarinova/085b9e9c727f166df806.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/085b9e9c727f166df806.js"></script></p>
 
 <p>Now you can run:</p>
 
 <pre><code>$npm test
 </code></pre>
 
-<p>That’s it! You can download the latest code for this example from <a href="https://github.com/JelenaBarinova/react-mocha-example">GitHub</a>.</p>
+<p>That’s it! You can download the latest code for this example from <a href="https://github.com/LenaBarinova/react-mocha-example">GitHub</a>.</p>
 
 <p>Happy Testing!</p>
 
@@ -320,21 +320,21 @@ I have 2 simple steps  (running one after other in this sequence):</p>
 
 <ol>
   <li>
-    <p>Transform XLS files: I precompile React JSX template files into plain JavaScript using gulp-react: 
-  <script src="https://gist.github.com/JelenaBarinova/b7b58c270e3e560056b3.js"></script></p>
+    <p>Transform XLS files: I precompile React JSX template files into plain JavaScript using gulp-react:
+  <script src="https://gist.github.com/LenaBarinova/b7b58c270e3e560056b3.js"></script></p>
   </li>
   <li>
-    <p>Transform ES2015 files: I take JavaScript files, produced after first transformation and turn them into ES5 files using gulp-babel: 
-  <script src="https://gist.github.com/JelenaBarinova/7245b2c53e06eb8772ab.js"></script></p>
+    <p>Transform ES2015 files: I take JavaScript files, produced after first transformation and turn them into ES5 files using gulp-babel:
+  <script src="https://gist.github.com/LenaBarinova/7245b2c53e06eb8772ab.js"></script></p>
   </li>
 </ol>
 
 <p>Here it all gathered and chained together:
-<script src="https://gist.github.com/JelenaBarinova/95b2d933b6f75d6cc495.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/95b2d933b6f75d6cc495.js"></script></p>
 
 <p>In addition to two transformation tasks I like to open output in browser, for this I use gulp-open.</p>
 
-<p>I use <a href="https://code.visualstudio.com/">Visual Studio Code</a> as my IDE, so I have set this gulp task named “build” as a build task in VS Code settings.<br />
+<p>I use <a href="https://code.visualstudio.com/">Visual Studio Code</a> as my IDE, so I have set this gulp task named “build” as a build task in VS Code settings.
 <img src="/img/post_img/vs-code-settings.png" alt="Blog infrastructure" class="right" /></p>
 
 <p>And now once I change code and want to check it - I just press ⇧⌘B (on Mac) and the result is in front of me.</p>

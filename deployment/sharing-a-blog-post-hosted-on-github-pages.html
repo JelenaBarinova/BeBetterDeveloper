@@ -132,7 +132,7 @@
 
   <header class="post-header">
      <h1 class="post-title">Sharing a blog post hosted on GitHub Pages</h1>
-     <p class="post-meta">Posted by <em> Jelena Barinova</em> on Aug 17, 2015</p>
+     <p class="post-meta">Posted by <em> Lena Barinova</em> on Aug 17, 2015</p>
 <br>
   <span > 
     <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.bebetterdeveloper.com/deployment/sharing-a-blog-post-hosted-on-github-pages.html" target="_blank">
@@ -173,23 +173,23 @@
 <p>In order to achive this, I had to add some code to my Jekyll templates and implement some workarounds with urls and domain configuration. That’s how I did it.</p>
 
 <p>First, I added meta tag generation to a head part of my post html:
-<script src="https://gist.github.com/JelenaBarinova/c63a40854bcd0569a9a6.js"></script> </p>
+<script src="https://gist.github.com/LenaBarinova/c63a40854bcd0569a9a6.js"></script></p>
 
-<p>I get all the open graph meta tags being generated as FB and other social media systems expect it to: </p>
+<p>I get all the open graph meta tags being generated as FB and other social media systems expect it to:</p>
 
-<script src="https://gist.github.com/JelenaBarinova/1ef9ae8a8322e3397051.js"></script>
+<script src="https://gist.github.com/LenaBarinova/1ef9ae8a8322e3397051.js"></script>
 
 <p>But once I try to share my blog post or scrape url with <a href="https://developers.facebook.com/tools/debug/og/object/">Open Graph Object Debugger</a> I get <code>Error parsing input URL, no data was cached, or no data was scraped.</code>:</p>
 
 <p><img src="/img/post_img/fbog-error.png" alt="Error parsing input URL, no data was cached, or no data was scraped." class="right" /></p>
 
-<p>After spending some time searching for the reasons why this is happening, I found that, Github sometimes return a 302 (Redirect status code) instead of a 200 (OK) in order to avoid DDoS attacks. Same issue is described in this <a href="http://www.rovrov.com/blog/2014/11/11/github-pages-302-redirect/">blog post</a>. </p>
+<p>After spending some time searching for the reasons why this is happening, I found that, Github sometimes return a 302 (Redirect status code) instead of a 200 (OK) in order to avoid DDoS attacks. Same issue is described in this <a href="http://www.rovrov.com/blog/2014/11/11/github-pages-302-redirect/">blog post</a>.</p>
 
-<p>To fix it, in addition to GitHub’s IPs I’ve added <code>www</code> subdomain through <code>CNAME</code> pointing to my GitHub address <code>jelenabarinova.github.io</code> in my domain configuration. </p>
+<p>To fix it, in addition to GitHub’s IPs I’ve added <code>www</code> subdomain through <code>CNAME</code> pointing to my GitHub address <code>lenabarinova.github.io</code> in my domain configuration.</p>
 
 <p><img src="/img/post_img/fbog-domain-config.png" alt="Domain configuration" class="right" /></p>
 
-<p>Now I use url with <code>www</code> prefix when I want to share my blog post on social media and it works just fine - I get desirable share dialog: </p>
+<p>Now I use url with <code>www</code> prefix when I want to share my blog post on social media and it works just fine - I get desirable share dialog:</p>
 
 <p><img src="/img/post_img/fbog-fixed.png" alt="Scraper works" class="right" /></p>
 

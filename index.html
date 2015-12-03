@@ -107,7 +107,7 @@
 
 <h2 id="set-up">Set-up</h2>
 
-<p>Code for this example can be found on <a href="https://github.com/JelenaBarinova/react-mocha-example/tree/shallow-rendering">GitHub</a>. After downloading the code, run</p>
+<p>Code for this example can be found on <a href="https://github.com/LenaBarinova/react-mocha-example/tree/shallow-rendering">GitHub</a>. After downloading the code, run</p>
 
 <pre><code>$npm install
 </code></pre>
@@ -127,7 +127,7 @@
 <h2 id="testing">Testing</h2>
 
 <p>So I have this react component, named <em>VeryFirstDiv</em>:
-<script src="https://gist.github.com/JelenaBarinova/04649597e425254ad5ae.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/04649597e425254ad5ae.js"></script></p>
 
 <p>In my previous post to test it I was creating fake DOM using JSDOM library and then rendering my testable component into this fake DOM (Read more about it <a href="http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html#step-3-adding-first-mocha-test">here</a>).</p>
 
@@ -154,10 +154,10 @@
 
 <p>At this point you can check anything you fancy. I’ll for example want to test whether it is of a type ‘div’ and does it have a class named “veryFirstDiv”
 Here’s my test:
-<script src="https://gist.github.com/JelenaBarinova/ee83bdfc9330b14ee6d2.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/ee83bdfc9330b14ee6d2.js"></script></p>
 
 <p>For a comparison, I’ve created same test as in using DOM version:
-<script src="https://gist.github.com/JelenaBarinova/44b3a2a997865777a0b2.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/44b3a2a997865777a0b2.js"></script></p>
 
 <h2 id="summary">Summary</h2>
 
@@ -199,8 +199,8 @@ Here’s my test:
 
 <p><img src="/img/post_img/out.gif" alt="Switch language" /></p>
 
-<p>Working code in <a href="https://github.com/JelenaBarinova/react-flux-example">GitHub</a>.
-To check the website, follow this <a href="http://jelenabarinova.github.io/react-flux-example/">link</a>.</p>
+<p>Working code in <a href="https://github.com/LenaBarinova/react-flux-example">GitHub</a>.
+To check the website, follow this <a href="http://Lenabarinova.github.io/react-flux-example/">link</a>.</p>
 
 <h2 id="tldr">tl;dr</h2>
 
@@ -241,7 +241,7 @@ To check the website, follow this <a href="http://jelenabarinova.github.io/react
   .gist-file
   .gist-data {max-height: 600px; max-width: 640px;}
 </style>
-<script src="https://gist.github.com/JelenaBarinova/82dbb2570f81395bc2f6.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/82dbb2570f81395bc2f6.js"></script></p>
 
 <h2 id="step-2-react-components">Step 2. React components</h2>
 
@@ -256,10 +256,10 @@ To check the website, follow this <a href="http://jelenabarinova.github.io/react
 </code></pre>
 
 <p>For Babel to transform React files and ES2015 - created <em>.babelrc</em> file with these settings:
-<script src="https://gist.github.com/JelenaBarinova/1303d2f6a01a35ff01e9.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/1303d2f6a01a35ff01e9.js"></script></p>
 
 <p>Created gulp file with a build task. Here it is:
-<script src="https://gist.github.com/JelenaBarinova/7f6e5e6945a89a6f17a6.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/7f6e5e6945a89a6f17a6.js"></script></p>
 
 <p>Now moving to React. In my page I identify three components:</p>
 
@@ -270,7 +270,7 @@ To check the website, follow this <a href="http://jelenabarinova.github.io/react
 </ol>
 
 <p>I created these three components, adding additional one to wrap these three. In this step I added everything in one file <em>app.jsx</em> (will refactor it in further steps). So my <em>app.jsx</em> file looks like this:
-<script src="https://gist.github.com/JelenaBarinova/7244d61616f3427a8673.js"></script>
+<script src="https://gist.github.com/LenaBarinova/7244d61616f3427a8673.js"></script>
 Note: when using html in React don’t forget to rename class to className.</p>
 
 <p>Added a placeholder for my react components instead of all the html tags in my <em>index.html</em> and added refference to react and react-dom libraries as well as to my app.js file, which is being produced for me after running</p>
@@ -281,10 +281,10 @@ Note: when using html in React don’t forget to rename class to className.</p>
 <p>or <code>⇧⌘B</code> (in VSCode on Mac).</p>
 
 <p>So my <em>index.html</em> now is this:
-<script src="https://gist.github.com/JelenaBarinova/e0a7a419f161aa7d8362.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/e0a7a419f161aa7d8362.js"></script></p>
 
 <ul>
-  <li>browse files in GitHub at <a href="https://github.com/JelenaBarinova/react-flux-example/tree/b4f1d2557efaa593f4dd4558fae75ec3db884da5">this point</a></li>
+  <li>browse files in GitHub at <a href="https://github.com/LenaBarinova/react-flux-example/tree/b4f1d2557efaa593f4dd4558fae75ec3db884da5">this point</a></li>
 </ul>
 
 <h2 id="step-3-content-from-json">Step 3. Content from JSON</h2>
@@ -292,16 +292,16 @@ Note: when using html in React don’t forget to rename class to className.</p>
 <p>What I decided to do now is to move all the content text to JSON file and load the text I have created helper API. The main idea behind this is that later this loading from JSON could be replaced by calling real API to retrieve needed data.</p>
 
 <p>This is how my data <em>content.json</em> file looks like:
-<script src="https://gist.github.com/JelenaBarinova/8e0a8f5e3a09b2794ec5.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/8e0a8f5e3a09b2794ec5.js"></script></p>
 
 <p>This is my helper API, which load JSON into array and then returns it filtered by language.
-<script src="https://gist.github.com/JelenaBarinova/aa9ed4e4afcaaa8b80ff.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/aa9ed4e4afcaaa8b80ff.js"></script></p>
 
 <p>So now I update my React components to use text from my API. I decided to call API method from my wrapper component and then pass down needed parts to child components via <em>props</em>. This is my app.jsx:
-<script src="https://gist.github.com/JelenaBarinova/279de096b29d412f5b70.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/279de096b29d412f5b70.js"></script></p>
 
 <p>In addition I appended <em>gulpfile.js</em> with new task to delete previously generated <em>app.js</em> file. This is how gulpfile.js looks like now:
-<script src="https://gist.github.com/JelenaBarinova/be4c3e8dbe599fe06996.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/be4c3e8dbe599fe06996.js"></script></p>
 
 <p>For this I needed to install del library:</p>
 
@@ -327,13 +327,13 @@ Picture is taken from <a href="https://facebook.github.io/flux/docs/overview.htm
 </ul>
 
 <p>My <em>actions.js</em> file:
-<script src="https://gist.github.com/JelenaBarinova/cded3bd3a79e1466029b.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/cded3bd3a79e1466029b.js"></script></p>
 
 <p>Then I have a dispatcher:
-<script src="https://gist.github.com/JelenaBarinova/8c7a5114b7f5341077b8.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/8c7a5114b7f5341077b8.js"></script></p>
 
 <p>In my store I hold the content and register some callbacks with dispatcher to be invoked on specific actions. My <em>store.js</em> file:
-<script src="https://gist.github.com/JelenaBarinova/f1c17fa8bad12f7bc5f7.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/f1c17fa8bad12f7bc5f7.js"></script></p>
 
 <p>And last, but not least - view. So here I have two components that are related to this flow:</p>
 
@@ -343,10 +343,10 @@ Picture is taken from <a href="https://facebook.github.io/flux/docs/overview.htm
 </ul>
 
 <p>This is my updated Menu component:
-<script src="https://gist.github.com/JelenaBarinova/51022402974b0f06b70e.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/51022402974b0f06b70e.js"></script></p>
 
 <p>And here it is my Page compoenent:
-<script src="https://gist.github.com/JelenaBarinova/5cac4ff430e13622c42f.js"></script></p>
+<script src="https://gist.github.com/LenaBarinova/5cac4ff430e13622c42f.js"></script></p>
 
 <h2 id="step-4-refactoring-and-tests">Step 4. Refactoring and Tests</h2>
 
@@ -359,9 +359,9 @@ Picture is taken from <a href="https://facebook.github.io/flux/docs/overview.htm
   <li>Now working on tests, and I think, that they deserve a separate blog post.</li>
 </ul>
 
-<p>The final version of this example may be found on <a href="https://github.com/JelenaBarinova/react-flux-example">GitHub</a>.</p>
+<p>The final version of this example may be found on <a href="https://github.com/LenaBarinova/react-flux-example">GitHub</a>.</p>
 
-<p>I just love how it works you can experience this smooth language change <a href="http://jelenabarinova.github.io/react-flux-example/">here</a>.</p>
+<p>I just love how it works you can experience this smooth language change <a href="http://lenabarinova.github.io/react-flux-example/">here</a>.</p>
 
             </article>
 
@@ -384,18 +384,18 @@ Picture is taken from <a href="https://facebook.github.io/flux/docs/overview.htm
 
 <p>First, I’ve installed <a href="https://www.python.org/downloads/">Python</a>.</p>
 
-<p>Then, created <code>app.py</code> file with “hello world” code in it and setup VSCode task to run this script, as so: </p>
+<p>Then, created <code>app.py</code> file with “hello world” code in it and setup VSCode task to run this script, as so:</p>
 
 <ol>
-  <li>From a Command pallete (<code>⇧⌘P</code>) hit “Configure Task Runner”. </li>
+  <li>From a Command pallete (<code>⇧⌘P</code>) hit “Configure Task Runner”.</li>
   <li>In a <code>task.json</code> file added this:</li>
 </ol>
 
-<script src="https://gist.github.com/JelenaBarinova/1afd44a8470a511bc5ad.js"></script>
+<script src="https://gist.github.com/LenaBarinova/1afd44a8470a511bc5ad.js"></script>
 
 <p>You should change python command path (if not default as mine) as well as <code>args</code> according to your setup, I just simply have my whole script in <code>app.py</code> file.</p>
 
-<p>Finally, as this is the only task in my VSCode tasks list - it runs on <code>⇧⌘B</code>. </p>
+<p>Finally, as this is the only task in my VSCode tasks list - it runs on <code>⇧⌘B</code>.</p>
 
 <p>Simple as that!</p>
 
