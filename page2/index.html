@@ -315,7 +315,9 @@ I’ve created <em>dom-mock.js</em> file (it’s a bit different from what is gi
           </h1>
           <p>
             <article class="post-content">
-            <p>Recently I started exploring new features of ECMAScript 2015 while using React. So here is how I set-up my dev environment with <a href="http://gulpjs.com/">gulp</a>.
+            <p><em>1/4/2016: I have updated this blog post by adding steps to install needed libraries and added command list for easy and fast start.</em></p>
+
+<p>Recently I started exploring new features of ECMAScript 2015 while using React. So here is how I set-up my dev environment with <a href="http://gulpjs.com/">gulp</a>.
 I have 2 simple steps  (running one after other in this sequence):</p>
 
 <ol>
@@ -329,6 +331,11 @@ I have 2 simple steps  (running one after other in this sequence):</p>
   </li>
 </ol>
 
+<p>Before running these tasks be sure you have all necessary packages installed on your machine:</p>
+
+<pre><code>$npm install gulp gulp-react gulp-babel gulp-open
+</code></pre>
+
 <p>Here it all gathered and chained together:
 <script src="https://gist.github.com/LenaBarinova/95b2d933b6f75d6cc495.js"></script></p>
 
@@ -338,6 +345,14 @@ I have 2 simple steps  (running one after other in this sequence):</p>
 <img src="/img/post_img/vs-code-settings.png" alt="Blog infrastructure" class="right" /></p>
 
 <p>And now once I change code and want to check it - I just press ⇧⌘B (on Mac) and the result is in front of me.</p>
+
+<p>To try it working on your machine:</p>
+
+<pre><code>git clone git@github.com:LenaBarinova/react-es6-gulp-example.git
+cd react-es6-gulp-example
+npm install gulp gulp-react gulp-babel gulp-open
+gulp build
+</code></pre>
 
             </article>
 
@@ -405,7 +420,7 @@ I have 2 simple steps  (running one after other in this sequence):</p>
                             </span>
                         </a>
                     
-                <p class="copyright text-muted">Copyright &copy; Be a Better Developer 2015</p>
+                <p class="copyright text-muted">Copyright &copy; Be a Better Developer 2016</p>
             </div>
         </div>
     </div>

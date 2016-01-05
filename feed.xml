@@ -5,8 +5,8 @@
     <description>Practical notes on development</description>
     <link>http://www.bebetterdeveloper.com/</link>
     <atom:link href="http://www.bebetterdeveloper.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 03 Dec 2015 14:14:29 -0800</pubDate>
-    <lastBuildDate>Thu, 03 Dec 2015 14:14:29 -0800</lastBuildDate>
+    <pubDate>Mon, 04 Jan 2016 17:00:08 -0800</pubDate>
+    <lastBuildDate>Mon, 04 Jan 2016 17:00:08 -0800</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -154,13 +154,14 @@ To check the website, follow this &lt;a href=&quot;http://Lenabarinova.github.io
 
 &lt;h2 id=&quot;step-1-simple-html&quot;&gt;Step 1. Simple HTML&lt;/h2&gt;
 
-&lt;p&gt;So I started by creating my website as a simple HTML, using Bootstrap, to have the basic static page structure, which I could split to the React components later. That’s how my &lt;em&gt;index.html&lt;/em&gt; look like:
+&lt;p&gt;So I started by creating my website as a simple HTML, using Bootstrap, to have the basic static page structure, which I could split to the React components later. That’s how my &lt;em&gt;index.html&lt;/em&gt; look like:&lt;/p&gt;
 &lt;style type=&quot;text/css&quot;&gt;
   .gist {width:640px !important;}
   .gist-file
   .gist-data {max-height: 600px; max-width: 640px;}
 &lt;/style&gt;
-&lt;script src=&quot;https://gist.github.com/LenaBarinova/82dbb2570f81395bc2f6.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/82dbb2570f81395bc2f6.js&quot;&gt;&lt;/script&gt;
 
 &lt;h2 id=&quot;step-2-react-components&quot;&gt;Step 2. React components&lt;/h2&gt;
 
@@ -582,7 +583,9 @@ I’ve created &lt;em&gt;dom-mock.js&lt;/em&gt; file (it’s a bit different fro
     
       <item>
         <title>ES2015 + React using Gulp</title>
-        <description>&lt;p&gt;Recently I started exploring new features of ECMAScript 2015 while using React. So here is how I set-up my dev environment with &lt;a href=&quot;http://gulpjs.com/&quot;&gt;gulp&lt;/a&gt;.
+        <description>&lt;p&gt;&lt;em&gt;1/4/2016: I have updated this blog post by adding steps to install needed libraries and added command list for easy and fast start.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Recently I started exploring new features of ECMAScript 2015 while using React. So here is how I set-up my dev environment with &lt;a href=&quot;http://gulpjs.com/&quot;&gt;gulp&lt;/a&gt;.
 I have 2 simple steps  (running one after other in this sequence):&lt;/p&gt;
 
 &lt;ol&gt;
@@ -596,6 +599,11 @@ I have 2 simple steps  (running one after other in this sequence):&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;p&gt;Before running these tasks be sure you have all necessary packages installed on your machine:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$npm install gulp gulp-react gulp-babel gulp-open
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;Here it all gathered and chained together:
 &lt;script src=&quot;https://gist.github.com/LenaBarinova/95b2d933b6f75d6cc495.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
@@ -605,6 +613,14 @@ I have 2 simple steps  (running one after other in this sequence):&lt;/p&gt;
 &lt;img src=&quot;/img/post_img/vs-code-settings.png&quot; alt=&quot;Blog infrastructure&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And now once I change code and want to check it - I just press ⇧⌘B (on Mac) and the result is in front of me.&lt;/p&gt;
+
+&lt;p&gt;To try it working on your machine:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone git@github.com:LenaBarinova/react-es6-gulp-example.git
+cd react-es6-gulp-example
+npm install gulp gulp-react gulp-babel gulp-open
+gulp build
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         <pubDate>Tue, 14 Jul 2015 00:00:00 -0700</pubDate>
         <link>http://www.bebetterdeveloper.com/coding/es6-react-babel.html</link>
@@ -898,7 +914,7 @@ footer=minimal&quot;&gt;&lt;/script&gt;
   &lt;li&gt;length() – to get the number of items in the priority queue&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;As a foundation I’ll use in the &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-binary-heap/&quot;&gt;last post&lt;/a&gt; described efficient data structure – binary heap (in fact, max-heap). Overall, priority queue can be seen as a generalization of &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-stack-array/&quot;&gt;stack&lt;/a&gt; and &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-queue/&quot;&gt;queue&lt;/a&gt; data structures. Stack can be implemented as a max priority queue where priority of each inserted element is monotonically increasing and queue – where priority of each inserted element is monotonically decreasing. &lt;/p&gt;
+&lt;p&gt;As a foundation I’ll use in the &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-binary-heap/&quot;&gt;last post&lt;/a&gt; described efficient data structure – binary heap (in fact, max-heap). Overall, priority queue can be seen as a generalization of &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-stack-array/&quot;&gt;stack&lt;/a&gt; and &lt;a href=&quot;http://www.bebetterdeveloper.com/data-structure-queue/&quot;&gt;queue&lt;/a&gt; data structures. Stack can be implemented as a max priority queue where priority of each inserted element is monotonically increasing and queue – where priority of each inserted element is monotonically decreasing.&lt;/p&gt;
 
 &lt;p&gt;The implementation of max priority queue (&lt;a href=&quot;https://github.com/sergejusb/algorithms/blob/master/data-structures/maxPriorityQueue_tests.js&quot;&gt;tests&lt;/a&gt;) is almost identical to the max-heap implementation:&lt;/p&gt;
 
