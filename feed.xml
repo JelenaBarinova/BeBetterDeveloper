@@ -5,9 +5,106 @@
     <description>Practical notes on development</description>
     <link>http://www.bebetterdeveloper.com/</link>
     <atom:link href="http://www.bebetterdeveloper.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 04 Jan 2016 17:00:08 -0800</pubDate>
-    <lastBuildDate>Mon, 04 Jan 2016 17:00:08 -0800</lastBuildDate>
+    <pubDate>Fri, 22 Jan 2016 19:11:08 -0800</pubDate>
+    <lastBuildDate>Fri, 22 Jan 2016 19:11:08 -0800</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Serverless system architecture using AWS, React and Node.js</title>
+        <description>&lt;p&gt;This post is about my most recent freetime-killer “DIY project” - &lt;a href=&quot;http://price-tracker-website.s3-website-us-west-2.amazonaws.com/&quot;&gt;Price tracker&lt;/a&gt;, which has a beautiful serverless architecture that I want to share with all of your.&lt;/p&gt;
+
+&lt;p&gt;The story behind this app: I want to buy some items (for example skiing goggles, or new luggage set, or shoes), I want to get them for the best price and these items are not urgent for me so I can wait for a price drop. But I don’t want to hunt for sales and constantly check online stores for price decrease. I’ve got better things to do :)&lt;/p&gt;
+
+&lt;p&gt;So I’ve developed a system, which tracks price changes for my desirable products in online stores (which I trust to buy from) and notifies me over the email when price drops.&lt;/p&gt;
+
+&lt;h2 id=&quot;architecture&quot;&gt;Architecture&lt;/h2&gt;
+
+&lt;p&gt;There are three major parts of the system:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;/coding/architecture/serverless-system-architecture-using-aws.html#website&quot;&gt;Website&lt;/a&gt; - to view the products and recent prices in different shops&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/coding/architecture/serverless-system-architecture-using-aws.html#watcher&quot;&gt;Watcher&lt;/a&gt; - a job scheduled to scrape online shops and track price changes every couple of hours&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/coding/architecture/serverless-system-architecture-using-aws.html#notifier&quot;&gt;Notifier&lt;/a&gt; - a job to watch changes to the price and notify me over the email when the price drops&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In addition to these parts - there is a database to hold all my products, shops and price changes.&lt;/p&gt;
+
+&lt;h2 id=&quot;technologies&quot;&gt;Technologies&lt;/h2&gt;
+
+&lt;p&gt;In autum 2015 I won a $100 AWS credit as a HackersRank prize in an algorithms coding contest and I decided to make a good use of it. So the platform of a choise to build this system is AWS. In addition to that, lately I am focused on everything JavaScript, thus the language of a choise is JavaScript: both for a frontend - React.js and backend - Node.js.&lt;/p&gt;
+
+&lt;p&gt;Here is the architecture:
+&lt;img src=&quot;/img/post_img/pt-architecture.png&quot; alt=&quot;Architecture&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;implementation&quot;&gt;Implementation&lt;/h2&gt;
+
+&lt;p&gt;The sources are in Github at &lt;a href=&quot;https://github.com/LenaBarinova/PriceTracker&quot;&gt;LenaBarinova/PriceTracker&lt;/a&gt;. 
+Now shortly about how I implemented each of my three major system components.&lt;/p&gt;
+
+&lt;h4 id=&quot;website&quot;&gt;Website&lt;/h4&gt;
+
+&lt;p&gt;My Website - is a quite simple Single Page Application done in React using Flux pattern to handle UI changes. Website gets information about the products via a REST API implemented through AWS API Gateway, which calls AWS Lamdba function (written in Node.js) to actually get data from database. I use DynamoDB as a database, storing all of my products as JSON objects. UI is built using Bootstrap and some more advanced css styles to create flipping cards effects for products.&lt;/p&gt;
+
+&lt;p&gt;Here’s how it looks:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/post_img/pt-ui.gif&quot; alt=&quot;Price Tracker UI&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Tests for UI are written in Mocha. Website is hosted in Amazon S3. For deployment I use Gulp and many Gulp plugins to transpose, convert from ES6, concatenate and minify my JavaScript files, run tests, bundle all together and upload to S3 bucket.&lt;/p&gt;
+
+&lt;h3 id=&quot;watcher&quot;&gt;Watcher&lt;/h3&gt;
+
+&lt;p&gt;Watcher is AWS Lambda function implemented in Node.js. It queries a database, gets all the products and runs scrapers for each product to retrieve a new price from online stores. Scraper function is specific for each store, it loads shop’s html and gets/parses price fields using jQuery selectors. If there is change in price - product is updated with a new price and persisted to DynamoDB.&lt;/p&gt;
+
+&lt;p&gt;Watcher is scheduled to run every 4 hours using AWS CloudWatch Events.&lt;/p&gt;
+
+&lt;h3 id=&quot;notifier&quot;&gt;Notifier&lt;/h3&gt;
+
+&lt;p&gt;One more AWS Lambda function which listens to events in DynamoDB and if there is a price decrease - it sends email notification using AWS SNS service.&lt;/p&gt;
+
+&lt;p&gt;All AWS Lambda functions are written in JavaScript and tested using Mocha. Deployment is as easy as running “gulp deploy” task - it runs tests, gets all dependant node modules, zips all files together and uploads my JavaScript code to AWS as Lamdba functions.&lt;/p&gt;
+
+&lt;h2 id=&quot;pros-and-cons&quot;&gt;Pros and Cons&lt;/h2&gt;
+
+&lt;p&gt;Though it’s nice not to have a server and run everything on different services, and Lambda is a kind of magic, there are some drawbacks to it. In my case it’s perfect for Watcher and Notifier, but not that good for a data retrieval from DynamoDB. The problem is that in order to run Lambda function there is a lot of work done in the background (container creation, environmet configuration, etc.) before actually running my function, that takes some time. When the task is a background job - it’s totaly fine, but with UI - it gives me undesirable lag before loading my products for the first time. I don’t worry about it now, because I’m the only user of this system and visit this site once a week or so, but if someday there is more users than me, I’ll definately look into it and refactor this part of the system.&lt;/p&gt;
+
+&lt;p&gt;Besides this small issue, everything else works as a charm. And with deployment automation - it is a real pleasure to work on this “project”.&lt;/p&gt;
+
+&lt;p&gt;Happy Architecting!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;P.S.: If you want to hear more about any part of this system - just leave a comment. And if you by any chance would like to try PriceTracker yourself - let me know, I’d be happy to setup it for you.&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 22 Jan 2016 00:00:00 -0800</pubDate>
+        <link>http://www.bebetterdeveloper.com/coding/architecture/serverless-system-architecture-using-aws.html</link>
+        <guid isPermaLink="true">http://www.bebetterdeveloper.com/coding/architecture/serverless-system-architecture-using-aws.html</guid>
+        
+        <category>JavaScript</category>
+        
+        <category>Node.js</category>
+        
+        <category>React</category>
+        
+        <category>Flux</category>
+        
+        <category>ES2015</category>
+        
+        <category>AWS</category>
+        
+        <category>Lambda</category>
+        
+        <category>DynamoDB</category>
+        
+        <category>API Gateway</category>
+        
+        <category>SNS</category>
+        
+        <category>S3</category>
+        
+        
+        <category>coding</category>
+        
+        <category>architecture</category>
+        
+      </item>
     
       <item>
         <title>Testing React components using Shallow Rendering</title>
@@ -1009,26 +1106,6 @@ footer=minimal&quot;&gt;&lt;/script&gt;
         
         
         <category>data structure</category>
-        
-      </item>
-    
-      <item>
-        <title>Presentation: Continuous Happiness by Continuous Delivery</title>
-        <description>&lt;p&gt;Recently at &lt;a href=&quot;http://buildstuff.lt/&quot;&gt;Build Stuff&lt;/a&gt; conference I gave a practical talk on Continuous Delivery. Enjoy and tell what you think!&lt;/p&gt;
-
-&lt;script async=&quot;&quot; class=&quot;speakerdeck-embed&quot; data-id=&quot;c5ba45908bd90130e24f22000a8c4314&quot; data-ratio=&quot;1.33333333333333&quot; src=&quot;//speakerdeck.com/assets/embed.js&quot;&gt;&lt;/script&gt;
-
-</description>
-        <pubDate>Wed, 11 Dec 2013 13:58:42 -0800</pubDate>
-        <link>http://www.bebetterdeveloper.com/presentation/presentation-continuous-delivery.html</link>
-        <guid isPermaLink="true">http://www.bebetterdeveloper.com/presentation/presentation-continuous-delivery.html</guid>
-        
-        <category>Continuous Delivery</category>
-        
-        <category>DevOps</category>
-        
-        
-        <category>presentation</category>
         
       </item>
     

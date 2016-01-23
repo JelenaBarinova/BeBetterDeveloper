@@ -97,6 +97,81 @@
   <ul class="post-list">
     
       <li>
+        <!-- <span class="post-meta">Jan 22, 2016</span> -->
+        <h1 style="text-align: left"><a class="post-link" href="/coding/architecture/serverless-system-architecture-using-aws.html">Serverless system architecture using AWS, React and Node.js</a>
+          </h1>
+          <p>
+            <article class="post-content">
+            <p>This post is about my most recent freetime-killer “DIY project” - <a href="http://price-tracker-website.s3-website-us-west-2.amazonaws.com/">Price tracker</a>, which has a beautiful serverless architecture that I want to share with all of your.</p>
+
+<p>The story behind this app: I want to buy some items (for example skiing goggles, or new luggage set, or shoes), I want to get them for the best price and these items are not urgent for me so I can wait for a price drop. But I don’t want to hunt for sales and constantly check online stores for price decrease. I’ve got better things to do :)</p>
+
+<p>So I’ve developed a system, which tracks price changes for my desirable products in online stores (which I trust to buy from) and notifies me over the email when price drops.</p>
+
+<h2 id="architecture">Architecture</h2>
+
+<p>There are three major parts of the system:</p>
+
+<ol>
+  <li><a href="/coding/architecture/serverless-system-architecture-using-aws.html#website">Website</a> - to view the products and recent prices in different shops</li>
+  <li><a href="/coding/architecture/serverless-system-architecture-using-aws.html#watcher">Watcher</a> - a job scheduled to scrape online shops and track price changes every couple of hours</li>
+  <li><a href="/coding/architecture/serverless-system-architecture-using-aws.html#notifier">Notifier</a> - a job to watch changes to the price and notify me over the email when the price drops</li>
+</ol>
+
+<p>In addition to these parts - there is a database to hold all my products, shops and price changes.</p>
+
+<h2 id="technologies">Technologies</h2>
+
+<p>In autum 2015 I won a $100 AWS credit as a HackersRank prize in an algorithms coding contest and I decided to make a good use of it. So the platform of a choise to build this system is AWS. In addition to that, lately I am focused on everything JavaScript, thus the language of a choise is JavaScript: both for a frontend - React.js and backend - Node.js.</p>
+
+<p>Here is the architecture:
+<img src="/img/post_img/pt-architecture.png" alt="Architecture" class="right" /></p>
+
+<h2 id="implementation">Implementation</h2>
+
+<p>The sources are in Github at <a href="https://github.com/LenaBarinova/PriceTracker">LenaBarinova/PriceTracker</a>. 
+Now shortly about how I implemented each of my three major system components.</p>
+
+<h4 id="website">Website</h4>
+
+<p>My Website - is a quite simple Single Page Application done in React using Flux pattern to handle UI changes. Website gets information about the products via a REST API implemented through AWS API Gateway, which calls AWS Lamdba function (written in Node.js) to actually get data from database. I use DynamoDB as a database, storing all of my products as JSON objects. UI is built using Bootstrap and some more advanced css styles to create flipping cards effects for products.</p>
+
+<p>Here’s how it looks:</p>
+
+<p><img src="/img/post_img/pt-ui.gif" alt="Price Tracker UI" /></p>
+
+<p>Tests for UI are written in Mocha. Website is hosted in Amazon S3. For deployment I use Gulp and many Gulp plugins to transpose, convert from ES6, concatenate and minify my JavaScript files, run tests, bundle all together and upload to S3 bucket.</p>
+
+<h3 id="watcher">Watcher</h3>
+
+<p>Watcher is AWS Lambda function implemented in Node.js. It queries a database, gets all the products and runs scrapers for each product to retrieve a new price from online stores. Scraper function is specific for each store, it loads shop’s html and gets/parses price fields using jQuery selectors. If there is change in price - product is updated with a new price and persisted to DynamoDB.</p>
+
+<p>Watcher is scheduled to run every 4 hours using AWS CloudWatch Events.</p>
+
+<h3 id="notifier">Notifier</h3>
+
+<p>One more AWS Lambda function which listens to events in DynamoDB and if there is a price decrease - it sends email notification using AWS SNS service.</p>
+
+<p>All AWS Lambda functions are written in JavaScript and tested using Mocha. Deployment is as easy as running “gulp deploy” task - it runs tests, gets all dependant node modules, zips all files together and uploads my JavaScript code to AWS as Lamdba functions.</p>
+
+<h2 id="pros-and-cons">Pros and Cons</h2>
+
+<p>Though it’s nice not to have a server and run everything on different services, and Lambda is a kind of magic, there are some drawbacks to it. In my case it’s perfect for Watcher and Notifier, but not that good for a data retrieval from DynamoDB. The problem is that in order to run Lambda function there is a lot of work done in the background (container creation, environmet configuration, etc.) before actually running my function, that takes some time. When the task is a background job - it’s totaly fine, but with UI - it gives me undesirable lag before loading my products for the first time. I don’t worry about it now, because I’m the only user of this system and visit this site once a week or so, but if someday there is more users than me, I’ll definately look into it and refactor this part of the system.</p>
+
+<p>Besides this small issue, everything else works as a charm. And with deployment automation - it is a real pleasure to work on this “project”.</p>
+
+<p>Happy Architecting!</p>
+
+<p><em>P.S.: If you want to hear more about any part of this system - just leave a comment. And if you by any chance would like to try PriceTracker yourself - let me know, I’d be happy to setup it for you.</em></p>
+
+            </article>
+
+            </p>
+            <hr>
+            <br>
+      </li>
+    
+      <li>
         <!-- <span class="post-meta">Nov 24, 2015</span> -->
         <h1 style="text-align: left"><a class="post-link" href="/coding/shallow-rendering-react-mocha.html">Testing React components using Shallow Rendering</a>
           </h1>
@@ -363,42 +438,6 @@ Picture is taken from <a href="https://facebook.github.io/flux/docs/overview.htm
 <p>The final version of this example may be found on <a href="https://github.com/LenaBarinova/react-flux-example">GitHub</a>.</p>
 
 <p>I just love how it works you can experience this smooth language change <a href="http://lenabarinova.github.io/react-flux-example/">here</a>.</p>
-
-            </article>
-
-            </p>
-            <hr>
-            <br>
-      </li>
-    
-      <li>
-        <!-- <span class="post-meta">Oct 1, 2015</span> -->
-        <h1 style="text-align: left"><a class="post-link" href="/coding/hello-world-python.html">Hello world, Python</a>
-          </h1>
-          <p>
-            <article class="post-content">
-            <p><img src="/img/post_img/python-logo.png" alt="Python" class="right" /></p>
-
-<p>Today I started exploring Python. For those who know me - Yes, Python! Bear with me - I’ve got my solid reasons for that (will share it one day).</p>
-
-<p>In this short blog post I just want to share how I setup my IDE - <a href="https://code.visualstudio.com/">Visual Studio Code</a> on MacOS to handle my Python adventure.</p>
-
-<p>First, I’ve installed <a href="https://www.python.org/downloads/">Python</a>.</p>
-
-<p>Then, created <code>app.py</code> file with “hello world” code in it and setup VSCode task to run this script, as so:</p>
-
-<ol>
-  <li>From a Command pallete (<code>⇧⌘P</code>) hit “Configure Task Runner”.</li>
-  <li>In a <code>task.json</code> file added this:</li>
-</ol>
-
-<script src="https://gist.github.com/LenaBarinova/1afd44a8470a511bc5ad.js"></script>
-
-<p>You should change python command path (if not default as mine) as well as <code>args</code> according to your setup, I just simply have my whole script in <code>app.py</code> file.</p>
-
-<p>Finally, as this is the only task in my VSCode tasks list - it runs on <code>⇧⌘B</code>.</p>
-
-<p>Simple as that!</p>
 
             </article>
 

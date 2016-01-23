@@ -97,6 +97,42 @@
   <ul class="post-list">
     
       <li>
+        <!-- <span class="post-meta">Oct 1, 2015</span> -->
+        <h1 style="text-align: left"><a class="post-link" href="/coding/hello-world-python.html">Hello world, Python</a>
+          </h1>
+          <p>
+            <article class="post-content">
+            <p><img src="/img/post_img/python-logo.png" alt="Python" class="right" /></p>
+
+<p>Today I started exploring Python. For those who know me - Yes, Python! Bear with me - I’ve got my solid reasons for that (will share it one day).</p>
+
+<p>In this short blog post I just want to share how I setup my IDE - <a href="https://code.visualstudio.com/">Visual Studio Code</a> on MacOS to handle my Python adventure.</p>
+
+<p>First, I’ve installed <a href="https://www.python.org/downloads/">Python</a>.</p>
+
+<p>Then, created <code>app.py</code> file with “hello world” code in it and setup VSCode task to run this script, as so:</p>
+
+<ol>
+  <li>From a Command pallete (<code>⇧⌘P</code>) hit “Configure Task Runner”.</li>
+  <li>In a <code>task.json</code> file added this:</li>
+</ol>
+
+<script src="https://gist.github.com/LenaBarinova/1afd44a8470a511bc5ad.js"></script>
+
+<p>You should change python command path (if not default as mine) as well as <code>args</code> according to your setup, I just simply have my whole script in <code>app.py</code> file.</p>
+
+<p>Finally, as this is the only task in my VSCode tasks list - it runs on <code>⇧⌘B</code>.</p>
+
+<p>Simple as that!</p>
+
+            </article>
+
+            </p>
+            <hr>
+            <br>
+      </li>
+    
+      <li>
         <!-- <span class="post-meta">Aug 17, 2015</span> -->
         <h1 style="text-align: left"><a class="post-link" href="/deployment/sharing-a-blog-post-hosted-on-github-pages.html">Sharing a blog post hosted on GitHub Pages</a>
           </h1>
@@ -301,58 +337,6 @@ I’ve created <em>dom-mock.js</em> file (it’s a bit different from what is gi
 <p>That’s it! You can download the latest code for this example from <a href="https://github.com/LenaBarinova/react-mocha-example">GitHub</a>.</p>
 
 <p>Happy Testing!</p>
-
-            </article>
-
-            </p>
-            <hr>
-            <br>
-      </li>
-    
-      <li>
-        <!-- <span class="post-meta">Jul 14, 2015</span> -->
-        <h1 style="text-align: left"><a class="post-link" href="/coding/es6-react-babel.html">ES2015 + React using Gulp</a>
-          </h1>
-          <p>
-            <article class="post-content">
-            <p><em>1/4/2016: I have updated this blog post by adding steps to install needed libraries and added command list for easy and fast start.</em></p>
-
-<p>Recently I started exploring new features of ECMAScript 2015 while using React. So here is how I set-up my dev environment with <a href="http://gulpjs.com/">gulp</a>.
-I have 2 simple steps  (running one after other in this sequence):</p>
-
-<ol>
-  <li>
-    <p>Transform XLS files: I precompile React JSX template files into plain JavaScript using gulp-react:
-  <script src="https://gist.github.com/LenaBarinova/b7b58c270e3e560056b3.js"></script></p>
-  </li>
-  <li>
-    <p>Transform ES2015 files: I take JavaScript files, produced after first transformation and turn them into ES5 files using gulp-babel:
-  <script src="https://gist.github.com/LenaBarinova/7245b2c53e06eb8772ab.js"></script></p>
-  </li>
-</ol>
-
-<p>Before running these tasks be sure you have all necessary packages installed on your machine:</p>
-
-<pre><code>$npm install gulp gulp-react gulp-babel gulp-open
-</code></pre>
-
-<p>Here it all gathered and chained together:
-<script src="https://gist.github.com/LenaBarinova/95b2d933b6f75d6cc495.js"></script></p>
-
-<p>In addition to two transformation tasks I like to open output in browser, for this I use gulp-open.</p>
-
-<p>I use <a href="https://code.visualstudio.com/">Visual Studio Code</a> as my IDE, so I have set this gulp task named “build” as a build task in VS Code settings.
-<img src="/img/post_img/vs-code-settings.png" alt="Blog infrastructure" class="right" /></p>
-
-<p>And now once I change code and want to check it - I just press ⇧⌘B (on Mac) and the result is in front of me.</p>
-
-<p>To try it working on your machine:</p>
-
-<pre><code>git clone git@github.com:LenaBarinova/react-es6-gulp-example.git
-cd react-es6-gulp-example
-npm install gulp gulp-react gulp-babel gulp-open
-gulp build
-</code></pre>
 
             </article>
 
