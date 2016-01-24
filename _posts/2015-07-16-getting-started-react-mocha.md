@@ -123,7 +123,7 @@ You can try whether it works just running Mocha from command line from you proje
 $mocha
 ~~~
 
-You shoud get this output:
+You should get this output:
 
 <img src="{{ site.baseurl }}/img/post_img/vfd-3.png" alt="Third step result" class="right" />
 
@@ -137,7 +137,7 @@ Before moving on to testing our React component, we need to take care of a coupl
 
 __First__ - DOM mocking. You can find very good explanation about how to mock DOM in this [blog post](http://www.asbjornenge.com/wwc/testing_react_components.html).
 To follow this example we need to install [jsdom](https://github.com/tmpvar/jsdom) and [mocha-jsdom](https://github.com/rstacruz/mocha-jsdom).
-I've created _dom-mock.js_ file (it's a bit different from what is given in the article, I adopted it to be compatable with the newest JSDOM version).
+I've created _dom-mock.js_ file (it's a bit different from what is given in the article, I adopted it to be compatible with the newest JSDOM version).
 <script src="https://gist.github.com/LenaBarinova/fab84f93dae04ca4123a.js"></script>
 
 __Second__ - install [React TestUtils add-on](https://www.npmjs.com/package/react-addons-test-utils):

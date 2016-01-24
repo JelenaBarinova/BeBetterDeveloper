@@ -113,7 +113,7 @@ I created these three components, adding additional one to wrap these three. In 
 <script src="https://gist.github.com/LenaBarinova/7244d61616f3427a8673.js"></script>
 Note: when using html in React don't forget to rename class to className.
 
-Added a placeholder for my react components instead of all the html tags in my _index.html_ and added refference to react and react-dom libraries as well as to my app.js file, which is being produced for me after running
+Added a placeholder for my react components instead of all the html tags in my _index.html_ and added reference to react and react-dom libraries as well as to my app.js file, which is being produced for me after running
 
 ~~~
 $gulp build
@@ -150,7 +150,7 @@ $npm install del --save-dev
 
 ## Step 4. Flux
 
-So finaly, all preparation tasks are done and we can move forward and add Flux.
+So finally, all preparation tasks are done and we can move forward and add Flux.
 First let's start with installation.
 
 ~~~
@@ -182,18 +182,18 @@ And last, but not least - view. So here I have two components that are related t
 This is my updated Menu component:
 <script src="https://gist.github.com/LenaBarinova/51022402974b0f06b70e.js"></script>
 
-And here it is my Page compoenent:
+And here it is my Page component:
 <script src="https://gist.github.com/LenaBarinova/5cac4ff430e13622c42f.js"></script>
 
 ## Step 4. Refactoring and Tests
 
-I won't be giving any detaled instruction here, but what I did - is refactored my code:
+I won't be giving any detailed instruction here, but what I did - is refactored my code:
 
 * Changed source file structure
 * Split react components to different files
 * Added minification step to the gulp task
 * Now working on tests, and I think, that they deserve a separate blog post.
 
-The final version of this example may be found on [GitHub](https://github.com/LenaBarinova/react-flux-example).
+The last version of this example may be found on [GitHub](https://github.com/LenaBarinova/react-flux-example).
 
 I just love how it works you can experience this smooth language change [here](http://lenabarinova.github.io/react-flux-example/).

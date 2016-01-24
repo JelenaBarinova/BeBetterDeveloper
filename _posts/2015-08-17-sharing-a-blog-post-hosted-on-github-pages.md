@@ -22,7 +22,7 @@ I want to have a nice share dialog with description and image of my blog post. L
 
 <img src="{{ site.baseurl }}/img/post_img/fbog-share-dialog.png" alt="Share dialog" class="right" />
 
-In order to achive this, I had to add some code to my Jekyll templates and implement some workarounds with urls and domain configuration. That's how I did it.
+In order to archive this, I had to add some code to my Jekyll templates and implement some workarounds with urls and domain configuration. That's how I did it.
 
 First, I added meta tag generation to a head part of my post html:
 <script src="https://gist.github.com/LenaBarinova/c63a40854bcd0569a9a6.js"></script>

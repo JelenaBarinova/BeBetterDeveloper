@@ -22,7 +22,7 @@ The first part is almost identical to the way we [ensured](https://github.com/se
 *   decrease size of the max-heap by 1
 *   ensure max-heap invariant starting from the first item
 
-Let's sort items [3 4 1 3 5 1 2]. As always I'll use collors to specify <span style="color: #99cc00;">parent</span>, <span style="color: #0000ff;">child</span> or items to be <span style="color: #ff0000;">swapped</span>:
+Let's sort items [3 4 1 3 5 1 2]. As always I'll use colors to specify <span style="color: #99cc00;">parent</span>, <span style="color: #0000ff;">child</span> or items to be <span style="color: #ff0000;">swapped</span>:
 
 Step #1
 
@@ -32,7 +32,7 @@ The binary tree constructed from the given items does not conform max-heap invar
    4   1
   3 5 1 2</pre>
 
-To ensure max-heap invariant for the given set we need to take each node in the tree (except leafs) and recursively ensure it is bigger than any of the child nodes. As a reminder, our binary heap stores items starting from index 1, so we need to temporarily add null item at the begining: [null 3 4 1 3 5 1 2]
+To ensure max-heap invariant for the given set we need to take each node in the tree (except leafs) and recursively ensure it is bigger than any of the child nodes. As a reminder, our binary heap stores items starting from index 1, so we need to temporarily add null item at the beginning: [null 3 4 1 3 5 1 2]
 
 [null 3 4 <span style="color: #99cc00;">1</span> | 3 5 <span style="color: #0000ff;">1 2</span>]
 [null 3 4 <span style="color: #99cc00;">2</span> | 3 5 <span style="color: #0000ff;">1 1</span>]

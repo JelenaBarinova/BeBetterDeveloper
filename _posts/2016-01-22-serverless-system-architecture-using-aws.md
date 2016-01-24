@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Serverless system architecture using AWS, React and Node.js"
-subtitle: "Hosting a website, running scheduled cumputations and sending email notifications - all done using AWS services"
+subtitle: "Hosting a website, running scheduled computations and sending email notifications - all done using AWS services"
 date: 2016-01-22
 author: Lena Barinova
 tags:
@@ -24,7 +24,7 @@ categories:
 
 This post is about my most recent freetime-killer "DIY project" - [Price tracker](http://price-tracker-website.s3-website-us-west-2.amazonaws.com/), which has a beautiful serverless architecture that I want to share with all of your.
 
-The story behind this app: I want to buy some items (for example skiing goggles, or new luggage set, or shoes), I want to get them for the best price and these items are not urgent for me so I can wait for a price drop. But I don't want to hunt for sales and constantly check online stores for price decrease. I've got better things to do :) 
+The story behind this app: I want to buy some items (such as skiing goggles, or new luggage set, or shoes), I want to get them for the best price and these items are not urgent for me so I can wait for a price drop. But I don't want to hunt for sales and constantly check online stores for price decrease. I've got better things to do :) 
 
 So I've developed a system, which tracks price changes for my desirable products in online stores (which I trust to buy from) and notifies me over the email when price drops.
 
@@ -40,7 +40,7 @@ In addition to these parts - there is a database to hold all my products, shops 
 
 ##  Technologies
 
-In autum 2015 I won a $100 AWS credit as a HackersRank prize in an algorithms coding contest and I decided to make a good use of it. So the platform of a choise to build this system is AWS. In addition to that, lately I am focused on everything JavaScript, thus the language of a choise is JavaScript: both for a frontend - React.js and backend - Node.js. 
+In autumn 2015 I won a $100 AWS credit as a HackersRank prize in an algorithms coding contest and I decided to make a good use of it. So the platform of a choise to build this system is AWS. In addition to that, lately I am focused on everything JavaScript, thus the language of a choise is JavaScript: both for a frontend - React.js and backend - Node.js. 
 
 Here is the architecture:
 <img src="{{ site.baseurl }}/img/post_img/pt-architecture.png" alt="Architecture" class="right" /> 
@@ -74,10 +74,10 @@ All AWS Lambda functions are written in JavaScript and tested using Mocha. Deplo
 
 ## Pros and Cons
 
-Though it's nice not to have a server and run everything on different services, and Lambda is a kind of magic, there are some drawbacks to it. In my case it's perfect for Watcher and Notifier, but not that good for a data retrieval from DynamoDB. The problem is that in order to run Lambda function there is a lot of work done in the background (container creation, environmet configuration, etc.) before actually running my function, that takes some time. When the task is a background job - it's totaly fine, but with UI - it gives me undesirable lag before loading my products for the first time. I don't worry about it now, because I'm the only user of this system and visit this site once a week or so, but if someday there is more users than me, I'll definately look into it and refactor this part of the system.
+Though it's nice not to have a server and run everything on different services, and Lambda is a kind of magic, there are some drawbacks to it. In my case it's perfect for Watcher and Notifier, but not that good for a data retrieval from DynamoDB. The problem is that in order to run Lambda function there is a lot of work done in the background (container creation, environment configuration, etc.) before actually running my function, that takes some time. When the task is a background job - it's totally fine, but with UI - it gives me undesirable lag before loading my products for the first time. I don't worry about it now, because I'm the only user of this system and visit this site once a week or so, but if someday there is more users than me, I'll definitely look into it and refactor this part of the system.
 
 Besides this small issue, everything else works as a charm. And with deployment automation - it is a real pleasure to work on this "project".
 
 Happy Architecting!
 
-_P.S.: If you want to hear more about any part of this system - just leave a comment. And if you by any chance would like to try PriceTracker yourself - let me know, I'd be happy to setup it for you._
+_P.S.: If you want to hear more about any part of this system - just leave a comment. And if you by any chance would like to try PriceTracker yourself - let me know, I'd be happy to set up it for you._
