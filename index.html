@@ -104,7 +104,7 @@
             <article class="post-content">
             <p>This post is about my most recent freetime-killer “DIY project” - <a href="http://price-tracker-website.s3-website-us-west-2.amazonaws.com/">Price tracker</a>, which has a beautiful serverless architecture that I want to share with all of your.</p>
 
-<p>The story behind this app: I want to buy some items (for example skiing goggles, or new luggage set, or shoes), I want to get them for the best price and these items are not urgent for me so I can wait for a price drop. But I don’t want to hunt for sales and constantly check online stores for price decrease. I’ve got better things to do :)</p>
+<p>The story behind this app: I want to buy some items (such as skiing goggles, or new luggage set, or shoes), I want to get them for the best price and these items are not urgent for me so I can wait for a price drop. But I don’t want to hunt for sales and constantly check online stores for price decrease. I’ve got better things to do :)</p>
 
 <p>So I’ve developed a system, which tracks price changes for my desirable products in online stores (which I trust to buy from) and notifies me over the email when price drops.</p>
 
@@ -122,7 +122,7 @@
 
 <h2 id="technologies">Technologies</h2>
 
-<p>In autum 2015 I won a $100 AWS credit as a HackersRank prize in an algorithms coding contest and I decided to make a good use of it. So the platform of a choise to build this system is AWS. In addition to that, lately I am focused on everything JavaScript, thus the language of a choise is JavaScript: both for a frontend - React.js and backend - Node.js.</p>
+<p>In autumn 2015 I won a $100 AWS credit as a HackersRank prize in an algorithms coding contest and I decided to make a good use of it. So the platform of a choise to build this system is AWS. In addition to that, lately I am focused on everything JavaScript, thus the language of a choise is JavaScript: both for a frontend - React.js and backend - Node.js.</p>
 
 <p>Here is the architecture:
 <img src="/img/post_img/pt-architecture.png" alt="Architecture" class="right" /></p>
@@ -156,13 +156,13 @@ Now shortly about how I implemented each of my three major system components.</p
 
 <h2 id="pros-and-cons">Pros and Cons</h2>
 
-<p>Though it’s nice not to have a server and run everything on different services, and Lambda is a kind of magic, there are some drawbacks to it. In my case it’s perfect for Watcher and Notifier, but not that good for a data retrieval from DynamoDB. The problem is that in order to run Lambda function there is a lot of work done in the background (container creation, environmet configuration, etc.) before actually running my function, that takes some time. When the task is a background job - it’s totaly fine, but with UI - it gives me undesirable lag before loading my products for the first time. I don’t worry about it now, because I’m the only user of this system and visit this site once a week or so, but if someday there is more users than me, I’ll definately look into it and refactor this part of the system.</p>
+<p>Though it’s nice not to have a server and run everything on different services, and Lambda is a kind of magic, there are some drawbacks to it. In my case it’s perfect for Watcher and Notifier, but not that good for a data retrieval from DynamoDB. The problem is that in order to run Lambda function there is a lot of work done in the background (container creation, environment configuration, etc.) before actually running my function, that takes some time. When the task is a background job - it’s totally fine, but with UI - it gives me undesirable lag before loading my products for the first time. I don’t worry about it now, because I’m the only user of this system and visit this site once a week or so, but if someday there is more users than me, I’ll definitely look into it and refactor this part of the system.</p>
 
 <p>Besides this small issue, everything else works as a charm. And with deployment automation - it is a real pleasure to work on this “project”.</p>
 
 <p>Happy Architecting!</p>
 
-<p><em>P.S.: If you want to hear more about any part of this system - just leave a comment. And if you by any chance would like to try PriceTracker yourself - let me know, I’d be happy to setup it for you.</em></p>
+<p><em>P.S.: If you want to hear more about any part of this system - just leave a comment. And if you by any chance would like to try PriceTracker yourself - let me know, I’d be happy to set up it for you.</em></p>
 
             </article>
 
@@ -349,7 +349,7 @@ To check the website, follow this <a href="http://Lenabarinova.github.io/react-f
 <script src="https://gist.github.com/LenaBarinova/7244d61616f3427a8673.js"></script>
 Note: when using html in React don’t forget to rename class to className.</p>
 
-<p>Added a placeholder for my react components instead of all the html tags in my <em>index.html</em> and added refference to react and react-dom libraries as well as to my app.js file, which is being produced for me after running</p>
+<p>Added a placeholder for my react components instead of all the html tags in my <em>index.html</em> and added reference to react and react-dom libraries as well as to my app.js file, which is being produced for me after running</p>
 
 <pre><code>$gulp build
 </code></pre>
@@ -386,7 +386,7 @@ Note: when using html in React don’t forget to rename class to className.</p>
 
 <h2 id="step-4-flux">Step 4. Flux</h2>
 
-<p>So finaly, all preparation tasks are done and we can move forward and add Flux.
+<p>So finally, all preparation tasks are done and we can move forward and add Flux.
 First let’s start with installation.</p>
 
 <pre><code>$npm install flux --save
@@ -421,12 +421,12 @@ Picture is taken from <a href="https://facebook.github.io/flux/docs/overview.htm
 <p>This is my updated Menu component:
 <script src="https://gist.github.com/LenaBarinova/51022402974b0f06b70e.js"></script></p>
 
-<p>And here it is my Page compoenent:
+<p>And here it is my Page component:
 <script src="https://gist.github.com/LenaBarinova/5cac4ff430e13622c42f.js"></script></p>
 
 <h2 id="step-4-refactoring-and-tests">Step 4. Refactoring and Tests</h2>
 
-<p>I won’t be giving any detaled instruction here, but what I did - is refactored my code:</p>
+<p>I won’t be giving any detailed instruction here, but what I did - is refactored my code:</p>
 
 <ul>
   <li>Changed source file structure</li>
@@ -435,7 +435,7 @@ Picture is taken from <a href="https://facebook.github.io/flux/docs/overview.htm
   <li>Now working on tests, and I think, that they deserve a separate blog post.</li>
 </ul>
 
-<p>The final version of this example may be found on <a href="https://github.com/LenaBarinova/react-flux-example">GitHub</a>.</p>
+<p>The last version of this example may be found on <a href="https://github.com/LenaBarinova/react-flux-example">GitHub</a>.</p>
 
 <p>I just love how it works you can experience this smooth language change <a href="http://lenabarinova.github.io/react-flux-example/">here</a>.</p>
 

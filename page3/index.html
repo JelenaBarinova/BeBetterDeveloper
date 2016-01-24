@@ -169,7 +169,7 @@ gulp build
   <li>ensure max-heap invariant starting from the first item</li>
 </ul>
 
-<p>Let’s sort items [3 4 1 3 5 1 2]. As always I’ll use collors to specify <span style="color: #99cc00;">parent</span>, <span style="color: #0000ff;">child</span> or items to be <span style="color: #ff0000;">swapped</span>:</p>
+<p>Let’s sort items [3 4 1 3 5 1 2]. As always I’ll use colors to specify <span style="color: #99cc00;">parent</span>, <span style="color: #0000ff;">child</span> or items to be <span style="color: #ff0000;">swapped</span>:</p>
 
 <p>Step #1</p>
 
@@ -179,7 +179,7 @@ gulp build
    4   1
   3 5 1 2</pre>
 
-<p>To ensure max-heap invariant for the given set we need to take each node in the tree (except leafs) and recursively ensure it is bigger than any of the child nodes. As a reminder, our binary heap stores items starting from index 1, so we need to temporarily add null item at the begining: [null 3 4 1 3 5 1 2]</p>
+<p>To ensure max-heap invariant for the given set we need to take each node in the tree (except leafs) and recursively ensure it is bigger than any of the child nodes. As a reminder, our binary heap stores items starting from index 1, so we need to temporarily add null item at the beginning: [null 3 4 1 3 5 1 2]</p>
 
 <table>
   <tbody>

@@ -5,15 +5,15 @@
     <description>Practical notes on development</description>
     <link>http://www.bebetterdeveloper.com/</link>
     <atom:link href="http://www.bebetterdeveloper.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 22 Jan 2016 19:11:08 -0800</pubDate>
-    <lastBuildDate>Fri, 22 Jan 2016 19:11:08 -0800</lastBuildDate>
+    <pubDate>Sat, 23 Jan 2016 19:48:25 -0800</pubDate>
+    <lastBuildDate>Sat, 23 Jan 2016 19:48:25 -0800</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
         <title>Serverless system architecture using AWS, React and Node.js</title>
         <description>&lt;p&gt;This post is about my most recent freetime-killer “DIY project” - &lt;a href=&quot;http://price-tracker-website.s3-website-us-west-2.amazonaws.com/&quot;&gt;Price tracker&lt;/a&gt;, which has a beautiful serverless architecture that I want to share with all of your.&lt;/p&gt;
 
-&lt;p&gt;The story behind this app: I want to buy some items (for example skiing goggles, or new luggage set, or shoes), I want to get them for the best price and these items are not urgent for me so I can wait for a price drop. But I don’t want to hunt for sales and constantly check online stores for price decrease. I’ve got better things to do :)&lt;/p&gt;
+&lt;p&gt;The story behind this app: I want to buy some items (such as skiing goggles, or new luggage set, or shoes), I want to get them for the best price and these items are not urgent for me so I can wait for a price drop. But I don’t want to hunt for sales and constantly check online stores for price decrease. I’ve got better things to do :)&lt;/p&gt;
 
 &lt;p&gt;So I’ve developed a system, which tracks price changes for my desirable products in online stores (which I trust to buy from) and notifies me over the email when price drops.&lt;/p&gt;
 
@@ -31,7 +31,7 @@
 
 &lt;h2 id=&quot;technologies&quot;&gt;Technologies&lt;/h2&gt;
 
-&lt;p&gt;In autum 2015 I won a $100 AWS credit as a HackersRank prize in an algorithms coding contest and I decided to make a good use of it. So the platform of a choise to build this system is AWS. In addition to that, lately I am focused on everything JavaScript, thus the language of a choise is JavaScript: both for a frontend - React.js and backend - Node.js.&lt;/p&gt;
+&lt;p&gt;In autumn 2015 I won a $100 AWS credit as a HackersRank prize in an algorithms coding contest and I decided to make a good use of it. So the platform of a choise to build this system is AWS. In addition to that, lately I am focused on everything JavaScript, thus the language of a choise is JavaScript: both for a frontend - React.js and backend - Node.js.&lt;/p&gt;
 
 &lt;p&gt;Here is the architecture:
 &lt;img src=&quot;/img/post_img/pt-architecture.png&quot; alt=&quot;Architecture&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
@@ -65,13 +65,13 @@ Now shortly about how I implemented each of my three major system components.&lt
 
 &lt;h2 id=&quot;pros-and-cons&quot;&gt;Pros and Cons&lt;/h2&gt;
 
-&lt;p&gt;Though it’s nice not to have a server and run everything on different services, and Lambda is a kind of magic, there are some drawbacks to it. In my case it’s perfect for Watcher and Notifier, but not that good for a data retrieval from DynamoDB. The problem is that in order to run Lambda function there is a lot of work done in the background (container creation, environmet configuration, etc.) before actually running my function, that takes some time. When the task is a background job - it’s totaly fine, but with UI - it gives me undesirable lag before loading my products for the first time. I don’t worry about it now, because I’m the only user of this system and visit this site once a week or so, but if someday there is more users than me, I’ll definately look into it and refactor this part of the system.&lt;/p&gt;
+&lt;p&gt;Though it’s nice not to have a server and run everything on different services, and Lambda is a kind of magic, there are some drawbacks to it. In my case it’s perfect for Watcher and Notifier, but not that good for a data retrieval from DynamoDB. The problem is that in order to run Lambda function there is a lot of work done in the background (container creation, environment configuration, etc.) before actually running my function, that takes some time. When the task is a background job - it’s totally fine, but with UI - it gives me undesirable lag before loading my products for the first time. I don’t worry about it now, because I’m the only user of this system and visit this site once a week or so, but if someday there is more users than me, I’ll definitely look into it and refactor this part of the system.&lt;/p&gt;
 
 &lt;p&gt;Besides this small issue, everything else works as a charm. And with deployment automation - it is a real pleasure to work on this “project”.&lt;/p&gt;
 
 &lt;p&gt;Happy Architecting!&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;P.S.: If you want to hear more about any part of this system - just leave a comment. And if you by any chance would like to try PriceTracker yourself - let me know, I’d be happy to setup it for you.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;P.S.: If you want to hear more about any part of this system - just leave a comment. And if you by any chance would like to try PriceTracker yourself - let me know, I’d be happy to set up it for you.&lt;/em&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 22 Jan 2016 00:00:00 -0800</pubDate>
         <link>http://www.bebetterdeveloper.com/coding/architecture/serverless-system-architecture-using-aws.html</link>
@@ -290,7 +290,7 @@ To check the website, follow this &lt;a href=&quot;http://Lenabarinova.github.io
 &lt;script src=&quot;https://gist.github.com/LenaBarinova/7244d61616f3427a8673.js&quot;&gt;&lt;/script&gt;
 Note: when using html in React don’t forget to rename class to className.&lt;/p&gt;
 
-&lt;p&gt;Added a placeholder for my react components instead of all the html tags in my &lt;em&gt;index.html&lt;/em&gt; and added refference to react and react-dom libraries as well as to my app.js file, which is being produced for me after running&lt;/p&gt;
+&lt;p&gt;Added a placeholder for my react components instead of all the html tags in my &lt;em&gt;index.html&lt;/em&gt; and added reference to react and react-dom libraries as well as to my app.js file, which is being produced for me after running&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$gulp build
 &lt;/code&gt;&lt;/pre&gt;
@@ -327,7 +327,7 @@ Note: when using html in React don’t forget to rename class to className.&lt;/
 
 &lt;h2 id=&quot;step-4-flux&quot;&gt;Step 4. Flux&lt;/h2&gt;
 
-&lt;p&gt;So finaly, all preparation tasks are done and we can move forward and add Flux.
+&lt;p&gt;So finally, all preparation tasks are done and we can move forward and add Flux.
 First let’s start with installation.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$npm install flux --save
@@ -362,12 +362,12 @@ Picture is taken from &lt;a href=&quot;https://facebook.github.io/flux/docs/over
 &lt;p&gt;This is my updated Menu component:
 &lt;script src=&quot;https://gist.github.com/LenaBarinova/51022402974b0f06b70e.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
-&lt;p&gt;And here it is my Page compoenent:
+&lt;p&gt;And here it is my Page component:
 &lt;script src=&quot;https://gist.github.com/LenaBarinova/5cac4ff430e13622c42f.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;step-4-refactoring-and-tests&quot;&gt;Step 4. Refactoring and Tests&lt;/h2&gt;
 
-&lt;p&gt;I won’t be giving any detaled instruction here, but what I did - is refactored my code:&lt;/p&gt;
+&lt;p&gt;I won’t be giving any detailed instruction here, but what I did - is refactored my code:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Changed source file structure&lt;/li&gt;
@@ -376,7 +376,7 @@ Picture is taken from &lt;a href=&quot;https://facebook.github.io/flux/docs/over
   &lt;li&gt;Now working on tests, and I think, that they deserve a separate blog post.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;The final version of this example may be found on &lt;a href=&quot;https://github.com/LenaBarinova/react-flux-example&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The last version of this example may be found on &lt;a href=&quot;https://github.com/LenaBarinova/react-flux-example&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I just love how it works you can experience this smooth language change &lt;a href=&quot;http://lenabarinova.github.io/react-flux-example/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
@@ -455,7 +455,7 @@ Picture is taken from &lt;a href=&quot;https://facebook.github.io/flux/docs/over
 
 &lt;p&gt;&lt;img src=&quot;/img/post_img/fbog-share-dialog.png&quot; alt=&quot;Share dialog&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;In order to achive this, I had to add some code to my Jekyll templates and implement some workarounds with urls and domain configuration. That’s how I did it.&lt;/p&gt;
+&lt;p&gt;In order to archive this, I had to add some code to my Jekyll templates and implement some workarounds with urls and domain configuration. That’s how I did it.&lt;/p&gt;
 
 &lt;p&gt;First, I added meta tag generation to a head part of my post html:
 &lt;script src=&quot;https://gist.github.com/LenaBarinova/c63a40854bcd0569a9a6.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
@@ -618,7 +618,7 @@ First, we need to install &lt;a href=&quot;http://mochajs.org/&quot;&gt;Mocha&lt
 &lt;pre&gt;&lt;code&gt;$mocha
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;You shoud get this output:&lt;/p&gt;
+&lt;p&gt;You should get this output:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/post_img/vfd-3.png&quot; alt=&quot;Third step result&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
 
@@ -632,7 +632,7 @@ For this I used &lt;a href=&quot;https://www.npmjs.com/package/gulp-mocha&quot;&
 
 &lt;p&gt;&lt;strong&gt;First&lt;/strong&gt; - DOM mocking. You can find very good explanation about how to mock DOM in this &lt;a href=&quot;http://www.asbjornenge.com/wwc/testing_react_components.html&quot;&gt;blog post&lt;/a&gt;.
 To follow this example we need to install &lt;a href=&quot;https://github.com/tmpvar/jsdom&quot;&gt;jsdom&lt;/a&gt; and &lt;a href=&quot;https://github.com/rstacruz/mocha-jsdom&quot;&gt;mocha-jsdom&lt;/a&gt;.
-I’ve created &lt;em&gt;dom-mock.js&lt;/em&gt; file (it’s a bit different from what is given in the article, I adopted it to be compatable with the newest JSDOM version).
+I’ve created &lt;em&gt;dom-mock.js&lt;/em&gt; file (it’s a bit different from what is given in the article, I adopted it to be compatible with the newest JSDOM version).
 &lt;script src=&quot;https://gist.github.com/LenaBarinova/fab84f93dae04ca4123a.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Second&lt;/strong&gt; - install &lt;a href=&quot;https://www.npmjs.com/package/react-addons-test-utils&quot;&gt;React TestUtils add-on&lt;/a&gt;:&lt;/p&gt;
@@ -755,7 +755,7 @@ gulp build
   &lt;li&gt;ensure max-heap invariant starting from the first item&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Let’s sort items [3 4 1 3 5 1 2]. As always I’ll use collors to specify &lt;span style=&quot;color: #99cc00;&quot;&gt;parent&lt;/span&gt;, &lt;span style=&quot;color: #0000ff;&quot;&gt;child&lt;/span&gt; or items to be &lt;span style=&quot;color: #ff0000;&quot;&gt;swapped&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;Let’s sort items [3 4 1 3 5 1 2]. As always I’ll use colors to specify &lt;span style=&quot;color: #99cc00;&quot;&gt;parent&lt;/span&gt;, &lt;span style=&quot;color: #0000ff;&quot;&gt;child&lt;/span&gt; or items to be &lt;span style=&quot;color: #ff0000;&quot;&gt;swapped&lt;/span&gt;:&lt;/p&gt;
 
 &lt;p&gt;Step #1&lt;/p&gt;
 
@@ -765,7 +765,7 @@ gulp build
    4   1
   3 5 1 2&lt;/pre&gt;
 
-&lt;p&gt;To ensure max-heap invariant for the given set we need to take each node in the tree (except leafs) and recursively ensure it is bigger than any of the child nodes. As a reminder, our binary heap stores items starting from index 1, so we need to temporarily add null item at the begining: [null 3 4 1 3 5 1 2]&lt;/p&gt;
+&lt;p&gt;To ensure max-heap invariant for the given set we need to take each node in the tree (except leafs) and recursively ensure it is bigger than any of the child nodes. As a reminder, our binary heap stores items starting from index 1, so we need to temporarily add null item at the beginning: [null 3 4 1 3 5 1 2]&lt;/p&gt;
 
 &lt;table&gt;
   &lt;tbody&gt;
