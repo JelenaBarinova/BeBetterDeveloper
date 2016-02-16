@@ -5,8 +5,8 @@
     <description>Practical notes on development</description>
     <link>http://www.bebetterdeveloper.com/</link>
     <atom:link href="http://www.bebetterdeveloper.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 23 Jan 2016 19:48:25 -0800</pubDate>
-    <lastBuildDate>Sat, 23 Jan 2016 19:48:25 -0800</lastBuildDate>
+    <pubDate>Mon, 15 Feb 2016 17:38:50 -0800</pubDate>
+    <lastBuildDate>Mon, 15 Feb 2016 17:38:50 -0800</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -31,7 +31,7 @@
 
 &lt;h2 id=&quot;technologies&quot;&gt;Technologies&lt;/h2&gt;
 
-&lt;p&gt;In autumn 2015 I won a $100 AWS credit as a HackersRank prize in an algorithms coding contest and I decided to make a good use of it. So the platform of a choise to build this system is AWS. In addition to that, lately I am focused on everything JavaScript, thus the language of a choise is JavaScript: both for a frontend - React.js and backend - Node.js.&lt;/p&gt;
+&lt;p&gt;In autumn 2015 I won a $100 AWS credit as a HackersRank prize in an algorithms coding contest and I decided to make a good use of it. So the platform of a choice to build this system is AWS. In addition to that, lately I am focused on everything JavaScript, thus the language of a choice is JavaScript: both for a frontend - React.js and backend - Node.js.&lt;/p&gt;
 
 &lt;p&gt;Here is the architecture:
 &lt;img src=&quot;/img/post_img/pt-architecture.png&quot; alt=&quot;Architecture&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
