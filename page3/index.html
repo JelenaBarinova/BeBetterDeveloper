@@ -78,6 +78,8 @@
         
           
         
+          
+        
     </nav>
 
     <h1>
@@ -95,6 +97,167 @@
         <div class="home">
 
   <ul class="post-list">
+    
+      <li>
+        <!-- <span class="post-meta">Jul 16, 2015</span> -->
+        <h1 style="text-align: left"><a class="post-link" href="/coding/getting-started-react-mocha.html">Getting started w/ React & Mocha</a>
+          </h1>
+          <p>
+            <article class="post-content">
+            <p><em>11/23/2015: I updated this blog post as well as the code to support the newest version of React, ReactDOM, ReactTestUtils, Mocha, JSDOM, Babel. The changed are really minor, but may be frustraiting for some. For those, who are interested in how should this code be written using older version of these libs (React 0.13.3, Mocha 2.0.1, JSDOM 3.1.2, Mocha-JSDOM 1.0.0, Babel 5.1.13) please clone this <a href="https://github.com/LenaBarinova/react-mocha-example/tree/9b71d468a1b7af5b6366be71a3e0dee9b45e3f37">commit from GitHub</a>.</em></p>
+
+<p>It took me half day to setup [almost] empty environment for React app development with testing done using Mocha.
+I decided to share my findings here so it would remain.
+<img src="/img/post_img/vfd-react-mocha.png" alt="React and Mocha logo" class="right" /></p>
+
+<h2 id="my-target">My target</h2>
+<p>I wanted to create an environment for further React development. The things that I needed to have:</p>
+
+<ul>
+  <li>source structure, that would be suitable for medium-sized project</li>
+  <li>build scripts, that would do all needed transformations, run tests, show the output of my app</li>
+  <li>Mocha as a test framework of choice</li>
+</ul>
+
+<p>For build scripts I prefer to use gulp.</p>
+
+<h2 id="tldr">tl;dr</h2>
+<p>You can find working code <a href="https://github.com/LenaBarinova/react-mocha-example">here</a>. Just download it and run</p>
+
+<pre><code>$npm install
+</code></pre>
+
+<p>followed by</p>
+
+<pre><code>$npm test
+</code></pre>
+
+<p>If you are using Visual Studio Code - you can build it using <code>⇧⌘B</code> (on Mac).</p>
+
+<h2 id="how-i-did-it">How I did it</h2>
+<p>I started with these three stages:</p>
+
+<ol>
+  <li>Prepare the environment</li>
+  <li>Create first React component</li>
+  <li>Add Mocha tests</li>
+</ol>
+
+<h2 id="step-1-prepare-the-environment">Step 1. Prepare the environment</h2>
+<p>First install <a href="https://nodejs.org/">Node.js</a> (if you don’t have it yet).
+In your project directory (<em>react-mocha-example</em> in my case) through Terminal do:</p>
+
+<pre><code>$npm init
+</code></pre>
+
+<p>and follow the instruction. Then run this command to install libraries to setup the working environment:</p>
+
+<pre><code>$npm install react react-dom babel babel-preset-es2015 babel-preset-react gulp gulp-load-plugins browserify babelify babel-core vinyl-source-stream gulp-open --save-dev
+</code></pre>
+
+<p>Now your <em>package.json</em> should look like this:
+<script src="https://gist.github.com/LenaBarinova/31ce415a9beac855c75e.js"></script></p>
+
+<p>Add <em>.babelrc</em> file to your project root with these settings:
+<script src="https://gist.github.com/LenaBarinova/23f8af665b0a8b15c855.js"></script></p>
+
+<p>Create <em>gulpfile.js</em> to configure build steps:
+<script src="https://gist.github.com/LenaBarinova/143d0b90f977e60184fa.js"></script>
+I’m using <a href="https://www.npmjs.com/package/gulp-load-plugins">gulp-load-plugins</a> for easy and fast use of different gulp plugins. It enables me to access all the plugins I have listed in package.json file without ‘require’ each of them separately.</p>
+
+<p>So now everything is ready to start really writing a code. Create <em>index.html</em> file:
+<script src="https://gist.github.com/LenaBarinova/65ee857afca288768cb6.js"></script></p>
+
+<p>Run build command: either using <code>⇧⌘B</code> (from Visual Studio Code on Mac) or command line:</p>
+
+<pre><code>$gulp build
+</code></pre>
+
+<p>And you should get Chrome opened with very first version of our app.</p>
+
+<p><img src="/img/post_img/vfd-1.png" alt="First step result" class="right" /></p>
+
+<h2 id="step-2-create-first-react-component">Step 2. Create first React component</h2>
+<p>Create a <em>components</em> directory and <em>component.jsx</em> file in it:
+<script src="https://gist.github.com/LenaBarinova/8a04f9f62934b4773b5d.js"></script></p>
+
+<p>Add this componenet to DOM (I did it in <em>app.jsx</em> file in my project root directroy <em>react-mocha-example</em>)
+<script src="https://gist.github.com/LenaBarinova/2d3096930e0f739ab7e5.js"></script></p>
+
+<p>Run build task and we can see our React component in a browser.</p>
+
+<p><img src="/img/post_img/vfd-2.png" alt="Second step result" class="right" /></p>
+
+<h2 id="step-3-adding-first-mocha-test">Step 3. Adding first Mocha test</h2>
+<p>This was the trickiest step for me. I found a couple of good articles on the topic. These are my favourite:</p>
+
+<ul>
+  <li><a href="https://github.com/jesstelford/react-isomorphic-boilerplate">Isomorphic Server &amp; Browser Side Rendering with React (in 3 parts)</a></li>
+  <li><a href="http://www.hammerlab.org/2015/02/14/testing-react-web-apps-with-mocha/">Testing React Web Apps with Mocha (in 2 parts)</a></li>
+  <li><a href="http://www.asbjornenge.com/wwc/testing_react_components.html">Testing React Components</a></li>
+</ul>
+
+<p>Ok, let’s begin.
+First, we need to install <a href="http://mochajs.org/">Mocha</a>. To do it, run npm install command with –save-dev, this way your <em>package.json</em> file will be kept updated with all the dependances you use:</p>
+
+<pre><code>$npm install mocha --save-dev
+</code></pre>
+
+<p>Create test directory and a first <em>empty-test.js</em>, which just asserts true all the time.
+<script src="https://gist.github.com/LenaBarinova/a5a34db9c6a9cf8ccb38.js"></script></p>
+
+<p>You can try whether it works just running Mocha from command line from you project root folder:</p>
+
+<pre><code>$mocha
+</code></pre>
+
+<p>You should get this output:</p>
+
+<p><img src="/img/post_img/vfd-3.png" alt="Third step result" class="right" /></p>
+
+<p>Now let’s add test running step in our gulp configuration.
+For this I used <a href="https://www.npmjs.com/package/gulp-mocha">gulp-mocha</a> - a gulp plugin wrapper around Mocha.</p>
+
+<p>Now add a new ‘test’ step in <em>gulpfile.js</em> to run mocha:
+<script src="https://gist.github.com/LenaBarinova/7d65aec1091f2ded3063.js"></script></p>
+
+<p>Before moving on to testing our React component, we need to take care of a couple of things.</p>
+
+<p><strong>First</strong> - DOM mocking. You can find very good explanation about how to mock DOM in this <a href="http://www.asbjornenge.com/wwc/testing_react_components.html">blog post</a>.
+To follow this example we need to install <a href="https://github.com/tmpvar/jsdom">jsdom</a> and <a href="https://github.com/rstacruz/mocha-jsdom">mocha-jsdom</a>.
+I’ve created <em>dom-mock.js</em> file (it’s a bit different from what is given in the article, I adopted it to be compatible with the newest JSDOM version).
+<script src="https://gist.github.com/LenaBarinova/fab84f93dae04ca4123a.js"></script></p>
+
+<p><strong>Second</strong> - install <a href="https://www.npmjs.com/package/react-addons-test-utils">React TestUtils add-on</a>:</p>
+
+<pre><code>$npm install react-addons-test-utils --save-dev
+</code></pre>
+
+<p>And finally - the test! I’ve created <em>component-test.js</em> file in test directory:
+<script src="https://gist.github.com/LenaBarinova/c4fd4c4cdad19b28fe0f.js"></script></p>
+
+<p>Run build. Hurray! The test is passing:</p>
+
+<p><img src="/img/post_img/vfd-4.png" alt="Fourth step result" class="right" /></p>
+
+<p>You can also configure your <em>package.json</em> - to run tests from command line using npm. For this add test section in your <em>package.json</em> like this:
+<script src="https://gist.github.com/LenaBarinova/085b9e9c727f166df806.js"></script></p>
+
+<p>Now you can run:</p>
+
+<pre><code>$npm test
+</code></pre>
+
+<p>That’s it! You can download the latest code for this example from <a href="https://github.com/LenaBarinova/react-mocha-example">GitHub</a>.</p>
+
+<p>Happy Testing!</p>
+
+            </article>
+
+            </p>
+            <hr>
+            <br>
+      </li>
     
       <li>
         <!-- <span class="post-meta">Jul 14, 2015</span> -->
@@ -390,51 +553,6 @@ gulp build
 footer=minimal"></script>
 
 <p><strong>Complexity</strong>: O(n·logn)</p>
-
-            </article>
-
-            </p>
-            <hr>
-            <br>
-      </li>
-    
-      <li>
-        <!-- <span class="post-meta">Feb 15, 2014</span> -->
-        <h1 style="text-align: left"><a class="post-link" href="/data%20structure/data-structure-max-priority-queue.html">Data Structure: Max Priority Queue</a>
-          </h1>
-          <p>
-            <article class="post-content">
-            <p>Today I will implement another important abstract data type – <a href="http://en.wikipedia.org/wiki/Priority_queue">priority queue</a>. Priority queues are used:</p>
-
-<ul>
-  <li>in heap sort</li>
-  <li>to track top N elements in a very long sequence</li>
-  <li>to merge K ordered sequences and produce single ordered sequence</li>
-</ul>
-
-<p>Usually priority queues have following functions:</p>
-
-<ul>
-  <li>insert() – to add new item with a priority</li>
-  <li>deleteMin() or deleteMax() – to remove an item with min/max priority</li>
-  <li>findMin() or findMax() – to get an item with min/max priority</li>
-  <li>length() – to get the number of items in the priority queue</li>
-</ul>
-
-<p>As a foundation I’ll use in the <a href="http://www.bebetterdeveloper.com/data-structure-binary-heap/">last post</a> described efficient data structure – binary heap (in fact, max-heap). Overall, priority queue can be seen as a generalization of <a href="http://www.bebetterdeveloper.com/data-structure-stack-array/">stack</a> and <a href="http://www.bebetterdeveloper.com/data-structure-queue/">queue</a> data structures. Stack can be implemented as a max priority queue where priority of each inserted element is monotonically increasing and queue – where priority of each inserted element is monotonically decreasing.</p>
-
-<p>The implementation of max priority queue (<a href="https://github.com/sergejusb/algorithms/blob/master/data-structures/maxPriorityQueue_tests.js">tests</a>) is almost identical to the max-heap implementation:</p>
-
-<script type="text/javascript" src="http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/maxPriorityQueue.js?
-footer=minimal"></script>
-
-<p><strong>Complexity</strong>:</p>
-
-<ul>
-  <li>insert - O(logn)</li>
-  <li>deleteMin/deleteMax - O(logn)</li>
-  <li>findMin/findMax - O(1)</li>
-</ul>
 
             </article>
 

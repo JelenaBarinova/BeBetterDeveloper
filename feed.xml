@@ -5,9 +5,202 @@
     <description>Practical notes on development</description>
     <link>http://www.bebetterdeveloper.com/</link>
     <atom:link href="http://www.bebetterdeveloper.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 15 Feb 2016 17:38:50 -0800</pubDate>
-    <lastBuildDate>Mon, 15 Feb 2016 17:38:50 -0800</lastBuildDate>
-    <generator>Jekyll v2.4.0</generator>
+    <pubDate>Thu, 24 Mar 2016 11:45:33 -0700</pubDate>
+    <lastBuildDate>Thu, 24 Mar 2016 11:45:33 -0700</lastBuildDate>
+    <generator>Jekyll v3.0.3</generator>
+    
+      <item>
+        <title>Creating multilingual website w/ React &amp; Redux</title>
+        <description>&lt;p&gt;Here is another post in series about React. This time I’m exploring Redux. I assume you know what Redux is already (otherwise, read &lt;a href=&quot;redux.js.org&quot;&gt;redux.js.org&lt;/a&gt; to learn about it). If you haven’t read my blog post &lt;a href=&quot;http://www.bebetterdeveloper.com/coding/getting-started-react-flux.html&quot;&gt;Creating multilingual website w/ React &amp;amp; Flux&lt;/a&gt; - I’d recommend you go through it, because I will be doing exactly the same thing here but using Redux instead of Flux.
+&lt;img src=&quot;/img/post_img/rre-1.png&quot; alt=&quot;React and Redux logo&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;my-target&quot;&gt;My target&lt;/h2&gt;
+
+&lt;p&gt;I want to create a simple multilingual website. I need to have:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;source structure and process suitable for mid-sized project&lt;/li&gt;
+  &lt;li&gt;fast update of UI on language change (desirably without page refresh)&lt;/li&gt;
+  &lt;li&gt;easy testable solution&lt;/li&gt;
+  &lt;li&gt;explore Redux&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’ll use ES6 where it is suitable, I automate dev process using Gulp.&lt;/p&gt;
+
+&lt;h2 id=&quot;result&quot;&gt;Result&lt;/h2&gt;
+
+&lt;p&gt;The main purpose of this project is to get my hands on Redux, thus the output is not that important, but you can check the result &lt;a href=&quot;http://Lenabarinova.github.io/react-redux-example/&quot;&gt;here&lt;/a&gt;. This is how it looks.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/post_img/out.gif&quot; alt=&quot;Switch language&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Two menus: left and right - left scrolls to different anchors in html, the right menu switches the language.&lt;/p&gt;
+
+&lt;p&gt;Working code in &lt;a href=&quot;https://github.com/LenaBarinova/react-redux-example&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;clone--install&quot;&gt;Clone &amp;amp; install&lt;/h2&gt;
+
+&lt;p&gt;Just download the code and run from within &lt;em&gt;react-redux-example&lt;/em&gt; directory&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$npm install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you are using Visual Studio Code - you can build it using &lt;code&gt;⇧⌘B&lt;/code&gt; (on Mac), otherwise use:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$gulp build
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you don not have Gulp installed on your machine, you should install it globally before moving forward:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$npm install gulp -g
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To view a result on your local machine, just open &lt;em&gt;index.html&lt;/em&gt; from &lt;em&gt;react-redux-example/dist&lt;/em&gt; folder in a browser.&lt;/p&gt;
+
+&lt;h2 id=&quot;code-walk-through&quot;&gt;Code walk-through&lt;/h2&gt;
+
+&lt;p&gt;Let me guide you through this example step by step. Here is a list of actions:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;/coding/getting-started-react-redux.html#step-1-setting-development-environment&quot;&gt;Setting development environment&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/coding/getting-started-react-redux.html#step-2-supportive-functions&quot;&gt;Supportive functions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/coding/getting-started-react-redux.html#step-3-ui-components&quot;&gt;UI components&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/coding/getting-started-react-redux.html#step-4-starting-point&quot;&gt;Starting point&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/coding/getting-started-react-redux.html#step-5-redux&quot;&gt;Redux&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;step-1-setting-development-environment&quot;&gt;Step 1. Setting development environment&lt;/h2&gt;
+
+&lt;p&gt;I use &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt; as my IDE. For development tasks such as run tests, build, deploy - I use &lt;a href=&quot;http://gulpjs.com/&quot;&gt;gulp&lt;/a&gt;, you can check my tasks configuration in &lt;em&gt;react-redux-example/gulpfile.js&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-2-supportive-functions&quot;&gt;Step 2. Supportive functions&lt;/h2&gt;
+
+&lt;p&gt;On my website I want to show the content in three languages. I have created &lt;em&gt;data/content.json&lt;/em&gt; file to hold the text in structured form so I could manipulate it easily later. This is my simplified ‘database’.&lt;/p&gt;
+
+&lt;p&gt;To retrieve data from my ‘database’ (I mean from my json) I have created a fake API function in &lt;em&gt;api.js&lt;/em&gt;. Later on I’ll just call my API to get data. It is as simple as this:
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/9b0c04120dd196f5f23d.js&quot;&gt;&lt;/script&gt;
+This is the place you should put a call to your real API or database to retrieve your actual data.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-3-ui-components&quot;&gt;Step 3. UI components&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/post_img/rre-3.png&quot; alt=&quot;Switch language&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;My UI consist of very few simple components: it’s a couple of containers to show text and a menu to navigate through that text as well as change the language of the text being shown.&lt;/p&gt;
+
+&lt;p&gt;For that I have created 4 React components: &lt;strong&gt;Menu, About, Home&lt;/strong&gt; and &lt;strong&gt;Page&lt;/strong&gt;. In the picture above, you can see my components tree.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Home&lt;/strong&gt; and &lt;strong&gt;About&lt;/strong&gt; components are only for information display purpose, they do not have any logic inside, they just get data through &lt;code&gt;props&lt;/code&gt; and simply show it.&lt;/p&gt;
+
+&lt;p&gt;This is how &lt;em&gt;home.jsx&lt;/em&gt; looks like:
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/a91a9a9d2f23963f3a7d.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;And here I have my &lt;em&gt;about.jsx&lt;/em&gt;:
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/217c8c918a449ee4c500.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Menu&lt;/strong&gt; component also gets content through &lt;code&gt;props&lt;/code&gt;, but in addition to that, it gets the function that should be called on language switch.
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/3b086bd93c3628000fa3.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;To bring these components together I have a wrapper component &lt;strong&gt;Page&lt;/strong&gt;. It’s job is to create &lt;strong&gt;Home, Menu and About&lt;/strong&gt; and pass correct data to each of these components. &lt;strong&gt;Page&lt;/strong&gt; itself gets all the content it shares to child components, through &lt;code&gt;props&lt;/code&gt; as well. I’ll show code for the &lt;strong&gt;Page&lt;/strong&gt; in &lt;a href=&quot;/coding/getting-started-react-redux.html#step-5-redux&quot;&gt;Step 5. Redux&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-4-bringing-it-all-together&quot;&gt;Step 4. Bringing it all together&lt;/h2&gt;
+
+&lt;p&gt;So I have a very simple almost empty &lt;em&gt;index.html&lt;/em&gt; with a placeholder &lt;code&gt;div&lt;/code&gt; &lt;em&gt;page&lt;/em&gt; defined, which later will hold my react component.
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/451160ffc734da7e4819.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Finally, I have a &lt;em&gt;app.jsx&lt;/em&gt; file. The content of which I’m gonna explain in the next step (&lt;a href=&quot;/coding/getting-started-react-redux.html#step-5-redux&quot;&gt;Step 5. Redux&lt;/a&gt;), since it involves Redux. Basically in this file I render my &lt;strong&gt;Page&lt;/strong&gt; react component into my &lt;em&gt;page&lt;/em&gt; &lt;code&gt;div&lt;/code&gt; and pass data to it.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-5-redux&quot;&gt;Step 5. Redux&lt;/h2&gt;
+
+&lt;p&gt;After all preparations are done, we can move forward and start with Redux.&lt;/p&gt;
+
+&lt;p&gt;For Redux in this example I use two libraries: Redux and React-Redux. If you haven’t done it already - go ahead and install them:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$npm install redux react-redux --save
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is what I want to achieve: when new language is selected in the &lt;strong&gt;Menu&lt;/strong&gt; component, action is invoked and the state is changed (to hold a content in different language) and the new content from a state is being passed to &lt;strong&gt;Page&lt;/strong&gt; and from there down to all children.&lt;/p&gt;
+
+&lt;p&gt;Here is how I would do that using Flux.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/post_img/rre-4.png&quot; alt=&quot;Redux flow&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The flow looks similar when using Redux with some differences: Flux Store’s role is covered by Reducer, there is no Dispatcher and no support for multiple stores in Redux.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/post_img/rre-2.png&quot; alt=&quot;Redux flow&quot; class=&quot;right&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s map this diagram items with my code.&lt;/p&gt;
+
+&lt;p&gt;In my &lt;em&gt;actions.js&lt;/em&gt; file I have one action, named &lt;em&gt;switchLanguage&lt;/em&gt;, it holds &lt;em&gt;action_type&lt;/em&gt; and a property &lt;em&gt;language&lt;/em&gt; (to pass the value of user’s selected language for the content to be shown):
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/63e98ba22af870ee6875.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;And &lt;em&gt;action_type&lt;/em&gt; is a simple constant defined in &lt;em&gt;action_types.js&lt;/em&gt; file
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/8409357b2c008959d082.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Then, in &lt;em&gt;reducer.js&lt;/em&gt; file I have defined initial state named &lt;em&gt;initialState&lt;/em&gt; for my app - it holds a text in default language (English) retrieved from my database. And  I have a function named &lt;em&gt;reducer&lt;/em&gt;, that returns me a new state according to the given action. So if &lt;em&gt;reducer&lt;/em&gt; is called with &lt;em&gt;switchLanguage&lt;/em&gt; action as a parameter, it will return me the content of the page in a language provided as a property in action.
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/b67e7022ab514d333324.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we have an initial state of the app, the description of state’s mutation (action) and a function to handle this mutation (reducer). Let’s move on to the presentation part.&lt;/p&gt;
+
+&lt;p&gt;As I mentioned before, I have &lt;em&gt;app.jsx&lt;/em&gt; as an entry point of my app. If I were not using Redux, I would simply render my &lt;strong&gt;Page&lt;/strong&gt; component into my &lt;code&gt;page&lt;/code&gt; div like this:
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/181d67b6f61064e92865.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Since I’m using Redux, I need to do a bit more here. First, I need to create complete state of my app (usually called store). For this I’m using Redux helper function &lt;em&gt;createStore&lt;/em&gt;: it takes my &lt;em&gt;reducer&lt;/em&gt; and returns me state (read &lt;a href=&quot;http://redux.js.org/docs/api/createStore.html&quot;&gt;Redux documentation&lt;/a&gt; for more about this function and Redux API). Second, I need to pass my &lt;em&gt;store&lt;/em&gt; to my &lt;strong&gt;Page&lt;/strong&gt; component. Here I’m using &lt;em&gt;Provider&lt;/em&gt; from React-Redux module (for more on this topic read &lt;a href=&quot;https://github.com/reactjs/react-redux/blob/master/docs/api.md&quot;&gt;React-Redux documentation&lt;/a&gt;). &lt;em&gt;Provider&lt;/em&gt; takes your app’s store and your components and passes store to those of components, that are ‘connected to store’ using &lt;em&gt;connect()&lt;/em&gt; function (from React-Redux lib).
+Here is the code:
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/88aeb733147022fc6592.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;And the final part of this puzzle - &lt;strong&gt;Page&lt;/strong&gt; component, which is ‘connected to store’ and gets the store from &lt;em&gt;Provider&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here is it’s code:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/LenaBarinova/5a526c660ea536011c7a.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;As you probably have noticed, in my &lt;em&gt;app.jsx&lt;/em&gt; when creating &lt;strong&gt;Page&lt;/strong&gt; component I do not pass any &lt;code&gt;props&lt;/code&gt; to it, only to &lt;em&gt;Provider&lt;/em&gt;, but inside the &lt;strong&gt;Page&lt;/strong&gt; I refer to &lt;code&gt;props&lt;/code&gt;. This is enabled by React-Redux: from one side, in &lt;strong&gt;Page&lt;/strong&gt; I have connected &lt;strong&gt;Page&lt;/strong&gt; to store using connect() function, and in &lt;em&gt;app.jsx&lt;/em&gt; I use &lt;em&gt;Provider&lt;/em&gt;, which actually pass store to my &lt;strong&gt;Page&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The trickiest part for me was the usage of &lt;em&gt;connect()&lt;/em&gt;, it does both: makes your component subscribed to store updates and handles dispatching for provided function.&lt;/p&gt;
+
+&lt;h2 id=&quot;literature&quot;&gt;Literature&lt;/h2&gt;
+
+&lt;p&gt;While exploring Redux and making my first Redux app work - I’ve read many blog posts, watched video tutorials and browsed many github repositories. Here is the list of resources, that I’ve found most useful:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://egghead.io/series/getting-started-with-redux&quot;&gt;Video training on Redux by the author&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.sitepoint.com/how-to-build-a-todo-app-using-react-redux-and-immutable-js/&quot;&gt;How to build a Todo app using React, Redux and Immutable.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://redux.js.org/&quot;&gt;Redux documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/reactjs/react-redux/tree/master/docs&quot;&gt;React-Redux documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.jchapron.com/2015/08/14/getting-started-with-redux/&quot;&gt;Getting started with Redux&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.krawaller.se/posts/a-react-redux-example-app/&quot;&gt;A React-Redux example app&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;My earlier posts in React series:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.bebetterdeveloper.com/coding/getting-started-react-flux.html&quot;&gt;Creating multilingual website w/ React &amp;amp; Flux&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html&quot;&gt;Getting started w/ React &amp;amp; Mocha&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.bebetterdeveloper.com/coding/shallow-rendering-react-mocha.html&quot;&gt;Testing React components using Shallow Rendering&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.bebetterdeveloper.com/coding/es6-react-babel.html&quot;&gt;ES2015 + React using Gulp&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 26 Feb 2016 00:00:00 -0800</pubDate>
+        <link>http://www.bebetterdeveloper.com/coding/getting-started-react-redux.html</link>
+        <guid isPermaLink="true">http://www.bebetterdeveloper.com/coding/getting-started-react-redux.html</guid>
+        
+        <category>JavaScript</category>
+        
+        <category>React</category>
+        
+        <category>Gulp</category>
+        
+        <category>ES2015</category>
+        
+        <category>ES6</category>
+        
+        <category>Redux</category>
+        
+        <category>multilingual</category>
+        
+        
+        <category>Coding</category>
+        
+      </item>
     
       <item>
         <title>Serverless system architecture using AWS, React and Node.js</title>
@@ -100,9 +293,9 @@ Now shortly about how I implemented each of my three major system components.&lt
         <category>S3</category>
         
         
-        <category>coding</category>
+        <category>Coding</category>
         
-        <category>architecture</category>
+        <category>Architecture</category>
         
       </item>
     
@@ -188,7 +381,7 @@ Here’s my test:
         <category>Shallow rendering</category>
         
         
-        <category>coding</category>
+        <category>Coding</category>
         
       </item>
     
@@ -397,7 +590,7 @@ Picture is taken from &lt;a href=&quot;https://facebook.github.io/flux/docs/over
         <category>multilingual</category>
         
         
-        <category>coding</category>
+        <category>Coding</category>
         
       </item>
     
@@ -443,7 +636,7 @@ Picture is taken from &lt;a href=&quot;https://facebook.github.io/flux/docs/over
         <category>dev environment</category>
         
         
-        <category>coding</category>
+        <category>Coding</category>
         
       </item>
     
@@ -505,7 +698,7 @@ Picture is taken from &lt;a href=&quot;https://facebook.github.io/flux/docs/over
         <category>social sharing</category>
         
         
-        <category>deployment</category>
+        <category>Deployment</category>
         
       </item>
     
@@ -674,7 +867,7 @@ I’ve created &lt;em&gt;dom-mock.js&lt;/em&gt; file (it’s a bit different fro
         <category>React</category>
         
         
-        <category>coding</category>
+        <category>Coding</category>
         
       </item>
     
@@ -734,7 +927,7 @@ gulp build
         <category>dev environment</category>
         
         
-        <category>coding</category>
+        <category>Coding</category>
         
       </item>
     
@@ -986,9 +1179,9 @@ footer=minimal&quot;&gt;&lt;/script&gt;
         <category>Heap Sort</category>
         
         
-        <category>algorithms</category>
+        <category>Algorithms</category>
         
-        <category>sorting</category>
+        <category>Sorting</category>
         
       </item>
     
@@ -1035,77 +1228,7 @@ footer=minimal&quot;&gt;&lt;/script&gt;
         <category>Priority Queue</category>
         
         
-        <category>data structure</category>
-        
-      </item>
-    
-      <item>
-        <title>Data Structure: Binary Heap</title>
-        <description>&lt;p&gt;Today I will implement very efficient data structure – &lt;a href=&quot;http://en.wikipedia.org/wiki/Binary_heap&quot;&gt;binary heap&lt;/a&gt;. Binary heap – is an array-based &lt;a href=&quot;http://en.wikipedia.org/wiki/Binary_tree#Types_of_binary_trees&quot;&gt;complete binary tree&lt;/a&gt; (&lt;em&gt;binary tree in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible&lt;/em&gt;) which satisfies one of the following ordering properties:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;min-heap – the value of each node is not smaller than value of its parent with smallest element at the root;&lt;/li&gt;
-  &lt;li&gt;max-heap – the value of each node is not bigger than value of its parent with biggest element at the root
-Binary heap is a foundation for an abstract data type - &lt;a href=&quot;http://en.wikipedia.org/wiki/Priority_queue&quot;&gt;priority queue&lt;/a&gt;, wich I will cover in next post.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Due to the nature of binary heap (complete binary tree) it can be very efficiently implemented using &lt;a href=&quot;https://en.wikipedia.org/wiki/Dynamic_array&quot;&gt;dynamic array&lt;/a&gt;. Items in the array are usually stored starting from index 1, thus allowing very easy navigation through binary heap:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;for the item with index k its parent index is &lt;strong&gt;k &amp;gt;&amp;gt; 1&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;for the item with index k children indexes are &lt;strong&gt;k &amp;lt;&amp;lt; 1&lt;/strong&gt; and &lt;strong&gt;k &amp;lt;&amp;lt; 1 + 1&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Usually binary heaps have following functions:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;insert() – to add new item&lt;/li&gt;
-  &lt;li&gt;delete() – to remove min or max item (depending on the ordering)&lt;/li&gt;
-  &lt;li&gt;length() – to get the number of items in binary heap&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;To add new item:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;add the item to the bottom level of the binary heap (as the last possible item)&lt;/li&gt;
-  &lt;li&gt;compare added item with its parent&lt;/li&gt;
-  &lt;li&gt;if they are in correct order – break&lt;/li&gt;
-  &lt;li&gt;else – exchange items and repeat with the parent
-&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Heap_add_step1.svg/300px-Heap_add_step1.svg.png&quot; alt=&quot;&quot; /&gt;&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Heap_add_step2.svg/300px-Heap_add_step2.svg.png&quot; alt=&quot;&quot; /&gt;&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Heap_add_step3.svg/300px-Heap_add_step3.svg.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;To delete maximum item (for max-heap) or minimum item (for min-heap):&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;replace the root of the binary heap with the last item on the bottom level&lt;/li&gt;
-  &lt;li&gt;compare new root with the biggest (for max-heap) or  smallest (for min-heap) of children&lt;/li&gt;
-  &lt;li&gt;if they are in correct order – break&lt;/li&gt;
-  &lt;li&gt;else – exchange items and repeat with the selected child
-&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Heap_delete_step0.svg/300px-Heap_delete_step0.svg.png&quot; alt=&quot;&quot; /&gt;&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Heap_remove_step1.svg/300px-Heap_remove_step1.svg.png&quot; alt=&quot;&quot; /&gt;&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Heap_remove_step2.svg/300px-Heap_remove_step2.svg.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Bellow you can find possible implementation of the binary heap (&lt;a href=&quot;https://github.com/sergejusb/algorithms/blob/master/data-structures/binaryHeap_tests.js&quot;&gt;tests&lt;/a&gt;):&lt;/p&gt;
-
-&lt;script type=&quot;text/javascript&quot; src=&quot;http://gist-it.appspot.com/https://github.com/sergejusb/algorithms/blob/master/data-structures/binaryHeap.js?
-footer=minimal&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;&lt;strong&gt;Complexity&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;insert - O(logn)&lt;/li&gt;
-  &lt;li&gt;delete - O(logn)&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 06 Jan 2014 00:00:00 -0800</pubDate>
-        <link>http://www.bebetterdeveloper.com/data%20structure/data-structure-binary-heap.html</link>
-        <guid isPermaLink="true">http://www.bebetterdeveloper.com/data%20structure/data-structure-binary-heap.html</guid>
-        
-        <category>Binary Heap</category>
-        
-        <category>Dynamic Array</category>
-        
-        
-        <category>data structure</category>
+        <category>Data Structure</category>
         
       </item>
     

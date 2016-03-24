@@ -78,6 +78,8 @@
         
           
         
+          
+        
     </nav>
 
     <h1>
@@ -95,6 +97,205 @@
         <div class="home">
 
   <ul class="post-list">
+    
+      <li>
+        <!-- <span class="post-meta">Nov 20, 2015</span> -->
+        <h1 style="text-align: left"><a class="post-link" href="/coding/getting-started-react-flux.html">Creating multilingual website w/ React & Flux</a>
+          </h1>
+          <p>
+            <article class="post-content">
+            <p>My post on <a href="http://www.bebetterdeveloper.com/coding/getting-started-react-mocha.html">Getting started w/ React &amp; Mocha</a> just made it up to the Top 1 of all my blog posts, reaching 1000 uniqueue views, so I decided to continue these series.
+<img src="/img/post_img/rfe-1.png" alt="React and Flux logo" class="right" /></p>
+
+<h2 id="my-target">My target</h2>
+
+<p>This time I want to create a simple multilingual website. I need to have:</p>
+
+<ul>
+  <li>source structure and process suitable for mid-sized project</li>
+  <li>fast update of UI on language change (desirably without page refresh)</li>
+  <li>easy testable solution</li>
+</ul>
+
+<p>I’ll use ES6 where it is suitable, I automate dev process using Gulp.</p>
+
+<h2 id="result">Result</h2>
+
+<p>This is how the final result looks like:</p>
+
+<p><img src="/img/post_img/out.gif" alt="Switch language" /></p>
+
+<p>Working code in <a href="https://github.com/LenaBarinova/react-flux-example">GitHub</a>.
+To check the website, follow this <a href="http://Lenabarinova.github.io/react-flux-example/">link</a>.</p>
+
+<h2 id="tldr">tl;dr</h2>
+
+<p>Just download the code and run</p>
+
+<pre><code>$npm install
+</code></pre>
+
+<p>If you are using Visual Studio Code - you can build it using <code>⇧⌘B</code> (on Mac), otherwise use:</p>
+
+<pre><code>$gulp build
+</code></pre>
+
+<p>To run a server locally I use <a href="https://www.npmjs.com/package/http-server">http-server</a>:</p>
+
+<pre><code>$http-server -a localhost -p 8000
+</code></pre>
+
+<p>For those, who are in a hurry to get started with Flux you can skip all preparation steps and go straight to <a href="/coding/getting-started-react-flux.html#step-4-flux">Using Flux</a>.</p>
+
+<h2 id="my-actions">My actions</h2>
+
+<p>To create this multilingual website I followed these steps:</p>
+
+<ol>
+  <li><a href="/coding/getting-started-react-flux.html#step-1-simple-html">Created simple HTML</a></li>
+  <li><a href="/coding/getting-started-react-flux.html#step-2-react-components">Created React components with hardcoded content</a></li>
+  <li><a href="/coding/getting-started-react-flux.html#step-3-content-from-json">Moved content to JSON</a></li>
+  <li><a href="/coding/getting-started-react-flux.html#step-4-flux">Used Flux</a></li>
+  <li><a href="/coding/getting-started-react-flux.html#step-5-refactoring-and-tests">Made some refactoring and add tests</a></li>
+</ol>
+
+<h2 id="step-1-simple-html">Step 1. Simple HTML</h2>
+
+<p>So I started by creating my website as a simple HTML, using Bootstrap, to have the basic static page structure, which I could split to the React components later. That’s how my <em>index.html</em> look like:</p>
+<style type="text/css">
+  .gist {width:640px !important;}
+  .gist-file
+  .gist-data {max-height: 600px; max-width: 640px;}
+</style>
+
+<script src="https://gist.github.com/LenaBarinova/82dbb2570f81395bc2f6.js"></script>
+
+<h2 id="step-2-react-components">Step 2. React components</h2>
+
+<p>First I installed React and ReactDOM.</p>
+
+<pre><code>$npm install react react-dom --save
+</code></pre>
+
+<p>Then I prepared everything that is needed for jsx and ES2015 transformations:</p>
+
+<pre><code>$npm install babel gulp browserify vinyl-source-stream babelify babel-preset-es2015 babel-preset-react --save-dev
+</code></pre>
+
+<p>For Babel to transform React files and ES2015 - created <em>.babelrc</em> file with these settings:
+<script src="https://gist.github.com/LenaBarinova/1303d2f6a01a35ff01e9.js"></script></p>
+
+<p>Created gulp file with a build task. Here it is:
+<script src="https://gist.github.com/LenaBarinova/7f6e5e6945a89a6f17a6.js"></script></p>
+
+<p>Now moving to React. In my page I identify three components:</p>
+
+<ol>
+  <li>Menu</li>
+  <li>Home section</li>
+  <li>About section</li>
+</ol>
+
+<p>I created these three components, adding additional one to wrap these three. In this step I added everything in one file <em>app.jsx</em> (will refactor it in further steps). So my <em>app.jsx</em> file looks like this:
+<script src="https://gist.github.com/LenaBarinova/7244d61616f3427a8673.js"></script>
+Note: when using html in React don’t forget to rename class to className.</p>
+
+<p>Added a placeholder for my react components instead of all the html tags in my <em>index.html</em> and added reference to react and react-dom libraries as well as to my app.js file, which is being produced for me after running</p>
+
+<pre><code>$gulp build
+</code></pre>
+
+<p>or <code>⇧⌘B</code> (in VSCode on Mac).</p>
+
+<p>So my <em>index.html</em> now is this:
+<script src="https://gist.github.com/LenaBarinova/e0a7a419f161aa7d8362.js"></script></p>
+
+<ul>
+  <li>browse files in GitHub at <a href="https://github.com/LenaBarinova/react-flux-example/tree/b4f1d2557efaa593f4dd4558fae75ec3db884da5">this point</a></li>
+</ul>
+
+<h2 id="step-3-content-from-json">Step 3. Content from JSON</h2>
+
+<p>What I decided to do now is to move all the content text to JSON file and load the text I have created helper API. The main idea behind this is that later this loading from JSON could be replaced by calling real API to retrieve needed data.</p>
+
+<p>This is how my data <em>content.json</em> file looks like:
+<script src="https://gist.github.com/LenaBarinova/8e0a8f5e3a09b2794ec5.js"></script></p>
+
+<p>This is my helper API, which load JSON into array and then returns it filtered by language.
+<script src="https://gist.github.com/LenaBarinova/aa9ed4e4afcaaa8b80ff.js"></script></p>
+
+<p>So now I update my React components to use text from my API. I decided to call API method from my wrapper component and then pass down needed parts to child components via <em>props</em>. This is my app.jsx:
+<script src="https://gist.github.com/LenaBarinova/279de096b29d412f5b70.js"></script></p>
+
+<p>In addition I appended <em>gulpfile.js</em> with new task to delete previously generated <em>app.js</em> file. This is how gulpfile.js looks like now:
+<script src="https://gist.github.com/LenaBarinova/be4c3e8dbe599fe06996.js"></script></p>
+
+<p>For this I needed to install del library:</p>
+
+<pre><code>$npm install del --save-dev
+</code></pre>
+
+<h2 id="step-4-flux">Step 4. Flux</h2>
+
+<p>So finally, all preparation tasks are done and we can move forward and add Flux.
+First let’s start with installation.</p>
+
+<pre><code>$npm install flux --save
+</code></pre>
+<p>I follow the flow that is being recommended by Flux:
+<img src="https://facebook.github.io/flux/img/flux-simple-f8-diagram-with-client-action-1300w.png" alt="Flux flow" class="right" />
+Picture is taken from <a href="https://facebook.github.io/flux/docs/overview.html#content">Flux manual</a>.</p>
+
+<p>Let’s map this diagram items with my code. So starting from left to right, I’ve got two actions:</p>
+
+<ul>
+  <li>initApp - I call this in my app entry point to load content using default language ‘en’ (I say it’s an action on the left, very first box in the diagram)</li>
+  <li>switchLanguage - I dispatch this action on click in language menu (I say it’s an action above the Store on the diagram)</li>
+</ul>
+
+<p>My <em>actions.js</em> file:
+<script src="https://gist.github.com/LenaBarinova/cded3bd3a79e1466029b.js"></script></p>
+
+<p>Then I have a dispatcher:
+<script src="https://gist.github.com/LenaBarinova/8c7a5114b7f5341077b8.js"></script></p>
+
+<p>In my store I hold the content and register some callbacks with dispatcher to be invoked on specific actions. My <em>store.js</em> file:
+<script src="https://gist.github.com/LenaBarinova/f1c17fa8bad12f7bc5f7.js"></script></p>
+
+<p>And last, but not least - view. So here I have two components that are related to this flow:</p>
+
+<ul>
+  <li>Menu component - invokes SWITCH_LANGUAGE action on menu item click and passes selected language (this covers View -&gt; Action -&gt; Dispatcher -&gt; Store loop on the diagram)</li>
+  <li>Page component - listens to the store changes and when change is happening - gets updated content (this covers Upper Action -&gt; Dispatcher -&gt; Store -&gt; View loop on the diagram).</li>
+</ul>
+
+<p>This is my updated Menu component:
+<script src="https://gist.github.com/LenaBarinova/51022402974b0f06b70e.js"></script></p>
+
+<p>And here it is my Page component:
+<script src="https://gist.github.com/LenaBarinova/5cac4ff430e13622c42f.js"></script></p>
+
+<h2 id="step-4-refactoring-and-tests">Step 4. Refactoring and Tests</h2>
+
+<p>I won’t be giving any detailed instruction here, but what I did - is refactored my code:</p>
+
+<ul>
+  <li>Changed source file structure</li>
+  <li>Split react components to different files</li>
+  <li>Added minification step to the gulp task</li>
+  <li>Now working on tests, and I think, that they deserve a separate blog post.</li>
+</ul>
+
+<p>The last version of this example may be found on <a href="https://github.com/LenaBarinova/react-flux-example">GitHub</a>.</p>
+
+<p>I just love how it works you can experience this smooth language change <a href="http://lenabarinova.github.io/react-flux-example/">here</a>.</p>
+
+            </article>
+
+            </p>
+            <hr>
+            <br>
+      </li>
     
       <li>
         <!-- <span class="post-meta">Oct 1, 2015</span> -->
@@ -184,174 +385,13 @@
             <br>
       </li>
     
-      <li>
-        <!-- <span class="post-meta">Jul 16, 2015</span> -->
-        <h1 style="text-align: left"><a class="post-link" href="/coding/getting-started-react-mocha.html">Getting started w/ React & Mocha</a>
-          </h1>
-          <p>
-            <article class="post-content">
-            <p><em>11/23/2015: I updated this blog post as well as the code to support the newest version of React, ReactDOM, ReactTestUtils, Mocha, JSDOM, Babel. The changed are really minor, but may be frustraiting for some. For those, who are interested in how should this code be written using older version of these libs (React 0.13.3, Mocha 2.0.1, JSDOM 3.1.2, Mocha-JSDOM 1.0.0, Babel 5.1.13) please clone this <a href="https://github.com/LenaBarinova/react-mocha-example/tree/9b71d468a1b7af5b6366be71a3e0dee9b45e3f37">commit from GitHub</a>.</em></p>
-
-<p>It took me half day to setup [almost] empty environment for React app development with testing done using Mocha.
-I decided to share my findings here so it would remain.
-<img src="/img/post_img/vfd-react-mocha.png" alt="React and Mocha logo" class="right" /></p>
-
-<h2 id="my-target">My target</h2>
-<p>I wanted to create an environment for further React development. The things that I needed to have:</p>
-
-<ul>
-  <li>source structure, that would be suitable for medium-sized project</li>
-  <li>build scripts, that would do all needed transformations, run tests, show the output of my app</li>
-  <li>Mocha as a test framework of choice</li>
-</ul>
-
-<p>For build scripts I prefer to use gulp.</p>
-
-<h2 id="tldr">tl;dr</h2>
-<p>You can find working code <a href="https://github.com/LenaBarinova/react-mocha-example">here</a>. Just download it and run</p>
-
-<pre><code>$npm install
-</code></pre>
-
-<p>followed by</p>
-
-<pre><code>$npm test
-</code></pre>
-
-<p>If you are using Visual Studio Code - you can build it using <code>⇧⌘B</code> (on Mac).</p>
-
-<h2 id="how-i-did-it">How I did it</h2>
-<p>I started with these three stages:</p>
-
-<ol>
-  <li>Prepare the environment</li>
-  <li>Create first React component</li>
-  <li>Add Mocha tests</li>
-</ol>
-
-<h2 id="step-1-prepare-the-environment">Step 1. Prepare the environment</h2>
-<p>First install <a href="https://nodejs.org/">Node.js</a> (if you don’t have it yet).
-In your project directory (<em>react-mocha-example</em> in my case) through Terminal do:</p>
-
-<pre><code>$npm init
-</code></pre>
-
-<p>and follow the instruction. Then run this command to install libraries to setup the working environment:</p>
-
-<pre><code>$npm install react react-dom babel babel-preset-es2015 babel-preset-react gulp gulp-load-plugins browserify babelify babel-core vinyl-source-stream gulp-open --save-dev
-</code></pre>
-
-<p>Now your <em>package.json</em> should look like this:
-<script src="https://gist.github.com/LenaBarinova/31ce415a9beac855c75e.js"></script></p>
-
-<p>Add <em>.babelrc</em> file to your project root with these settings:
-<script src="https://gist.github.com/LenaBarinova/23f8af665b0a8b15c855.js"></script></p>
-
-<p>Create <em>gulpfile.js</em> to configure build steps:
-<script src="https://gist.github.com/LenaBarinova/143d0b90f977e60184fa.js"></script>
-I’m using <a href="https://www.npmjs.com/package/gulp-load-plugins">gulp-load-plugins</a> for easy and fast use of different gulp plugins. It enables me to access all the plugins I have listed in package.json file without ‘require’ each of them separately.</p>
-
-<p>So now everything is ready to start really writing a code. Create <em>index.html</em> file:
-<script src="https://gist.github.com/LenaBarinova/65ee857afca288768cb6.js"></script></p>
-
-<p>Run build command: either using <code>⇧⌘B</code> (from Visual Studio Code on Mac) or command line:</p>
-
-<pre><code>$gulp build
-</code></pre>
-
-<p>And you should get Chrome opened with very first version of our app.</p>
-
-<p><img src="/img/post_img/vfd-1.png" alt="First step result" class="right" /></p>
-
-<h2 id="step-2-create-first-react-component">Step 2. Create first React component</h2>
-<p>Create a <em>components</em> directory and <em>component.jsx</em> file in it:
-<script src="https://gist.github.com/LenaBarinova/8a04f9f62934b4773b5d.js"></script></p>
-
-<p>Add this componenet to DOM (I did it in <em>app.jsx</em> file in my project root directroy <em>react-mocha-example</em>)
-<script src="https://gist.github.com/LenaBarinova/2d3096930e0f739ab7e5.js"></script></p>
-
-<p>Run build task and we can see our React component in a browser.</p>
-
-<p><img src="/img/post_img/vfd-2.png" alt="Second step result" class="right" /></p>
-
-<h2 id="step-3-adding-first-mocha-test">Step 3. Adding first Mocha test</h2>
-<p>This was the trickiest step for me. I found a couple of good articles on the topic. These are my favourite:</p>
-
-<ul>
-  <li><a href="https://github.com/jesstelford/react-isomorphic-boilerplate">Isomorphic Server &amp; Browser Side Rendering with React (in 3 parts)</a></li>
-  <li><a href="http://www.hammerlab.org/2015/02/14/testing-react-web-apps-with-mocha/">Testing React Web Apps with Mocha (in 2 parts)</a></li>
-  <li><a href="http://www.asbjornenge.com/wwc/testing_react_components.html">Testing React Components</a></li>
-</ul>
-
-<p>Ok, let’s begin.
-First, we need to install <a href="http://mochajs.org/">Mocha</a>. To do it, run npm install command with –save-dev, this way your <em>package.json</em> file will be kept updated with all the dependances you use:</p>
-
-<pre><code>$npm install mocha --save-dev
-</code></pre>
-
-<p>Create test directory and a first <em>empty-test.js</em>, which just asserts true all the time.
-<script src="https://gist.github.com/LenaBarinova/a5a34db9c6a9cf8ccb38.js"></script></p>
-
-<p>You can try whether it works just running Mocha from command line from you project root folder:</p>
-
-<pre><code>$mocha
-</code></pre>
-
-<p>You should get this output:</p>
-
-<p><img src="/img/post_img/vfd-3.png" alt="Third step result" class="right" /></p>
-
-<p>Now let’s add test running step in our gulp configuration.
-For this I used <a href="https://www.npmjs.com/package/gulp-mocha">gulp-mocha</a> - a gulp plugin wrapper around Mocha.</p>
-
-<p>Now add a new ‘test’ step in <em>gulpfile.js</em> to run mocha:
-<script src="https://gist.github.com/LenaBarinova/7d65aec1091f2ded3063.js"></script></p>
-
-<p>Before moving on to testing our React component, we need to take care of a couple of things.</p>
-
-<p><strong>First</strong> - DOM mocking. You can find very good explanation about how to mock DOM in this <a href="http://www.asbjornenge.com/wwc/testing_react_components.html">blog post</a>.
-To follow this example we need to install <a href="https://github.com/tmpvar/jsdom">jsdom</a> and <a href="https://github.com/rstacruz/mocha-jsdom">mocha-jsdom</a>.
-I’ve created <em>dom-mock.js</em> file (it’s a bit different from what is given in the article, I adopted it to be compatible with the newest JSDOM version).
-<script src="https://gist.github.com/LenaBarinova/fab84f93dae04ca4123a.js"></script></p>
-
-<p><strong>Second</strong> - install <a href="https://www.npmjs.com/package/react-addons-test-utils">React TestUtils add-on</a>:</p>
-
-<pre><code>$npm install react-addons-test-utils --save-dev
-</code></pre>
-
-<p>And finally - the test! I’ve created <em>component-test.js</em> file in test directory:
-<script src="https://gist.github.com/LenaBarinova/c4fd4c4cdad19b28fe0f.js"></script></p>
-
-<p>Run build. Hurray! The test is passing:</p>
-
-<p><img src="/img/post_img/vfd-4.png" alt="Fourth step result" class="right" /></p>
-
-<p>You can also configure your <em>package.json</em> - to run tests from command line using npm. For this add test section in your <em>package.json</em> like this:
-<script src="https://gist.github.com/LenaBarinova/085b9e9c727f166df806.js"></script></p>
-
-<p>Now you can run:</p>
-
-<pre><code>$npm test
-</code></pre>
-
-<p>That’s it! You can download the latest code for this example from <a href="https://github.com/LenaBarinova/react-mocha-example">GitHub</a>.</p>
-
-<p>Happy Testing!</p>
-
-            </article>
-
-            </p>
-            <hr>
-            <br>
-      </li>
-    
   </ul>
 
 
 <div>
   <div style="float: left; margin-right: 10px;">
     
-      <a href="/index.html">
+      <a href="/">
         <i class="fa fa-arrow-circle-left fa-2x"></i>
         <!--<span class="fa-stack fa-lg">
           <i class="fa fa-square fa-stack-2x"></i>
